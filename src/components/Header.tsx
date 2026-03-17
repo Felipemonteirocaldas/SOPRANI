@@ -72,19 +72,19 @@ export default function Header() {
               MPH
             </Link>
             <Link
-              to="/request-quotation"
-              className="px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
-              aria-label="Request a Quote"
-            >
-              Request a Quote
-            </Link>
-          <Link
-              to="/contact"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
-            >
-              Contact
-            </Link>
-            </nav>
+                to="/contact"
+                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              >
+                Contact
+              </Link>
+            <Link
+            to="/request-quotation"
+            className="px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
+            aria-label="Request a Quote"
+          >
+            Request a Quotation
+          </Link>
+          </nav>
 
           {/* Mobile Menu Button */}
           <button
