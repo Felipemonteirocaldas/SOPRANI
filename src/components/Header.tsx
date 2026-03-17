@@ -84,11 +84,13 @@ export default function Header() {
               {/* Mega Menu Panel - Full Width */}
               <div
                 id="mega-panel"
-                className={`fixed left-0 right-0 top-20 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out ${
+                className={`fixed left-0 right-0 top-20 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out pointer-events-none ${
                   megaMenuOpen 
                     ? 'opacity-100 pointer-events-auto translate-y-0' 
-                    : 'opacity-0 pointer-events-none -translate-y-2'
+                    : 'opacity-0 -translate-y-2'
                 }`}
+                onMouseEnter={() => setMegaMenuOpen(true)}
+                onMouseLeave={() => setMegaMenuOpen(false)}
               >
                 <div className="max-w-[100rem] mx-auto px-4 md:px-8">
                   <div className="grid grid-cols-4 gap-8 py-9">
