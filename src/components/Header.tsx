@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Image } from '@/components/ui/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,9 +12,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-xl font-heading font-bold text-primary tracking-tight">
-              KOENIG & BAUER
-            </span>
+            <Image 
+              src="https://static.wixstatic.com/media/9bbed2_15eda666dacf448ca3b615bfb1e18e10~mv2.png"
+              alt="Soprani Engineering Logo"
+              width={180}
+              height={60}
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
