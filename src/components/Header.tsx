@@ -1,5 +1,5 @@
 import { Image } from '@/components/ui/image';
-import { FileText, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -72,20 +72,19 @@ export default function Header() {
               MPH
             </Link>
             <Link
+              to="/request-quotation"
+              className="px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
+              aria-label="Request a Quote"
+            >
+              Request a Quote
+            </Link>
+          <Link
               to="/contact"
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
               Contact
             </Link>
-            <Link
-              to="/request-quotation"
-              className="flex items-center gap-2 px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
-              aria-label="Request a Quotation"
-            >
-              <FileText size={16} />
-              Request Quotation
-            </Link>
-          </nav>
+            </nav>
 
           {/* Mobile Menu Button */}
           <button
@@ -166,11 +165,10 @@ export default function Header() {
               </Link>
               <Link
                 to="/request-quotation"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200 mt-4"
+                className="w-full flex items-center justify-center px-6 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200 mt-4"
                 aria-label="Request a Quotation"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <FileText size={16} />
                 Request Quote
               </Link>
             </div>
