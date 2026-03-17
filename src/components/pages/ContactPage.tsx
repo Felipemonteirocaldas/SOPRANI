@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
     const el = ref.current;
@@ -14,7 +15,7 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       ([entry]) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            el.classList.add('is-visible');
+            setIsVisible(true);
           }, delay);
           observer.unobserve(el);
         }
@@ -31,15 +32,12 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       ref={ref} 
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
-        transitionProperty: 'opacity, transform'
+        transitionProperty: 'opacity, transform',
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
+        pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
-      <style>{`
-        .is-visible {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-      `}</style>
       {children}
     </div>
   );

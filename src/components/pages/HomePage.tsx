@@ -52,11 +52,12 @@ const AnimatedElement: React.FC<{
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out pointer-events-none ${className}`}
+      className={`transition-all duration-1000 ease-out ${className}`}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        willChange: 'opacity, transform'
+        willChange: 'opacity, transform',
+        pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
       {children}
