@@ -1,11 +1,52 @@
 import { Image } from '@/components/ui/image';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Zap, Wrench, Package, Headphones, Truck } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+
+  const megaMenuColumns = [
+    {
+      title: 'Services',
+      links: [
+        { label: 'All Services', href: '/services', icon: Zap },
+        { label: 'Machinery', href: '/machinery', icon: Wrench },
+        { label: 'Spare Parts', href: '/spare-parts', icon: Package },
+        { label: 'Technical Assistance', href: '/technical-assistance', icon: Headphones },
+        { label: 'Trading Materials', href: '/trading-materials', icon: Truck },
+      ]
+    },
+    {
+      title: 'Products',
+      links: [
+        { label: 'Product Solutions', href: '/products', icon: Zap },
+        { label: 'Industries', href: '/industries', icon: Wrench },
+        { label: 'Company', href: '/company', icon: Package },
+      ]
+    },
+    {
+      title: 'Resources',
+      links: [
+        { label: 'Events', href: '/events', icon: Zap },
+        { label: 'News', href: '/news', icon: Wrench },
+        { label: 'Contact', href: '/contact', icon: Package },
+      ]
+    },
+    {
+      title: 'Platform',
+      links: [
+        { label: 'MPH Platform', href: '/mph', icon: Zap },
+        { label: 'Request Quotation', href: '/request-quotation', icon: Wrench },
+      ],
+      promo: {
+        tag: 'New',
+        title: 'MPH Platform',
+        subtitle: 'Advanced machinery management system'
+      }
+    }
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border-light backdrop-blur-md bg-opacity-95">
@@ -24,9 +65,9 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main navigation">
-            {/* Services Dropdown */}
+            {/* Services Mega Menu */}
             <div 
-              className="relative group"
+              className="relative"
               onMouseEnter={() => setMegaMenuOpen(true)}
               onMouseLeave={() => setMegaMenuOpen(false)}
             >
@@ -35,81 +76,69 @@ export default function Header() {
                 className="nb-item active flex items-center gap-1 px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
                 aria-expanded={megaMenuOpen}
                 aria-controls="mega-panel"
-                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
               >
                 Services
-                <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
+                <ChevronDown size={16} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               
-              {/* Mega Menu Panel */}
-              {megaMenuOpen && (
-                <div
-                  id="mega-panel"
-                  className="absolute left-0 mt-0 w-64 bg-white border border-border-light rounded-lg shadow-lg py-2 z-50"
-                >
-                  <Link
-                    to="/services"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors"
-                    onClick={() => setMegaMenuOpen(false)}
-                  >
-                    All Services
-                  </Link>
-                  <Link
-                    to="/machinery"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors"
-                    onClick={() => setMegaMenuOpen(false)}
-                  >
-                    Machinery
-                  </Link>
-                  <Link
-                    to="/spare-parts"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors"
-                    onClick={() => setMegaMenuOpen(false)}
-                  >
-                    Spare Parts
-                  </Link>
-                  <Link
-                    to="/technical-assistance"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors"
-                    onClick={() => setMegaMenuOpen(false)}
-                  >
-                    Technical Assistance
-                  </Link>
-                  <Link
-                    to="/trading-materials"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors"
-                    onClick={() => setMegaMenuOpen(false)}
-                  >
-                    Trading Materials
-                  </Link>
+              {/* Mega Menu Panel - Full Width */}
+              <div
+                id="mega-panel"
+                className={`fixed left-0 right-0 top-20 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out ${
+                  megaMenuOpen 
+                    ? 'opacity-100 pointer-events-auto translate-y-0' 
+                    : 'opacity-0 pointer-events-none -translate-y-2'
+                }`}
+              >
+                <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+                  <div className="grid grid-cols-4 gap-8 py-9">
+                    {megaMenuColumns.map((column, idx) => (
+                      <div key={idx}>
+                        {/* Column Header */}
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 pb-2.5 border-b border-border-light mb-2.5">
+                          {column.title}
+                        </h3>
+                        
+                        {/* Links */}
+                        <div className="space-y-0">
+                          {column.links.map((link, linkIdx) => {
+                            const IconComponent = link.icon;
+                            return (
+                              <Link
+                                key={linkIdx}
+                                to={link.href}
+                                className="flex items-center gap-2 text-sm font-normal text-gray-600 py-1.75 border-b border-gray-100 transition-all duration-150 hover:text-primary hover:pl-1.25"
+                                onClick={() => setMegaMenuOpen(false)}
+                              >
+                                <IconComponent size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover:opacity-100" />
+                                {link.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+
+                        {/* Promo Section */}
+                        {column.promo && (
+                          <div className="mt-3.5 p-4 bg-blue-50 border-l-4 border-accent">
+                            <div className="text-xs font-bold uppercase tracking-widest text-accent mb-1.25">
+                              {column.promo.tag}
+                            </div>
+                            <div className="text-sm font-bold text-primary mb-1">
+                              {column.promo.title}
+                            </div>
+                            <div className="text-xs font-light text-gray-500">
+                              {column.promo.subtitle}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
 
-            <a
-              href="#products"
-              className="nb-item px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
-            >
-              Machinery
-            </a>
-            <a
-              href="#about"
-              className="nb-item px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
-            >
-              About
-            </a>
-            <a
-              href="#mph"
-              className="nb-item px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
-            >
-              MPH Platform
-            </a>
-            <a
-              href="#contact"
-              className="nb-item px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
-            >
-              Contact
-            </a>
+            {/* ... keep existing code (other nav items) ... */}
             <Link
               to="/request-quotation"
               className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center gap-2"
@@ -143,86 +172,49 @@ export default function Header() {
               </button>
               {megaMenuOpen && (
                 <div className="pl-4 space-y-1">
-                  <Link
-                    to="/services"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMegaMenuOpen(false);
-                    }}
-                  >
-                    All Services
-                  </Link>
-                  <Link
-                    to="/machinery"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMegaMenuOpen(false);
-                    }}
-                  >
-                    Machinery
-                  </Link>
-                  <Link
-                    to="/spare-parts"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMegaMenuOpen(false);
-                    }}
-                  >
-                    Spare Parts
-                  </Link>
-                  <Link
-                    to="/technical-assistance"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMegaMenuOpen(false);
-                    }}
-                  >
-                    Technical Assistance
-                  </Link>
-                  <Link
-                    to="/trading-materials"
-                    className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setMegaMenuOpen(false);
-                    }}
-                  >
-                    Trading Materials
-                  </Link>
+                  {megaMenuColumns[0].links.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      to={link.href}
+                      className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMegaMenuOpen(false);
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
               )}
-              <a
-                href="#products"
+              <Link
+                to="/products"
                 className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Machinery
-              </a>
-              <a
-                href="#about"
+                Products
+              </Link>
+              <Link
+                to="/company"
                 className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About
-              </a>
-              <a
-                href="#mph"
+                Company
+              </Link>
+              <Link
+                to="/mph"
                 className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 MPH Platform
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
-              </a>
+              </Link>
               <Link
                 to="/request-quotation"
                 className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
