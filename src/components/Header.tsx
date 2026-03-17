@@ -24,28 +24,52 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
-              to="/products" 
+              to="/about" 
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
-              Products
+              About
             </Link>
             <Link 
-              to="/company" 
+              to="/services" 
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
-              Company
+              Services
             </Link>
             <Link 
-              to="/events" 
+              to="/machinery" 
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
-              Events
+              Machinery
             </Link>
             <Link 
-              to="/news" 
+              to="/spare-parts" 
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
-              News
+              Spare Parts
+            </Link>
+            <Link 
+              to="/technical-assistance" 
+              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+            >
+              Technical Assistance
+            </Link>
+            <Link 
+              to="/trading-materials" 
+              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+            >
+              Trading Materials
+            </Link>
+            <Link 
+              to="/industries" 
+              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+            >
+              Industries
+            </Link>
+            <Link 
+              to="/mph" 
+              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+            >
+              MPH
             </Link>
             <Link 
               to="/contact" 
@@ -70,32 +94,60 @@ export default function Header() {
           <nav className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
               <Link 
-                to="/products" 
+                to="/about" 
                 className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Products
+                About
               </Link>
               <Link 
-                to="/company" 
+                to="/services" 
                 className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Company
+                Services
               </Link>
               <Link 
-                to="/events" 
+                to="/machinery" 
                 className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Events
+                Machinery
               </Link>
               <Link 
-                to="/news" 
+                to="/spare-parts" 
                 className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                News
+                Spare Parts
+              </Link>
+              <Link 
+                to="/technical-assistance" 
+                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Technical Assistance
+              </Link>
+              <Link 
+                to="/trading-materials" 
+                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Trading Materials
+              </Link>
+              <Link 
+                to="/industries" 
+                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Industries
+              </Link>
+              <Link 
+                to="/mph" 
+                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                MPH
               </Link>
               <Link 
                 to="/contact" 

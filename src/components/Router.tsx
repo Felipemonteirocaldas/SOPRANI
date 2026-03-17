@@ -5,11 +5,20 @@ import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import { lazy, Suspense } from 'react';
 
 const HomePage = lazy(() => import('@/components/pages/HomePage'));
+const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
+const ServicesPage = lazy(() => import('@/components/pages/ServicesPage'));
+const MachineryPage = lazy(() => import('@/components/pages/MachineryPage'));
+const SparePartsPage = lazy(() => import('@/components/pages/SparePartsPage'));
+const TechnicalAssistancePage = lazy(() => import('@/components/pages/TechnicalAssistancePage'));
+const TradingMaterialsPage = lazy(() => import('@/components/pages/TradingMaterialsPage'));
+const IndustriesPage = lazy(() => import('@/components/pages/IndustriesPage'));
+const MPHPage = lazy(() => import('@/components/pages/MPHPage'));
+const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
+const RequestQuotationPage = lazy(() => import('@/components/pages/RequestQuotationPage'));
 const ProductsPage = lazy(() => import('@/components/pages/ProductsPage'));
 const CompanyPage = lazy(() => import('@/components/pages/CompanyPage'));
 const EventsPage = lazy(() => import('@/components/pages/EventsPage'));
 const NewsPage = lazy(() => import('@/components/pages/NewsPage'));
-const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
 
 const LoadingFallback = () => <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
@@ -38,6 +47,116 @@ const router = createBrowserRouter([
         ),
         routeMetadata: {
           pageIdentifier: 'home',
+        },
+      },
+      {
+        path: "about",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <AboutPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'about',
+        },
+      },
+      {
+        path: "services",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ServicesPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'services',
+        },
+      },
+      {
+        path: "machinery",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <MachineryPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'machinery',
+        },
+      },
+      {
+        path: "spare-parts",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <SparePartsPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'spare-parts',
+        },
+      },
+      {
+        path: "technical-assistance",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <TechnicalAssistancePage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'technical-assistance',
+        },
+      },
+      {
+        path: "trading-materials",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <TradingMaterialsPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'trading-materials',
+        },
+      },
+      {
+        path: "industries",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <IndustriesPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'industries',
+        },
+      },
+      {
+        path: "mph",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <MPHPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'mph',
+        },
+      },
+      {
+        path: "contact",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ContactPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'contact',
+        },
+      },
+      {
+        path: "request-quotation",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <RequestQuotationPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'request-quotation',
         },
       },
       {
@@ -82,17 +201,6 @@ const router = createBrowserRouter([
         ),
         routeMetadata: {
           pageIdentifier: 'news',
-        },
-      },
-      {
-        path: "contact",
-        element: (
-          <Suspense fallback={<LoadingFallback />}>
-            <ContactPage />
-          </Suspense>
-        ),
-        routeMetadata: {
-          pageIdentifier: 'contact',
         },
       },
       {

@@ -138,13 +138,13 @@ export default function HomePage() {
             <AnimatedElement direction="left" className="max-w-xl">
               <div className="bg-[#001b44]/95 backdrop-blur-sm p-8 md:p-10 border-l-4 border-accent shadow-2xl">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-2 tracking-tight">
-                  Koenig & Bauer
+                  Industrial Solutions for the Metal Packaging Industry
                 </h1>
                 <h2 className="text-accent text-lg md:text-xl font-medium mb-6">
-                  High-end printing technology
+                  Machinery – Spare Parts – Technical Assistance – Trading
                 </h2>
                 <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                  Advanced printing solutions, powerful performance: We empower you with cutting-edge technology in the world of print.
+                  Your trusted partner for metal packaging machinery, spare parts, technical support, and material trading worldwide.
                 </p>
               </div>
             </AnimatedElement>
@@ -158,6 +158,90 @@ export default function HomePage() {
           >
             <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
           </button>
+        </section>
+
+        {/* SERVICES OVERVIEW SECTION */}
+        <section className="py-20 md:py-32 bg-white">
+          <div className="container mx-auto px-4 md:px-8">
+            <AnimatedElement>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
+                Our Services
+              </h2>
+            </AnimatedElement>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {[
+                { title: 'Machinery', icon: '⚙️' },
+                { title: 'Spare Parts', icon: '🔧' },
+                { title: 'Technical Assistance', icon: '🛠️' },
+                { title: 'Revamping', icon: '🔄' },
+                { title: 'Trading Materials', icon: '📦' }
+              ].map((service, idx) => (
+                <AnimatedElement key={idx} direction="up" delay={idx * 50}>
+                  <a href={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition-all duration-300">
+                    <div className="text-4xl mb-4">{service.icon}</div>
+                    <h3 className="text-lg font-heading font-bold text-primary group-hover:text-accent transition-colors">{service.title}</h3>
+                  </a>
+                </AnimatedElement>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INDUSTRIES SECTION */}
+        <section className="py-20 md:py-32 bg-gray-50">
+          <div className="container mx-auto px-4 md:px-8">
+            <AnimatedElement>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
+                Industries We Serve
+              </h2>
+            </AnimatedElement>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                'Food Cans',
+                'Beverage Cans',
+                'Industrial Containers',
+                'Lids & Ends Production',
+                'Metal Decorating',
+                'Tomato Cans',
+                'Tuna Cans',
+                'Powdered Milk Containers'
+              ].map((industry, idx) => (
+                <AnimatedElement key={idx} direction="up" delay={idx * 30}>
+                  <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
+                    <p className="font-heading font-bold text-primary">{industry}</p>
+                  </div>
+                </AnimatedElement>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="py-20 md:py-32 bg-primary text-white">
+          <div className="container mx-auto px-4 md:px-8 text-center">
+            <AnimatedElement>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+                Ready to Partner with Soprani Engineering?
+              </h2>
+              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+                Contact us today to discuss your metal packaging machinery, spare parts, or material trading needs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/contact"
+                  className="px-8 py-3 bg-white text-primary hover:bg-gray-100 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                >
+                  Contact Us
+                </a>
+                <a
+                  href="/request-quotation"
+                  className="px-8 py-3 border border-white text-white hover:bg-white/10 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                >
+                  Request a Quotation
+                </a>
+              </div>
+            </AnimatedElement>
+          </div>
         </section>
 
         {/* LATEST NEWS SECTION */}
