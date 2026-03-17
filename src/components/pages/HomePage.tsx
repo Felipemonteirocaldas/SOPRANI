@@ -120,34 +120,62 @@ export default function HomePage() {
 
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden bg-primary flex items-center">
+        <section className="relative w-full overflow-hidden bg-gradient-dark flex items-center min-h-screen pt-20">
           {/* Abstract Background Elements */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#001b44] via-primary to-[#003377] opacity-90" />
-            {/* Simulated 3D waves/shapes using CSS gradients and blurs */}
-            <div className="absolute top-1/4 left-1/4 w-[800px] h-[300px] bg-blue-400/20 rounded-[100%] blur-3xl transform -rotate-12" />
-            <div className="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-cyan-400/10 rounded-[100%] blur-3xl transform rotate-12" />
-            <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary-dark opacity-95" />
+            {/* Animated gradient blobs */}
+            <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl" />
             
-            {/* Placeholder for the actual 3D render from screenshot */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay opacity-30" />
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
+              backgroundSize: '50px 50px'
+            }} />
           </div>
 
-          {/* Hero Content Box */}
-          <div className="container mx-auto px-4 md:px-8 relative z-10">
-            <AnimatedElement direction="left" className="max-w-xl">
-              <div className="bg-[#001b44]/95 backdrop-blur-sm p-8 md:p-10 border-l-4 border-accent shadow-2xl">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-2 tracking-tight">
-                  Industrial Solutions for the Metal Packaging Industry
-                </h1>
-                <h2 className="text-accent text-lg md:text-xl font-medium mb-6">
-                  Machinery – Spare Parts – Technical Assistance – Trading
-                </h2>
-                <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                  Your trusted partner for metal packaging machinery, spare parts, technical support, and material trading worldwide.
-                </p>
-              </div>
-            </AnimatedElement>
+          {/* Hero Content */}
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <AnimatedElement direction="left" className="max-w-2xl">
+                <div>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight tracking-tight">
+                    Industrial Solutions for Metal Packaging
+                  </h1>
+                  <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                    Machinery, spare parts, technical assistance, and material trading for the global metal packaging industry.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      to="/request-quotation"
+                      className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200 hover:shadow-lg text-center"
+                    >
+                      Request Quote
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center"
+                    >
+                      Contact Us
+                    </Link>
+                  </div>
+                </div>
+              </AnimatedElement>
+
+              {/* Hero Image */}
+              <AnimatedElement direction="right" delay={200} className="hidden lg:block">
+                <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl group">
+                  <Image
+                    src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2000&auto=format&fit=crop"
+                    alt="Industrial Metal Packaging"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                </div>
+              </AnimatedElement>
+            </div>
           </div>
 
           {/* Scroll Down Indicator */}
@@ -161,26 +189,32 @@ export default function HomePage() {
         </section>
 
         {/* SERVICES OVERVIEW SECTION */}
-        <section className="py-20 md:py-32 bg-white">
-          <div className="container mx-auto px-4 md:px-8">
+        <section className="py-20 md:py-32 bg-background-alt">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
-                Our Services
-              </h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+                  Our Core Services
+                </h2>
+                <p className="text-lg text-text-muted max-w-2xl mx-auto">
+                  Complete solutions for metal packaging machinery and materials
+                </p>
+              </div>
             </AnimatedElement>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
-                { title: 'Machinery', icon: '⚙️' },
-                { title: 'Spare Parts', icon: '🔧' },
-                { title: 'Technical Assistance', icon: '🛠️' },
-                { title: 'Revamping', icon: '🔄' },
-                { title: 'Trading Materials', icon: '📦' }
+                { title: 'Machinery', icon: '⚙️', desc: 'Advanced packaging equipment' },
+                { title: 'Spare Parts', icon: '🔧', desc: 'Quality replacement parts' },
+                { title: 'Technical Assistance', icon: '🛠️', desc: 'Expert support & maintenance' },
+                { title: 'Revamping', icon: '🔄', desc: 'Equipment modernization' },
+                { title: 'Trading Materials', icon: '📦', desc: 'Raw materials supply' }
               ].map((service, idx) => (
                 <AnimatedElement key={idx} direction="up" delay={idx * 50}>
-                  <a href={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition-all duration-300">
-                    <div className="text-4xl mb-4">{service.icon}</div>
-                    <h3 className="text-lg font-heading font-bold text-primary group-hover:text-accent transition-colors">{service.title}</h3>
-                  </a>
+                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 border border-border-light hover:border-accent">
+                    <div className="text-5xl mb-4">{service.icon}</div>
+                    <h3 className="text-lg font-heading font-bold text-primary group-hover:text-accent transition-colors mb-2">{service.title}</h3>
+                    <p className="text-sm text-text-muted">{service.desc}</p>
+                  </Link>
                 </AnimatedElement>
               ))}
             </div>
@@ -190,14 +224,14 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
                 <Link
                   to="/contact"
-                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 text-sm font-semibold uppercase tracking-wider rounded-lg"
                   aria-label="Contact Us"
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-3 bg-primary text-white hover:bg-[#001a42] transition-colors duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-200 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg"
                   aria-label="Request a Quotation"
                 >
                   Request a Quotation
@@ -208,12 +242,17 @@ export default function HomePage() {
         </section>
 
         {/* INDUSTRIES SECTION */}
-        <section className="py-20 md:py-32 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-8">
+        <section className="py-20 md:py-32 bg-white">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
-                Industries We Serve
-              </h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+                  Industries We Serve
+                </h2>
+                <p className="text-lg text-text-muted max-w-2xl mx-auto">
+                  Trusted by leading manufacturers across the metal packaging sector
+                </p>
+              </div>
             </AnimatedElement>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -227,8 +266,8 @@ export default function HomePage() {
                 'Powdered Milk Containers'
               ].map((industry, idx) => (
                 <AnimatedElement key={idx} direction="up" delay={idx * 30}>
-                  <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-                    <p className="font-heading font-bold text-primary">{industry}</p>
+                  <div className="bg-background-alt p-8 rounded-xl text-center border border-border-light hover:border-accent hover:shadow-md transition-all duration-300 group cursor-pointer">
+                    <p className="font-heading font-bold text-lg text-primary group-hover:text-accent transition-colors">{industry}</p>
                   </div>
                 </AnimatedElement>
               ))}
@@ -237,40 +276,45 @@ export default function HomePage() {
         </section>
 
         {/* CTA SECTION */}
-        <section className="py-20 md:py-32 bg-primary text-white">
-          <div className="container mx-auto px-4 md:px-8 text-center">
+        <section className="py-20 md:py-32 bg-gradient-dark text-white">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8 text-center">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
                 Ready to Partner with Soprani Engineering?
               </h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Contact us today to discuss your metal packaging machinery, spare parts, or material trading needs.
+              <p className="text-lg text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Contact us today to discuss your metal packaging machinery, spare parts, or material trading needs. Our expert team is ready to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="px-8 py-3 bg-white text-primary hover:bg-gray-100 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                <Link
+                  to="/contact"
+                  className="px-8 py-4 bg-white text-primary hover:bg-gray-100 transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg"
                 >
                   Contact Us
-                </a>
-                <a
-                  href="/request-quotation"
-                  className="px-8 py-3 border border-white text-white hover:bg-white/10 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                </Link>
+                <Link
+                  to="/request-quotation"
+                  className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
                 >
                   Request a Quotation
-                </a>
+                </Link>
               </div>
             </AnimatedElement>
           </div>
         </section>
 
         {/* LATEST NEWS SECTION */}
-        <section className="py-20 bg-[#f4f6f9]">
-          <div className="container mx-auto px-4 md:px-8">
+        <section className="py-20 md:py-32 bg-background-alt">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12">
-                Latest News
-              </h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+                  Latest News & Updates
+                </h2>
+                <p className="text-lg text-text-muted max-w-2xl mx-auto">
+                  Stay informed about industry trends and company updates
+                </p>
+              </div>
             </AnimatedElement>
 
             {isLoadingNews ? (
@@ -280,7 +324,7 @@ export default function HomePage() {
                 {/* Featured News (Left) */}
                 <div className="lg:col-span-7">
                   <AnimatedElement direction="up" delay={100} className="h-full">
-                    <Link to={`/news`} className="group block h-full bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                    <Link to={`/news`} className="group block h-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-border-light">
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                         {news[0].coverImage ? (
                           <Image 
@@ -296,11 +340,11 @@ export default function HomePage() {
                         <h3 className="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors duration-300">
                           {news[0].headline}
                         </h3>
-                        <p className="text-gray-600 mb-6 line-clamp-3 text-sm leading-relaxed">
+                        <p className="text-text-muted mb-6 line-clamp-3 text-sm leading-relaxed">
                           {news[0].content}
                         </p>
-                        <span className="text-accent text-sm font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                          Read more <ArrowRight size={16} className="ml-1" />
+                        <span className="text-accent text-sm font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                          Read more <ArrowRight size={16} className="ml-2" />
                         </span>
                       </div>
                     </Link>
@@ -311,7 +355,7 @@ export default function HomePage() {
                 <div className="lg:col-span-5 flex flex-col gap-4">
                   {news.slice(1, 5).map((item, idx) => (
                     <AnimatedElement key={item._id} direction="up" delay={200 + (idx * 100)}>
-                      <Link to={`/news`} className="group flex bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[120px]">
+                      <Link to={`/news`} className="group flex bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[120px] border border-border-light">
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.coverImage ? (
                             <Image 
@@ -327,7 +371,7 @@ export default function HomePage() {
                           <h4 className="text-sm font-bold text-primary mb-2 line-clamp-2 group-hover:text-accent transition-colors">
                             {item.headline}
                           </h4>
-                          <span className="text-accent text-xs font-medium mt-auto inline-flex items-center">
+                          <span className="text-accent text-xs font-semibold mt-auto inline-flex items-center">
                             Read more
                           </span>
                         </div>
@@ -337,15 +381,15 @@ export default function HomePage() {
                 </div>
               </div>
             ) : (
-              <div className="text-center py-12 text-gray-500">No news available.</div>
+              <div className="text-center py-12 text-text-muted">No news available.</div>
             )}
 
             <AnimatedElement delay={400} className="mt-12 flex justify-center">
               <button 
                 onClick={() => navigate('/news')}
-                className="px-8 py-3 border border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider"
+                className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
               >
-                more
+                View All News
               </button>
             </AnimatedElement>
           </div>
@@ -353,17 +397,17 @@ export default function HomePage() {
 
         {/* EVENTS SECTION */}
         <section className="bg-white">
-          {/* Dark Blue Header Strip */}
-          <div className="bg-primary py-6">
-            <div className="container mx-auto px-4 md:px-8">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white">
-                Events
+          {/* Dark Header Strip */}
+          <div className="bg-gradient-dark py-8">
+            <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white">
+                Upcoming Events
               </h2>
             </div>
           </div>
 
           {/* Events Content */}
-          <div className="container mx-auto px-4 md:px-8 py-16">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8 py-16 md:py-24">
             {isLoadingEvents ? (
               <div className="flex justify-center py-12"><LoadingSpinner /></div>
             ) : events.length > 0 ? (
@@ -372,7 +416,7 @@ export default function HomePage() {
                 <div className="space-y-8">
                   {events.map((event, idx) => (
                     <AnimatedElement key={event._id} direction="left" delay={idx * 100}>
-                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 border-b border-gray-100 pb-8 last:border-0">
+                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 border-b border-border-light pb-8 last:border-0">
                         <div className="md:w-32 flex-shrink-0">
                           <p className="text-accent font-bold text-lg">
                             {formatDate(event.eventDate)}
@@ -382,14 +426,14 @@ export default function HomePage() {
                           <h3 className="text-xl font-bold text-primary mb-2">
                             {event.eventName}
                           </h3>
-                          <p className="text-gray-500 text-sm mb-4 flex items-center">
-                            <MapPin size={14} className="mr-1" /> {event.location}
+                          <p className="text-text-muted text-sm mb-4 flex items-center">
+                            <MapPin size={14} className="mr-2" /> {event.location}
                           </p>
                           <Link 
                             to={`/events`}
-                            className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-xs font-medium uppercase tracking-wider"
+                            className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
                           >
-                            more
+                            Learn More
                           </Link>
                         </div>
                       </div>
@@ -399,7 +443,7 @@ export default function HomePage() {
 
                 {/* Featured Event Image */}
                 <AnimatedElement direction="right" delay={200} className="h-full hidden lg:block">
-                  <div className="relative h-full min-h-[400px] rounded-sm overflow-hidden shadow-lg group">
+                  <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl group border border-border-light">
                     <Image 
                       src={events[0]?.eventImage || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"} 
                       alt="Featured Event"
@@ -410,31 +454,31 @@ export default function HomePage() {
                 </AnimatedElement>
               </div>
             ) : (
-              <div className="text-center py-12 text-gray-500">No upcoming events.</div>
+              <div className="text-center py-12 text-text-muted">No upcoming events.</div>
             )}
           </div>
         </section>
 
         {/* PRODUCTS SECTION */}
-        <section className="py-24 bg-white border-t border-gray-100">
-          <div className="container mx-auto px-4 md:px-8">
+        <section className="py-24 bg-background-alt border-t border-border-light">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
             <AnimatedElement className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
-                Our Products – Sorted by Technology
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-6">
+                Our Product Solutions
               </h2>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                Whatever kind of printing press you&apos;re after, we&apos;ve got the right solution and technology for you. We offer a wide range of options to make sure you find the perfect machine for your specific needs.
+              <p className="text-lg text-text-muted leading-relaxed">
+                Comprehensive range of metal packaging solutions tailored to your industry needs. From machinery to spare parts, we deliver excellence.
               </p>
             </AnimatedElement>
 
             {isLoadingProducts ? (
               <div className="flex justify-center py-20"><LoadingSpinner /></div>
             ) : products.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {products.map((product, idx) => (
                   <AnimatedElement key={product._id} direction="up" delay={idx * 50}>
                     <div className="group flex flex-col h-full">
-                      <div className="relative aspect-[4/3] mb-6 overflow-hidden bg-gray-50 flex items-center justify-center p-4">
+                      <div className="relative aspect-[4/3] mb-6 overflow-hidden bg-white flex items-center justify-center p-4 rounded-xl border border-border-light group-hover:border-accent transition-colors">
                         {product.solutionImage ? (
                           <Image 
                             src={product.solutionImage} 
@@ -442,18 +486,18 @@ export default function HomePage() {
                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out mix-blend-multiply"
                           />
                         ) : (
-                          <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-gray-400">Img</div>
+                          <div className="w-24 h-24 bg-background-alt rounded-full flex items-center justify-center text-text-muted">Img</div>
                         )}
                       </div>
                       <h3 className="text-lg font-bold text-primary mb-4 text-center group-hover:text-accent transition-colors">
-                        {product.solutionName || product.category || 'Printing Solution'}
+                        {product.solutionName || product.category || 'Product Solution'}
                       </h3>
                       <div className="mt-auto text-center">
                         <Link 
                           to={`/products`}
-                          className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-300 text-xs font-medium uppercase tracking-wider"
+                          className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
                         >
-                          Discover more
+                          Discover More
                         </Link>
                       </div>
                     </div>
@@ -461,41 +505,61 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 text-gray-500">No products available.</div>
+              <div className="text-center py-12 text-text-muted">No products available.</div>
             )}
           </div>
         </section>
 
         {/* VISION & PROTECTION SECTION */}
-        <section className="py-24 bg-white border-t border-gray-100">
-          <div className="container mx-auto px-4 md:px-8">
+        <section className="py-24 bg-white border-t border-border-light">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedElement direction="left">
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">
-                  Vision & Protection
-                </h2>
-                <h3 className="text-xl text-gray-600 mb-8 font-medium">
-                  The Next Level of Authentication
-                </h3>
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8">
-                  With our next-level authentication solutions, we help you to develop a new understanding of the dimensions of security. Improve the customer experience of your packaging with us, protect your products or link physical objects with the digital world. Our authentication solutions go beyond an optical quality check and together we will develop your concept to maximise the security of your products.
-                </p>
-                <button 
-                  onClick={() => navigate('/products')}
-                  className="px-8 py-3 border border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider"
-                >
-                  Protect Your Products
-                </button>
+                <div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+                    Why Choose Soprani?
+                  </h2>
+                  <h3 className="text-xl text-accent font-semibold mb-8">
+                    Decades of Expertise & Innovation
+                  </h3>
+                  <p className="text-text-muted text-lg leading-relaxed mb-8">
+                    With our comprehensive range of metal packaging solutions, we help manufacturers worldwide optimize their production processes. From cutting-edge machinery to reliable spare parts and expert technical support, we deliver the quality and reliability you need to stay competitive.
+                  </p>
+                  <ul className="space-y-4 mb-8">
+                    <li className="flex items-start">
+                      <span className="text-accent font-bold mr-4">✓</span>
+                      <span className="text-text-muted">Global network of subsidiaries and partners</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-accent font-bold mr-4">✓</span>
+                      <span className="text-text-muted">24/7 technical support and maintenance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-accent font-bold mr-4">✓</span>
+                      <span className="text-text-muted">Genuine spare parts and materials</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-accent font-bold mr-4">✓</span>
+                      <span className="text-text-muted">Custom solutions for your specific needs</span>
+                    </li>
+                  </ul>
+                  <button 
+                    onClick={() => navigate('/about')}
+                    className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
+                  >
+                    Learn More About Us
+                  </button>
+                </div>
               </AnimatedElement>
               
               <AnimatedElement direction="right" delay={200} className="hidden lg:block">
-                <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-xl group">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl group border border-border-light">
                    <Image 
-                      src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000&auto=format&fit=crop" 
-                      alt="Vision and Protection"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                    />
-                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
+                     src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000&auto=format&fit=crop" 
+                     alt="Industrial Excellence"
+                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                   />
+                   <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
               </AnimatedElement>
             </div>

@@ -7,89 +7,89 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-gray-200">
-      <div className="container mx-auto px-4">
+    <header className="sticky top-0 z-50 bg-white border-b border-border-light backdrop-blur-md bg-opacity-95">
+      <div className="max-w-[100rem] mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center py-2">
+          <Link to="/" className="flex items-center py-2 flex-shrink-0">
             <Image
               src="https://static.wixstatic.com/media/9bbed2_15eda666dacf448ca3b615bfb1e18e10~mv2.png"
               alt="Soprani Engineering Logo"
               width={240}
               height={80}
-              className="h-16 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <Link
               to="/about"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               About
             </Link>
             <Link
               to="/services"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               Services
             </Link>
             <Link
               to="/machinery"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               Machinery
             </Link>
             <Link
               to="/spare-parts"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               Spare Parts
             </Link>
             <Link
               to="/technical-assistance"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
-              Technical Assistance
+              Tech Assist
             </Link>
             <Link
               to="/trading-materials"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
-              Trading Materials
+              Trading
             </Link>
             <Link
               to="/industries"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               Industries
             </Link>
             <Link
               to="/mph"
-              className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
             >
               MPH
             </Link>
             <Link
-                to="/contact"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
-              >
-                Contact
-              </Link>
+              to="/contact"
+              className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
+            >
+              Contact
+            </Link>
             <Link
-            to="/request-quotation"
-            className="px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
-            aria-label="Request a Quote"
-          >
-            Request a Quotation
-          </Link>
+              to="/request-quotation"
+              className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200 hover:shadow-lg"
+              aria-label="Request a Quote"
+            >
+              Request Quote
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-accent transition-colors"
+            className="md:hidden p-2 text-primary hover:text-accent transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -98,74 +98,74 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
+          <nav className="md:hidden py-4 border-t border-border-light">
+            <div className="flex flex-col space-y-2">
               <Link
                 to="/about"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 to="/services"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
                 to="/machinery"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Machinery
               </Link>
               <Link
                 to="/spare-parts"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Spare Parts
               </Link>
               <Link
                 to="/technical-assistance"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Technical Assistance
               </Link>
               <Link
                 to="/trading-materials"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Trading Materials
               </Link>
               <Link
                 to="/industries"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Industries
               </Link>
               <Link
                 to="/mph"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 MPH
               </Link>
               <Link
                 to="/contact"
-                className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
+                className="px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
               </Link>
               <Link
                 to="/request-quotation"
-                className="w-full flex items-center justify-center px-6 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200 mt-4"
+                className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200"
                 aria-label="Request a Quotation"
                 onClick={() => setMobileMenuOpen(false)}
               >
