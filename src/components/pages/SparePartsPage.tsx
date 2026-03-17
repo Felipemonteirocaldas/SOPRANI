@@ -146,13 +146,13 @@ export default function SparePartsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="px-8 py-3 bg-white text-primary hover:bg-gray-100 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 bg-white text-primary hover:bg-gray-100 transition-all duration-300 text-sm font-medium uppercase tracking-wider rounded-sm hover:shadow-lg hover:scale-105"
               >
                 Contact Us
               </a>
               <a
                 href="/request-quotation"
-                className="px-8 py-3 border border-white text-white hover:bg-white/10 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-300 text-sm font-medium uppercase tracking-wider rounded-sm hover:shadow-lg hover:scale-105"
               >
                 Request a Quote
               </a>

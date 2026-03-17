@@ -151,7 +151,7 @@ export default function HomePage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       to="/request-quotation"
-                      className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200 hover:shadow-lg text-center"
+                      className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
                     >
                       Request Quote
                     </Link>
@@ -232,7 +232,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
+                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
                   aria-label="Request a Quotation"
                 >
                   Request a Quotation
@@ -295,7 +295,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
+                  className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
                 >
                   Request a Quotation
                 </Link>
