@@ -289,7 +289,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-white text-primary hover:bg-gray-100 transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg"
+                  className="px-8 py-4 bg-white text-primary hover:bg-primary hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
                 >
                   Contact Us
                 </Link>
