@@ -79,7 +79,7 @@ export default function Header() {
             </Link>
             <Link
               to="/request-quotation"
-              className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200 hover:shadow-lg"
+              className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95"
               aria-label="Request a Quote"
             >
               Request Quote
@@ -165,7 +165,7 @@ export default function Header() {
               </Link>
               <Link
                 to="/request-quotation"
-                className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-200"
+                className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95"
                 aria-label="Request a Quotation"
                 onClick={() => setMobileMenuOpen(false)}
               >
