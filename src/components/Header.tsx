@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [megaMenuTimeout, setMegaMenuTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const megaMenuColumns = [
     {
@@ -48,6 +49,16 @@ export default function Header() {
     }
   ];
 
+  const handleMegaMenuEnter = () => {
+    if (megaMenuTimeout) clearTimeout(megaMenuTimeout);
+    setMegaMenuOpen(true);
+  };
+
+  const handleMegaMenuLeave = () => {
+    const timeout = setTimeout(() => setMegaMenuOpen(false), 150);
+    setMegaMenuTimeout(timeout);
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border-light backdrop-blur-md bg-opacity-95">
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -68,8 +79,8 @@ export default function Header() {
             {/* Services Mega Menu */}
             <div 
               className="relative"
-              onMouseEnter={() => setMegaMenuOpen(true)}
-              onMouseLeave={() => setMegaMenuOpen(false)}
+              onMouseEnter={handleMegaMenuEnter}
+              onMouseLeave={handleMegaMenuLeave}
             >
               <button
                 id="mega-trigger"
@@ -89,8 +100,8 @@ export default function Header() {
                     ? 'opacity-100 pointer-events-auto translate-y-0' 
                     : 'opacity-0 -translate-y-2'
                 }`}
-                onMouseEnter={() => setMegaMenuOpen(true)}
-                onMouseLeave={() => setMegaMenuOpen(false)}
+                onMouseEnter={handleMegaMenuEnter}
+                onMouseLeave={handleMegaMenuLeave}
               >
                 <div className="max-w-[100rem] mx-auto px-4 md:px-8">
                   <div className="grid grid-cols-4 gap-8 py-9">
