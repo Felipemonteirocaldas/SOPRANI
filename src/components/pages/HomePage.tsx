@@ -225,14 +225,14 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
                 <Link
                   to="/contact"
-                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 text-sm font-semibold uppercase tracking-wider rounded-lg"
+                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:border-primary"
                   aria-label="Contact Us"
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-200 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg"
+                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
                   aria-label="Request a Quotation"
                 >
                   Request a Quotation
