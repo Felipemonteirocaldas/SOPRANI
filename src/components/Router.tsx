@@ -2,12 +2,16 @@ import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
-import HomePage from '@/components/pages/HomePage';
-import ProductsPage from '@/components/pages/ProductsPage';
-import CompanyPage from '@/components/pages/CompanyPage';
-import EventsPage from '@/components/pages/EventsPage';
-import NewsPage from '@/components/pages/NewsPage';
-import ContactPage from '@/components/pages/ContactPage';
+import { lazy, Suspense } from 'react';
+
+const HomePage = lazy(() => import('@/components/pages/HomePage'));
+const ProductsPage = lazy(() => import('@/components/pages/ProductsPage'));
+const CompanyPage = lazy(() => import('@/components/pages/CompanyPage'));
+const EventsPage = lazy(() => import('@/components/pages/EventsPage'));
+const NewsPage = lazy(() => import('@/components/pages/NewsPage'));
+const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
+
+const LoadingFallback = () => <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -27,42 +31,66 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <HomePage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'home',
         },
       },
       {
         path: "products",
-        element: <ProductsPage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ProductsPage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'products',
         },
       },
       {
         path: "company",
-        element: <CompanyPage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <CompanyPage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'company',
         },
       },
       {
         path: "events",
-        element: <EventsPage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <EventsPage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'events',
         },
       },
       {
         path: "news",
-        element: <NewsPage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <NewsPage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'news',
         },
       },
       {
         path: "contact",
-        element: <ContactPage />,
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ContactPage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'contact',
         },
