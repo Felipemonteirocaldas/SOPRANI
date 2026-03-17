@@ -1,0 +1,234 @@
+{
+  "id": "6b6bfd9d-2e30-4a30-9c21-9e3343f92e5c",
+  "initialPrompt": "Create a website inspired by https://www.koenig-bauer.com/en/",
+  "siteName": "koenig-bauer.com",
+  "brandBook": {
+    "tones": [
+      "professional",
+      "authoritative",
+      "innovative",
+      "trustworthy",
+      "sophisticated",
+      "experienced"
+    ],
+    "designStyle": {
+      "primaryStyle": [
+        "Elegant"
+      ],
+      "supportingStyles": [
+        "Professional",
+        "Minimalist",
+        "Sophisticated"
+      ]
+    },
+    "toneOfVoice": "Professional, authoritative, innovative, trustworthy, sophisticated, experienced.",
+    "graphicElements": {
+      "icons": "Clean, minimalist line icons that align with the professional and sophisticated aesthetic. Use primary or dark blue colors.",
+      "stickers": "Not applicable for this brand identity.",
+      "illustrations": "Abstract or technical illustrations that convey innovation and precision. Avoid overly playful or cartoonish styles. Focus on clean lines and a limited color palette."
+    },
+    "designSummary": "**The Legacy of Precision: A Digital Embodiment of Industrial Excellence**\n\nThe design for Koenig & Bauer will translate its 200+ years of printing industry leadership into a digital experience that exudes trust, innovation, and sophisticated confidence. Drawing inspiration from the elegance of high-end print publications and the structured precision of industrial design, the aesthetic will be clean, spacious, and authoritative. The core principle is to present complex technological solutions with clarity and a premium feel, ensuring that every interaction reinforces the brand's legacy and forward-thinking vision.\n\n**Execution Blueprint:**\n1. **Layout as Structure:** A balanced, grid-based layout will be employed, prioritizing symmetry and ample negative space to convey order and luxury. Content will be presented in a structured, digestible manner, allowing the depth of Koenig & Bauer's offerings to shine.\n2. **Typography as Authority:** A classic serif font will anchor headlines, lending gravitas and historical weight, while a clean, legible sans-serif will ensure clarity and modern accessibility for body text.\n3. **Color Harmony:** A refined palette of deep blues and crisp whites will form the foundation, accented by a vibrant red for calls-to-action and key information, creating a visual hierarchy that is both professional and dynamic.\n4. **Component Refinement:** Buttons and interactive elements will be minimalist and functional, defined by clean lines and precise spacing, avoiding ornamentation to maintain a focus on substance and quality.",
+    "layout": {
+      "grid": {
+        "margins": "Generous margins around sections and content blocks to enhance spaciousness.",
+        "padding": "Consistent internal padding within containers and components, multiples of the 8px base unit.",
+        "compositionApproach": "Symmetrical, grid-based layout with a focus on balance and ample whitespace.",
+        "spacing": {
+          "gaps": "Base unit: 8px. Grid gaps are 24px (3x base unit) for main sections, with smaller increments for internal elements.",
+          "rows": "Flexible row system, defined by content and whitespace",
+          "columns": "12-column grid system",
+          "compositionApproach": "Not specified"
+        }
+      },
+      "layoutDna": {
+        "contrastSpectrum": "High contrast between primary/background colors, subtle contrast for informational elements.",
+        "densitySpectrum": "Spacious, with generous negative space.",
+        "textVsImageEmphasis": "Balanced, with high-quality imagery supporting and complementing the authoritative typography.",
+        "complexitySpectrum": "Low complexity, focusing on clarity and directness.",
+        "gridAlignmentSpectrum": "Strictly aligned to a grid, emphasizing symmetry and balance.",
+        "negativeSpaceUsage": "Extensive use of whitespace to create a sense of calm, luxury, and focus."
+      },
+      "heroSectionLayout": "**The Legacy Statement**\nComposition (Tailwind Spec): Container `h-screen grid place-items-center p-8`. A `div` with `max-w-6xl mx-auto text-center`. Headline `motion.h1` with `text-7xl font-bold leading-tight` (using 'Playfair Display'). Sub-headline `motion.p` with `text-2xl mt-4` (using 'Roboto').\nSignature Hook (Framer Motion Spec): Parent `motion.div` with `initial={{ opacity: 0 }}` and `animate={{ opacity: 1 }}`. Headline `motion.h1` uses `variants` with `transition: { staggerChildren: 0.05 }`. Each letter `span` has `initial={{ opacity: 0, y: 20 }}` and `animate={{ opacity: 1, y: 0 }}`. Sub-headline fades in after headline."
+    },
+    "components": {
+      "images": "Layout Role: Integrated seamlessly within the grid, often full-bleed or aligned with text columns. | Gallery Type: Clean, grid-based galleries with consistent spacing. Images are high-resolution and presented without borders or heavy effects.",
+      "buttons": "Primary: background-color: #002355, color: #FFFFFF, border: 1px solid #002355, border-radius: 0px, padding: 12px 24px. Secondary: background-color: transparent, color: #F02D32, border: 1px solid #F02D32, border-radius: 0px, padding: 12px 24px.",
+      "containers": "Method: Whitespace, Style: Generous vertical margins (e.g., 80px) between sections. Optional subtle background color changes (e.g., light gray) for distinct content blocks."
+    },
+    "palette": {
+      "colors": {
+        "customColors": [
+          {
+            "name": "destructive",
+            "value": "#ff0000"
+          },
+          {
+            "name": "destructiveForeground",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "accentRed",
+            "value": "#F02D32"
+          },
+          {
+            "name": "accentRedForeground",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "darkBlue",
+            "value": "#002355"
+          },
+          {
+            "name": "darkBlueForeground",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "lightGray",
+            "value": "#F5F5F5"
+          },
+          {
+            "name": "lightGrayForeground",
+            "value": "#333333"
+          }
+        ],
+        "background": "#FFFFFF",
+        "secondary": "#F02D32",
+        "foreground": "#333333",
+        "secondaryForeground": "#FFFFFF",
+        "primaryForeground": "#FFFFFF",
+        "primary": "#002355"
+      },
+      "paletteUsageGuide": "The primary color (#002355) should be used for main calls-to-action, headers, and key structural elements. The secondary/accent color (#F02D32) is reserved for secondary calls-to-action, links, and important highlights. The background (#FFFFFF) is the dominant color for content areas, ensuring a clean and airy feel. Foreground text (#333333) provides excellent readability on light backgrounds. Custom colors like 'lightGray' can be used for subtle section dividers or backgrounds, while 'darkBlue' and 'accentRed' can be used for specific component states or informational callouts.",
+      "paletteAccessibilityNotes": "Ensure sufficient contrast between background and foreground colors for all text elements. The primary color (#002355) has a high contrast ratio against the white background (#FFFFFF). The accent red (#F02D32) also provides good contrast for interactive elements. Text on primary and secondary colors should always be white (#FFFFFF) for optimal legibility."
+    },
+    "typography": {
+      "headings": {
+        "font": {
+          "fontFamily": "playfair display",
+          "role": "heading",
+          "fontJustification": ""
+        },
+        "headingsAccessibilityNotes": "Maintain a minimum font size of 24px for H2 and above. Ensure adequate line height (1.2-1.5) for readability. Avoid overly decorative or condensed styles for headings that might impair legibility.",
+        "headingsSimilarFonts": [],
+        "headingsUsageGuide": "Use 'Playfair Display' for all major headings (H1, H2, H3) to convey a sense of gravitas and premium quality. Ensure consistent sizing and weight across similar heading levels for a unified, authoritative look."
+      },
+      "paragraphs": {
+        "font": {
+          "fontFamily": "roboto",
+          "role": "paragraph",
+          "fontJustification": ""
+        },
+        "paragraphsUsageGuide": "Use 'Roboto' for all body text, captions, and descriptive content. Its clean, modern aesthetic ensures readability and complements the serif headlines. Maintain consistent line spacing and paragraph margins.",
+        "paragraphsSimilarFonts": [],
+        "paragraphsAccessibilityNotes": "Ensure body text is at least 16px. Line height should be between 1.5 and 1.7 for optimal reading comfort. Letter spacing should be standard, avoiding excessive tightness or looseness."
+      },
+      "customFontFamilies": {},
+      "fontSizes": [
+        {
+          "name": "xs",
+          "size": "0.75rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.02em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "sm",
+          "size": "0.875rem",
+          "lineHeight": "1.3",
+          "letterSpacing": "0.03em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.04em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "lg",
+          "size": "1.125rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.04em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "xl",
+          "size": "1.25rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.05em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "2xl",
+          "size": "1.5rem",
+          "lineHeight": "1.4",
+          "letterSpacing": "0.05em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "3xl",
+          "size": "1.875rem",
+          "lineHeight": "1.3",
+          "letterSpacing": "0.06em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "4xl",
+          "size": "2.25rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.06em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "5xl",
+          "size": "3rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.07em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "6xl",
+          "size": "3.75rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.07em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "7xl",
+          "size": "4.5rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.08em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "8xl",
+          "size": "6rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.08em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "9xl",
+          "size": "8rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.09em",
+          "fontWeight": "700"
+        }
+      ],
+      "welcomeSectionTypography": {
+        "placement": "Centered, prominent placement within the hero section.",
+        "implementation": "Large, impactful 'Playfair Display' headline (e.g., 6xl or 7xl) with a clear, concise sub-headline in 'Roboto' (e.g., 2xl) below it. Ensure generous line spacing for both."
+      }
+    },
+    "originImagesUrls": []
+  },
+  "attachments": {
+    "contentImagesUrls": [],
+    "inspirationImagesUrls": [
+      "https://wixmp-c562ea68f10846b458285ce5.wixmp.com/scraped-screenshots/screenshot-1773755473205.webp"
+    ]
+  },
+  "status": "READY",
+  "plan": "\n\n```json\n{\n  \"sections\": [\n    {\n      \"id\": \"overview\",\n      \"title\": \"## Overview\",\n      \"content\": \"This plan creates a corporate website for Koenig & Bauer, showcasing their printing solutions, company information, and industry events. The site will feature a professional layout matching the inspiration source's structure and branding.\"\n    },\n    {\n      \"id\": \"key-features\",\n      \"title\": \"## Key features\",\n      \"content\": \"- **View Product Solutions Listing**: Browse the range of printing technology solutions and products offered.\\n- **View Product Solution Details**: Access detailed information about specific printing solutions and technologies.\\n- **View Company Information**: Learn about Koenig & Bauer's history, achievements, and subsidiaries.\\n- **View Events Listing**: See upcoming industry events and exhibitions where the company will participate.\\n- **View News & Updates**: Read recent company announcements, achievements, and industry insights.\\n- **Contact Company**: Submit inquiries and connect with the company through a contact form.\",\n      \"metadata\": [\n        { \"id\": \"view-product-solutions-listing\", \"name\": \"View Product Solutions Listing\" },\n        { \"id\": \"view-product-solution-details\", \"name\": \"View Product Solution Details\" },\n        { \"id\": \"view-company-information\", \"name\": \"View Company Information\" },\n        { \"id\": \"view-events-listing\", \"name\": \"View Events Listing\" },\n        { \"id\": \"view-news-updates\", \"name\": \"View News & Updates\" },\n        { \"id\": \"contact-company\", \"name\": \"Contact Company\" }\n      ]\n    },\n    {\n      \"id\": \"structure\",\n      \"title\": \"## Structure\",\n      \"content\": \"- **Header (Reusable)**: Contains the Koenig & Bauer logo, main navigation menu with links to Products, Company, Events, News, and Contact pages.\\n- **Footer (Reusable)**: Displays company information, subsidiary links, social media links, and legal information across multiple columns.\\n- **Home Page**: Features hero section highlighting the company's expertise, key statistics (200+ years, operating EBIT achievements), and featured solutions.\\n- **Products Page**: Displays the product solutions listing with filtering capabilities and detailed views for each solution.\\n- **Company Page**: Presents company history, achievements, subsidiaries, and organizational information.\\n- **Events Page**: Lists upcoming events like ExpoPrint 2026 with details about participation and technological showcases.\\n- **News Page**: Shows recent company announcements, achievements, and industry updates.\\n- **Contact Page**: Provides contact form and company contact information for inquiries.\"\n    }\n  ],\n  \"apps\": [\n    {\n      \"id\": \"wix-cms\",\n      \"keyFeatures\": [\n        { \"id\": \"view-product-solutions-listing\", \"name\": \"View Product Solutions Listing\" },\n        { \"id\": \"view-product-solution-details\", \"name\": \"View Product Solution Details\" },\n        { \"id\": \"view-company-information\", \"name\": \"View Company Information\" },\n        { \"id\": \"view-events-listing\", \"name\": \"View Events Listing\" },\n        { \"id\": \"view-news-updates\", \"name\": \"View News & Updates\" },\n        { \"id\": \"contact-company\", \"name\": \"Contact Company\" }\n      ]\n    }\n  ],\n  \"version\": \"4.0.1\"\n}\n```"
+}
