@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { useState } from 'react';
 import { Image } from '@/components/ui/image';
 
@@ -76,6 +76,14 @@ export default function Header() {
               className="text-sm font-medium text-gray-700 hover:text-accent transition-colors"
             >
               Contact
+            </Link>
+            <Link 
+              to="/request-quotation" 
+              className="flex items-center gap-2 px-6 py-2 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200"
+              aria-label="Request a Quotation"
+            >
+              <FileText size={16} />
+              Request Quote
             </Link>
           </nav>
 
@@ -155,6 +163,15 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
+              </Link>
+              <Link 
+                to="/request-quotation" 
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wider rounded-sm hover:bg-[#001a42] transition-colors duration-200 mt-4"
+                aria-label="Request a Quotation"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <FileText size={16} />
+                Request Quote
               </Link>
             </div>
           </nav>

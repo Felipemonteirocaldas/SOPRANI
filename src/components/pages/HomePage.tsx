@@ -184,6 +184,26 @@ export default function HomePage() {
                 </AnimatedElement>
               ))}
             </div>
+
+            {/* Services CTA Section */}
+            <AnimatedElement delay={300} className="mt-16 md:mt-20">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
+                <Link
+                  to="/contact"
+                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  aria-label="Contact Us"
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  to="/request-quotation"
+                  className="px-8 py-3 bg-primary text-white hover:bg-[#001a42] transition-colors duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  aria-label="Request a Quotation"
+                >
+                  Request a Quotation
+                </Link>
+              </div>
+            </AnimatedElement>
           </div>
         </section>
 
