@@ -1,13 +1,13 @@
 // WI-HPI
-import React, { useEffect, useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronDown, ArrowRight, Calendar, MapPin } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
-import { NewsandUpdates, IndustryEvents, ProductSolutions } from '@/entities';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
+import { BaseCrudService } from '@/integrations';
+import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 // --- Animation Components ---
 
@@ -72,7 +72,7 @@ export default function HomePage() {
   const [news, setNews] = useState<NewsandUpdates[]>([]);
   const [events, setEvents] = useState<IndustryEvents[]>([]);
   const [products, setProducts] = useState<ProductSolutions[]>([]);
-  
+
   const [isLoadingNews, setIsLoadingNews] = useState(true);
   const [isLoadingEvents, setIsLoadingEvents] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
@@ -85,7 +85,7 @@ export default function HomePage() {
           BaseCrudService.getAll<IndustryEvents>('events', [], { limit: 3 }),
           BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 8 })
         ]);
-        
+
         setNews(newsRes.items || []);
         setEvents(eventsRes.items || []);
         setProducts(productsRes.items || []);
@@ -129,7 +129,7 @@ export default function HomePage() {
             <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
             <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl" />
-            
+
             {/* Subtle pattern overlay */}
             <div className="absolute inset-0 opacity-5" style={{
               backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
@@ -211,7 +211,7 @@ export default function HomePage() {
                 { title: 'Trading Materials', icon: '📦', desc: 'Raw materials supply' }
               ].map((service, idx) => (
                 <AnimatedElement key={idx} direction="up" delay={idx * 50}>
-                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center border border-border-light transition-all duration-300 hover:border-accent hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer">
+                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center  transition-all duration-300 hover:border-accent hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer">
                     <div className="text-5xl mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">{service.icon}</div>
                     <h3 className="text-lg font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors duration-300">{service.title}</h3>
                     <p className="text-sm text-text-muted group-hover:text-primary transition-colors duration-300">{service.desc}</p>
@@ -328,9 +328,9 @@ export default function HomePage() {
                     <Link to={`/news`} className="group block h-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-border-light">
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                         {news[0].coverImage ? (
-                          <Image 
-                            src={news[0].coverImage} 
-                            alt={news[0].headline || 'News'} 
+                          <Image
+                            src={news[0].coverImage}
+                            alt={news[0].headline || 'News'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
                         ) : (
@@ -359,9 +359,9 @@ export default function HomePage() {
                       <Link to={`/news`} className="group flex bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[120px] border border-border-light">
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.coverImage ? (
-                            <Image 
-                              src={item.coverImage} 
-                              alt={item.headline || 'News'} 
+                            <Image
+                              src={item.coverImage}
+                              alt={item.headline || 'News'}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             />
                           ) : (
@@ -386,7 +386,7 @@ export default function HomePage() {
             )}
 
             <AnimatedElement delay={400} className="mt-12 flex justify-center">
-              <button 
+              <button
                 onClick={() => navigate('/news')}
                 className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
               >
@@ -430,7 +430,7 @@ export default function HomePage() {
                           <p className="text-text-muted text-sm mb-4 flex items-center">
                             <MapPin size={14} className="mr-2" /> {event.location}
                           </p>
-                          <Link 
+                          <Link
                             to={`/events`}
                             className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
                           >
@@ -445,8 +445,8 @@ export default function HomePage() {
                 {/* Featured Event Image */}
                 <AnimatedElement direction="right" delay={200} className="h-full hidden lg:block">
                   <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl group border border-border-light">
-                    <Image 
-                      src={events[0]?.eventImage || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"} 
+                    <Image
+                      src={events[0]?.eventImage || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"}
                       alt="Featured Event"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     />
@@ -481,8 +481,8 @@ export default function HomePage() {
                     <div className="group flex flex-col h-full">
                       <div className="relative aspect-[4/3] mb-6 overflow-hidden bg-white flex items-center justify-center p-4 rounded-xl border border-border-light group-hover:border-accent transition-colors">
                         {product.solutionImage ? (
-                          <Image 
-                            src={product.solutionImage} 
+                          <Image
+                            src={product.solutionImage}
                             alt={product.solutionName || 'Product'}
                             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out mix-blend-multiply"
                           />
@@ -494,7 +494,7 @@ export default function HomePage() {
                         {product.solutionName || product.category || 'Product Solution'}
                       </h3>
                       <div className="mt-auto text-center">
-                        <Link 
+                        <Link
                           to={`/products`}
                           className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
                         >
@@ -544,7 +544,7 @@ export default function HomePage() {
                       <span className="text-text-muted">Custom solutions for your specific needs</span>
                     </li>
                   </ul>
-                  <button 
+                  <button
                     onClick={() => navigate('/about')}
                     className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
                   >
@@ -552,11 +552,11 @@ export default function HomePage() {
                   </button>
                 </div>
               </AnimatedElement>
-              
+
               <AnimatedElement direction="right" delay={200} className="hidden lg:block">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl group border border-border-light">
-                   <Image 
-                     src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000&auto=format&fit=crop" 
+                   <Image
+                     src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000&auto=format&fit=crop"
                      alt="Industrial Excellence"
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                    />
