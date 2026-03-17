@@ -9,15 +9,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center py-2">
             <Image 
               src="https://static.wixstatic.com/media/9bbed2_15eda666dacf448ca3b615bfb1e18e10~mv2.png"
               alt="Soprani Engineering Logo"
-              width={180}
-              height={60}
-              className="h-12 w-auto"
+              width={240}
+              height={80}
+              className="h-16 w-auto"
             />
           </Link>
 
