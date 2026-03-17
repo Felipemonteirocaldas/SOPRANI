@@ -5,20 +5,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded text-base font-normal transition focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded text-base font-normal transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:underline",
+          "bg-primary text-primary-foreground hover:bg-primary-light hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:underline",
+          "bg-destructive text-destructive-foreground hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
         outline:
-          "border border-primary text-primary bg-transparent shadow-sm hover:underline",
+          "border border-primary text-primary bg-transparent hover:bg-primary hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:underline",
-        ghost: "bg-transparent text-foreground hover:underline",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
+        ghost: "bg-transparent text-foreground hover:bg-background-alt hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0",
+        link: "text-primary underline-offset-4 hover:text-accent transition-colors",
       },
       size: {
         default: "h-10 px-4 py-4",

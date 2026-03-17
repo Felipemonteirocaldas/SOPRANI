@@ -83,7 +83,7 @@ export default function RequestQuotationPage() {
                 </p>
                 <a
                   href="/"
-                  className="inline-block px-8 py-3 bg-primary text-white hover:bg-primary/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  className="inline-block px-8 py-3 bg-primary text-white hover:bg-primary-light hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
                 >
                   Return to Home
                 </a>
@@ -266,13 +266,13 @@ export default function RequestQuotationPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-8 py-3 bg-accent text-white hover:bg-accent/90 disabled:bg-gray-400 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                    className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
                   >
                     {isLoading ? 'Submitting...' : 'Submit Quotation Request'}
                   </button>
                   <a
                     href="/"
-                    className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                    className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
                   >
                     Cancel
                   </a>
@@ -316,7 +316,7 @@ export default function RequestQuotationPage() {
                 </p>
                 <a
                   href="/contact"
-                  className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-300 text-xs font-medium uppercase tracking-wider rounded-sm"
+                  className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-xs font-medium uppercase tracking-wider rounded-sm"
                 >
                   Contact Us
                 </a>

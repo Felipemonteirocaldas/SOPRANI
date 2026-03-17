@@ -69,7 +69,7 @@ export default function MachineryPage() {
                 </p>
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-8 py-3 bg-accent text-white hover:bg-accent/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                  className="inline-flex items-center px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
                 >
                   Contact Us for Current Opportunities <ArrowRight size={16} className="ml-2" />
                 </a>
@@ -114,13 +114,13 @@ export default function MachineryPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="px-8 py-3 bg-white text-primary hover:bg-gray-100 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
               >
                 Get in Touch
               </a>
               <a
                 href="/request-quotation"
-                className="px-8 py-3 border border-white text-white hover:bg-white/10 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 border border-white text-white hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
               >
                 Request Information
               </a>
