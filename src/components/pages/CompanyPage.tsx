@@ -32,7 +32,7 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
   return (
     <div 
       ref={ref} 
-      className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
+      className={`${className || ''} pointer-events-none opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         transitionProperty: 'opacity, transform'
       }}
