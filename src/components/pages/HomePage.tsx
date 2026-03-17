@@ -211,10 +211,10 @@ export default function HomePage() {
                 { title: 'Trading Materials', icon: '📦', desc: 'Raw materials supply' }
               ].map((service, idx) => (
                 <AnimatedElement key={idx} direction="up" delay={idx * 50}>
-                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center hover:shadow-lg transition-all duration-300 border border-border-light hover:border-accent">
-                    <div className="text-5xl mb-4">{service.icon}</div>
-                    <h3 className="text-lg font-heading font-bold text-primary group-hover:text-accent transition-colors mb-2">{service.title}</h3>
-                    <p className="text-sm text-text-muted">{service.desc}</p>
+                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center border border-border-light transition-all duration-300 hover:border-accent hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer">
+                    <div className="text-5xl mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">{service.icon}</div>
+                    <h3 className="text-lg font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors duration-300">{service.title}</h3>
+                    <p className="text-sm text-text-muted group-hover:text-primary transition-colors duration-300">{service.desc}</p>
                   </Link>
                 </AnimatedElement>
               ))}
