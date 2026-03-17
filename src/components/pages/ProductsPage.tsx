@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { BaseCrudService } from '@/integrations';
 import { ProductSolutions } from '@/entities';
 import { Image } from '@/components/ui/image';
-import { LoadingSpinner } from '@/components/ui';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Filter } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
