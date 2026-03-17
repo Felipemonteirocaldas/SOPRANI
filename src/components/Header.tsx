@@ -120,7 +120,7 @@ export default function Header() {
                               <Link
                                 key={linkIdx}
                                 to={link.href}
-                                className="flex items-center gap-2 text-sm font-normal text-gray-600 py-1.75 border-b border-gray-100 transition-all duration-150 hover:text-primary hover:pl-1.25"
+                                className="flex items-center gap-2 text-sm font-normal text-gray-600 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary"
                                 onClick={() => setMegaMenuOpen(false)}
                               >
                                 <IconComponent size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover:opacity-100" />
