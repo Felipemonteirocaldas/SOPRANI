@@ -189,82 +189,6 @@ export default function HomePage() {
           </button>
         </section>
 
-        {/* MPH HIGHLIGHTS SECTION */}
-        <section className="py-20 md:py-32 bg-gradient-dark text-white">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <AnimatedElement direction="left">
-                <div>
-                  <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-                    Introducing MPH
-                  </p>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
-                    Metal Packaging Hub
-                  </h2>
-                  <p className="text-lg text-gray-300 leading-relaxed">
-                    A dedicated platform for the global metal packaging industry. One stop. The entire supply chain. Machinery, spare parts, and materials worldwide.
-                  </p>
-                </div>
-              </AnimatedElement>
-
-              {/* Right Content - Cards */}
-              <div className="space-y-6">
-                {[
-                  {
-                    title: 'Peak & Complete Machinery',
-                    description: 'Industry-leading equipment and complete packaging machinery from global suppliers'
-                  },
-                  {
-                    title: 'Source Quality Parts & Spares',
-                    description: 'Genuine replacement parts and spare components for all major packaging equipment'
-                  },
-                  {
-                    title: 'Trade Materials & Aluminum',
-                    description: 'Premium raw materials and aluminum sourcing for metal packaging production'
-                  }
-                ].map((item, idx) => (
-                  <AnimatedElement key={idx} direction="right" delay={100 + (idx * 100)}>
-                    <div className="flex gap-4 md:gap-6">
-                      <div className="flex-shrink-0">
-                        <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent text-primary font-bold text-lg md:text-xl">
-                          {idx + 1}
-                        </div>
-                      </div>
-                      <div className="flex-grow">
-                        <h3 className="text-lg md:text-xl font-heading font-bold mb-2 text-white">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </AnimatedElement>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <AnimatedElement delay={400} className="mt-12 md:mt-16">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/mph"
-                  className="px-8 py-4 bg-accent text-primary font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-light transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-sm md:text-base"
-                >
-                  Explore MPH
-                </Link>
-                <Link
-                  to="/request-quotation"
-                  className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-300 text-center text-sm md:text-base"
-                >
-                  Request Quote
-                </Link>
-              </div>
-            </AnimatedElement>
-          </div>
-        </section>
-
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -640,6 +564,82 @@ export default function HomePage() {
                 </div>
               </AnimatedElement>
             </div>
+          </div>
+        </section>
+
+        {/* MPH HIGHLIGHTS SECTION */}
+        <section className="py-20 md:py-32 bg-gradient-dark text-white">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <AnimatedElement direction="left">
+                <div>
+                  <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+                    Introducing MPH
+                  </p>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+                    Metal Packaging Hub
+                  </h2>
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    A dedicated platform for the global metal packaging industry. One stop. The entire supply chain. Machinery, spare parts, and materials worldwide.
+                  </p>
+                </div>
+              </AnimatedElement>
+
+              {/* Right Content - Cards */}
+              <div className="space-y-6">
+                {[
+                  {
+                    title: 'Peak & Complete Machinery',
+                    description: 'Industry-leading equipment and complete packaging machinery from global suppliers'
+                  },
+                  {
+                    title: 'Source Quality Parts & Spares',
+                    description: 'Genuine replacement parts and spare components for all major packaging equipment'
+                  },
+                  {
+                    title: 'Trade Materials & Aluminum',
+                    description: 'Premium raw materials and aluminum sourcing for metal packaging production'
+                  }
+                ].map((item, idx) => (
+                  <AnimatedElement key={idx} direction="right" delay={100 + (idx * 100)}>
+                    <div className="flex gap-4 md:gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent text-primary font-bold text-lg md:text-xl">
+                          {idx + 1}
+                        </div>
+                      </div>
+                      <div className="flex-grow">
+                        <h3 className="text-lg md:text-xl font-heading font-bold mb-2 text-white">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </AnimatedElement>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <AnimatedElement delay={400} className="mt-12 md:mt-16">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/mph"
+                  className="px-8 py-4 bg-accent text-primary font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-light transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-sm md:text-base"
+                >
+                  Explore MPH
+                </Link>
+                <Link
+                  to="/request-quotation"
+                  className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-300 text-center text-sm md:text-base"
+                >
+                  Request Quote
+                </Link>
+              </div>
+            </AnimatedElement>
           </div>
         </section>
       </main>
