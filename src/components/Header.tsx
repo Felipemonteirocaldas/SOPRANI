@@ -66,12 +66,12 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center py-2 flex-shrink-0">
             <Image
-              src="https://static.wixstatic.com/media/9bbed2_15eda666dacf448ca3b615bfb1e18e10~mv2.png"
-              alt="Soprani Engineering Logo"
+              src="https://static.wixstatic.com/media/9bbed2_024f0c2570534a809ba2410e5ca1ce9d~mv2.png"
               width={240}
               height={80}
               className="h-14 w-auto"
-            />
+              originWidth={2173}
+              originHeight={753} />
           </Link>
 
           {/* Desktop Navigation */}
