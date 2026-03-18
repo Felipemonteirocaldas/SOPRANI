@@ -25,19 +25,21 @@ const CorporateMarquee = () => {
     },
   ];
 
-  // Duplicate items to ensure seamless loop
-  const duplicatedItems = [...items, ...items, ...items];
+  // Duplicate items once to ensure seamless infinite loop
+  const duplicatedItems = [...items, ...items];
 
   return (
     <div className="w-full bg-[#F4F6F9] h-[60px] overflow-hidden flex items-center">
       <motion.div
         className="flex items-center gap-0 whitespace-nowrap"
-        animate={{ x: [0, -100 * items.length + '%'] }}
+        animate={{ x: '-50%' }}
         transition={{
-          duration: 35,
+          duration: 90,
           repeat: Infinity,
           ease: 'linear',
+          repeatType: 'loop',
         }}
+        initial={{ x: 0 }}
       >
         {duplicatedItems.map((item, index) => {
           const Icon = item.icon;
