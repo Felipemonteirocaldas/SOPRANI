@@ -166,7 +166,14 @@ export default function HomePage() {
 
               {/* Hero Image */}
               <AnimatedElement direction="right" delay={200} className="hidden lg:block">
-
+                <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://static.wixstatic.com/media/9bbed2_2bbe9e8899444fdbb3332e2a1eaf24b9~mv2.png"
+                    alt="Industrial metal packaging machinery facility"
+                    className="w-full h-full object-cover"
+                    width={600}
+                  />
+                </div>
               </AnimatedElement>
             </div>
           </div>
