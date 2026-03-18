@@ -65,9 +65,9 @@ const InfoBar: React.FC = () => {
         }
 
         .marquee-item {
-          flex-shrink: 0;
-          min-width: max-content;
-          width: max-content;
+          flex-shrink: 0 !important;
+          min-width: max-content !important;
+          width: max-content !important;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -76,6 +76,7 @@ const InfoBar: React.FC = () => {
           padding-right: 20px;
           white-space: nowrap;
           border-right: 1px solid #E0E0E0;
+          overflow: visible !important;
         }
 
         .marquee-item:last-child {
@@ -86,10 +87,14 @@ const InfoBar: React.FC = () => {
           font-size: 14px;
           font-weight: 500;
           color: #00205B;
+          width: max-content !important;
+          min-width: max-content !important;
+          flex-shrink: 0 !important;
+          overflow: visible !important;
         }
 
         .marquee-item svg {
-          flex-shrink: 0;
+          flex-shrink: 0 !important;
           color: #C8102E;
         }
       `}</style>
@@ -119,12 +124,13 @@ const InfoBar: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`flex items-center justify-center gap-3 px-4 py-4 min-w-0 overflow-hidden ${
+                className={`flex items-center justify-center gap-3 px-4 py-4 ${
                   idx < infoItems.length - 1 ? 'border-b border-[#E0E0E0]' : ''
                 }`}
+                style={{ width: 'max-content', minWidth: 'max-content', flexShrink: 0, overflow: 'visible' }}
               >
                 <Icon size={18} className="text-[#C8102E] flex-shrink-0" />
-                <span className="text-[14px] font-medium text-[#00205B] text-center" style={{ whiteSpace: 'nowrap' }}>
+                <span className="text-[14px] font-medium text-[#00205B] text-center" style={{ whiteSpace: 'nowrap', width: 'max-content', minWidth: 'max-content', flexShrink: 0, overflow: 'visible' }}>
                   {item.text}
                 </span>
               </div>
