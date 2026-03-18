@@ -66,12 +66,14 @@ const InfoBar: React.FC = () => {
 
         .marquee-item {
           flex-shrink: 0;
-          width: 20%;
+          min-width: max-content;
+          width: max-content;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 0.75rem;
           padding: 0 1rem;
+          padding-right: 20px;
           white-space: nowrap;
           border-right: 1px solid #E0E0E0;
         }
