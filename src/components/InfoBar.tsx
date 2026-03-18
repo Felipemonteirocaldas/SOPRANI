@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapPin, Zap, TrendingUp, ShoppingCart, Globe } from 'lucide-react';
 
 const InfoBar: React.FC = () => {
@@ -25,27 +25,89 @@ const InfoBar: React.FC = () => {
     }
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Duplicar itens para marquee suave (loop infinito)
+  const marqueeItems = [...infoItems, ...infoItems];
+
   return (
     <div className="w-full bg-[#F4F6F9] border-y border-[#E0E0E0]">
-      <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-        {/* Desktop: Horizontal layout */}
-        <div className="hidden md:grid grid-cols-5 gap-0 h-[70px]">
-          {infoItems.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className={`flex items-center justify-center gap-3 px-4 min-w-0 overflow-hidden ${
-                  idx < infoItems.length - 1 ? 'border-r border-[#E0E0E0]' : ''
-                }`}
-              >
-                <Icon size={20} className="text-[#C8102E] flex-shrink-0" />
-                <span className="text-[14px] md:text-[16px] font-medium text-[#00205B] truncate">
-                  {item.text}
-                </span>
-              </div>
-            );
-          })}
+      <style>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .marquee-container {
+          overflow: hidden;
+          width: 100%;
+        }
+
+        .marquee-content {
+          display: flex;
+          animation: marquee 40s linear infinite;
+          will-change: transform;
+        }
+
+        .marquee-content:hover {
+          animation-play-state: paused;
+        }
+
+        .marquee-item {
+          flex-shrink: 0;
+          width: 20%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          padding: 0 1rem;
+          white-space: nowrap;
+          border-right: 1px solid #E0E0E0;
+        }
+
+        .marquee-item:last-child {
+          border-right: none;
+        }
+
+        .marquee-item span {
+          font-size: 14px;
+          font-weight: 500;
+          color: #00205B;
+        }
+
+        .marquee-item svg {
+          flex-shrink: 0;
+          color: #C8102E;
+        }
+      `}</style>
+
+      <div className="max-w-[100rem] mx-auto">
+        {/* Desktop: Marquee animation */}
+        <div className="hidden md:block h-[70px]">
+          <div className="marquee-container h-full">
+            <div className="marquee-content h-full">
+              {marqueeItems.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="marquee-item">
+                    <Icon size={20} />
+                    <span>{item.text}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Mobile: Vertical stacked layout */}
@@ -60,7 +122,7 @@ const InfoBar: React.FC = () => {
                 }`}
               >
                 <Icon size={18} className="text-[#C8102E] flex-shrink-0" />
-                <span className="text-[14px] font-medium text-[#00205B] text-center truncate">
+                <span className="text-[14px] font-medium text-[#00205B] text-center" style={{ whiteSpace: 'nowrap' }}>
                   {item.text}
                 </span>
               </div>
