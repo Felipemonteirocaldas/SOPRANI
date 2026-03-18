@@ -166,14 +166,7 @@ export default function HomePage() {
 
               {/* Hero Image */}
               <AnimatedElement direction="right" delay={200} className="hidden lg:block">
-                <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl group">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2000&auto=format&fit=crop"
-                    alt="Industrial Metal Packaging"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
 
-                </div>
               </AnimatedElement>
             </div>
           </div>
