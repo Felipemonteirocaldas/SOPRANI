@@ -119,7 +119,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
       <Header />
-      <InfoBar />
       <main className="flex-grow">
         {/* HERO SECTION */}
         <section className="relative w-full overflow-hidden bg-gradient-dark flex items-center min-h-screen pt-20">
@@ -182,6 +181,9 @@ export default function HomePage() {
             <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
           </button>
         </section>
+
+        {/* INFO BAR - Below Hero */}
+        <InfoBar />
 
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
