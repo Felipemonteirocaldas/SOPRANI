@@ -2,6 +2,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import InfoBar from '@/components/InfoBar';
+import StatsSection from '@/components/StatsSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
@@ -180,6 +181,9 @@ export default function HomePage() {
 
         {/* INFO BAR SECTION */}
         <InfoBar />
+
+        {/* STATS SECTION */}
+        <StatsSection />
 
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
