@@ -121,21 +121,14 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative w-full overflow-hidden bg-gradient-dark flex items-center min-h-screen pt-20">
-          {/* Abstract Background Elements */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary-dark opacity-95" />
-            {/* Animated gradient blobs */}
-            <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl" />
-
-            {/* Subtle pattern overlay */}
-            <div className="absolute inset-0 opacity-5" style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
-              backgroundSize: '50px 50px'
-            }} />
-          </div>
+         <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-20 bg-cover bg-center bg-no-repeat" style={{
+           backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
+           backgroundAttachment: 'fixed'
+         }}>
+           {/* Overlay for text readability */}
+           <div className="absolute inset-0 z-0 overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/60" />
+           </div>
 
           {/* Hero Content */}
           <div className="max-w-[100rem] mx-auto px-4 md:px-8 relative z-10 w-full">
