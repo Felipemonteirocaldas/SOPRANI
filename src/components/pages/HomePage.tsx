@@ -118,7 +118,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
       <Header />
-
       <main className="flex-grow">
         {/* HERO SECTION */}
         <section className="relative w-full overflow-hidden bg-gradient-dark flex items-center min-h-screen pt-20">
@@ -173,7 +172,7 @@ export default function HomePage() {
                     alt="Industrial Metal Packaging"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+
                 </div>
               </AnimatedElement>
             </div>
@@ -643,7 +642,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
