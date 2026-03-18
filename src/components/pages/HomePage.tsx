@@ -2,6 +2,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import InfoBar from '@/components/InfoBar';
+import CorporateMarquee from '@/components/CorporateMarquee';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
@@ -182,7 +183,10 @@ export default function HomePage() {
           </button>
         </section>
 
-        {/* INFO BAR - Below Hero */}
+        {/* CORPORATE MARQUEE - Below Hero */}
+        <CorporateMarquee />
+
+        {/* INFO BAR - Below Marquee */}
         <InfoBar />
 
         {/* SERVICES OVERVIEW SECTION */}
