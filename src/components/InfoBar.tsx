@@ -35,12 +35,12 @@ const InfoBar: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`flex items-center justify-center gap-3 px-4 ${
+                className={`flex items-center justify-center gap-3 px-4 min-w-0 overflow-hidden ${
                   idx < infoItems.length - 1 ? 'border-r border-[#E0E0E0]' : ''
                 }`}
               >
                 <Icon size={20} className="text-[#C8102E] flex-shrink-0" />
-                <span className="text-[14px] md:text-[16px] font-medium text-[#00205B] whitespace-nowrap">
+                <span className="text-[14px] md:text-[16px] font-medium text-[#00205B] truncate">
                   {item.text}
                 </span>
               </div>
@@ -55,12 +55,12 @@ const InfoBar: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`flex items-center justify-center gap-3 px-4 py-4 ${
+                className={`flex items-center justify-center gap-3 px-4 py-4 min-w-0 overflow-hidden ${
                   idx < infoItems.length - 1 ? 'border-b border-[#E0E0E0]' : ''
                 }`}
               >
                 <Icon size={18} className="text-[#C8102E] flex-shrink-0" />
-                <span className="text-[14px] font-medium text-[#00205B] text-center">
+                <span className="text-[14px] font-medium text-[#00205B] text-center truncate">
                   {item.text}
                 </span>
               </div>
