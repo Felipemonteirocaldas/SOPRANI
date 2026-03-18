@@ -2,7 +2,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import InfoBar from '@/components/InfoBar';
-import StatsSection from '@/components/StatsSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
@@ -120,18 +119,23 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
       <Header />
+      <InfoBar />
       <main className="flex-grow">
         {/* HERO SECTION */}
         <section className="relative w-full overflow-hidden bg-gradient-dark flex items-center min-h-screen pt-20">
-          {/* Full-Width Background Image */}
+          {/* Abstract Background Elements */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <Image
-              src="https://static.wixstatic.com/media/9bbed2_7f6d12a579e549b3b24573f766578189~mv2.png"
-              alt="Industrial Machinery"
-              className="w-full h-full object-cover"
-            />
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary-dark opacity-95" />
+            {/* Animated gradient blobs */}
+            <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl" />
+
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
+              backgroundSize: '50px 50px'
+            }} />
           </div>
 
           {/* Hero Content */}
@@ -178,12 +182,6 @@ export default function HomePage() {
             <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
           </button>
         </section>
-
-        {/* INFO BAR SECTION */}
-        <InfoBar />
-
-        {/* STATS SECTION */}
-        <StatsSection />
 
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
