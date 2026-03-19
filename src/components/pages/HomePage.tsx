@@ -2,6 +2,7 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import CorporateMarquee from '@/components/CorporateMarquee';
+import OurServicesSection from '@/components/OurServicesSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
@@ -177,6 +178,9 @@ export default function HomePage() {
 
         {/* CORPORATE MARQUEE - Below Hero */}
         <CorporateMarquee />
+
+        {/* OUR SERVICES SECTION */}
+        <OurServicesSection />
 
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
