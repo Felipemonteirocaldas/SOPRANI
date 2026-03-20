@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 
 export default function PremiumCTASection() {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
@@ -162,7 +162,8 @@ export default function PremiumCTASection() {
           >
             {/* Technical Diagram Container */}
             <div className="absolute inset-0 bg-white/3 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
-              {/* Gear/Mechanical Component SVG with Parallax */}
+
+              {/* Can Production Line SVG with Parallax */}
               <motion.svg
                 className="w-full h-full"
                 viewBox="0 0 400 400"
@@ -173,86 +174,127 @@ export default function PremiumCTASection() {
                 }}
                 transition={{ type: 'spring', stiffness: 100, damping: 30 }}
               >
-                {/* Main Gear - Center */}
+                {/* 1. The Conveyor Belt (Track) */}
+                <path d="M 0 250 L 400 250" stroke="#475569" strokeWidth="2" strokeDasharray="5,5" opacity="0.5" />
+                <path d="M 0 260 L 400 260" stroke="#475569" strokeWidth="4" opacity="0.3" />
+
+                {/* 2. Roller Wheels under the belt */}
+                {[50, 150, 250, 350].map((cx, i) => (
+                  <motion.circle
+                    key={`roller-${i}`}
+                    cx={cx}
+                    cy="265"
+                    r="5"
+                    fill="none"
+                    stroke="#60a5fa"
+                    strokeWidth="1.5"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                    style={{ transformOrigin: `${cx}px 265px` }}
+                    opacity="0.6"
+                  />
+                ))}
+
+                {/* 3. Station 1: Shaping/Press (Left) */}
+                <g opacity="0.8">
+                  <rect x="40" y="150" width="40" height="90" fill="none" stroke="#60a5fa" strokeWidth="2" />
+                  <motion.rect
+                    x="50"
+                    y="150"
+                    width="20"
+                    height="30"
+                    fill="#60a5fa"
+                    opacity="0.5"
+                    animate={{ y: [150, 200, 150] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  {/* Raw material line feeding in */}
+                  <path d="M 0 200 L 40 200" stroke="#60a5fa" strokeWidth="2" opacity="0.5" />
+                </g>
+
+                {/* 4. Station 2: Seaming/Welding (Center) */}
+                <g opacity="0.8">
+                  <rect x="180" y="130" width="60" height="110" fill="none" stroke="#34d399" strokeWidth="2" />
+                  {/* Rotating welding head */}
+                  <motion.circle
+                    cx="210"
+                    cy="180"
+                    r="15"
+                    fill="none"
+                    stroke="#34d399"
+                    strokeWidth="2"
+                    strokeDasharray="4 4"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    style={{ transformOrigin: '210px 180px' }}
+                  />
+                  {/* Laser/Welding beam */}
+                  <motion.line
+                    x1="210"
+                    y1="195"
+                    x2="210"
+                    y2="240"
+                    stroke="#34d399"
+                    strokeWidth="2"
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity }}
+                  />
+                </g>
+
+                {/* 5. Station 3: Inspection/Scanning (Right) */}
+                <g opacity="0.8">
+                  <path d="M 320 180 L 360 180 L 350 240 L 330 240 Z" fill="none" stroke="#f87171" strokeWidth="2" />
+                  {/* Scanning beam */}
+                  <motion.line
+                    x1="320"
+                    y1="210"
+                    x2="360"
+                    y2="210"
+                    stroke="#f87171"
+                    strokeWidth="1"
+                    opacity="0.6"
+                    animate={{ y1: [190, 230, 190], y2: [190, 230, 190] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+                </g>
+
+                {/* 6. The Moving Cans! */}
                 <motion.g
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformOrigin: '200px 200px' }}
+                  animate={{ x: [0, 100] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                 >
-                  <circle cx="200" cy="200" r="60" fill="none" stroke="#60a5fa" strokeWidth="2" opacity="0.8" />
-                  {/* Gear teeth */}
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <rect
-                      key={i}
-                      x="190"
-                      y="130"
-                      width="20"
-                      height="15"
-                      fill="#60a5fa"
-                      opacity="0.6"
-                      transform={`rotate(${(i * 30)} 200 200)`}
-                    />
-                  ))}
+                  {/* Array of cans spaced out along the belt */}
+                  {[-100, 0, 100, 200, 300, 400].map((startX, i) => {
+                    // Change style based on position to simulate states
+                    let color = "#475569"; // Raw/Default
+                    let opacity = 0.4;
+                    let height = 30;
+
+                    if (startX >= 100) { color = "#60a5fa"; opacity = 0.6; } // Shaped
+                    if (startX >= 200) { color = "#34d399"; opacity = 0.8; } // Welded
+                    if (startX >= 300) { color = "#f87171"; opacity = 0.9; } // Inspected
+
+                    return (
+                      <g key={`can-${i}`} transform={`translate(${startX}, 210)`}>
+                        {/* Can Body */}
+                        <rect x="15" y={40 - height} width="20" height={height} fill="none" stroke={color} strokeWidth="1.5" opacity={opacity} />
+                        {/* Can Top/Bottom details (only show if it passed station 1) */}
+                        {startX >= 100 && (
+                          <>
+                            <ellipse cx="25" cy={40 - height} rx="10" ry="3" fill="none" stroke={color} strokeWidth="1" opacity={opacity} />
+                            <ellipse cx="25" cy="40" rx="10" ry="3" fill="none" stroke={color} strokeWidth="1" opacity={opacity} />
+                          </>
+                        )}
+                      </g>
+                    );
+                  })}
                 </motion.g>
 
-                {/* Smaller Gear - Top Right */}
-                <motion.g
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformOrigin: '300px 120px' }}
-                >
-                  <circle cx="300" cy="120" r="40" fill="none" stroke="#34d399" strokeWidth="2" opacity="0.7" />
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <rect
-                      key={i}
-                      x="292"
-                      y="75"
-                      width="16"
-                      height="12"
-                      fill="#34d399"
-                      opacity="0.5"
-                      transform={`rotate(${(i * 45)} 300 120)`}
-                    />
-                  ))}
-                </motion.g>
-
-                {/* Smaller Gear - Bottom Left */}
-                <motion.g
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 7, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformOrigin: '100px 280px' }}
-                >
-                  <circle cx="100" cy="280" r="35" fill="none" stroke="#f87171" strokeWidth="2" opacity="0.7" />
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <rect
-                      key={i}
-                      x="93"
-                      y="240"
-                      width="14"
-                      height="10"
-                      fill="#f87171"
-                      opacity="0.5"
-                      transform={`rotate(${(i * 45)} 100 280)`}
-                    />
-                  ))}
-                </motion.g>
-
-                {/* Connection Lines */}
-                <motion.line x1="260" y1="160" x2="340" y2="100" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
-                <motion.line x1="140" y1="240" x2="160" y2="160" stroke="#f87171" strokeWidth="1.5" opacity="0.4" />
-
-                {/* Pulsing Center Point */}
-                <motion.circle
-                  cx="200"
-                  cy="200"
-                  r="8"
-                  fill="#60a5fa"
-                  animate={{ r: [8, 12, 8], opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
+                {/* Overlay Tech Grid to tie it together */}
+                <rect width="400" height="400" fill="url(#techMesh)" opacity="0.3" pointerEvents="none" />
               </motion.svg>
 
-              {/* Performance Indicators Overlay */}
+              {/* Performance Indicators Overlay (Kept exactly the same) */}
               <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
                 {/* Top Indicator */}
                 <motion.div
@@ -261,7 +303,7 @@ export default function PremiumCTASection() {
                   transition={{ delay: 0.3 }}
                   className="space-y-2"
                 >
-                  <div className="text-xs text-blue-400 font-mono tracking-widest">EFFICIENCY_INDEX</div>
+                  <div className="text-xs text-blue-400 font-mono tracking-widest">FORMING_PRESS</div>
                   <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-blue-400 to-blue-300"
@@ -278,7 +320,7 @@ export default function PremiumCTASection() {
                   transition={{ delay: 0.5 }}
                   className="space-y-2"
                 >
-                  <div className="text-xs text-green-400 font-mono tracking-widest">GLOBAL_LOGISTICS</div>
+                  <div className="text-xs text-green-400 font-mono tracking-widest">WELDING_SPEED</div>
                   <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-green-400 to-green-300"
@@ -295,7 +337,7 @@ export default function PremiumCTASection() {
                   transition={{ delay: 0.7 }}
                   className="space-y-2"
                 >
-                  <div className="text-xs text-red-400 font-mono tracking-widest">TECHNICAL_ACCURACY</div>
+                  <div className="text-xs text-red-400 font-mono tracking-widest">QA_INSPECTION</div>
                   <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-red-400 to-red-300"
