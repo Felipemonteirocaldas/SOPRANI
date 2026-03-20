@@ -1,13 +1,13 @@
 // WI-HPI
+import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import CorporateMarquee from '@/components/CorporateMarquee';
 import OurServicesSection from '@/components/OurServicesSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
 import { BaseCrudService } from '@/integrations';
-import { ArrowRight, ChevronDown, MapPin, ShoppingCart } from 'lucide-react';
+import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -147,7 +147,7 @@ export default function HomePage() {
                      to="/request-quotation"
                      className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
                    >
-                     Request Quote
+                     Request Quotation
                    </Link>
                    <Link
                      to="/contact"
