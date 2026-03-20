@@ -160,7 +160,7 @@ export default function HomePage() {
              </AnimatedElement>
 
              {/* Hero Image */}
-             <AnimatedElement direction="right" delay={200} className="hidden lg:block">
+             <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''}>
 
              </AnimatedElement>
            </div>
@@ -570,7 +570,7 @@ export default function HomePage() {
                   to="/request-quotation"
                   className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-300 text-center text-sm md:text-base"
                 >
-                  Request Quote
+                  Request Quotation
                 </Link>
               </div>
             </AnimatedElement>
