@@ -169,11 +169,11 @@ export default function Header() {
 
             <Link
               to="/request-quotation"
-              className="hidden sm:inline-flex ml-2 px-3 sm:px-4 lg:px-5 py-2 bg-accent text-white text-xs sm:text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 items-center gap-2"
+              className="hidden sm:inline-flex ml-2 px-3 sm:px-3 lg:px-4 py-1.5 bg-accent text-white text-xs font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 items-center gap-2"
               aria-label="Request a Quote"
             >
               Request Quotation
-              <ArrowRight size={14} />
+              <ArrowRight size={12} />
             </Link>
           </nav>
 
