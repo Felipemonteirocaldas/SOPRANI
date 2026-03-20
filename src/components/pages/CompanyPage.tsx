@@ -68,7 +68,6 @@ export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div 
@@ -80,16 +79,11 @@ export default function CompanyPage() {
         />
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              About Koenig & Bauer
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              More than 30+ years of printing innovation and excellence
-            </p>
+
+            <h1 className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">About SOPRANI ENGINEERING</h1>
           </AnimatedElement>
         </div>
       </section>
-
       {/* Company Overview */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -110,7 +104,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Key Achievements */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -151,7 +144,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Subsidiaries Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -228,7 +220,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -277,7 +268,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
