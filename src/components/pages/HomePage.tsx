@@ -3,6 +3,7 @@ import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
+import PremiumCTASection from '@/components/PremiumCTASection';
 import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
@@ -185,33 +186,8 @@ export default function HomePage() {
         {/* SERVICES OVERVIEW SECTION */}
         {/* INDUSTRIES SECTION */}
 
-        {/* CTA SECTION */}
-        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-gradient-dark text-white">
-          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 text-center">
-            <AnimatedElement>
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 xs:mb-5 sm:mb-6">
-                Ready to Partner with Soprani Engineering?
-              </h2>
-              <p className="text-sm xs:text-base sm:text-lg text-gray-200 mb-8 xs:mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-                Contact us today to discuss your metal packaging machinery, spare parts, or material trading needs. Our expert team is ready to help.
-              </p>
-              <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
-                <Link
-                  to="/contact"
-                  className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-white text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs xs:text-sm sm:text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
-                >
-                  Contact Us
-                </Link>
-                <Link
-                  to="/request-quotation"
-                  className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-xs xs:text-sm sm:text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
-                >
-                  Request a Quotation
-                </Link>
-              </div>
-            </AnimatedElement>
-          </div>
-        </section>
+        {/* PREMIUM CTA SECTION */}
+        <PremiumCTASection />
         {/* LATEST NEWS SECTION */}
         <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
