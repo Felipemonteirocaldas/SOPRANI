@@ -315,7 +315,7 @@ export default function HomePage() {
                           </p>
                           <Link
                             to={`/events`}
-                            className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
+                            className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
                           >
                             Learn More
                           </Link>
@@ -378,7 +378,7 @@ export default function HomePage() {
                       <div className="mt-auto text-center">
                         <Link
                           to={`/products`}
-                          className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg"
+                          className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
                         >
                           Discover More
                         </Link>
@@ -448,7 +448,7 @@ export default function HomePage() {
                   {['Machinery Marketplace', 'Spare Parts Network', 'Material Trading', 'Global Suppliers'].map((tag, idx) => (
                     <div
                       key={idx}
-                      className="px-4 py-2 border border-white/20 rounded-md text-xs md:text-sm font-semibold uppercase tracking-wider text-white hover:border-white/40 transition-colors duration-300"
+                      className="px-4 py-2 border border-white/20 text-xs md:text-sm font-semibold uppercase tracking-wider text-white hover:border-white/40 transition-colors duration-300 rounded-none"
                     >
                       {tag}
                     </div>
