@@ -74,7 +74,7 @@ export default function Header() {
               src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
               width={240}
               height={80}
-              className="h-16 xs:h-20 sm:h-24 w-auto opacity-80"
+              className="h-16 xs:h-20 sm:h-24 w-auto opacity-[1]"
               originWidth={2173}
               originHeight={753} />
           </Link>
