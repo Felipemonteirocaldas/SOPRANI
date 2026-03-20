@@ -180,40 +180,8 @@ export default function HomePage() {
         {/* OUR SERVICES SECTION */}
         <OurServicesSection />
         {/* SERVICES OVERVIEW SECTION */}
-
         {/* INDUSTRIES SECTION */}
-        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-white">
-          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
-            <AnimatedElement>
-              <div className="text-center mb-10 xs:mb-12 sm:mb-16">
-                <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3 xs:mb-4">
-                  Industries We Serve
-                </h2>
-                <p className="text-sm xs:text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
-                  Trusted by leading manufacturers across the metal packaging sector
-                </p>
-              </div>
-            </AnimatedElement>
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 md:gap-6">
-              {[
-                'Food Cans',
-                'Beverage Cans',
-                'Industrial Containers',
-                'Lids & Ends Production',
-                'Metal Decorating',
-                'Tomato Cans',
-                'Tuna Cans',
-                'Powdered Milk Containers'
-              ].map((industry, idx) => (
-                <AnimatedElement key={idx} direction="up" delay={idx * 30}>
-                  <div className="bg-background-alt p-5 xs:p-6 sm:p-7 md:p-8 rounded-xl text-center border border-border-light hover:border-accent hover:shadow-md transition-all duration-300 group cursor-pointer">
-                    <p className="font-heading font-bold text-sm xs:text-base sm:text-lg text-primary group-hover:text-accent transition-colors">{industry}</p>
-                  </div>
-                </AnimatedElement>
-              ))}
-            </div>
-          </div>
-        </section>
+
         {/* CTA SECTION */}
         <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-gradient-dark text-white">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 text-center">
@@ -446,60 +414,6 @@ export default function HomePage() {
           </div>
         </section>
         {/* VISION & PROTECTION SECTION */}
-        <section className="py-24 bg-white border-t border-border-light">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <AnimatedElement direction="left">
-                <div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
-                    Why Choose Soprani?
-                  </h2>
-                  <h3 className="text-xl text-accent font-semibold mb-8">
-                    Decades of Expertise & Innovation
-                  </h3>
-                  <p className="text-text-muted text-lg leading-relaxed mb-8">
-                    With our comprehensive range of metal packaging solutions, we help manufacturers worldwide optimize their production processes. From cutting-edge machinery to reliable spare parts and expert technical support, we deliver the quality and reliability you need to stay competitive.
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    <li className="flex items-start">
-                      <span className="text-accent font-bold mr-4">✓</span>
-                      <span className="text-text-muted">Global network of subsidiaries and partners</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-accent font-bold mr-4">✓</span>
-                      <span className="text-text-muted">24/7 technical support and maintenance</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-accent font-bold mr-4">✓</span>
-                      <span className="text-text-muted">Genuine spare parts and materials</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-accent font-bold mr-4">✓</span>
-                      <span className="text-text-muted">Custom solutions for your specific needs</span>
-                    </li>
-                  </ul>
-                  <button
-                    onClick={() => navigate('/about')}
-                    className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
-                  >
-                    Learn More About Us
-                  </button>
-                </div>
-              </AnimatedElement>
-
-              <AnimatedElement direction="right" delay={200} className="hidden lg:block">
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl group border border-border-light">
-                   <Image
-                     src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2000&auto=format&fit=crop"
-                     alt="Industrial Excellence"
-                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                   />
-                   <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-              </AnimatedElement>
-            </div>
-          </div>
-        </section>
         {/* TRADING MATERIALS FEATURED SECTION */}
         {/* MPH HIGHLIGHTS SECTION */}
         <section className="py-20 md:py-32 bg-gradient-dark text-white">
