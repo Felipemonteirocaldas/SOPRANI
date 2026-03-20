@@ -27,7 +27,6 @@ export default function PremiumCTASection() {
         <div className="flex-1 bg-white"></div>
         <div className="flex-1 bg-red-500"></div>
       </div>
-
       {/* Pulsing Radar/Technical Mesh Background */}
       <div className="absolute inset-0 opacity-8">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +67,6 @@ export default function PremiumCTASection() {
           />
         </svg>
       </div>
-
       {/* Main Content Container */}
       <div className="relative max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -104,14 +102,14 @@ export default function PremiumCTASection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 rounded-lg">
               {/* Button 1 - Solid High Contrast */}
               <motion.button
                 onHoverStart={() => setHoveredButton('engineers')}
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 bg-white text-[#0a192f] font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
+                className="relative px-8 py-4 bg-white text-[#0a192f] font-paragraph font-bold text-sm tracking-widest overflow-hidden group rounded-lg"
               >
                 <div
                   className={`absolute inset-0 bg-blue-400 transition-all duration-300 ${
@@ -137,7 +135,7 @@ export default function PremiumCTASection() {
                         : 'transparent',
                   }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0"
+                  className="absolute inset-0 rounded-lg border-gray-200 border border-none"
                 />
                 <span className="relative z-10">[ REQUEST TECHNICAL QUOTE ]</span>
                 {hoveredButton === 'quote' && (
