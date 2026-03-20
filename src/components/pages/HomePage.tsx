@@ -419,63 +419,50 @@ export default function HomePage() {
         {/* VISION & PROTECTION SECTION */}
         {/* TRADING MATERIALS FEATURED SECTION */}
         {/* MPH HIGHLIGHTS SECTION */}
-        <section className="py-20 md:py-32 bg-gradient-dark text-white">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <AnimatedElement direction="left">
-                <div>
-                  <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-                    Introducing MPH
-                  </p>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
-                    Metal Packaging Hub
-                  </h2>
-                  <p className="text-lg text-gray-300 leading-relaxed">
-                    A dedicated platform for the global metal packaging industry. One stop. The entire supply chain. Machinery, spare parts, and materials worldwide.
-                  </p>
-                </div>
+        <section className="relative py-24 md:py-32 lg:py-40 bg-gradient-dark text-white overflow-hidden pt-24 px-6 md:px-12">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-white/5 opacity-10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary-dark/20" />
+          </div>
+          <div className="max-w-[100rem] mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <AnimatedElement direction="left" className="space-y-6 lg:space-y-8">
+                <p className="text-accent font-semibold text-base uppercase tracking-widest mb-4 border-l-4 border-accent pl-4">
+                  Introducing MPH
+                </p>
+                <h2 className="text-4xl xs:text-5xl lg:text-7xl font-heading font-bold leading-tight drop-shadow-lg">
+                  Metal Packaging Hub
+                </h2>
+                <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-xl">
+                  A dedicated platform for the global metal packaging industry. One stop. The entire supply chain. Machinery, spare parts, and materials worldwide.
+                </p>
               </AnimatedElement>
-
-              {/* Right Content - Cards */}
-              <div className="space-y-6">
-                {[
-                  {
-                    title: 'Peak & Complete Machinery',
-                    description: 'Industry-leading equipment and complete packaging machinery from global suppliers'
-                  },
-                  {
-                    title: 'Source Quality Parts & Spares',
-                    description: 'Genuine replacement parts and spare components for all major packaging equipment'
-                  },
-                  {
-                    title: 'Trade Materials & Aluminum',
-                    description: 'Premium raw materials and aluminum sourcing for metal packaging production'
-                  }
-                ].map((item, idx) => (
-                  <AnimatedElement key={idx} direction="right" delay={100 + (idx * 100)}>
-                    <div className="flex gap-4 md:gap-6">
-                      <div className="flex-shrink-0">
-                        <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent text-primary font-bold text-lg md:text-xl">
-                          {idx + 1}
-                        </div>
-                      </div>
-                      <div className="flex-grow">
-                        <h3 className="text-lg md:text-xl font-heading font-bold mb-2 text-white">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[{
+                  title: 'Peak & Complete Machinery',
+                  description: 'Industry-leading equipment and complete packaging machinery from global suppliers'
+                }, {
+                  title: 'Source Quality Parts & Spares',
+                  description: 'Genuine replacement parts and spare components for all major packaging equipment'
+                }, {
+                  title: 'Trade Materials & Aluminum',
+                  description: 'Premium raw materials and aluminum sourcing for metal packaging production'
+                }].map((item, idx) => (
+                  <AnimatedElement key={idx} direction="right" delay={100 + idx * 100} className="group relative p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-accent transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+                    <div className="absolute -top-4 -left-4 w-12 h-12 flex items-center justify-center rounded-full bg-accent text-primary font-bold text-xl shadow-lg group-hover:rotate-6 transition-transform duration-300">
+                      {idx + 1}
                     </div>
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 pt-4 text-white group-hover:text-accent transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                      {item.description}
+                    </p>
                   </AnimatedElement>
                 ))}
               </div>
             </div>
-
-            {/* CTA Button */}
-            <AnimatedElement delay={400} className="mt-12 md:mt-16">
+            <AnimatedElement delay={400} className="mt-16 md:mt-24 lg:mt-32 flex justify-center">
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/mph"
