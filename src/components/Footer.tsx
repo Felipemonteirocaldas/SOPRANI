@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { BaseCrudService } from '@/integrations';
 import { Subsidiaries } from '@/entities';
+import { BaseCrudService } from '@/integrations';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const [subsidiaries, setSubsidiaries] = useState<Subsidiaries[]>([]);
@@ -96,7 +96,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/request-quotation" className="text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Request Quote
+                  Request Quotation
                 </Link>
               </li>
               <li>
