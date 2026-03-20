@@ -1,5 +1,5 @@
 import { Image } from '@/components/ui/image';
-import { Menu, X, ChevronDown, ArrowRight, Zap, Wrench, Package, Headphones, Truck } from 'lucide-react';
+import { ArrowRight, ChevronDown, Headphones, Menu, Package, Truck, Wrench, X, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -93,7 +93,7 @@ export default function Header() {
             ))}
 
             {/* More Menu - Mega Menu */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleMegaMenuLeave}
@@ -107,13 +107,13 @@ export default function Header() {
                 More
                 <ChevronDown size={16} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {/* Mega Menu Panel - Full Width */}
               <div
                 id="mega-panel"
                 className={`fixed left-0 right-0 top-20 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out pointer-events-none ${
-                  megaMenuOpen 
-                    ? 'opacity-100 pointer-events-auto translate-y-0' 
+                  megaMenuOpen
+                    ? 'opacity-100 pointer-events-auto translate-y-0'
                     : 'opacity-0 -translate-y-2'
                 }`}
                 onMouseEnter={handleMegaMenuEnter}
@@ -127,7 +127,7 @@ export default function Header() {
                         <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 pb-2.5 border-b border-border-light mb-2.5">
                           {column.title}
                         </h3>
-                        
+
                         {/* Links */}
                         <div className="space-y-0">
                           {column.links.map((link, linkIdx) => {
@@ -172,7 +172,7 @@ export default function Header() {
               className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center gap-2"
               aria-label="Request a Quote"
             >
-              Request Quote
+              Request Quotation
               <ArrowRight size={14} />
             </Link>
           </nav>
@@ -211,7 +211,7 @@ export default function Header() {
                 More
                 <ChevronDown size={16} className={`transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {/* Mobile More Menu Items */}
               {megaMenuOpen && (
                 <div className="pl-4 space-y-1">
@@ -237,7 +237,7 @@ export default function Header() {
                 aria-label="Request a Quotation"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Request Quote
+                Request Quotation
                 <ArrowRight size={14} />
               </Link>
             </div>

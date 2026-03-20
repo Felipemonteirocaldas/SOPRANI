@@ -180,57 +180,7 @@ export default function HomePage() {
         {/* OUR SERVICES SECTION */}
         <OurServicesSection />
         {/* SERVICES OVERVIEW SECTION */}
-        <section className="py-20 md:py-32 bg-background-alt">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <AnimatedElement>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
-                  Our Core Services
-                </h2>
-                <p className="text-lg text-text-muted max-w-2xl mx-auto">
-                  Complete solutions for metal packaging machinery and materials
-                </p>
-              </div>
-            </AnimatedElement>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {[
-                { title: 'Machinery', icon: '⚙️', desc: 'Advanced packaging equipment' },
-                { title: 'Spare Parts', icon: '🔧', desc: 'Quality replacement parts' },
-                { title: 'Technical Assistance', icon: '🛠️', desc: 'Expert support & maintenance' },
-                { title: 'Revamping', icon: '🔄', desc: 'Equipment modernization' },
-                { title: 'Trading Materials', icon: '📦', desc: 'Raw materials supply' }
-              ].map((service, idx) => (
-                <AnimatedElement key={idx} direction="up" delay={idx * 50}>
-                  <Link to={`/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white p-8 rounded-xl text-center transition-all duration-300 hover:border-accent hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer">
-                    <div className="text-5xl mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">{service.icon}</div>
-                    <h3 className="text-lg font-heading font-bold text-primary mb-2 group-hover:text-accent transition-colors duration-300">{service.title}</h3>
-                    <p className="text-sm text-text-muted group-hover:text-primary transition-colors duration-300">{service.desc}</p>
-                  </Link>
-                </AnimatedElement>
-              ))}
-            </div>
 
-            {/* Services CTA Section */}
-            <AnimatedElement delay={300} className="mt-16 md:mt-20">
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
-                <Link
-                  to="/contact"
-                  className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:border-primary"
-                  aria-label="Contact Us"
-                >
-                  Contact Us
-                </Link>
-                <Link
-                  to="/request-quotation"
-                  className="px-8 py-3 bg-accent text-white hover:bg-accent-dark transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
-                  aria-label="Request a Quotation"
-                >
-                  Request a Quotation
-                </Link>
-              </div>
-            </AnimatedElement>
-          </div>
-        </section>
         {/* INDUSTRIES SECTION */}
         <section className="py-20 md:py-32 bg-white">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -551,7 +501,6 @@ export default function HomePage() {
           </div>
         </section>
         {/* TRADING MATERIALS FEATURED SECTION */}
-
         {/* MPH HIGHLIGHTS SECTION */}
         <section className="py-20 md:py-32 bg-gradient-dark text-white">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
