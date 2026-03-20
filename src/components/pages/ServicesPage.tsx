@@ -81,38 +81,38 @@ export default function ServicesPage() {
         </section>
 
         {/* Services Overview */}
-        <section className="py-16 md:py-32 bg-white">
+        <section className="py-12 md:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-8">
-            <div className="flex flex-col gap-0 md:gap-12">
+            <div className="flex flex-col gap-6 md:gap-12">
               {services.map((service, idx) => {
                 const Icon = service.icon;
                 return (
                   <div 
                     key={idx} 
-                    className="w-full py-8 md:py-12 md:pb-12 md:border-b md:border-gray-100 md:last:border-0 md:last:pb-0 border-b border-gray-100 last:border-0"
+                    className="w-full py-6 md:py-12 md:pb-12 md:border-b md:border-gray-100 md:last:border-0 md:last:pb-0 border-b border-gray-100 last:border-0"
                   >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start md:items-center">
+                    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-12 items-start md:items-center">
                       <div className={idx % 2 === 1 ? 'lg:order-2' : ''}>
-                        <div className="flex items-start md:items-center gap-3 md:gap-4 mb-6 md:mb-4">
-                          <Icon className="w-8 md:w-10 h-8 md:h-10 text-accent flex-shrink-0 mt-1 md:mt-0" />
-                          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold leading-tight md:leading-normal hyphens-none">
+                        <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-4">
+                          <Icon className="w-8 md:w-10 h-8 md:h-10 text-accent flex-shrink-0 mt-0.5" />
+                          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading font-bold leading-snug md:leading-normal hyphens-none break-words">
                             {service.title}
                           </h2>
                         </div>
-                        <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-6 leading-relaxed md:leading-relaxed">
+                        <p className="text-sm md:text-lg text-gray-600 mb-4 md:mb-6 leading-relaxed">
                           {service.description}
                         </p>
-                        <ul className="space-y-3 md:space-y-3">
+                        <ul className="space-y-2 md:space-y-3">
                           {service.details.map((detail, didx) => (
                             <li key={didx} className="flex items-start gap-3">
                               <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-base md:text-base text-gray-600 leading-relaxed">{detail}</span>
+                              <span className="text-sm md:text-base text-gray-600 leading-relaxed">{detail}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg w-full">
                           <Image
                             src="https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png?originWidth=768&originHeight=576"
                             alt={service.title}
