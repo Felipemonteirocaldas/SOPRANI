@@ -251,60 +251,6 @@ export default function PremiumCTASection() {
                 {/* Overlay Tech Grid to tie it together */}
                 {/* Removed - grid overlay deleted for clean corporate aesthetic */}
               </motion.svg>
-
-              {/* Performance Indicators Overlay (Kept exactly the same) */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
-                {/* Top Indicator */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="space-y-2"
-                >
-                  <div className="text-xs text-blue-400 font-mono tracking-widest">FORMING_PRESS</div>
-                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-blue-400 to-blue-300"
-                      animate={{ width: ['0%', '94%'] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
-                    />
-                  </div>
-                </motion.div>
-
-                {/* Middle Indicator */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="space-y-2"
-                >
-                  <div className="text-xs text-green-400 font-mono tracking-widest">WELDING_SPEED</div>
-                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-green-400 to-green-300"
-                      animate={{ width: ['0%', '88%'] }}
-                      transition={{ duration: 2.5, repeat: Infinity, repeatType: 'reverse', delay: 0.3 }}
-                    />
-                  </div>
-                </motion.div>
-
-                {/* Bottom Indicator */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  className="space-y-2"
-                >
-                  <div className="text-xs text-red-400 font-mono tracking-widest">QA_INSPECTION</div>
-                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-red-400 to-red-300"
-                      animate={{ width: ['0%', '96%'] }}
-                      transition={{ duration: 2.2, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
-                    />
-                  </div>
-                </motion.div>
-              </div>
             </div>
           </motion.div>
         </div>
