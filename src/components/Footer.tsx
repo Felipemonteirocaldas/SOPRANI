@@ -27,7 +27,7 @@ export default function Footer() {
           <div>
             <h3 className="text-base xs:text-lg font-heading font-bold mb-3 xs:mb-4 text-white">Soprani Engineering</h3>
             <p className="text-xs xs:text-sm text-gray-300 leading-relaxed">
-              Advanced metal packaging solutions with over 200 years of innovation. Your trusted partner for machinery, spare parts, and technical support worldwide.
+              Advanced metal packaging solutions with over 30+ years of innovation. Your trusted partner for machinery, spare parts, and technical support worldwide.
             </p>
           </div>
 

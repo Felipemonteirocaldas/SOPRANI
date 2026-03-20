@@ -84,7 +84,7 @@ export default function CompanyPage() {
               About Koenig & Bauer
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              More than 200 years of printing innovation and excellence
+              More than 30+ years of printing innovation and excellence
             </p>
           </AnimatedElement>
         </div>
@@ -100,7 +100,7 @@ export default function CompanyPage() {
               </h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Koenig & Bauer focuses on advanced printing solutions and aims to empower clients with innovative technology. With over 200 years in the printing industry, we offer a broad product range and are key suppliers to the global media sector.
+                  Koenig & Bauer focuses on advanced printing solutions and aims to empower clients with innovative technology. With over 30+ years in the printing industry, we offer a broad product range and are key suppliers to the global media sector.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
                   Recent achievements include more than doubling operating EBIT and maintaining positive cash flow in a volatile environment. We continue to push the boundaries of printing technology, developing and manufacturing technologically innovative yet cost-effective printing systems and peripherals.
@@ -123,7 +123,7 @@ export default function CompanyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <AnimatedElement delay={100}>
               <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
-                <div className="text-5xl font-heading font-bold text-accent mb-4">200+</div>
+                <div className="text-5xl font-heading font-bold text-accent mb-4">30+</div>
                 <p className="text-gray-700 font-medium">Years of Innovation</p>
               </div>
             </AnimatedElement>
