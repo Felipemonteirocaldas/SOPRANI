@@ -434,7 +434,10 @@ export default function HomePage() {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-3 w-fit">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
-                    <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                    <div className="relative flex h-2 w-2">
+  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
+</div>
                     <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-white">
                       Coming Soon — New Digital Platform
                     </span>

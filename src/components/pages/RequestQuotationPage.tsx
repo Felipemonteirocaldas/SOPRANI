@@ -252,10 +252,10 @@ export default function RequestQuotationPage() {
                 </div>
 
                 {/* File Upload Notice */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                <div className="bg-background-alt border border-border-light rounded-lg p-4 flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm text-blue-900">
+                    <p className="text-sm text-primary">
                       <strong>File Attachments:</strong> To attach files (technical drawings, specifications, etc.), please email them directly to our team after submitting this form, or contact us for alternative submission methods.
                     </p>
                   </div>
