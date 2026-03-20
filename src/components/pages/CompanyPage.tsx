@@ -191,103 +191,9 @@ export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
       {/* Italian Flag Gradient Line */}
       <div className="h-1 bg-gradient-to-r from-green-600 via-white to-red-600" />
-
       {/* Command Center Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#0a192f' }}>
-        {/* Animated Radar/Technical Mesh Background */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" style={{ animation: 'pulse 8s ease-in-out infinite' }}>
-            <defs>
-              <pattern id="radar" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
-                <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
-                <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
-                <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(0,255,136,0.2)" strokeWidth="0.5" />
-                <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(0,255,136,0.2)" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#radar)" />
-          </svg>
-        </div>
-
-        <style>{`
-          @keyframes pulse {
-            0%, 100% { opacity: 0.05; }
-            50% { opacity: 0.15; }
-          }
-          @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px rgba(0,255,136,0.5); }
-            50% { text-shadow: 0 0 20px rgba(0,255,136,0.8); }
-          }
-        `}</style>
-
-        <div className="relative container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              {/* Status Badge */}
-              <AnimatedElement>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff88]/50 bg-[#00ff88]/5">
-                  <Zap size={16} className="text-[#00ff88] animate-pulse" />
-                  <span className="text-sm font-mono text-[#00ff88] uppercase tracking-wider">
-                    SOPRANI_ENGINEERING: ACTIVE_GLOBAL_SUPPORT
-                  </span>
-                </div>
-              </AnimatedElement>
-
-              {/* Main Title */}
-              <AnimatedElement delay={100}>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight">
-                  <span className="text-white">Precision Engineering for the</span>
-                  <br />
-                  <span className="text-[#00ff88]" style={{ animation: 'glow 3s ease-in-out infinite' }}>
-                    Global Metal Packaging
-                  </span>
-                  <br />
-                  <span className="text-white">Industry</span>
-                </h1>
-              </AnimatedElement>
-
-              {/* Supporting Text */}
-              <AnimatedElement delay={200}>
-                <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
-                  From machinery sourcing and revamping projects to high-precision spare parts and technical assistance, we provide the industrial expertise to keep your production lines at peak performance.
-                </p>
-              </AnimatedElement>
-
-              {/* Action Buttons */}
-              <AnimatedElement delay={300}>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button className="px-8 py-3 bg-[#00ff88] text-[#0a192f] font-bold rounded-lg hover:bg-[#00ff88]/90 transition-all duration-300 uppercase tracking-wider text-sm">
-                    Consult Our Engineers
-                  </button>
-                  <button className="px-8 py-3 border-2 border-[#00ff88] text-[#00ff88] font-bold rounded-lg hover:bg-[#00ff88]/10 transition-all duration-300 uppercase tracking-wider text-sm group relative overflow-hidden">
-                    <span className="relative z-10">Request Technical Quote</span>
-                    <div className="absolute inset-0 bg-[#00ff88]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </button>
-                </div>
-              </AnimatedElement>
-            </div>
-
-            {/* Right Technical Diagram */}
-            <AnimatedElement delay={400}>
-              <TechnicalDiagram />
-            </AnimatedElement>
-          </div>
-
-          {/* Performance Indicators */}
-          <AnimatedElement delay={500}>
-            <div className="grid grid-cols-3 gap-8 mt-20 pt-20 border-t border-[#00ff88]/20">
-              <PerformanceIndicator label="EFFICIENCY_INDEX" value={98} />
-              <PerformanceIndicator label="GLOBAL_LOGISTICS" value={95} />
-              <PerformanceIndicator label="TECHNICAL_ACCURACY" value={99} />
-            </div>
-          </AnimatedElement>
-        </div>
-      </section>
 
       {/* Company Overview */}
       <section className="py-20 bg-background">
@@ -309,7 +215,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Key Achievements */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -350,7 +255,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Subsidiaries Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -427,7 +331,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -476,7 +379,6 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
