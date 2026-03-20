@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { BaseCrudService } from '@/integrations';
 import { Subsidiaries } from '@/entities';
 import { Image } from '@/components/ui/image';
-import { ExternalLink, Building2, Globe, Calendar } from 'lucide-react';
+import { ExternalLink, Building2, Globe, Calendar, Zap } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -46,6 +46,129 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
   );
 };
 
+// Technical Diagram Component with Parallax
+const TechnicalDiagram: React.FC = () => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      setMousePos({ x: x * 20, y: y * 20 });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative w-full h-96 flex items-center justify-center"
+      style={{ perspective: '1000px' }}
+    >
+      <svg
+        viewBox="0 0 300 300"
+        className="w-full h-full max-w-sm"
+        style={{
+          transform: `translate(${mousePos.x}px, ${mousePos.y}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      >
+        {/* Gear - Main Component */}
+        <g transform="translate(150, 150)">
+          {/* Outer gear teeth */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const angle = (i / 12) * Math.PI * 2;
+            const x1 = Math.cos(angle) * 60;
+            const y1 = Math.sin(angle) * 60;
+            const x2 = Math.cos(angle) * 80;
+            const y2 = Math.sin(angle) * 80;
+            return (
+              <line
+                key={`tooth-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="#00ff88"
+                strokeWidth="3"
+                opacity="0.8"
+              />
+            );
+          })}
+          {/* Main circle */}
+          <circle cx="0" cy="0" r="50" fill="none" stroke="#00ff88" strokeWidth="2" opacity="0.6" />
+          <circle cx="0" cy="0" r="35" fill="none" stroke="#00ff88" strokeWidth="1.5" opacity="0.4" />
+          <circle cx="0" cy="0" r="15" fill="#00ff88" opacity="0.3" />
+        </g>
+
+        {/* Production Line Elements */}
+        <g>
+          {/* Left press */}
+          <rect x="20" y="120" width="40" height="60" fill="none" stroke="#00ff88" strokeWidth="2" opacity="0.7" />
+          <line x1="30" y1="120" x2="30" y2="100" stroke="#00ff88" strokeWidth="1.5" opacity="0.5" />
+          <line x1="50" y1="120" x2="50" y2="100" stroke="#00ff88" strokeWidth="1.5" opacity="0.5" />
+
+          {/* Connection lines */}
+          <line x1="60" y1="150" x2="110" y2="150" stroke="#00ff88" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
+          <line x1="190" y1="150" x2="240" y2="150" stroke="#00ff88" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
+
+          {/* Right component */}
+          <rect x="240" y="130" width="35" height="40" fill="none" stroke="#00ff88" strokeWidth="2" opacity="0.7" />
+          <circle cx="257.5" cy="150" r="8" fill="none" stroke="#00ff88" strokeWidth="1.5" opacity="0.6" />
+        </g>
+
+        {/* Performance indicators */}
+        <g>
+          {/* Efficiency bar */}
+          <rect x="20" y="30" width="80" height="6" fill="none" stroke="#00ff88" strokeWidth="1" opacity="0.4" />
+          <rect x="20" y="30" width="64" height="6" fill="#00ff88" opacity="0.5" />
+          <text x="20" y="20" fontSize="10" fill="#00ff88" opacity="0.7">EFFICIENCY</text>
+
+          {/* Accuracy bar */}
+          <rect x="200" y="30" width="80" height="6" fill="none" stroke="#00ff88" strokeWidth="1" opacity="0.4" />
+          <rect x="200" y="30" width="76" height="6" fill="#00ff88" opacity="0.5" />
+          <text x="200" y="20" fontSize="10" fill="#00ff88" opacity="0.7">ACCURACY</text>
+        </g>
+      </svg>
+
+      {/* Pulsing radar effect */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute w-32 h-32 rounded-full border border-[#00ff88] opacity-20 animate-pulse" />
+        <div className="absolute w-48 h-48 rounded-full border border-[#00ff88] opacity-10 animate-pulse" style={{ animationDelay: '0.5s' }} />
+      </div>
+    </div>
+  );
+};
+
+// Performance Indicator Component
+const PerformanceIndicator: React.FC<{ label: string; value: number }> = ({ label, value }) => {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="relative w-24 h-24 rounded-full border-2 border-[#00ff88]/30 flex items-center justify-center">
+        <svg className="absolute w-full h-full" style={{ transform: 'rotate(-90deg)' }}>
+          <circle
+            cx="48"
+            cy="48"
+            r="44"
+            fill="none"
+            stroke="#00ff88"
+            strokeWidth="2"
+            strokeDasharray={`${(value / 100) * 276} 276`}
+            opacity="0.8"
+          />
+        </svg>
+        <span className="text-lg font-bold text-[#00ff88]">{value}%</span>
+      </div>
+      <span className="text-xs font-mono text-[#00ff88]/70 uppercase">{label}</span>
+    </div>
+  );
+};
+
 export default function CompanyPage() {
   const [subsidiaries, setSubsidiaries] = useState<Subsidiaries[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -68,21 +191,104 @@ export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
-        <div 
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)',
-            backgroundSize: '30px 30px'
-          }}
-        />
-        <div className="relative container mx-auto px-4 text-center">
-          <AnimatedElement>
+      
+      {/* Italian Flag Gradient Line */}
+      <div className="h-1 bg-gradient-to-r from-green-600 via-white to-red-600" />
 
+      {/* Command Center Hero Section */}
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#0a192f' }}>
+        {/* Animated Radar/Technical Mesh Background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" style={{ animation: 'pulse 8s ease-in-out infinite' }}>
+            <defs>
+              <pattern id="radar" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
+                <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
+                <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(0,255,136,0.3)" strokeWidth="0.5" />
+                <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(0,255,136,0.2)" strokeWidth="0.5" />
+                <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(0,255,136,0.2)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#radar)" />
+          </svg>
+        </div>
+
+        <style>{`
+          @keyframes pulse {
+            0%, 100% { opacity: 0.05; }
+            50% { opacity: 0.15; }
+          }
+          @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+            50% { text-shadow: 0 0 20px rgba(0,255,136,0.8); }
+          }
+        `}</style>
+
+        <div className="relative container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              {/* Status Badge */}
+              <AnimatedElement>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff88]/50 bg-[#00ff88]/5">
+                  <Zap size={16} className="text-[#00ff88] animate-pulse" />
+                  <span className="text-sm font-mono text-[#00ff88] uppercase tracking-wider">
+                    SOPRANI_ENGINEERING: ACTIVE_GLOBAL_SUPPORT
+                  </span>
+                </div>
+              </AnimatedElement>
+
+              {/* Main Title */}
+              <AnimatedElement delay={100}>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight">
+                  <span className="text-white">Precision Engineering for the</span>
+                  <br />
+                  <span className="text-[#00ff88]" style={{ animation: 'glow 3s ease-in-out infinite' }}>
+                    Global Metal Packaging
+                  </span>
+                  <br />
+                  <span className="text-white">Industry</span>
+                </h1>
+              </AnimatedElement>
+
+              {/* Supporting Text */}
+              <AnimatedElement delay={200}>
+                <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+                  From machinery sourcing and revamping projects to high-precision spare parts and technical assistance, we provide the industrial expertise to keep your production lines at peak performance.
+                </p>
+              </AnimatedElement>
+
+              {/* Action Buttons */}
+              <AnimatedElement delay={300}>
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <button className="px-8 py-3 bg-[#00ff88] text-[#0a192f] font-bold rounded-lg hover:bg-[#00ff88]/90 transition-all duration-300 uppercase tracking-wider text-sm">
+                    Consult Our Engineers
+                  </button>
+                  <button className="px-8 py-3 border-2 border-[#00ff88] text-[#00ff88] font-bold rounded-lg hover:bg-[#00ff88]/10 transition-all duration-300 uppercase tracking-wider text-sm group relative overflow-hidden">
+                    <span className="relative z-10">Request Technical Quote</span>
+                    <div className="absolute inset-0 bg-[#00ff88]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </button>
+                </div>
+              </AnimatedElement>
+            </div>
+
+            {/* Right Technical Diagram */}
+            <AnimatedElement delay={400}>
+              <TechnicalDiagram />
+            </AnimatedElement>
+          </div>
+
+          {/* Performance Indicators */}
+          <AnimatedElement delay={500}>
+            <div className="grid grid-cols-3 gap-8 mt-20 pt-20 border-t border-[#00ff88]/20">
+              <PerformanceIndicator label="EFFICIENCY_INDEX" value={98} />
+              <PerformanceIndicator label="GLOBAL_LOGISTICS" value={95} />
+              <PerformanceIndicator label="TECHNICAL_ACCURACY" value={99} />
+            </div>
           </AnimatedElement>
         </div>
       </section>
+
       {/* Company Overview */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -103,6 +309,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
+
       {/* Key Achievements */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -143,6 +350,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
+
       {/* Subsidiaries Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -219,6 +427,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
+
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -267,6 +476,7 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );
