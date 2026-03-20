@@ -80,7 +80,6 @@ export default function CompanyPage() {
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
 
-            <h1 className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">About SOPRANI ENGINEERING</h1>
           </AnimatedElement>
         </div>
       </section>
