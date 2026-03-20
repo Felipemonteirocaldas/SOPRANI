@@ -19,53 +19,13 @@ export default function PremiumCTASection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full bg-[#0a192f] overflow-hidden py-20 md:py-32"
+      className="relative w-full bg-gradient-to-br from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32"
     >
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
         <div className="flex-1 bg-green-500"></div>
         <div className="flex-1 bg-white"></div>
         <div className="flex-1 bg-red-500"></div>
-      </div>
-      {/* Pulsing Radar/Technical Mesh Background */}
-      <div className="absolute inset-0 opacity-8">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="techMesh" width="50" height="50" patternUnits="userSpaceOnUse">
-              <circle cx="25" cy="25" r="1" fill="white" opacity="0.3" />
-              <path d="M 25 0 L 25 50 M 0 25 L 50 25" stroke="white" strokeWidth="0.5" opacity="0.2" />
-            </pattern>
-            <radialGradient id="radarPulse" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stopColor="white" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="white" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#techMesh)" />
-          <rect width="100%" height="100%" fill="url(#radarPulse)" />
-          {/* Concentric circles for radar effect */}
-          <motion.circle
-            cx="50%"
-            cy="50%"
-            r="10%"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-            opacity="0.1"
-            animate={{ r: ['10%', '30%'], opacity: [0.2, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-          <motion.circle
-            cx="50%"
-            cy="50%"
-            r="5%"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-            opacity="0.1"
-            animate={{ r: ['5%', '25%'], opacity: [0.2, 0] }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-          />
-        </svg>
       </div>
       {/* Main Content Container */}
       <div className="relative max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +121,7 @@ export default function PremiumCTASection() {
             className="relative h-96 lg:h-full min-h-96"
           >
             {/* Technical Diagram Container */}
-            <div className="absolute inset-0 bg-white/3 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
 
               {/* Can Production Line SVG with Parallax */}
               <motion.svg
@@ -291,7 +251,7 @@ export default function PremiumCTASection() {
                 </motion.g>
 
                 {/* Overlay Tech Grid to tie it together */}
-                <rect width="400" height="400" fill="url(#techMesh)" opacity="0.3" pointerEvents="none" />
+                {/* Removed - grid overlay deleted for clean corporate aesthetic */}
               </motion.svg>
 
               {/* Performance Indicators Overlay (Kept exactly the same) */}
@@ -348,18 +308,6 @@ export default function PremiumCTASection() {
                 </motion.div>
               </div>
             </div>
-
-            {/* Floating Accent Rings */}
-            <motion.div
-              animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute -top-8 -right-8 w-32 h-32 border border-blue-400/20 pointer-events-none"
-            />
-            <motion.div
-              animate={{ rotate: -360, scale: [1, 0.9, 1] }}
-              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              className="absolute -bottom-12 -left-12 w-40 h-40 border border-blue-300/10 pointer-events-none"
-            />
           </motion.div>
         </div>
       </div>
