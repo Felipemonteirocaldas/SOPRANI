@@ -66,15 +66,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border-light backdrop-blur-md bg-opacity-95">
-      <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
+        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center py-2 flex-shrink-0">
             <Image
               src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
               width={240}
               height={80}
-              className="h-14 w-auto opacity-80"
+              className="h-10 xs:h-12 sm:h-14 w-auto opacity-80"
               originWidth={2173}
               originHeight={753} />
           </Link>
@@ -86,7 +86,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 to={link.href}
-                className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
+                className="px-2 xs:px-2.5 sm:px-3 py-2 text-xs sm:text-sm lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -100,7 +100,7 @@ export default function Header() {
             >
               <button
                 id="mega-trigger"
-                className="flex items-center gap-1 px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
+                className="flex items-center gap-1 px-2 xs:px-2.5 sm:px-3 py-2 text-xs sm:text-sm lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
                 aria-expanded={megaMenuOpen}
                 aria-controls="mega-panel"
               >
@@ -119,8 +119,8 @@ export default function Header() {
                 onMouseEnter={handleMegaMenuEnter}
                 onMouseLeave={handleMegaMenuLeave}
               >
-                <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-                  <div className="grid grid-cols-4 gap-8 py-9">
+                <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-6 sm:py-8 lg:py-9">
                     {megaMenuColumns.map((column, idx) => (
                       <div key={idx}>
                         {/* Column Header */}
@@ -169,7 +169,7 @@ export default function Header() {
 
             <Link
               to="/request-quotation"
-              className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center gap-2"
+              className="hidden sm:inline-flex ml-2 px-3 sm:px-4 lg:px-5 py-2 bg-accent text-white text-xs sm:text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 items-center gap-2"
               aria-label="Request a Quote"
             >
               Request Quotation
@@ -189,14 +189,14 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border-light">
-            <div className="flex flex-col space-y-2">
+          <nav className="md:hidden py-3 xs:py-4 border-t border-border-light">
+            <div className="flex flex-col space-y-1 xs:space-y-2 px-2 xs:px-3">
               {/* Main Mobile Links */}
               {mainNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                  className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -206,7 +206,7 @@ export default function Header() {
               {/* Mobile More Menu */}
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
-                className="w-full text-left px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md flex items-center justify-between"
+                className="w-full text-left px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md flex items-center justify-between"
               >
                 More
                 <ChevronDown size={16} className={`transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
@@ -214,12 +214,12 @@ export default function Header() {
 
               {/* Mobile More Menu Items */}
               {megaMenuOpen && (
-                <div className="pl-4 space-y-1">
+                <div className="pl-2 xs:pl-3 space-y-0.5 xs:space-y-1">
                   {megaMenuColumns.flatMap((column) => column.links).map((link, idx) => (
                     <Link
                       key={idx}
                       to={link.href}
-                      className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                      className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setMegaMenuOpen(false);
@@ -233,7 +233,7 @@ export default function Header() {
 
               <Link
                 to="/request-quotation"
-                className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
+                className="w-full mt-3 xs:mt-4 px-4 xs:px-5 py-2.5 xs:py-3 bg-accent text-white text-xs xs:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
                 aria-label="Request a Quotation"
                 onClick={() => setMobileMenuOpen(false)}
               >

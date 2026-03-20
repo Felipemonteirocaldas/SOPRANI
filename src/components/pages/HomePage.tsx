@@ -122,7 +122,7 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-20 bg-cover bg-center bg-no-repeat" style={{
+        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-16 xs:pt-18 sm:pt-20 bg-cover bg-center bg-no-repeat" style={{
           backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
           backgroundAttachment: 'fixed'
         }}>
@@ -132,26 +132,26 @@ export default function HomePage() {
           </div>
 
          {/* Hero Content */}
-         <div className="max-w-[100rem] mx-auto px-4 md:px-8 relative z-10 w-full">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+         <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10 w-full">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
              <AnimatedElement direction="left" className="max-w-2xl">
                <div>
-                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight tracking-tight">
+                 <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 xs:mb-5 sm:mb-6 leading-tight tracking-tight">
                    Industrial Solutions for Metal Packaging
                  </h1>
-                 <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                 <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 mb-6 xs:mb-7 sm:mb-8 leading-relaxed">
                    Machinery, spare parts, technical assistance, and material trading for the global metal packaging industry.
                  </p>
-                 <div className="flex flex-col sm:flex-row gap-4">
+                 <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                    <Link
                      to="/request-quotation"
-                     className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-xs xs:text-sm sm:text-base"
                    >
                      Request Quotation
                    </Link>
                    <Link
                      to="/contact"
-                     className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center text-xs xs:text-sm sm:text-base"
                    >
                      Contact Us
                    </Link>
@@ -169,10 +169,10 @@ export default function HomePage() {
          {/* Scroll Down Indicator */}
          <button
            onClick={scrollToContent}
-           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
+           className="absolute bottom-6 xs:bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
            aria-label="Scroll to content"
          >
-           <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+           <ChevronDown size={32} className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
          </button>
        </section>
         {/* CORPORATE MARQUEE - Below Hero */}
@@ -182,19 +182,19 @@ export default function HomePage() {
         {/* SERVICES OVERVIEW SECTION */}
 
         {/* INDUSTRIES SECTION */}
-        <section className="py-20 md:py-32 bg-white">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-white">
+          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
             <AnimatedElement>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+              <div className="text-center mb-10 xs:mb-12 sm:mb-16">
+                <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3 xs:mb-4">
                   Industries We Serve
                 </h2>
-                <p className="text-lg text-text-muted max-w-2xl mx-auto">
+                <p className="text-sm xs:text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
                   Trusted by leading manufacturers across the metal packaging sector
                 </p>
               </div>
             </AnimatedElement>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 md:gap-6">
               {[
                 'Food Cans',
                 'Beverage Cans',
@@ -206,8 +206,8 @@ export default function HomePage() {
                 'Powdered Milk Containers'
               ].map((industry, idx) => (
                 <AnimatedElement key={idx} direction="up" delay={idx * 30}>
-                  <div className="bg-background-alt p-8 rounded-xl text-center border border-border-light hover:border-accent hover:shadow-md transition-all duration-300 group cursor-pointer">
-                    <p className="font-heading font-bold text-lg text-primary group-hover:text-accent transition-colors">{industry}</p>
+                  <div className="bg-background-alt p-5 xs:p-6 sm:p-7 md:p-8 rounded-xl text-center border border-border-light hover:border-accent hover:shadow-md transition-all duration-300 group cursor-pointer">
+                    <p className="font-heading font-bold text-sm xs:text-base sm:text-lg text-primary group-hover:text-accent transition-colors">{industry}</p>
                   </div>
                 </AnimatedElement>
               ))}
@@ -215,25 +215,25 @@ export default function HomePage() {
           </div>
         </section>
         {/* CTA SECTION */}
-        <section className="py-20 md:py-32 bg-gradient-dark text-white">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8 text-center">
+        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-gradient-dark text-white">
+          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 text-center">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4 xs:mb-5 sm:mb-6">
                 Ready to Partner with Soprani Engineering?
               </h2>
-              <p className="text-lg text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm xs:text-base sm:text-lg text-gray-200 mb-8 xs:mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
                 Contact us today to discuss your metal packaging machinery, spare parts, or material trading needs. Our expert team is ready to help.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-white text-primary hover:bg-primary hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
+                  className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-white text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs xs:text-sm sm:text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
+                  className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-xs xs:text-sm sm:text-sm font-semibold uppercase tracking-wider rounded-lg hover:shadow-lg hover:scale-105"
                 >
                   Request a Quotation
                 </Link>
@@ -242,14 +242,14 @@ export default function HomePage() {
           </div>
         </section>
         {/* LATEST NEWS SECTION */}
-        <section className="py-20 md:py-32 bg-background-alt">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
+          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
             <AnimatedElement>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4">
+              <div className="text-center mb-10 xs:mb-12 sm:mb-16">
+                <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3 xs:mb-4">
                   Latest News & Updates
                 </h2>
-                <p className="text-lg text-text-muted max-w-2xl mx-auto">
+                <p className="text-sm xs:text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
                   Stay informed about industry trends and company updates
                 </p>
               </div>

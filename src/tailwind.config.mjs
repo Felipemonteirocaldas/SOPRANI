@@ -18,6 +18,14 @@ export default {
                 '8xl': ['5.25rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '700' }],
                 '9xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '700' }],
             },
+            screens: {
+                'xs': '320px',
+                'sm': '640px',
+                'md': '768px',
+                'lg': '1024px',
+                'xl': '1280px',
+                '2xl': '1536px',
+            },
             fontFamily: {
                 heading: "'Inter', 'Roboto', sans-serif",
                 paragraph: "'Inter', 'Roboto', sans-serif"
