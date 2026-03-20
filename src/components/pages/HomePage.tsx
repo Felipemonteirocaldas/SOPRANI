@@ -122,66 +122,63 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* HERO SECTION */}
-         <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-20 bg-cover bg-center bg-no-repeat" style={{
-           backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
-           backgroundAttachment: 'fixed'
-         }}>
-           {/* Overlay for text readability */}
-           <div className="absolute inset-0 z-0 overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/60" />
-           </div>
-
-          {/* Hero Content */}
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8 relative z-10 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <AnimatedElement direction="left" className="max-w-2xl">
-                <div>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight tracking-tight">
-                    Industrial Solutions for Metal Packaging
-                  </h1>
-                  <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-                    Machinery, spare parts, technical assistance, and material trading for the global metal packaging industry.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                      to="/request-quotation"
-                      className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
-                    >
-                      Request Quote
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center"
-                    >
-                      Contact Us
-                    </Link>
-                  </div>
-                </div>
-              </AnimatedElement>
-
-              {/* Hero Image */}
-              <AnimatedElement direction="right" delay={200} className="hidden lg:block">
-
-              </AnimatedElement>
-            </div>
+        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-20 bg-cover bg-center bg-no-repeat" style={{
+          backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
+          backgroundAttachment: 'fixed'
+        }}>
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/60" />
           </div>
 
-          {/* Scroll Down Indicator */}
-          <button
-            onClick={scrollToContent}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
-            aria-label="Scroll to content"
-          >
-            <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-          </button>
-        </section>
+         {/* Hero Content */}
+         <div className="max-w-[100rem] mx-auto px-4 md:px-8 relative z-10 w-full">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+             <AnimatedElement direction="left" className="max-w-2xl">
+               <div>
+                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight tracking-tight">
+                   Industrial Solutions for Metal Packaging
+                 </h1>
+                 <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                   Machinery, spare parts, technical assistance, and material trading for the global metal packaging industry.
+                 </p>
+                 <div className="flex flex-col sm:flex-row gap-4">
+                   <Link
+                     to="/request-quotation"
+                     className="px-8 py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
+                   >
+                     Request Quote
+                   </Link>
+                   <Link
+                     to="/contact"
+                     className="px-8 py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center"
+                   >
+                     Contact Us
+                   </Link>
+                 </div>
+               </div>
+             </AnimatedElement>
 
+             {/* Hero Image */}
+             <AnimatedElement direction="right" delay={200} className="hidden lg:block">
+
+             </AnimatedElement>
+           </div>
+         </div>
+
+         {/* Scroll Down Indicator */}
+         <button
+           onClick={scrollToContent}
+           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
+           aria-label="Scroll to content"
+         >
+           <ChevronDown size={40} className="animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+         </button>
+       </section>
         {/* CORPORATE MARQUEE - Below Hero */}
         <CorporateMarquee />
-
         {/* OUR SERVICES SECTION */}
         <OurServicesSection />
-
         {/* SERVICES OVERVIEW SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -234,7 +231,6 @@ export default function HomePage() {
             </AnimatedElement>
           </div>
         </section>
-
         {/* INDUSTRIES SECTION */}
         <section className="py-20 md:py-32 bg-white">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -268,7 +264,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         {/* CTA SECTION */}
         <section className="py-20 md:py-32 bg-gradient-dark text-white">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8 text-center">
@@ -296,7 +291,6 @@ export default function HomePage() {
             </AnimatedElement>
           </div>
         </section>
-
         {/* LATEST NEWS SECTION */}
         <section className="py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -388,7 +382,6 @@ export default function HomePage() {
             </AnimatedElement>
           </div>
         </section>
-
         {/* EVENTS SECTION */}
         <section className="bg-white">
           {/* Dark Header Strip */}
@@ -452,7 +445,6 @@ export default function HomePage() {
             )}
           </div>
         </section>
-
         {/* PRODUCTS SECTION */}
         <section className="py-24 bg-background-alt border-t border-border-light">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -503,7 +495,6 @@ export default function HomePage() {
             )}
           </div>
         </section>
-
         {/* VISION & PROTECTION SECTION */}
         <section className="py-24 bg-white border-t border-border-light">
           <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -559,41 +550,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         {/* TRADING MATERIALS FEATURED SECTION */}
-        <section className="py-20 md:py-32 bg-background-alt border-t border-border-light">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <AnimatedElement>
-              <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 md:p-12 border border-border-light shadow-sm hover:shadow-md transition-all duration-300">
-                {/* Icon */}
-                <div className="mb-8">
-                  <div className="w-16 h-16 bg-background-alt rounded-lg flex items-center justify-center">
-                    <ShoppingCart size={32} className="text-primary" strokeWidth={1.5} />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary mb-6">
-                  Trading Materials — Tinplate & Aluminum
-                </h2>
-
-                {/* Description */}
-                <p className="text-text-muted text-base md:text-lg leading-relaxed mb-8">
-                  Strategic tinplate and aluminum trading for metal packaging producers worldwide. Competitive sourcing, flexible volumes, reliable delivery — matched to your production schedule. We connect buyers and sellers across our global network to create genuine commercial value.
-                </p>
-
-                {/* CTA Link */}
-                <Link
-                  to="/trading-materials"
-                  className="inline-flex items-center text-accent font-semibold hover:text-accent-dark transition-colors duration-300 group"
-                >
-                  Learn More
-                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </div>
-            </AnimatedElement>
-          </div>
-        </section>
 
         {/* MPH HIGHLIGHTS SECTION */}
         <section className="py-20 md:py-32 bg-gradient-dark text-white">
