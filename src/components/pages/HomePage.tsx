@@ -3,6 +3,7 @@ import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
+import OurServicesProducts from '@/components/OurServicesProducts';
 import PremiumCTASection from '@/components/PremiumCTASection';
 import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
@@ -342,56 +343,8 @@ export default function HomePage() {
             )}
           </div>
         </section>
-        {/* PRODUCTS SECTION */}
-        <section className="py-24 bg-background-alt border-t border-border-light">
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-            <AnimatedElement className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-6">
-                Our Product Solutions
-              </h2>
-              <p className="text-lg text-text-muted leading-relaxed">
-                Comprehensive range of metal packaging solutions tailored to your industry needs. From machinery to spare parts, we deliver excellence.
-              </p>
-            </AnimatedElement>
-
-            {isLoadingProducts ? (
-              <div className="flex justify-center py-20"><LoadingSpinner /></div>
-            ) : products.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {products.map((product, idx) => (
-                  <AnimatedElement key={product._id} direction="up" delay={idx * 50}>
-                    <div className="group flex flex-col h-full">
-                      <div className="relative aspect-[4/3] mb-6 overflow-hidden bg-white flex items-center justify-center p-4 rounded-xl border border-border-light group-hover:border-accent transition-colors">
-                        {product.solutionImage ? (
-                          <Image
-                            src={product.solutionImage}
-                            alt={product.solutionName || 'Product'}
-                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out mix-blend-multiply"
-                          />
-                        ) : (
-                          <div className="w-24 h-24 bg-background-alt rounded-full flex items-center justify-center text-text-muted">Img</div>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-bold text-primary mb-4 text-center group-hover:text-accent transition-colors">
-                        {product.solutionName || product.category || 'Product Solution'}
-                      </h3>
-                      <div className="mt-auto text-center">
-                        <Link
-                          to={`/products`}
-                          className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
-                        >
-                          Discover More
-                        </Link>
-                      </div>
-                    </div>
-                  </AnimatedElement>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 text-text-muted">No products available.</div>
-            )}
-          </div>
-        </section>
+        {/* OUR SERVICES PRODUCTS SECTION */}
+        <OurServicesProducts />
         {/* VISION & PROTECTION SECTION */}
         {/* TRADING MATERIALS FEATURED SECTION */}
         {/* MPH HIGHLIGHTS SECTION - FULL WIDTH */}
