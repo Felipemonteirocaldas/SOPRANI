@@ -74,13 +74,16 @@ export default function OurServicesSection() {
               const IconComponent = service.icon;
               const isLastColumn = (index + 1) % 3 === 0;
               const isLastRow = index >= 3;
+              const isLastCard = index === services.length - 1;
 
               return (
                 <div
                   key={service.number}
                   className={`p-10 ${
                     !isLastColumn ? 'border-r border-[#EAEAEA]' : ''
-                  } ${!isLastRow ? 'border-b border-[#EAEAEA]' : ''}`}
+                  } ${!isLastRow ? 'border-b border-[#EAEAEA]' : ''} ${
+                    isLastCard ? 'col-span-3 lg:col-span-1' : ''
+                  }`}
                 >
                   {/* Number */}
                   <div className="text-xs font-heading text-[#D1D5DB] font-semibold mb-8">

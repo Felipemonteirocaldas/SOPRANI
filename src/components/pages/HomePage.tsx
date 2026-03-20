@@ -7,7 +7,7 @@ import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
 import { BaseCrudService } from '@/integrations';
-import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
+import { ArrowRight, ChevronDown, MapPin, ShoppingCart } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -557,6 +557,41 @@ export default function HomePage() {
                 </div>
               </AnimatedElement>
             </div>
+          </div>
+        </section>
+
+        {/* TRADING MATERIALS FEATURED SECTION */}
+        <section className="py-20 md:py-32 bg-background-alt border-t border-border-light">
+          <div className="max-w-[100rem] mx-auto px-4 md:px-8">
+            <AnimatedElement>
+              <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 md:p-12 border border-border-light shadow-sm hover:shadow-md transition-all duration-300">
+                {/* Icon */}
+                <div className="mb-8">
+                  <div className="w-16 h-16 bg-background-alt rounded-lg flex items-center justify-center">
+                    <ShoppingCart size={32} className="text-primary" strokeWidth={1.5} />
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary mb-6">
+                  Trading Materials — Tinplate & Aluminum
+                </h2>
+
+                {/* Description */}
+                <p className="text-text-muted text-base md:text-lg leading-relaxed mb-8">
+                  Strategic tinplate and aluminum trading for metal packaging producers worldwide. Competitive sourcing, flexible volumes, reliable delivery — matched to your production schedule. We connect buyers and sellers across our global network to create genuine commercial value.
+                </p>
+
+                {/* CTA Link */}
+                <Link
+                  to="/trading-materials"
+                  className="inline-flex items-center text-accent font-semibold hover:text-accent-dark transition-colors duration-300 group"
+                >
+                  Learn More
+                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </div>
+            </AnimatedElement>
           </div>
         </section>
 
