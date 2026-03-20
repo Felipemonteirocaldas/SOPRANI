@@ -1,48 +1,72 @@
 import { motion } from 'framer-motion';
-import { Zap, Cog, Globe, Cpu } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function PremiumCTASection() {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Parallax effect on mouse move
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setMousePosition({ x, y });
+  };
 
   return (
-    <section className="relative w-full bg-[#0a192f] overflow-hidden py-20 md:py-32">
+    <section
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="relative w-full bg-[#0a192f] overflow-hidden py-20 md:py-32"
+    >
       {/* Italian Flag Line at Top */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-24 flex">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
         <div className="flex-1 bg-green-500"></div>
         <div className="flex-1 bg-white"></div>
         <div className="flex-1 bg-red-500"></div>
       </div>
 
-      {/* Technical Grid Background with Gradient Fade */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Pulsing Radar/Technical Mesh Background */}
+      <div className="absolute inset-0 opacity-8">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+            <pattern id="techMesh" width="50" height="50" patternUnits="userSpaceOnUse">
+              <circle cx="25" cy="25" r="1" fill="white" opacity="0.3" />
+              <path d="M 25 0 L 25 50 M 0 25 L 50 25" stroke="white" strokeWidth="0.5" opacity="0.2" />
             </pattern>
-            <radialGradient id="gridFade" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="white" stopOpacity="0" />
-              <stop offset="100%" stopColor="white" stopOpacity="1" />
+            <radialGradient id="radarPulse" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stopColor="white" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-          <rect width="100%" height="100%" fill="url(#gridFade)" />
+          <rect width="100%" height="100%" fill="url(#techMesh)" />
+          <rect width="100%" height="100%" fill="url(#radarPulse)" />
+          {/* Concentric circles for radar effect */}
+          <motion.circle
+            cx="50%"
+            cy="50%"
+            r="10%"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.5"
+            opacity="0.1"
+            animate={{ r: ['10%', '30%'], opacity: [0.2, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.circle
+            cx="50%"
+            cy="50%"
+            r="5%"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.5"
+            opacity="0.1"
+            animate={{ r: ['5%', '25%'], opacity: [0.2, 0] }}
+            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+          />
         </svg>
-      </div>
-
-      {/* Blueprint Lines - Floating Translucent */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <motion.div
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-0 left-1/4 w-96 h-96 border border-blue-400"
-        />
-        <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-0 right-1/4 w-80 h-80 border border-blue-300"
-        />
       </div>
 
       {/* Main Content Container */}
@@ -58,94 +82,79 @@ export default function PremiumCTASection() {
           >
             {/* Status Badge */}
             <div className="inline-block">
-              <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-none backdrop-blur-sm">
-                <span className="font-mono text-xs text-blue-400 tracking-widest">
-                  [SYSTEM_STATUS: OPTIMIZED]
+              <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="font-paragraph text-xs text-blue-400 tracking-widest font-semibold">
+                  [ SOPRANI_ENGINEERING: ACTIVE_GLOBAL_SUPPORT ]
                 </span>
               </div>
             </div>
 
-            {/* Subtitle */}
+            {/* Main Title with Varied Weights */}
             <div>
-              <p className="text-xs text-blue-400 tracking-[0.2em] font-mono uppercase mb-4">
-                ENGINEERING EXCELLENCE
-              </p>
-            </div>
-
-            {/* Main Title */}
-            <div>
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white leading-tight">
-                Ready to{' '}
-                <span className="text-blue-400 font-black">Optimize</span>{' '}
-                your Production Standards?
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Precision Engineering for the{' '}
+                <span className="font-black text-blue-400">Global</span>{' '}
+                Metal Packaging Industry
               </h2>
             </div>
 
             {/* Body Text */}
             <p className="font-paragraph text-lg text-gray-300 leading-relaxed max-w-lg">
-              Consult our engineering experts to leverage Europe's premier machinery network, precision spare parts ecosystem, and global material trading hub, streamlining your entire supply chain.
+              From machinery sourcing and revamping projects to high-precision spare parts and technical assistance, we provide the industrial expertise to keep your production lines at peak performance.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {/* Button 1 - Solid White */}
+              {/* Button 1 - Solid High Contrast */}
               <motion.button
-                onHoverStart={() => setHoveredButton('consult')}
+                onHoverStart={() => setHoveredButton('engineers')}
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 bg-white text-[#0a192f] font-mono font-bold text-sm tracking-widest rounded-none overflow-hidden group"
+                className="relative px-8 py-4 bg-white text-[#0a192f] font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
               >
                 <div
                   className={`absolute inset-0 bg-blue-400 transition-all duration-300 ${
-                    hoveredButton === 'consult' ? 'opacity-20' : 'opacity-0'
+                    hoveredButton === 'engineers' ? 'opacity-20' : 'opacity-0'
                   }`}
                 />
-                <span className="relative z-10">[ CONSULT EXPERTS ]</span>
-                {hoveredButton === 'consult' && (
-                  <motion.div
-                    layoutId="consultGlow"
-                    className="absolute inset-0 rounded-none shadow-lg shadow-blue-400/50"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  />
-                )}
+                <span className="relative z-10">[ CONSULT OUR ENGINEERS ]</span>
               </motion.button>
 
-              {/* Button 2 - Outline Electric Blue */}
+              {/* Button 2 - Outline with Subtle Glow */}
               <motion.button
-                onHoverStart={() => setHoveredButton('quotation')}
+                onHoverStart={() => setHoveredButton('quote')}
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 border-2 border-blue-400 text-blue-400 font-mono font-bold text-sm tracking-widest rounded-none overflow-hidden group"
+                className="relative px-8 py-4 border-2 border-blue-400 text-blue-400 font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
               >
                 <motion.div
                   animate={{
                     backgroundColor:
-                      hoveredButton === 'quotation'
+                      hoveredButton === 'quote'
                         ? 'rgba(96, 165, 250, 0.1)'
                         : 'transparent',
                   }}
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0"
                 />
-                <span className="relative z-10">[ REQUEST QUOTATION ]</span>
-                {hoveredButton === 'quotation' && (
+                <span className="relative z-10">[ REQUEST TECHNICAL QUOTE ]</span>
+                {hoveredButton === 'quote' && (
                   <motion.div
-                    layoutId="quotationGlow"
-                    className="absolute inset-0 rounded-none shadow-lg shadow-blue-400/50"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 pointer-events-none"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    style={{
+                      boxShadow: '0 0 20px rgba(96, 165, 250, 0.4), inset 0 0 20px rgba(96, 165, 250, 0.1)',
+                    }}
                   />
                 )}
               </motion.button>
             </div>
           </motion.div>
 
-          {/* Right Column - Data Visualization */}
+          {/* Right Column - Technical Diagram */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -153,101 +162,163 @@ export default function PremiumCTASection() {
             viewport={{ once: true }}
             className="relative h-96 lg:h-full min-h-96"
           >
-            {/* Glassmorphism Card */}
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden">
-              {/* MPH Background Text */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                <span className="font-mono text-9xl font-bold text-white">MPH</span>
+            {/* Technical Diagram Container */}
+            <div className="absolute inset-0 bg-white/3 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
+              {/* Gear/Mechanical Component SVG with Parallax */}
+              <motion.svg
+                className="w-full h-full"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+                animate={{
+                  x: mousePosition.x * 20 - 10,
+                  y: mousePosition.y * 20 - 10,
+                }}
+                transition={{ type: 'spring', stiffness: 100, damping: 30 }}
+              >
+                {/* Main Gear - Center */}
+                <motion.g
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: '200px 200px' }}
+                >
+                  <circle cx="200" cy="200" r="60" fill="none" stroke="#60a5fa" strokeWidth="2" opacity="0.8" />
+                  {/* Gear teeth */}
+                  {Array.from({ length: 12 }).map((_, i) => (
+                    <rect
+                      key={i}
+                      x="190"
+                      y="130"
+                      width="20"
+                      height="15"
+                      fill="#60a5fa"
+                      opacity="0.6"
+                      transform={`rotate(${(i * 30)} 200 200)`}
+                    />
+                  ))}
+                </motion.g>
+
+                {/* Smaller Gear - Top Right */}
+                <motion.g
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: '300px 120px' }}
+                >
+                  <circle cx="300" cy="120" r="40" fill="none" stroke="#34d399" strokeWidth="2" opacity="0.7" />
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <rect
+                      key={i}
+                      x="292"
+                      y="75"
+                      width="16"
+                      height="12"
+                      fill="#34d399"
+                      opacity="0.5"
+                      transform={`rotate(${(i * 45)} 300 120)`}
+                    />
+                  ))}
+                </motion.g>
+
+                {/* Smaller Gear - Bottom Left */}
+                <motion.g
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: '100px 280px' }}
+                >
+                  <circle cx="100" cy="280" r="35" fill="none" stroke="#f87171" strokeWidth="2" opacity="0.7" />
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <rect
+                      key={i}
+                      x="93"
+                      y="240"
+                      width="14"
+                      height="10"
+                      fill="#f87171"
+                      opacity="0.5"
+                      transform={`rotate(${(i * 45)} 100 280)`}
+                    />
+                  ))}
+                </motion.g>
+
+                {/* Connection Lines */}
+                <motion.line x1="260" y1="160" x2="340" y2="100" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
+                <motion.line x1="140" y1="240" x2="160" y2="160" stroke="#f87171" strokeWidth="1.5" opacity="0.4" />
+
+                {/* Pulsing Center Point */}
+                <motion.circle
+                  cx="200"
+                  cy="200"
+                  r="8"
+                  fill="#60a5fa"
+                  animate={{ r: [8, 12, 8], opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.svg>
+
+              {/* Performance Indicators Overlay */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
+                {/* Top Indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="space-y-2"
+                >
+                  <div className="text-xs text-blue-400 font-mono tracking-widest">EFFICIENCY_INDEX</div>
+                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-blue-400 to-blue-300"
+                      animate={{ width: ['0%', '94%'] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Middle Indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="space-y-2"
+                >
+                  <div className="text-xs text-green-400 font-mono tracking-widest">GLOBAL_LOGISTICS</div>
+                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-green-400 to-green-300"
+                      animate={{ width: ['0%', '88%'] }}
+                      transition={{ duration: 2.5, repeat: Infinity, repeatType: 'reverse', delay: 0.3 }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Bottom Indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="space-y-2"
+                >
+                  <div className="text-xs text-red-400 font-mono tracking-widest">TECHNICAL_ACCURACY</div>
+                  <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-red-400 to-red-300"
+                      animate={{ width: ['0%', '96%'] }}
+                      transition={{ duration: 2.2, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
+                    />
+                  </div>
+                </motion.div>
               </div>
-
-              {/* Content Grid */}
-              <div className="relative h-full p-8 flex flex-col justify-between">
-                {/* Top Section - Machinery */}
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="space-y-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="w-3 h-3 bg-blue-400 rounded-full"
-                    />
-                    <div className="flex items-center gap-2">
-                      <Cpu className="w-5 h-5 text-blue-400" />
-                      <span className="text-sm text-gray-300 font-mono">Machinery Network</span>
-                    </div>
-                  </div>
-                  <div className="ml-6 text-xs text-gray-400 font-mono">
-                    Europe's Premier Hub
-                  </div>
-                </motion.div>
-
-                {/* Middle Section - Spare Parts */}
-                <motion.div
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                  className="space-y-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                      className="w-3 h-3 bg-green-400 rounded-full"
-                    />
-                    <div className="flex items-center gap-2">
-                      <Cog className="w-5 h-5 text-green-400" />
-                      <span className="text-sm text-gray-300 font-mono">Spare Parts</span>
-                    </div>
-                  </div>
-                  <div className="ml-6 text-xs text-gray-400 font-mono">
-                    Precision Ecosystem
-                  </div>
-                </motion.div>
-
-                {/* Bottom Section - Material Trading */}
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 2 }}
-                  className="space-y-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                      className="w-3 h-3 bg-red-400 rounded-full"
-                    />
-                    <div className="flex items-center gap-2">
-                      <Globe className="w-5 h-5 text-red-400" />
-                      <span className="text-sm text-gray-300 font-mono">Material Trading</span>
-                    </div>
-                  </div>
-                  <div className="ml-6 text-xs text-gray-400 font-mono">
-                    Global Supply Hub
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Neon Glow Effect on Hover */}
-              <motion.div
-                className="absolute inset-0 rounded-lg pointer-events-none"
-                initial={{ boxShadow: '0 0 0px rgba(96, 165, 250, 0)' }}
-                whileHover={{ boxShadow: '0 0 30px rgba(96, 165, 250, 0.3)' }}
-                transition={{ duration: 0.3 }}
-              />
             </div>
 
-            {/* Floating Accent Elements */}
+            {/* Floating Accent Rings */}
             <motion.div
-              animate={{ rotate: 360 }}
+              animate={{ rotate: 360, scale: [1, 1.1, 1] }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute -top-8 -right-8 w-32 h-32 border border-blue-400/20 rounded-full pointer-events-none"
+              className="absolute -top-8 -right-8 w-32 h-32 border border-blue-400/20 pointer-events-none"
             />
             <motion.div
-              animate={{ rotate: -360 }}
+              animate={{ rotate: -360, scale: [1, 0.9, 1] }}
               transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              className="absolute -bottom-12 -left-12 w-40 h-40 border border-blue-300/10 rounded-full pointer-events-none"
+              className="absolute -bottom-12 -left-12 w-40 h-40 border border-blue-300/10 pointer-events-none"
             />
           </motion.div>
         </div>
