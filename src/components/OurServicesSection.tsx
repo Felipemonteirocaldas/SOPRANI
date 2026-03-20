@@ -80,9 +80,9 @@ export default function OurServicesSection() {
                 <div
                   key={service.number}
                   className={`p-10 ${
-                    !isLastColumn ? 'border-r border-[#EAEAEA]' : ''
+                    !isLastColumn && !isLastCard ? 'border-r border-[#EAEAEA]' : ''
                   } ${!isLastRow ? 'border-b border-[#EAEAEA]' : ''} ${
-                    isLastCard ? 'col-span-3 lg:col-span-1' : ''
+                    isLastCard ? 'col-span-2' : ''
                   }`}
                 >
                   {/* Number */}
