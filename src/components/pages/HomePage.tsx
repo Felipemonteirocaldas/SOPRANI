@@ -147,13 +147,13 @@ export default function HomePage() {
                  <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                    <Link
                      to="/request-quotation"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-xs xs:text-sm sm:text-base"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
                      Request Quotation
                    </Link>
                    <Link
                      to="/contact"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white font-semibold uppercase tracking-wider rounded-lg hover:bg-white hover:text-primary transition-all duration-200 text-center text-xs xs:text-sm sm:text-base"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-200 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
                      Contact Us
                    </Link>
@@ -272,7 +272,7 @@ export default function HomePage() {
             <AnimatedElement delay={400} className="mt-12 flex justify-center">
               <button
                 onClick={() => navigate('/news')}
-                className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-lg"
+                className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-none"
               >
                 View All News
               </button>
