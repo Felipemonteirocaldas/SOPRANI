@@ -41,9 +41,7 @@ export default function PremiumCTASection() {
             {/* Status Badge */}
             <div className="inline-block">
               <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="font-paragraph text-xs text-blue-400 tracking-widest font-semibold">
-                  [ SOPRANI_ENGINEERING: ACTIVE_GLOBAL_SUPPORT ]
-                </span>
+                <span className="font-paragraph text-xs text-blue-400 tracking-widest font-semibold">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
               </div>
             </div>
 
