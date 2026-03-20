@@ -3,6 +3,7 @@ import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
+import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
@@ -177,6 +178,8 @@ export default function HomePage() {
        </section>
         {/* CORPORATE MARQUEE - Below Hero */}
         <CorporateMarquee />
+        {/* SPLIT LAYOUT SECTION */}
+        <SplitLayoutSection />
         {/* OUR SERVICES SECTION */}
         <OurServicesSection />
         {/* SERVICES OVERVIEW SECTION */}
