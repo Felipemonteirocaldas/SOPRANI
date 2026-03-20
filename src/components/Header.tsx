@@ -20,11 +20,10 @@ export default function Header() {
       ]
     },
     {
-      title: 'Products',
+      title: 'Products & Solutions',
       links: [
         { label: 'Product Solutions', href: '/products', icon: Zap },
         { label: 'Industries', href: '/industries', icon: Wrench },
-        { label: 'Company', href: '/company', icon: Package },
       ]
     },
     {
@@ -32,7 +31,6 @@ export default function Header() {
       links: [
         { label: 'Events', href: '/events', icon: Zap },
         { label: 'News', href: '/news', icon: Wrench },
-        { label: 'Contact', href: '/contact', icon: Package },
       ]
     },
     {
@@ -47,6 +45,13 @@ export default function Header() {
         subtitle: 'Advanced machinery management system'
       }
     }
+  ];
+
+  const mainNavLinks = [
+    { label: 'Services', href: '/services' },
+    { label: 'Products', href: '/products' },
+    { label: 'Company', href: '/company' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   const handleMegaMenuEnter = () => {
@@ -76,7 +81,18 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main navigation">
-            {/* Services Mega Menu */}
+            {/* Main Navigation Links */}
+            {mainNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* More Menu - Mega Menu */}
             <div 
               className="relative"
               onMouseEnter={handleMegaMenuEnter}
@@ -84,11 +100,11 @@ export default function Header() {
             >
               <button
                 id="mega-trigger"
-                className="nb-item active flex items-center gap-1 px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
+                className="flex items-center gap-1 px-3 py-2 text-xs lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
                 aria-expanded={megaMenuOpen}
                 aria-controls="mega-panel"
               >
-                Services
+                More
                 <ChevronDown size={16} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -151,7 +167,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* ... keep existing code (other nav items) ... */}
             <Link
               to="/request-quotation"
               className="ml-2 px-5 py-2 bg-accent text-white text-xs lg:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center gap-2"
@@ -176,16 +191,31 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border-light">
             <div className="flex flex-col space-y-2">
+              {/* Main Mobile Links */}
+              {mainNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* Mobile More Menu */}
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
                 className="w-full text-left px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md flex items-center justify-between"
               >
-                Services
+                More
                 <ChevronDown size={16} className={`transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
+              
+              {/* Mobile More Menu Items */}
               {megaMenuOpen && (
                 <div className="pl-4 space-y-1">
-                  {megaMenuColumns[0].links.map((link, idx) => (
+                  {megaMenuColumns.flatMap((column) => column.links).map((link, idx) => (
                     <Link
                       key={idx}
                       to={link.href}
@@ -200,34 +230,7 @@ export default function Header() {
                   ))}
                 </div>
               )}
-              <Link
-                to="/products"
-                className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Products
-              </Link>
-              <Link
-                to="/company"
-                className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Company
-              </Link>
-              <Link
-                to="/mph"
-                className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                MPH Platform
-              </Link>
-              <Link
-                to="/contact"
-                className="block px-4 py-2 text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+
               <Link
                 to="/request-quotation"
                 className="w-full mt-4 px-5 py-3 bg-accent text-white text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
