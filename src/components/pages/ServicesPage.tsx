@@ -114,7 +114,7 @@ export default function ServicesPage() {
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
                         <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg w-full">
                           <Image
-                            src="https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png?originWidth=768&originHeight=576"
+                            src={idx === 1 ? "https://static.wixstatic.com/media/9bbed2_d1c3f94d5b714918a9cecc64a15605c7~mv2.png" : "https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png?originWidth=768&originHeight=576"}
                             alt={service.title}
                             className="w-full h-full object-cover"
                           />
