@@ -16,7 +16,7 @@ const products: Product[] = [
     number: '01',
     title: 'Can Bodymaker',
     description: 'Máquina de alta velocidade para a conformação de corpos de latas de alumínio e folha-de-flandres.',
-    image: 'https://static.wixstatic.com/media/9bbed2_1247e34faa394c89912d45ed3eabe784~mv2.png',
+    image: 'https://static.wixstatic.com/media/9bbed2_d90d4a51ffdd4bc98c64f9aa14c9e5e9~mv2.png',
   },
   {
     id: '02',
