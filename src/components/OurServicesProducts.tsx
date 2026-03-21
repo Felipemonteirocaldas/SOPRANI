@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Image } from '@/components/ui/image';
 import { ArrowRight } from 'lucide-react';
+import { BaseCrudService } from '@/integrations';
+import { ProductSolutions } from '@/entities';
 
 interface Product {
   id: string;
@@ -9,51 +11,6 @@ interface Product {
   description: string;
   image: string;
 }
-
-const products: Product[] = [
-  {
-    id: '01',
-    number: '01',
-    title: 'Can Bodymaker',
-    description: 'Máquina de alta velocidade para a conformação de corpos de latas de alumínio e folha-de-flandres.',
-    image: 'https://static.wixstatic.com/media/9bbed2_9b0131eabaf440b68a748b0f9f16e116~mv2.png',
-  },
-  {
-    id: '02',
-    number: '02',
-    title: 'Weld Bodymaker / Welding Line',
-    description: 'Linha de solda de precisão para corpos de latas de 3 peças, garantindo integridade estrutural.',
-    image: 'https://static.wixstatic.com/media/9bbed2_0fbb6a4a120747bb8037799aa770ec62~mv2.png',
-  },
-  {
-    id: '03',
-    number: '03',
-    title: 'Decorator & Coater',
-    description: 'Sistemas de impressão de última geração e aplicação de verniz para personalização e proteção de latas.',
-    image: 'https://static.wixstatic.com/media/9bbed2_0fbb6a4a120747bb8037799aa770ec62~mv2.png',
-  },
-  {
-    id: '04',
-    number: '04',
-    title: 'Cupping Press',
-    description: 'Prensa industrial para a fabricação de copos de latas, o primeiro passo no processo de latas de 2 peças.',
-    image: 'https://static.wixstatic.com/media/9bbed2_0fbb6a4a120747bb8037799aa770ec62~mv2.png',
-  },
-  {
-    id: '05',
-    number: '05',
-    title: 'Can Seamer',
-    description: 'Equipamento de precisão para a recravação de tampas, assegurando fechamento hermético.',
-    image: 'https://static.wixstatic.com/media/9bbed2_0fbb6a4a120747bb8037799aa770ec62~mv2.png',
-  },
-  {
-    id: '06',
-    number: '06',
-    title: 'End Making Line',
-    description: 'Linhas completas para a fabricação de tampas de latas, incluindo aplicação de composto de vedação.',
-    image: 'https://static.wixstatic.com/media/9bbed2_0fbb6a4a120747bb8037799aa770ec62~mv2.png',
-  },
-];
 
 const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ product, delay }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -130,6 +87,31 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
 };
 
 export default function OurServicesProducts() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const result = await BaseCrudService.getAll<ProductSolutions>('productsolutions');
+        const mappedProducts: Product[] = (result.items || []).map((item, index) => ({
+          id: item._id,
+          number: String(index + 1).padStart(2, '0'),
+          title: item.solutionName || 'Product',
+          description: item.detailedDescription || '',
+          image: item.solutionImage || 'https://static.wixstatic.com/media/9bbed2_9b0131eabaf440b68a748b0f9f16e116~mv2.png',
+        }));
+        setProducts(mappedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <section className="py-24 bg-background border-t border-border-light">
       <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -145,13 +127,19 @@ export default function OurServicesProducts() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <AnimatedProductCard
-              key={product.id}
-              product={product}
-              delay={index * 100}
-            />
-          ))}
+          {!isLoading && products.length > 0 ? (
+            products.map((product, index) => (
+              <AnimatedProductCard
+                key={product.id}
+                product={product}
+                delay={index * 100}
+              />
+            ))
+          ) : isLoading ? null : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-text-muted">No products available</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
