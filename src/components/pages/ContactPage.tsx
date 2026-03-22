@@ -86,7 +86,6 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-dark">
         <div 
@@ -107,7 +106,6 @@ export default function ContactPage() {
           </AnimatedElement>
         </div>
       </section>
-
       {/* Contact Content */}
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -295,7 +293,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold hover:bg-accent-dark hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-none"
                       >
                         {isSubmitting ? (
                           <>
@@ -317,7 +315,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
       {/* Additional Info Section */}
       <section className="py-20 md:py-32 bg-background-alt">
         <div className="max-w-[100rem] mx-auto px-4 md:px-8">
@@ -352,7 +349,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

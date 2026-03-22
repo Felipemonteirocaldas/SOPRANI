@@ -66,7 +66,6 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
       <Header />
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-primary text-white py-20 md:py-32">
@@ -140,13 +139,13 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="px-8 py-3 bg-accent text-white hover:bg-accent/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 bg-accent text-white hover:bg-accent/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 Contact Us
               </a>
               <a
                 href="/request-quotation"
-                className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 Request a Quotation
               </a>
@@ -154,7 +153,6 @@ export default function ServicesPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
