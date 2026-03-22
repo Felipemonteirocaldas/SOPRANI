@@ -128,7 +128,7 @@ export default function OurServicesProducts() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {!isLoading && products.length > 0 ? (
-            products.map((product, index) => (
+            products.slice(0, 6).map((product, index) => (
               <AnimatedProductCard
                 key={product.id}
                 product={product}
