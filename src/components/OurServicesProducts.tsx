@@ -3,6 +3,7 @@ import { Image } from '@/components/ui/image';
 import { ArrowRight } from 'lucide-react';
 import { BaseCrudService } from '@/integrations';
 import { ProductSolutions } from '@/entities';
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: string;
@@ -76,10 +77,10 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
           </p>
 
           {/* Learn More Link */}
-          <div className="flex items-center text-accent font-semibold text-sm group-hover:gap-2 transition-all duration-300">
+          <Link to="/products" className="flex items-center text-accent font-semibold text-sm group-hover:gap-2 transition-all duration-300 hover:no-underline">
             <span>Learn More</span>
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-          </div>
+          </Link>
         </div>
       </div>
     </div>
