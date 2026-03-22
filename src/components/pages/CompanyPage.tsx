@@ -194,7 +194,6 @@ export default function CompanyPage() {
       {/* Italian Flag Gradient Line */}
       <div className="h-1 bg-gradient-to-r from-green-600 via-white to-red-600" />
       {/* Command Center Hero Section */}
-
       {/* Company Overview */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -204,12 +203,8 @@ export default function CompanyPage() {
                 Our Legacy
               </h2>
               <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Koenig & Bauer focuses on advanced printing solutions and aims to empower clients with innovative technology. With over 30+ years in the printing industry, we offer a broad product range and are key suppliers to the global media sector.
-                </p>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Recent achievements include more than doubling operating EBIT and maintaining positive cash flow in a volatile environment. We continue to push the boundaries of printing technology, developing and manufacturing technologically innovative yet cost-effective printing systems and peripherals.
-                </p>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">S focuses on advanced printing solutions and aims to empower clients with innovative technology. With over 30+ years in the printing industry, we offer a broad product range and are key suppliers to the global media sector.</p>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">Soprani Engineering focuses on advanced printing solutions and aims to empower clients with innovative technology. With over 30+ years in the printing industry, we offer a broad product range and are key suppliers to the global media sector.</p>
               </div>
             </AnimatedElement>
           </div>
