@@ -21,7 +21,7 @@ export default function PremiumCTASection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full bg-gradient-to-br from-[#60a5fa] via-[#60a5fa] to-[#60a5fa] overflow-hidden py-20 md:py-32"
+      className="relative w-full bg-gradient-to-br from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32"
     >
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
@@ -43,7 +43,7 @@ export default function PremiumCTASection() {
             {/* Status Badge */}
             <div className="inline-block">
               <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="font-paragraph text-xs text-[#60a5fa] tracking-widest font-semibold">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
+                <span className="font-paragraph text-xs text-blue-400 tracking-widest font-semibold">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function PremiumCTASection() {
             <div>
               <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Precision Engineering for the{' '}
-                <span className="font-black text-[#60a5fa]">Global</span>{' '}
+                <span className="font-black text-blue-400">Global</span>{' '}
                 Metal Packaging Industry
               </h2>
             </div>
@@ -72,7 +72,7 @@ export default function PremiumCTASection() {
                 className="relative px-8 py-4 bg-white text-[#0a192f] font-paragraph font-bold text-sm tracking-widest overflow-hidden group rounded-none"
               >
                 <div
-                  className={`absolute inset-0 bg-[#60a5fa] transition-all duration-300 ${
+                  className={`absolute inset-0 bg-blue-400 transition-all duration-300 ${
                     hoveredButton === 'engineers' ? 'opacity-20' : 'opacity-0'
                   }`}
                 />
@@ -86,7 +86,7 @@ export default function PremiumCTASection() {
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 border-2 border-[#60a5fa] text-[#60a5fa] font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
+                className="relative px-8 py-4 border-2 border-blue-400 text-blue-400 font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
               >
                 <motion.div
                   animate={{
