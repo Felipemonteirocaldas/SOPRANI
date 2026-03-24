@@ -37,7 +37,7 @@ export default function SplitLayoutSection() {
 
           {/* Content overlay */}
           <div className="relative z-10 text-center text-white max-w-sm">
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">SOPRANI rotective Film Laminating Machine</h3>
+            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">Laminating Machine</h3>
             <div className="space-y-2 text-sm font-paragraph opacity-90">
               <p>Dimensions: 2500 x 1800 x 1600 mm</p>
               <p>Capacity: 120 cycles/minute</p>

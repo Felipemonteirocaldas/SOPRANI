@@ -350,7 +350,7 @@ export default function HomePage() {
         {/* MPH HIGHLIGHTS SECTION - FULL WIDTH */}
         <section className="relative w-full min-h-screen md:min-h-auto py-16 md:py-24 lg:py-32 bg-primary-dark text-white overflow-hidden">
           {/* Watermark MPH Background */}
-          <div className="absolute inset-0 z-0 flex items-center justify-end overflow-hidden bg-[#031742ff]">
+          <div className="absolute inset-0 z-0 flex items-center justify-end overflow-hidden bg-primary">
             <div className="absolute right-1/2 translate-x-1/2 md:right-0 md:translate-x-0 top-1/2 -translate-y-1/2 text-[12rem] md:text-[25rem] lg:text-[30rem] font-black font-sans opacity-5 leading-none whitespace-nowrap pointer-events-none">
   MPH
 </div>

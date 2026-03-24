@@ -68,7 +68,7 @@ export default function ServicesPage() {
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="text-white py-20 md:py-32 bg-[#031742ff]">
+        <section className="text-white py-20 md:py-32 bg-primary">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
               Our Services
