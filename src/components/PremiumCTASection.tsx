@@ -62,7 +62,7 @@ export default function PremiumCTASection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 rounded-lg">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 rounded-lg bg-primary">
               {/* Button 1 - Solid High Contrast */}
               <motion.button
                 onHoverStart={() => setHoveredButton('engineers')}
@@ -86,7 +86,7 @@ export default function PremiumCTASection() {
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 border-2 border-blue-400 text-blue-400 font-paragraph font-bold text-sm tracking-widest overflow-hidden group"
+                className="relative px-8 py-4 font-paragraph font-bold text-sm tracking-widest overflow-hidden group text-[#e2e8f0ff] border-2 border-solid border-[#e2e8f0ff]"
               >
                 <motion.div
                   animate={{
@@ -96,7 +96,7 @@ export default function PremiumCTASection() {
                         : 'transparent',
                   }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 rounded-lg border-gray-200 border border-none text-border-light bg-primary"
+                  className="absolute inset-0 rounded-lg border-gray-200 border border-none text-border-light bg-[#0f172aff]"
                 />
                 <span className="relative z-10">[ REQUEST TECHNICAL QUOTE ]</span>
                 {hoveredButton === 'quote' && (
