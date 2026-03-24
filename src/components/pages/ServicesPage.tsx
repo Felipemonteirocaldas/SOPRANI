@@ -9,6 +9,8 @@ export default function ServicesPage() {
     {
       icon: Wrench,
       title: 'Used Machinery Support',
+      // COLE O LINK DA IMAGEM 1 AQUI
+      imageUrl: 'https://static.wixstatic.com/media/9bbed2_840a762e598241e090ae9556b3312744~mv2.png',
       description: 'Expert sourcing and support for industrial machinery used in metal packaging production. We help you find the right equipment for your specific manufacturing needs.',
       details: [
         'Machinery identification and sourcing',
@@ -20,6 +22,8 @@ export default function ServicesPage() {
     {
       icon: Package,
       title: 'Spare Parts',
+      // COLE O LINK DA IMAGEM 2 AQUI
+      imageUrl: 'https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png',
       description: 'Comprehensive identification and supply of spare parts for machinery. Minimize production downtime with our reliable spare parts sourcing network.',
       details: [
         'Parts identification and sourcing',
@@ -31,6 +35,7 @@ export default function ServicesPage() {
     {
       icon: Zap,
       title: 'Technical Assistance',
+      imageUrl: '', // Link da imagem 3
       description: 'Professional technical support including troubleshooting, machine evaluation, and maintenance coordination for optimal production performance.',
       details: [
         'Machine troubleshooting and diagnostics',
@@ -42,6 +47,7 @@ export default function ServicesPage() {
     {
       icon: RefreshCw,
       title: 'Revamping',
+      imageUrl: '', // Link da imagem 4
       description: 'Equipment improvement and upgrading services to enhance your production capabilities and extend machinery lifespan.',
       details: [
         'Equipment modernization',
@@ -53,6 +59,7 @@ export default function ServicesPage() {
     {
       icon: TrendingUp,
       title: 'Trading Materials',
+      imageUrl: '', // Link da imagem 5
       description: 'Trading opportunities in tinplate and aluminum materials used in metal packaging production. Direct access to quality materials at competitive prices.',
       details: [
         'Tinplate supply and trading',
@@ -86,15 +93,15 @@ export default function ServicesPage() {
               {services.map((service, idx) => {
                 const Icon = service.icon;
                 return (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="w-full py-6 md:py-12 md:pb-12 md:border-b md:border-gray-100 md:last:border-0 md:last:pb-0 border-b border-gray-100 last:border-0"
                   >
                     <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-12 items-start md:items-center">
                       <div className={idx % 2 === 1 ? 'lg:order-2' : ''}>
                         <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-4">
                           <Icon className="w-8 md:w-10 h-8 md:h-10 text-accent flex-shrink-0 mt-0.5" />
-                          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading font-bold leading-snug md:leading-normal hyphens-none break-words">
+                          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading font-bold leading-snug md:leading-normal">
                             {service.title}
                           </h2>
                         </div>
@@ -111,9 +118,10 @@ export default function ServicesPage() {
                         </ul>
                       </div>
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg w-full">
+                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg w-full bg-gray-100">
                           <Image
-                            src={idx === 1 ? "https://static.wixstatic.com/media/9bbed2_840a762e598241e090ae9556b3312744~mv2.png" : "https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png?originWidth=768&originHeight=576"}
+                            // AQUI A MÁGICA ACONTECE: ele usa a URL do objeto
+                            src={service.imageUrl || "/placeholder-image.png"}
                             alt={service.title}
                             className="w-full h-full object-cover"
                           />
