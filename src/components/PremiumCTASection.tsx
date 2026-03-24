@@ -21,7 +21,7 @@ export default function PremiumCTASection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32 opacity-[1] bg-[#0f172aff]"
+      className="relative w-full from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32 opacity-[1] bg-primary"
     >
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
