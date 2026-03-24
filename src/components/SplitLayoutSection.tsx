@@ -28,18 +28,16 @@ export default function SplitLayoutSection() {
           {/* Blueprint overlay image with low opacity */}
           <div className="absolute inset-0 opacity-20">
             <Image
-              src="https://static.wixstatic.com/media/9bbed2_6a2b4a0e923840009f03fdc2557b8864~mv2.png?originWidth=448&originHeight=576"
-              alt="Blueprint technical background"
+              src="https://static.wixstatic.com/media/9bbed2_faa35e28edaf43dbaa4b80a14918bb82~mv2.jpeg"
               className="w-full h-full object-cover"
               width={500}
-            />
+              originWidth={1600}
+              originHeight={1200} />
           </div>
 
           {/* Content overlay */}
           <div className="relative z-10 text-center text-white max-w-sm">
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">
-              SOPRANI SE-9 METAL PACKAGING LINE
-            </h3>
+            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">SOPRANI rotective Film Laminating Machine</h3>
             <div className="space-y-2 text-sm font-paragraph opacity-90">
               <p>Dimensions: 2500 x 1800 x 1600 mm</p>
               <p>Capacity: 120 cycles/minute</p>
