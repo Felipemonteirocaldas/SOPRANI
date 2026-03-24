@@ -21,7 +21,7 @@ export default function PremiumCTASection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full bg-gradient-to-br from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32"
+      className="relative w-full from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32 opacity-[1] bg-[#0f172aff]"
     >
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
@@ -43,7 +43,7 @@ export default function PremiumCTASection() {
             {/* Status Badge */}
             <div className="inline-block">
               <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="font-paragraph text-xs text-blue-400 tracking-widest font-semibold">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
+                <span className="font-paragraph text-xs tracking-widest font-semibold text-border-light">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function PremiumCTASection() {
             <div>
               <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Precision Engineering for the{' '}
-                <span className="font-black text-blue-400">Global</span>{' '}
+                <span className="font-black text-accent">Global</span>{' '}
                 Metal Packaging Industry
               </h2>
             </div>
@@ -96,7 +96,7 @@ export default function PremiumCTASection() {
                         : 'transparent',
                   }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 rounded-lg border-gray-200 border border-none"
+                  className="absolute inset-0 rounded-lg border-gray-200 border border-none text-border-light bg-primary"
                 />
                 <span className="relative z-10">[ REQUEST TECHNICAL QUOTE ]</span>
                 {hoveredButton === 'quote' && (
