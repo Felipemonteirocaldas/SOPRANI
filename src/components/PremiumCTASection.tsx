@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function PremiumCTASection() {
+  const navigate = useNavigate();
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,6 +81,7 @@ export default function PremiumCTASection() {
 
               {/* Button 2 - Outline with Subtle Glow */}
               <motion.button
+                onClick={() => navigate('/products')}
                 onHoverStart={() => setHoveredButton('quote')}
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
