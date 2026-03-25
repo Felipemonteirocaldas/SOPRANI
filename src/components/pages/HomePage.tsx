@@ -283,7 +283,7 @@ export default function HomePage() {
         {/* EVENTS SECTION */}
         <section className="bg-white">
           {/* Dark Header Strip */}
-          <div className="py-8 bg-[#031742ff]">
+          <div className="py-8 bg-primary">
             <div className="max-w-[100rem] mx-auto px-4 md:px-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white">
                 Upcoming Events

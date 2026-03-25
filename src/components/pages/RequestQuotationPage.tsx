@@ -56,7 +56,6 @@ export default function RequestQuotationPage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
       <Header />
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-primary text-white py-20 md:py-32">
@@ -266,7 +265,7 @@ export default function RequestQuotationPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                    className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
                   >
                     {isLoading ? 'Submitting...' : 'Submit Quotation Request'}
                   </button>
@@ -325,7 +324,6 @@ export default function RequestQuotationPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

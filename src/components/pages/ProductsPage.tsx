@@ -85,7 +85,6 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div 
@@ -100,13 +99,10 @@ export default function ProductsPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
               Product Solutions
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              Whatever kind of printing press you&apos;re after, we&apos;ve got the right solution and technology for you.
-            </p>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">Reliable machinery, spare parts, and technical assistance tailored to the needs of the global metal packaging industry.</p>
           </AnimatedElement>
         </div>
       </section>
-
       {/* Filter Section */}
       <section className="py-8 bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4">
@@ -141,7 +137,6 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
       {/* Products Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -198,7 +193,6 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
