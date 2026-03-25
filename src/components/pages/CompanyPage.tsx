@@ -341,9 +341,7 @@ export default function CompanyPage() {
                   <Building2 className="text-accent" size={28} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3">Innovation</h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Continuously developing cutting-edge printing technology for over two centuries
-                </p>
+                <p className="text-gray-600 text-sm sm:text-base">Continuously providing advanced technical support and revamping solutions for the metal packaging industry.</p>
               </div>
             </AnimatedElement>
             
@@ -365,9 +363,7 @@ export default function CompanyPage() {
                   <Calendar className="text-accent" size={28} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3">Excellence</h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Delivering quality and reliability in every printing solution we create
-                </p>
+                <p className="text-gray-600 text-sm sm:text-base">Delivering high-quality machinery, specialized spare parts, and reliable industrial services to our partners.</p>
               </div>
             </AnimatedElement>
           </div>
