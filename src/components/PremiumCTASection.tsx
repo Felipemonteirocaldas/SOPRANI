@@ -26,7 +26,6 @@ export default function PremiumCTASection() {
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
         <div className="flex-1 bg-green-500"></div>
-        <div className="flex-1 bg-white"></div>
 
       </div>
       {/* Main Content Container */}
