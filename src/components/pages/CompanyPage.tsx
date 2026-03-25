@@ -258,9 +258,7 @@ export default function CompanyPage() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-3 sm:mb-4 text-center">
               Our Subsidiaries
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
-              A global network of specialized companies delivering excellence in printing technology
-            </p>
+            <p className="text-base sm:text-lg text-gray-600 text-center mb-8 sm:mb-12 max-w-3xl mx-auto">A global network of specialized partners providing industrial solutions for the metal packaging sector.</p>
           </AnimatedElement>
 
           <div className="min-h-[400px]">
