@@ -271,7 +271,7 @@ export default function RequestQuotationPage() {
                   </button>
                   <a
                     href="/"
-                    className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                    className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
                   >
                     Cancel
                   </a>
@@ -315,7 +315,7 @@ export default function RequestQuotationPage() {
                 </p>
                 <a
                   href="/contact"
-                  className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-xs font-medium uppercase tracking-wider rounded-sm"
+                  className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-xs font-medium uppercase tracking-wider rounded-none"
                 >
                   Contact Us
                 </a>

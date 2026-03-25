@@ -27,7 +27,7 @@ export default function PremiumCTASection() {
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
         <div className="flex-1 bg-green-500"></div>
         <div className="flex-1 bg-white"></div>
-        <div className="flex-1 bg-red-500"></div>
+
       </div>
       {/* Main Content Container */}
       <div className="relative max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
