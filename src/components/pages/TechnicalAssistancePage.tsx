@@ -31,7 +31,6 @@ export default function TechnicalAssistancePage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
       <Header />
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-primary text-white py-20 md:py-32">
@@ -165,7 +164,7 @@ export default function TechnicalAssistancePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
+                className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 Contact Us
               </a>
@@ -179,7 +178,6 @@ export default function TechnicalAssistancePage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
