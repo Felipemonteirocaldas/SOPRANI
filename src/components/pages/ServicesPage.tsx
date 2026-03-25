@@ -10,7 +10,7 @@ export default function ServicesPage() {
       icon: Wrench,
       title: 'Used Machinery Support',
       // COLE O LINK DA IMAGEM 1 AQUI
-      imageUrl: 'https://static.wixstatic.com/media/9bbed2_840a762e598241e090ae9556b3312744~mv2.png',
+      imageUrl: 'https://static.wixstatic.com/media/9bbed2_2d4ee4f7b17c48f9bbdd646170c674af~mv2.png',
       description: 'Expert sourcing and support for industrial machinery used in metal packaging production. We help you find the right equipment for your specific manufacturing needs.',
       details: [
         'Machinery identification and sourcing',
