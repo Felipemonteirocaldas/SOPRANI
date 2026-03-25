@@ -68,7 +68,6 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div 
@@ -89,7 +88,6 @@ export default function NewsPage() {
           </AnimatedElement>
         </div>
       </section>
-
       {/* News Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -159,7 +157,6 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
-
       {/* Newsletter CTA */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
@@ -186,7 +183,7 @@ export default function NewsPage() {
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 hover:scale-105 transition-all duration-200"
+                  className="px-6 py-3 bg-accent text-white font-medium hover:bg-accent/90 hover:scale-105 transition-all duration-200 rounded-none"
                 >
                   Subscribe
                 </button>
@@ -195,7 +192,6 @@ export default function NewsPage() {
           </AnimatedElement>
         </div>
       </section>
-
       <Footer />
     </div>
   );
