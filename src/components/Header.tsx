@@ -65,18 +65,19 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-border-light backdrop-blur-md bg-opacity-95">
+    <header className="sticky top-0 z-[9999] bg-white border-b border-border-light backdrop-blur-md bg-opacity-98 shadow-md">
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 opacity-[1]">
         <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center py-2 flex-shrink-0">
+          <Link to="/" className="flex items-center py-2 flex-shrink-0 relative z-[10000]">
             <Image
               src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
               width={240}
               height={80}
-              className="h-16 xs:h-20 sm:h-24 w-auto opacity-[0.98]"
+              className="h-14 xs:h-16 sm:h-20 w-auto opacity-100"
               originWidth={2173}
-              originHeight={753} />
+              originHeight={753}
+              alt="Company Logo" />
           </Link>
 
           {/* Desktop Navigation */}
