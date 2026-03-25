@@ -195,16 +195,16 @@ export default function CompanyPage() {
       <div className="h-1 bg-gradient-to-r from-green-600 via-white to-red-600" />
       {/* Command Center Hero Section */}
       {/* Company Overview */}
-      <section className="py-20 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-8 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-6 sm:mb-8 text-center">
                 Our Legacy
               </h2>
-              <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">Soprani Engineering is a premier technical and commercial partner dedicated to the global metal packaging industry. With a deep-rooted history in industrial engineering, we specialize in providing comprehensive solutions that ensure operational excellence for can-making factories and packaging manufacturers worldwide.Soprani Engineering is a premier technical and commercial partner dedicated to the global metal packaging industry. With a deep-rooted history in industrial engineering, we specialize in providing comprehensive solutions that ensure operational excellence for can-making factories and packaging manufacturers worldwide.</p>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">Our expertise is built on a dual approach: technical mastery and strategic trading. We support our clients through the entire lifecycle of their production lines—from sourcing and revamping high-performance machinery to supplying critical spare parts and providing expert technical assistance. Furthermore, our strategic position in the market allows us to facilitate the trading of essential raw materials, such as tinplate and aluminum.Operating across Europe, the Middle East, Africa, Asia, and the Americas, Soprani Engineering stands for reliability and innovation. We don’t just offer services; we build long-term partnerships aimed at maximizing productivity and maintaining the highest standards of industrial efficiency.Our Mission
+              <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">Soprani Engineering is a premier technical and commercial partner dedicated to the global metal packaging industry. With a deep-rooted history in industrial engineering, we specialize in providing comprehensive solutions that ensure operational excellence for can-making factories and packaging manufacturers worldwide.Soprani Engineering is a premier technical and commercial partner dedicated to the global metal packaging industry. With a deep-rooted history in industrial engineering, we specialize in providing comprehensive solutions that ensure operational excellence for can-making factories and packaging manufacturers worldwide.</p>
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">Our expertise is built on a dual approach: technical mastery and strategic trading. We support our clients through the entire lifecycle of their production lines—from sourcing and revamping high-performance machinery to supplying critical spare parts and providing expert technical assistance. Furthermore, our strategic position in the market allows us to facilitate the trading of essential raw materials, such as tinplate and aluminum.Operating across Europe, the Middle East, Africa, Asia, and the Americas, Soprani Engineering stands for reliability and innovation. We don't just offer services; we build long-term partnerships aimed at maximizing productivity and maintaining the highest standards of industrial efficiency.Our Mission
                 To empower the metal packaging industry with cutting-edge engineering solutions, high-quality components, and a seamless global supply chain.</p>
               </div>
             </AnimatedElement>
@@ -212,63 +212,63 @@ export default function CompanyPage() {
         </div>
       </section>
       {/* Key Achievements */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
           <AnimatedElement>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-8 sm:mb-12 text-center">
               Key Achievements
             </h2>
           </AnimatedElement>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             <AnimatedElement delay={100}>
-              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
-                <div className="text-5xl font-heading font-bold text-accent mb-4">30+</div>
-                <p className="text-gray-700 font-medium">Years of Innovation</p>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
+                <div className="text-4xl sm:text-5xl font-heading font-bold text-accent mb-3 sm:mb-4">30+</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Years of Innovation</p>
               </div>
             </AnimatedElement>
             
             <AnimatedElement delay={200}>
-              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
-                <div className="text-5xl font-heading font-bold text-accent mb-4">2x</div>
-                <p className="text-gray-700 font-medium">Operating EBIT Growth</p>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
+                <div className="text-4xl sm:text-5xl font-heading font-bold text-accent mb-3 sm:mb-4">2x</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Operating EBIT Growth</p>
               </div>
             </AnimatedElement>
             
             <AnimatedElement delay={300}>
-              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
-                <div className="text-5xl font-heading font-bold text-accent mb-4">Global</div>
-                <p className="text-gray-700 font-medium">Market Leader</p>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
+                <div className="text-4xl sm:text-5xl font-heading font-bold text-accent mb-3 sm:mb-4">Global</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Market Leader</p>
               </div>
             </AnimatedElement>
             
             <AnimatedElement delay={400}>
-              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
-                <div className="text-5xl font-heading font-bold text-accent mb-4">Broadest</div>
-                <p className="text-gray-700 font-medium">Product Range</p>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 text-center">
+                <div className="text-4xl sm:text-5xl font-heading font-bold text-accent mb-3 sm:mb-4">Broadest</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Product Range</p>
               </div>
             </AnimatedElement>
           </div>
         </div>
       </section>
       {/* Subsidiaries Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <AnimatedElement>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-3 sm:mb-4 text-center">
               Our Subsidiaries
             </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
               A global network of specialized companies delivering excellence in printing technology
             </p>
           </AnimatedElement>
 
           <div className="min-h-[400px]">
             {isLoading ? null : subsidiaries.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {subsidiaries.map((subsidiary, index) => (
                   <AnimatedElement key={subsidiary._id} delay={index * 50}>
-                    <div className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                    <div className="group bg-white rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                       {subsidiary.logo && (
                         <div className="mb-4 h-16 flex items-center">
                           <Image 
@@ -280,26 +280,26 @@ export default function CompanyPage() {
                         </div>
                       )}
                       
-                      <h3 className="text-xl font-heading font-bold text-primary mb-3 group-hover:text-accent transition-colors">
+                      <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3 group-hover:text-accent transition-colors">
                         {subsidiary.subsidiaryName}
                       </h3>
                       
                       {subsidiary.location && (
                         <div className="flex items-center gap-2 text-gray-600 mb-2">
                           <Globe size={16} />
-                          <span className="text-sm">{subsidiary.location}</span>
+                          <span className="text-xs sm:text-sm">{subsidiary.location}</span>
                         </div>
                       )}
                       
                       {subsidiary.foundingYear && (
                         <div className="flex items-center gap-2 text-gray-600 mb-4">
                           <Calendar size={16} />
-                          <span className="text-sm">Founded {subsidiary.foundingYear}</span>
+                          <span className="text-xs sm:text-sm">Founded {subsidiary.foundingYear}</span>
                         </div>
                       )}
                       
                       {subsidiary.description && (
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                        <p className="text-gray-600 text-xs sm:text-sm mb-4 line-clamp-3">
                           {subsidiary.description}
                         </p>
                       )}
@@ -309,7 +309,7 @@ export default function CompanyPage() {
                           href={subsidiary.websiteLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-accent hover:text-accent/80 text-sm font-medium transition-colors"
+                          className="inline-flex items-center text-accent hover:text-accent/80 text-xs sm:text-sm font-medium transition-colors"
                         >
                           Visit Website
                           <ExternalLink size={14} className="ml-1" />
@@ -328,46 +328,46 @@ export default function CompanyPage() {
         </div>
       </section>
       {/* Values Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
           <AnimatedElement>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-8 sm:mb-12 text-center">
               Our Commitment
             </h2>
           </AnimatedElement>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
             <AnimatedElement delay={100}>
-              <div className="text-center p-8">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="text-accent" size={32} />
+              <div className="text-center p-6 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="text-accent" size={28} />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-3">Innovation</h3>
-                <p className="text-gray-600">
+                <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3">Innovation</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   Continuously developing cutting-edge printing technology for over two centuries
                 </p>
               </div>
             </AnimatedElement>
             
             <AnimatedElement delay={200}>
-              <div className="text-center p-8">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="text-accent" size={32} />
+              <div className="text-center p-6 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="text-accent" size={28} />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-3">Global Reach</h3>
-                <p className="text-gray-600">
+                <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3">Global Reach</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   Serving the worldwide media industry with comprehensive solutions
                 </p>
               </div>
             </AnimatedElement>
             
             <AnimatedElement delay={300}>
-              <div className="text-center p-8">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="text-accent" size={32} />
+              <div className="text-center p-6 sm:p-8">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="text-accent" size={28} />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-primary mb-3">Excellence</h3>
-                <p className="text-gray-600">
+                <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3">Excellence</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   Delivering quality and reliability in every printing solution we create
                 </p>
               </div>
