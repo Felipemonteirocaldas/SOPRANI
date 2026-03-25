@@ -81,6 +81,19 @@ export default function HomePage() {
   const [isLoadingNews, setIsLoadingNews] = useState(true);
   const [isLoadingEvents, setIsLoadingEvents] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect if device is mobile/iOS
+    const checkMobile = () => {
+      const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,7 +140,11 @@ export default function HomePage() {
         {/* HERO SECTION */}
         <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-16 xs:pt-18 sm:pt-20 bg-cover bg-center bg-no-repeat" style={{
           backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: isMobile ? 'scroll' : 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          WebkitBackgroundSize: 'cover',
+          WebkitBackgroundAttachment: isMobile ? 'scroll' : 'fixed'
         }}>
           {/* Overlay for text readability */}
           <div className="absolute inset-0 z-0 overflow-hidden">
