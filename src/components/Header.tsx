@@ -65,16 +65,16 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[9999] bg-white border-b border-border-light backdrop-blur-md bg-opacity-98 shadow-md">
+    <header className="fixed md:sticky top-0 left-0 right-0 z-[9999] md:bg-white md:border-b md:border-border-light md:backdrop-blur-md md:bg-opacity-98 md:shadow-md bg-gradient-to-b md:bg-none from-slate-900 to-slate-800 md:from-white md:to-white shadow-lg md:shadow-md">
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 opacity-[1]">
-        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20">
+        <div className="flex items-center justify-between h-14 xs:h-16 sm:h-20 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center py-2 flex-shrink-0 relative z-[10000]">
+          <Link to="/" className="flex items-center py-1 xs:py-2 flex-shrink-0 relative z-[10000]">
             <Image
               src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
               width={240}
               height={80}
-              className="h-14 xs:h-16 sm:h-20 w-auto opacity-100"
+              className="h-10 xs:h-12 sm:h-16 md:h-20 w-auto opacity-100"
               originWidth={2173}
               originHeight={753}
               alt="Company Logo" />
@@ -181,7 +181,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-primary hover:text-accent transition-colors"
+            className="md:hidden p-2 text-white md:text-primary hover:text-accent transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -190,7 +190,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-3 xs:py-4 border-t border-border-light">
+          <nav className="md:hidden py-3 xs:py-4 border-t border-border-light bg-white md:bg-transparent">
             <div className="flex flex-col space-y-1 xs:space-y-2 px-2 xs:px-3">
               {/* Main Mobile Links */}
               {mainNavLinks.map((link) => (
