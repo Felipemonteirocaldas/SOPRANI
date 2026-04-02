@@ -67,15 +67,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-[9999] bg-white border-b border-border-light backdrop-blur-md bg-opacity-98 shadow-md">
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 opacity-[1]">
-        <div className="flex items-center justify-between h-24 xs:h-28 sm:h-32 md:h-40">
+        <div className="flex items-center justify-between h-20 xs:h-24 sm:h-28 md:h-32">
           {/* Logo */}
           <Link to="/" className="flex items-center py-2 flex-shrink-0 relative z-[10000]">
-            <div className="h-20 xs:h-24 sm:h-28 md:h-36 flex items-center justify-center">
+            <div className="h-16 xs:h-20 sm:h-24 md:h-28 flex items-center justify-center">
               <Image
                 src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
-                width={280}
-                height={93}
-                className="h-full w-auto max-w-lg opacity-100"
+                width={220}
+                height={73}
+                className="h-full w-auto max-w-sm opacity-100"
                 originWidth={2173}
                 originHeight={753}
                 alt="Company Logo" />
