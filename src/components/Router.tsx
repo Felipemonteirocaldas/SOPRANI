@@ -4,6 +4,7 @@ import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import { lazy, Suspense } from 'react';
 
+const SplashPage = lazy(() => import('@/components/pages/SplashPage'));
 const HomePage = lazy(() => import('@/components/pages/HomePage'));
 const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
 const ServicesPage = lazy(() => import('@/components/pages/ServicesPage'));
@@ -38,6 +39,17 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "splash",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <SplashPage />
+          </Suspense>
+        ),
+        routeMetadata: {
+          pageIdentifier: 'splash',
+        },
+      },
       {
         index: true,
         element: (
