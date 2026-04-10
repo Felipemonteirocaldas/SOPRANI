@@ -3,28 +3,30 @@ import { Wrench, Zap, Settings, TrendingUp } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
+import { useTranslation } from 'react-i18next';
 
 export default function TechnicalAssistancePage() {
+  const { t } = useTranslation();
   const services = [
     {
       icon: Wrench,
-      title: 'Troubleshooting Support',
-      description: 'Expert diagnosis and resolution of machinery issues to get your production back on track quickly.'
+      title: t('techPage.s1T'),
+      description: t('techPage.s1D')
     },
     {
       icon: Settings,
-      title: 'Machine Evaluation',
-      description: 'Comprehensive assessment of your equipment condition, performance, and optimization opportunities.'
+      title: t('techPage.s2T'),
+      description: t('techPage.s2D')
     },
     {
       icon: Zap,
-      title: 'Maintenance Coordination',
-      description: 'Professional maintenance planning and coordination to ensure optimal machinery performance.'
+      title: t('techPage.s3T'),
+      description: t('techPage.s3D')
     },
     {
       icon: TrendingUp,
-      title: 'Revamping Support',
-      description: 'Technical guidance and support for equipment improvement and upgrading projects.'
+      title: t('techPage.s4T'),
+      description: t('techPage.s4D')
     }
   ];
 
@@ -36,10 +38,10 @@ export default function TechnicalAssistancePage() {
         <section className="bg-primary text-white py-20 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              Technical Assistance
+              {t('techPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              Expert technical support for metal packaging machinery optimization and maintenance
+              {t('techPage.heroSub')}
             </p>
           </div>
         </section>
@@ -50,13 +52,13 @@ export default function TechnicalAssistancePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                  Maximize Your Equipment Performance
+                  {t('techPage.introTitle')}
                 </h2>
                 <p className="text-gray-600 mb-4 leading-relaxed">
-                  Our technical assistance services are designed to help you optimize your metal packaging machinery and maintain peak production efficiency. Whether you're facing equipment challenges or planning upgrades, our experienced team provides comprehensive technical support.
+                  {t('techPage.introP1')}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  We combine deep technical expertise with practical problem-solving to ensure your production runs smoothly and efficiently.
+                  {t('techPage.introP2')}
                 </p>
               </div>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
@@ -74,7 +76,7 @@ export default function TechnicalAssistancePage() {
         <section className="py-20 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-center">
-              Our Technical Services
+              {t('techPage.svcTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {services.map((service, idx) => {
@@ -95,44 +97,44 @@ export default function TechnicalAssistancePage() {
         <section className="py-20 md:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
-              What We Offer
+              {t('techPage.detailsTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {[
                 {
-                  title: 'Troubleshooting & Diagnostics',
+                  title: t('techPage.t1T'),
                   items: [
-                    'Equipment malfunction diagnosis',
-                    'Root cause analysis',
-                    'Quick resolution strategies',
-                    'Preventive measures'
+                    t('techPage.t1L1'),
+                    t('techPage.t1L2'),
+                    t('techPage.t1L3'),
+                    t('techPage.t1L4')
                   ]
                 },
                 {
-                  title: 'Machine Evaluation',
+                  title: t('techPage.t2T'),
                   items: [
-                    'Performance assessment',
-                    'Condition evaluation',
-                    'Efficiency analysis',
-                    'Upgrade recommendations'
+                    t('techPage.t2L1'),
+                    t('techPage.t2L2'),
+                    t('techPage.t2L3'),
+                    t('techPage.t2L4')
                   ]
                 },
                 {
-                  title: 'Maintenance Coordination',
+                  title: t('techPage.t3T'),
                   items: [
-                    'Maintenance planning',
-                    'Schedule optimization',
-                    'Parts coordination',
-                    'Downtime minimization'
+                    t('techPage.t3L1'),
+                    t('techPage.t3L2'),
+                    t('techPage.t3L3'),
+                    t('techPage.t3L4')
                   ]
                 },
                 {
-                  title: 'Revamping Support',
+                  title: t('techPage.t4T'),
                   items: [
-                    'Equipment modernization',
-                    'Capacity enhancement',
-                    'Technology upgrades',
-                    'Performance improvement'
+                    t('techPage.t4L1'),
+                    t('techPage.t4L2'),
+                    t('techPage.t4L3'),
+                    t('techPage.t4L4')
                   ]
                 }
               ].map((section, idx) => (
@@ -156,23 +158,23 @@ export default function TechnicalAssistancePage() {
         <section className="py-20 md:py-32 bg-primary text-white">
           <div className="container mx-auto px-4 md:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              Need Technical Support?
+              {t('techPage.ctaTitle')}
             </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Contact our technical team to discuss your machinery needs and how we can help optimize your production.
+              {t('techPage.ctaDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Contact Us
+                {t('techPage.ctaBtn1')}
               </a>
               <a
                 href="/request-quotation"
                 className="px-8 py-3 border border-white text-white hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Request Support
+                {t('techPage.ctaBtn2')}
               </a>
             </div>
           </div>

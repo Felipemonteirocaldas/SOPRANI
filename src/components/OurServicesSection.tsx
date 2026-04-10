@@ -1,35 +1,37 @@
 import { Briefcase, Wrench, Clipboard, RotateCw, ShoppingCart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function OurServicesSection() {
+  const { t } = useTranslation();
   const services = [
     {
       number: '01',
-      title: 'Used Machinery',
-      description: 'Global inventory of used can making machines, welding lines, presses and decorating equipment. Verified, negotiated and delivered — faster than new-machine lead times.',
+      title: t('servicesSection.usedMachineryTitle'),
+      description: t('servicesSection.usedMachineryDesc'),
       icon: Briefcase,
     },
     {
       number: '02',
-      title: 'Spare Parts',
-      description: 'Downtime is not an option. We identify and supply spare parts for can making machines — including obsolete and hard-to-source components — with speed and precision.',
+      title: t('header.spareParts'),
+      description: t('servicesSection.sparePartsDesc'),
       icon: Wrench,
     },
     {
       number: '03',
-      title: 'Technical Assistance',
-      description: 'Expert troubleshooting, machine evaluation and production audits. On-site or remote support — diagnose fast, resolve faster, minimal disruption to output.',
+      title: t('header.technicalAssistance'),
+      description: t('servicesSection.techAssistanceDesc'),
       icon: Clipboard,
     },
     {
       number: '04',
-      title: 'Revamping',
-      description: 'Extend the productive life of your equipment. We design and manage upgrade programmes for existing lines — improving output and compliance without full replacement cost.',
+      title: t('servicesSection.revampingTitle'),
+      description: t('servicesSection.revampingDesc'),
       icon: RotateCw,
     },
     {
       number: '05',
-      title: 'Trading Materials — Tinplate & Aluminum',
-      description: 'Strategic tinplate and aluminum trading for metal packaging producers worldwide. Competitive sourcing, flexible volumes, reliable delivery — matched to your production schedule. We connect buyers and sellers across our global network to create genuine commercial value.',
+      title: t('header.tradingMaterials') + ' — Tinplate & Aluminum',
+      description: t('servicesSection.tradingDesc'),
       icon: ShoppingCart,
     },
   ];
@@ -45,25 +47,24 @@ export default function OurServicesSection() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-0.5 bg-accent"></div>
               <span className="text-xs font-heading font-semibold text-accent uppercase tracking-widest">
-                What We Do
+                {t('servicesSection.whatWeDo')}
               </span>
             </div>
 
             {/* Main Title and Subtitle */}
             <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-4">
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary">
-                Our Services
+                {t('servicesSection.ourServices')}
               </h2>
               <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-text-muted">
-                Five Areas. One Partner.
+                {t('servicesSection.fiveAreas')}
               </p>
             </div>
           </div>
 
           {/* Right Side - Button */}
           <button className="px-6 py-3 border border-accent text-accent font-heading font-semibold hover:bg-accent hover:text-white transition-colors duration-200 flex items-center gap-2 w-full md:w-auto justify-center md:justify-start">
-            All Services
-            <span>→</span>
+            {t('servicesSection.allServicesBtn')}
           </button>
         </div>
 

@@ -1,22 +1,24 @@
 import { Image } from '@/components/ui/image';
 import { Zap, Shield, TrendingUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function SplitLayoutSection() {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Zap,
-      title: 'Technical Competence',
-      description: 'Deep expertise in packaging automation and machinery across all major markets.'
+      title: t('splitLayout.f1_title'),
+      description: t('splitLayout.f1_desc')
     },
     {
       icon: Shield,
-      title: 'Global Network',
-      description: 'Partnerships with certified manufacturers and leaders across five continents.'
+      title: t('splitLayout.f2_title'),
+      description: t('splitLayout.f2_desc')
     },
     {
       icon: TrendingUp,
-      title: 'Responsive Solutions',
-      description: 'Agile support tailored to emerging market demands and evolving client needs.'
+      title: t('splitLayout.f3_title'),
+      description: t('splitLayout.f3_desc')
     }
   ];
 
@@ -37,11 +39,11 @@ export default function SplitLayoutSection() {
 
           {/* Content overlay */}
           <div className="relative z-10 text-center text-white max-w-sm">
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">Laminating Machine</h3>
+            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">{t('splitLayout.blueprintTitle')}</h3>
             <div className="space-y-2 text-sm font-paragraph opacity-90">
-              <p>Lamination Type: Cold Roll Pressure (Heavy-Duty)</p>
-              <p>Working Speed: Adjustable up to 20 m/min</p>
-              <p>Operating Mode: Fully Automatic / Line Integrated</p>
+              <p>{t('splitLayout.blueprintL1')}</p>
+              <p>{t('splitLayout.blueprintL2')}</p>
+              <p>{t('splitLayout.blueprintL3')}</p>
             </div>
           </div>
         </div>
@@ -52,22 +54,22 @@ export default function SplitLayoutSection() {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-0.5 bg-accent"></div>
             <span className="font-heading text-xs font-bold tracking-widest text-accent uppercase">
-              Who We Are
+              {t('splitLayout.who')}
             </span>
           </div>
 
           {/* Main Heading */}
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
-            Technical Depth. Commercial Flexibility.
+            {t('splitLayout.title')}
           </h2>
 
           {/* Body Text */}
           <div className="space-y-4 mb-8 max-w-lg">
             <p className="font-paragraph text-base text-text-muted leading-relaxed">
-              SOPRANI represents decades of industrial expertise and international commercial acumen. We support clients across Europe, the Middle East, North Africa, and Asia.
+              {t('splitLayout.desc1')}
             </p>
             <p className="font-paragraph text-base text-text-muted leading-relaxed">
-              We understand the pressures of modern manufacturing. Seamless, bold moves are unfolding, and sourcing critical equipment in under-resourced markets demands a reliable partner with real networks.
+              {t('splitLayout.desc2')}
             </p>
           </div>
 

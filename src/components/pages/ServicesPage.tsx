@@ -3,69 +3,71 @@ import { Wrench, Package, Zap, RefreshCw, TrendingUp } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
+import { useTranslation } from 'react-i18next';
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
   const services = [
     {
       icon: Wrench,
-      title: 'Used Machinery Support',
+      title: t('servicesPage.usedMachT'),
       // COLE O LINK DA IMAGEM 1 AQUI
       imageUrl: 'https://static.wixstatic.com/media/9bbed2_2d4ee4f7b17c48f9bbdd646170c674af~mv2.png',
-      description: 'Expert sourcing and support for industrial machinery used in metal packaging production. We help you find the right equipment for your specific manufacturing needs.',
+      description: t('servicesPage.usedMachD'),
       details: [
-        'Machinery identification and sourcing',
-        'Equipment evaluation and assessment',
-        'Installation support and commissioning',
-        'Competitive pricing and flexible terms'
+        t('servicesPage.usedP1'),
+        t('servicesPage.usedP2'),
+        t('servicesPage.usedP3'),
+        t('servicesPage.usedP4')
       ]
     },
     {
       icon: Package,
-      title: 'Spare Parts',
+      title: t('servicesPage.sparePartsT'),
       // COLE O LINK DA IMAGEM 2 AQUI
       imageUrl: 'https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png',
-      description: 'Comprehensive identification and supply of spare parts for machinery. Minimize production downtime with our reliable spare parts sourcing network.',
+      description: t('servicesPage.sparePartsD'),
       details: [
-        'Parts identification and sourcing',
-        'Difficult component sourcing',
-        'Quality assurance and verification',
-        'Fast delivery and logistics support'
+        t('servicesPage.spP1'),
+        t('servicesPage.spP2'),
+        t('servicesPage.spP3'),
+        t('servicesPage.spP4')
       ]
     },
     {
       icon: Zap,
-      title: 'Technical Assistance',
+      title: t('servicesPage.techAssistanceT'),
       imageUrl: '', // Link da imagem 3
-      description: 'Professional technical support including troubleshooting, machine evaluation, and maintenance coordination for optimal production performance.',
+      description: t('servicesPage.techAssistanceD'),
       details: [
-        'Machine troubleshooting and diagnostics',
-        'Equipment evaluation and optimization',
-        'Maintenance coordination',
-        'Performance improvement recommendations'
+        t('servicesPage.ta1'),
+        t('servicesPage.ta2'),
+        t('servicesPage.ta3'),
+        t('servicesPage.ta4')
       ]
     },
     {
       icon: RefreshCw,
-      title: 'Revamping',
+      title: t('servicesPage.revampingT'),
       imageUrl: '', // Link da imagem 4
-      description: 'Equipment improvement and upgrading services to enhance your production capabilities and extend machinery lifespan.',
+      description: t('servicesPage.revampingD'),
       details: [
-        'Equipment modernization',
-        'Performance enhancement',
-        'Capacity improvement',
-        'Cost-effective upgrades'
+        t('servicesPage.rv1'),
+        t('servicesPage.rv2'),
+        t('servicesPage.rv3'),
+        t('servicesPage.rv4')
       ]
     },
     {
       icon: TrendingUp,
-      title: 'Trading Materials',
+      title: t('servicesPage.tradingT'),
       imageUrl: '', // Link da imagem 5
-      description: 'Trading opportunities in tinplate and aluminum materials used in metal packaging production. Direct access to quality materials at competitive prices.',
+      description: t('servicesPage.tradingD'),
       details: [
-        'Tinplate supply and trading',
-        'Aluminum material sourcing',
-        'Quality material verification',
-        'Flexible order quantities'
+        t('servicesPage.tr1'),
+        t('servicesPage.tr2'),
+        t('servicesPage.tr3'),
+        t('servicesPage.tr4')
       ]
     }
   ];
@@ -78,10 +80,10 @@ export default function ServicesPage() {
         <section className="text-white py-20 md:py-32 bg-primary">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              Our Services
+              {t('servicesSection.ourServices')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              Comprehensive solutions for metal packaging manufacturers worldwide
+              {t('servicesPage.heroSub')}
             </p>
           </div>
         </section>
@@ -139,23 +141,23 @@ export default function ServicesPage() {
         <section className="py-20 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              Ready to Optimize Your Operations?
+              {t('servicesPage.ctaTitle')}
             </h2>
             <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss how our services can support your metal packaging business.
+              {t('servicesPage.ctaDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="px-8 py-3 bg-accent text-white hover:bg-accent/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Contact Us
+                {t('servicesPage.btnContact')}
               </a>
               <a
                 href="/request-quotation"
                 className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Request a Quotation
+                {t('servicesPage.btnQuote')}
               </a>
             </div>
           </div>

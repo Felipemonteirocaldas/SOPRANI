@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { BaseCrudService } from '@/integrations';
 import { ProductSolutions } from '@/entities';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Product {
   id: string;
@@ -78,7 +79,7 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
 
           {/* Learn More Link */}
           <Link to="/products" className="flex items-center text-accent font-semibold text-sm group-hover:gap-2 transition-all duration-300 hover:no-underline">
-            <span>Learn More</span>
+            <span>{product.learnMoreKey}</span>
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -88,6 +89,7 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
 };
 
 export default function OurServicesProducts() {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -100,6 +102,7 @@ export default function OurServicesProducts() {
           number: String(index + 1).padStart(2, '0'),
           title: item.solutionName || 'Product',
           description: item.detailedDescription || '',
+          learnMoreKey: t('productsSection.learnMore'),
           image: item.solutionImage || 'https://static.wixstatic.com/media/9bbed2_9b0131eabaf440b68a748b0f9f16e116~mv2.png',
         }));
         setProducts(mappedProducts);
@@ -119,10 +122,10 @@ export default function OurServicesProducts() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-6">
-            Our Products
+            {t('productsSection.ourProducts')}
           </h2>
           <p className="text-lg text-text-muted leading-relaxed">
-            Comprehensive range of industrial packaging machinery solutions for metal can production. From bodymakers to seamers, we deliver precision and reliability.
+            {t('productsSection.desc')}
           </p>
         </div>
 
@@ -138,7 +141,7 @@ export default function OurServicesProducts() {
             ))
           ) : isLoading ? null : (
             <div className="col-span-full text-center py-12">
-              <p className="text-text-muted">No products available</p>
+              <p className="text-text-muted">{t('productsSection.noProducts')}</p>
             </div>
           )}
         </div>

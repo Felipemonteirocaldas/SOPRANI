@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -44,6 +45,7 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
 };
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -98,10 +100,10 @@ export default function ContactPage() {
         <div className="relative max-w-[100rem] mx-auto px-4 md:px-8 text-center">
           <AnimatedElement>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              Contact Us
+              {t('contactPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
-              Get in touch with our team for inquiries about machinery, spare parts, technical assistance, or material trading
+              {t('contactPage.heroSub')}
             </p>
           </AnimatedElement>
         </div>
@@ -114,10 +116,10 @@ export default function ContactPage() {
             <div className="lg:col-span-1">
               <AnimatedElement>
                 <h2 className="text-2xl font-heading font-bold text-primary mb-6">
-                  Get In Touch
+                  {t('contactPage.getInTouch')}
                 </h2>
                 <p className="text-text-muted mb-8">
-                  We&apos;re here to help and answer any questions you might have about our services and solutions.
+                  {t('contactPage.getInTouchDesc')}
                 </p>
                 
                 <div className="space-y-6">
@@ -126,7 +128,7 @@ export default function ContactPage() {
                       <Mail className="text-accent" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">Email</h3>
+                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.email')}</h3>
                       <p className="text-text-muted">info@sopraniengineering.com</p>
                     </div>
                   </div>
@@ -136,7 +138,7 @@ export default function ContactPage() {
                       <Phone className="text-accent" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">Phone</h3>
+                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.phone')}</h3>
                       <p className="text-text-muted">+1 (234) 567-890</p>
                     </div>
                   </div>
@@ -146,7 +148,7 @@ export default function ContactPage() {
                       <MapPin className="text-accent" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">Global Presence</h3>
+                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.presence')}</h3>
                       <p className="text-text-muted">
                         Europe, Middle East, North Africa, Asia, Americas
                       </p>
@@ -161,20 +163,20 @@ export default function ContactPage() {
               <AnimatedElement delay={200}>
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-border-light">
                   <h2 className="text-2xl font-heading font-bold text-primary mb-6">
-                    Send Us a Message
+                    {t('contactPage.msgTitle')}
                   </h2>
                   
                   {submitted ? (
                     <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                      <h3 className="text-xl font-heading font-bold text-green-900 mb-2">Thank You!</h3>
-                      <p className="text-green-800">Your message has been received. We will get back to you soon.</p>
+                      <h3 className="text-xl font-heading font-bold text-green-900 mb-2">{t('contactPage.thxTitle')}</h3>
+                      <p className="text-green-800">{t('contactPage.thxDesc')}</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
-                            Name *
+                            {t('contactPage.formName')}
                           </label>
                           <input
                             type="text"
@@ -184,13 +186,13 @@ export default function ContactPage() {
                             onChange={handleChange}
                             required
                             className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder="Your name"
+                            placeholder={t('contactPage.formPlaceN')}
                           />
                         </div>
                         
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
-                            Email *
+                            {t('contactPage.email')} *
                           </label>
                           <input
                             type="email"
@@ -208,7 +210,7 @@ export default function ContactPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="company" className="block text-sm font-medium text-primary mb-2">
-                            Company
+                            {t('contactPage.formCompany')}
                           </label>
                           <input
                             type="text"
@@ -217,13 +219,13 @@ export default function ContactPage() {
                             value={formData.company}
                             onChange={handleChange}
                             className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder="Your company name"
+                            placeholder={t('contactPage.formPlaceC')}
                           />
                         </div>
                         
                         <div>
                           <label htmlFor="country" className="block text-sm font-medium text-primary mb-2">
-                            Country
+                            {t('contactPage.formCountry')}
                           </label>
                           <input
                             type="text"
@@ -232,14 +234,14 @@ export default function ContactPage() {
                             value={formData.country}
                             onChange={handleChange}
                             className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder="Your country"
+                            placeholder={t('contactPage.formCountry')}
                           />
                         </div>
                       </div>
                       
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-primary mb-2">
-                          Phone
+                          {t('contactPage.phone')}
                         </label>
                         <input
                           type="tel"
@@ -254,7 +256,7 @@ export default function ContactPage() {
                       
                       <div>
                         <label htmlFor="subject" className="block text-sm font-medium text-primary mb-2">
-                          Subject *
+                          {t('contactPage.formSubject')}
                         </label>
                         <select
                           id="subject"
@@ -264,19 +266,19 @@ export default function ContactPage() {
                           required
                           className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
                         >
-                          <option value="">Select a subject</option>
-                          <option value="machinery">Machinery Inquiry</option>
-                          <option value="spare-parts">Spare Parts</option>
-                          <option value="technical">Technical Assistance</option>
-                          <option value="trading">Trading Materials</option>
-                          <option value="general">General Inquiry</option>
-                          <option value="partnership">Partnership</option>
+                          <option value="">{t('contactPage.subSelect')}</option>
+                          <option value="machinery">{t('contactPage.sub1')}</option>
+                          <option value="spare-parts">{t('contactPage.sub2')}</option>
+                          <option value="technical">{t('contactPage.sub3')}</option>
+                          <option value="trading">{t('contactPage.sub4')}</option>
+                          <option value="general">{t('contactPage.sub5')}</option>
+                          <option value="partnership">{t('contactPage.sub6')}</option>
                         </select>
                       </div>
                       
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium text-primary mb-2">
-                          Message *
+                          {t('contactPage.formMsg')}
                         </label>
                         <textarea
                           id="message"
@@ -286,7 +288,7 @@ export default function ContactPage() {
                           required
                           rows={6}
                           className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none bg-background-alt"
-                          placeholder="Tell us how we can help you..."
+                          placeholder={t('contactPage.formPlaceP')}
                         />
                       </div>
                       
@@ -298,11 +300,11 @@ export default function ContactPage() {
                         {isSubmitting ? (
                           <>
                             <span className="animate-spin mr-2">⏳</span>
-                            Sending...
+                            {t('contactPage.formSending')}
                           </>
                         ) : (
                           <>
-                            Send Message
+                            {t('contactPage.formSend')}
                             <Send size={18} className="ml-2" />
                           </>
                         )}
@@ -322,26 +324,26 @@ export default function ContactPage() {
             <AnimatedElement>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">Request a Quotation</h3>
-                  <p className="text-text-muted mb-4">Need a customized quote for machinery or services?</p>
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.reqQuote')}</h3>
+                  <p className="text-text-muted mb-4">{t('contactPage.reqQuoteSub')}</p>
                   <a href="/request-quotation" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    Get a Quote →
+                    {t('contactPage.reqQuoteBtn')}
                   </a>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">Services</h3>
-                  <p className="text-text-muted mb-4">Learn more about our comprehensive services</p>
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.svcSub')}</h3>
+                  <p className="text-text-muted mb-4">{t('contactPage.svcSub')}</p>
                   <a href="/services" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    View Services →
+                    {t('contactPage.svcBtn')}
                   </a>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">About Us</h3>
-                  <p className="text-text-muted mb-4">Discover our expertise and global presence</p>
+                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.aboutUs')}</h3>
+                  <p className="text-text-muted mb-4">{t('contactPage.aboutSub')}</p>
                   <a href="/about" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    Learn More →
+                    {t('contactPage.aboutBtn')}
                   </a>
                 </div>
               </div>

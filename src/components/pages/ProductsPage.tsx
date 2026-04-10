@@ -3,9 +3,11 @@ import { BaseCrudService } from '@/integrations';
 import { ProductSolutions } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
-import { Filter } from 'lucide-react';
+import { Filter, Search } from 'lucide-react';
 import Header from '@/components/Header';
+import Fuse from 'fuse.js';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,23 +50,35 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
 };
 
 export default function ProductsPage() {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<ProductSolutions[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductSolutions[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [categories, setCategories] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     loadProducts();
   }, []);
 
   useEffect(() => {
-    if (selectedCategory === 'all') {
-      setFilteredProducts(products);
-    } else {
-      setFilteredProducts(products.filter(p => p.category === selectedCategory));
+    let filtered = products;
+    
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(p => p.category === selectedCategory);
     }
-  }, [selectedCategory, products]);
+    
+    if (searchQuery.trim()) {
+      const fuse = new Fuse(filtered, {
+        keys: ['solutionName', 'category', 'detailedDescription', 'keyFeatures', 'specifications'],
+        threshold: 0.3,
+      });
+      filtered = fuse.search(searchQuery).map(result => result.item);
+    }
+    
+    setFilteredProducts(filtered);
+  }, [selectedCategory, products, searchQuery]);
 
   const loadProducts = async () => {
     try {
@@ -97,43 +111,56 @@ export default function ProductsPage() {
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              Product Solutions
+              {t('productsPage.heroTitle')}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">Reliable machinery, spare parts, and technical assistance tailored to the needs of the global metal packaging industry.</p>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{t('productsPage.heroSub')}</p>
           </AnimatedElement>
         </div>
       </section>
-      {/* Filter Section */}
+      {/* Filter and Search Section */}
       <section className="py-8 bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 flex-wrap">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Filter size={20} />
-              <span className="font-medium">Filter by:</span>
-            </div>
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedCategory === 'all'
-                  ? 'bg-accent text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              All Products
-            </button>
-            {categories.map((category) => (
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div className="flex items-center gap-4 flex-wrap flex-1">
+              <div className="flex items-center gap-2 text-gray-700">
+                <Filter size={20} />
+                <span className="font-medium">{t('productsPage.filterBy')}</span>
+              </div>
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => setSelectedCategory('all')}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  selectedCategory === category
+                  selectedCategory === 'all'
                     ? 'bg-accent text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                {category}
+                {t('productsPage.allProducts')}
               </button>
-            ))}
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    selectedCategory === category
+                      ? 'bg-accent text-white'
+                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            
+            <div className="w-full md:w-80 relative flex-shrink-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+              <input 
+                type="text" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products..." 
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all shadow-sm"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -176,7 +203,7 @@ export default function ProductsPage() {
                         )}
                         {product.keyFeatures && (
                           <div className="mt-4 pt-4 border-t border-gray-100">
-                            <p className="text-xs text-gray-500 font-medium mb-2">Key Features:</p>
+                            <p className="text-xs text-gray-500 font-medium mb-2">{t('productsPage.keyFeatures')}</p>
                             <p className="text-sm text-gray-600 line-clamp-2">{product.keyFeatures}</p>
                           </div>
                         )}
@@ -187,7 +214,7 @@ export default function ProductsPage() {
               </div>
             ) : (
               <div className="text-center py-20">
-                <p className="text-gray-500 text-lg">No products found in this category.</p>
+                <p className="text-gray-500 text-lg">{t('productsPage.emptyProducts')}</p>
               </div>
             )}
           </div>

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 export default function RequestQuotationPage() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     companyName: '',
     contactPerson: '',
@@ -61,10 +63,10 @@ export default function RequestQuotationPage() {
         <section className="bg-primary text-white py-20 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              Request a Quotation
+              {t('reqPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              Get a customized quote for machinery, spare parts, technical assistance, or materials
+              {t('reqPage.heroSub')}
             </p>
           </div>
         </section>
@@ -75,16 +77,16 @@ export default function RequestQuotationPage() {
             {submitted ? (
               <div className="bg-green-50 border border-green-200 rounded-lg p-12 text-center">
                 <h2 className="text-2xl font-heading font-bold text-green-900 mb-4">
-                  Thank You!
+                  {t('reqPage.thxTitle')}
                 </h2>
                 <p className="text-green-800 mb-6">
-                  Your quotation request has been received successfully. Our team will review your request and contact you shortly with a customized quote.
+                  {t('reqPage.thxDesc')}
                 </p>
                 <a
                   href="/"
                   className="inline-block px-8 py-3 bg-primary text-white hover:bg-primary-light hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-sm"
                 >
-                  Return to Home
+                  {t('reqPage.thxBtn')}
                 </a>
               </div>
             ) : (
@@ -92,11 +94,11 @@ export default function RequestQuotationPage() {
                 {/* Company Information */}
                 <div>
                   <h3 className="text-xl font-heading font-bold mb-6 pb-4 border-b border-gray-200">
-                    Company Information
+                    {t('reqPage.coInfo')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Company Name *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.coName')}</label>
                       <input
                         type="text"
                         name="companyName"
@@ -108,7 +110,7 @@ export default function RequestQuotationPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Contact Person *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.coPerson')}</label>
                       <input
                         type="text"
                         name="contactPerson"
@@ -116,11 +118,10 @@ export default function RequestQuotationPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.coEmail')}</label>
                       <input
                         type="email"
                         name="email"
@@ -132,7 +133,7 @@ export default function RequestQuotationPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Phone *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.coPhone')}</label>
                       <input
                         type="tel"
                         name="phone"
@@ -144,7 +145,7 @@ export default function RequestQuotationPage() {
                       />
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium mb-2">Country *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.coCountry')}</label>
                       <input
                         type="text"
                         name="country"
@@ -152,7 +153,6 @@ export default function RequestQuotationPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Your country"
                       />
                     </div>
                   </div>
@@ -161,11 +161,11 @@ export default function RequestQuotationPage() {
                 {/* Product/Service Information */}
                 <div>
                   <h3 className="text-xl font-heading font-bold mb-6 pb-4 border-b border-gray-200">
-                    Product or Service Requested
+                    {t('reqPage.prInfo')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Product or Service *</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.prOpt')}</label>
                       <select
                         name="productOrService"
                         value={formData.productOrService}
@@ -173,60 +173,60 @@ export default function RequestQuotationPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
                       >
-                        <option value="">Select an option</option>
-                        <option value="machinery">Machinery</option>
-                        <option value="spare-parts">Spare Parts</option>
-                        <option value="technical-assistance">Technical Assistance</option>
-                        <option value="trading-materials">Trading Materials</option>
-                        <option value="revamping">Revamping</option>
-                        <option value="other">Other</option>
+                        <option value="">{t('reqPage.prVal0')}</option>
+                        <option value="machinery">{t('reqPage.prVal1')}</option>
+                        <option value="spare-parts">{t('reqPage.prVal2')}</option>
+                        <option value="technical-assistance">{t('reqPage.prVal3')}</option>
+                        <option value="trading-materials">{t('reqPage.prVal4')}</option>
+                        <option value="revamping">{t('reqPage.prVal5')}</option>
+                        <option value="other">{t('reqPage.prVal6')}</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Machine Type</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.macType')}</label>
                       <input
                         type="text"
                         name="machineType"
                         value={formData.machineType}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="e.g., Can-making line, Welding machine"
+                        placeholder={t('reqPage.macTypePlace')}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Spare Part Reference</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.sparRef')}</label>
                       <input
                         type="text"
                         name="sparePartReference"
                         value={formData.sparePartReference}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Part number or description"
+                        placeholder={t('reqPage.sparRefPlace')}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Quantity</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.qty')}</label>
                       <input
                         type="text"
                         name="quantity"
                         value={formData.quantity}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Quantity needed"
+                        placeholder={t('reqPage.qtyPlace')}
                       />
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-medium mb-2">Urgency</label>
+                      <label className="block text-sm font-medium mb-2">{t('reqPage.urg')}</label>
                       <select
                         name="urgency"
                         value={formData.urgency}
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent"
                       >
-                        <option value="low">Low - No rush</option>
-                        <option value="normal">Normal - Standard timeline</option>
-                        <option value="high">High - Urgent</option>
-                        <option value="critical">Critical - ASAP</option>
+                        <option value="low">{t('reqPage.urg1')}</option>
+                        <option value="normal">{t('reqPage.urg2')}</option>
+                        <option value="high">{t('reqPage.urg3')}</option>
+                        <option value="critical">{t('reqPage.urg4')}</option>
                       </select>
                     </div>
                   </div>
@@ -235,17 +235,17 @@ export default function RequestQuotationPage() {
                 {/* Message */}
                 <div>
                   <h3 className="text-xl font-heading font-bold mb-6 pb-4 border-b border-gray-200">
-                    Additional Information
+                    {t('reqPage.msgInfo')}
                   </h3>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Message</label>
+                    <label className="block text-sm font-medium mb-2">{t('reqPage.msgLbl')}</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
                       className="w-full px-4 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                      placeholder="Please provide any additional details about your quotation request..."
+                      placeholder={t('reqPage.msgPlace')}
                     />
                   </div>
                 </div>
@@ -254,9 +254,7 @@ export default function RequestQuotationPage() {
                 <div className="bg-background-alt border border-border-light rounded-lg p-4 flex items-start gap-3">
                   <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm text-primary">
-                      <strong>File Attachments:</strong> To attach files (technical drawings, specifications, etc.), please email them directly to our team after submitting this form, or contact us for alternative submission methods.
-                    </p>
+                    <p className="text-sm text-primary" dangerouslySetInnerHTML={{ __html: t('reqPage.fileInfo') }} />
                   </div>
                 </div>
 
@@ -267,18 +265,18 @@ export default function RequestQuotationPage() {
                     disabled={isLoading}
                     className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
                   >
-                    {isLoading ? 'Submitting...' : 'Submit Quotation Request'}
+                    {isLoading ? t('reqPage.subBtnL') : t('reqPage.subBtn')}
                   </button>
                   <a
                     href="/"
                     className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
                   >
-                    Cancel
+                    {t('reqPage.cancelBtn')}
                   </a>
                 </div>
 
                 <p className="text-xs text-gray-500">
-                  * Required fields. We respect your privacy and will only use your information to respond to your quotation request.
+                  {t('reqPage.reqLbl')}
                 </p>
               </form>
             )}
@@ -289,11 +287,11 @@ export default function RequestQuotationPage() {
         <section className="py-20 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
-              Other Ways to Reach Us
+              {t('reqPage.waysTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-                <h3 className="text-lg font-heading font-bold mb-4">Email</h3>
+                <h3 className="text-lg font-heading font-bold mb-4">{t('reqPage.wEmail')}</h3>
                 <p className="text-gray-600">
                   <a href="mailto:info@sopraniengineering.com" className="text-accent hover:underline">
                     info@sopraniengineering.com
@@ -301,7 +299,7 @@ export default function RequestQuotationPage() {
                 </p>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-                <h3 className="text-lg font-heading font-bold mb-4">Phone</h3>
+                <h3 className="text-lg font-heading font-bold mb-4">{t('reqPage.wPhone')}</h3>
                 <p className="text-gray-600">
                   <a href="tel:+1234567890" className="text-accent hover:underline">
                     +1 (234) 567-890
@@ -309,15 +307,15 @@ export default function RequestQuotationPage() {
                 </p>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-                <h3 className="text-lg font-heading font-bold mb-4">Contact Form</h3>
+                <h3 className="text-lg font-heading font-bold mb-4">{t('reqPage.wForms')}</h3>
                 <p className="text-gray-600 mb-4">
-                  Prefer a general inquiry?
+                  {t('reqPage.wFormsDesc')}
                 </p>
                 <a
                   href="/contact"
                   className="inline-block px-6 py-2 border border-accent text-accent hover:bg-accent hover:text-white hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-xs font-medium uppercase tracking-wider rounded-none"
                 >
-                  Contact Us
+                  {t('reqPage.wFormsBtn')}
                 </a>
               </div>
             </div>

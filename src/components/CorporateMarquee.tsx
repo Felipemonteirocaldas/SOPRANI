@@ -1,27 +1,29 @@
 import { motion } from 'framer-motion';
 import { MapPin, Zap, TrendingUp, ShoppingCart, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const CorporateMarquee = () => {
+  const { t } = useTranslation();
   const items = [
     {
       icon: MapPin,
-      text: 'Italy · Europe · MENA · Asia · Americas',
+      text: t('infoBar.regions'),
     },
     {
       icon: Zap,
-      text: '24/7 Technical Support',
+      text: t('infoBar.support'),
     },
     {
       icon: TrendingUp,
-      text: 'Spare Parts for All Major OEMs',
+      text: t('infoBar.spareParts'),
     },
     {
       icon: ShoppingCart,
-      text: 'Tinplate & Aluminum Trading',
+      text: t('infoBar.trading'),
     },
     {
       icon: Globe,
-      text: '100+ Partners Worldwide',
+      text: t('infoBar.partners'),
     },
   ];
 

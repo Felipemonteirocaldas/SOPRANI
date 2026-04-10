@@ -5,6 +5,7 @@ import { Image } from '@/components/ui/image';
 import { Calendar, User } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,6 +48,7 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
 };
 
 export default function NewsPage() {
+  const { t } = useTranslation();
   const [news, setNews] = useState<NewsandUpdates[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -80,10 +82,10 @@ export default function NewsPage() {
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              News & Updates
+              {t('newsPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              Stay informed about our latest achievements, innovations, and industry insights
+              {t('newsPage.heroSub')}
             </p>
           </AnimatedElement>
         </div>
@@ -141,7 +143,7 @@ export default function NewsPage() {
                         )}
                         
                         <button className="text-accent font-medium text-sm hover:text-accent/80 transition-colors self-start">
-                          Read more →
+                          {t('newsPage.readMore')}
                         </button>
                       </div>
                     </article>
@@ -150,8 +152,8 @@ export default function NewsPage() {
               </div>
             ) : (
               <div className="text-center py-20">
-                <p className="text-gray-500 text-lg">No news available at the moment.</p>
-                <p className="text-gray-400 text-sm mt-2">Check back soon for updates.</p>
+                <p className="text-gray-500 text-lg">{t('newsPage.emptyTitle')}</p>
+                <p className="text-gray-400 text-sm mt-2">{t('newsPage.emptySub')}</p>
               </div>
             )}
           </div>
@@ -163,10 +165,10 @@ export default function NewsPage() {
           <AnimatedElement>
             <div className="max-w-3xl mx-auto text-center bg-white rounded-3xl p-12 shadow-lg border border-gray-100">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-                Stay Updated
+                {t('newsPage.ctaTitle')}
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Subscribe to receive the latest news and updates from Koenig & Bauer
+                {t('newsPage.ctaDesc')}
               </p>
               <form 
                 onSubmit={(e) => {
@@ -177,7 +179,7 @@ export default function NewsPage() {
               >
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('newsPage.placeholderEmail')}
                   className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                   required
                 />
@@ -185,7 +187,7 @@ export default function NewsPage() {
                   type="submit"
                   className="px-6 py-3 bg-accent text-white font-medium hover:bg-accent/90 hover:scale-105 transition-all duration-200 rounded-none"
                 >
-                  Subscribe
+                  {t('newsPage.btnSubscribe')}
                 </button>
               </form>
             </div>

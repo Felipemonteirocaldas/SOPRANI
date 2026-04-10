@@ -1,8 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function SplashPage() {
+  const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const navigate = useNavigate();
   const [videoEnded, setVideoEnded] = useState(false);
@@ -58,7 +60,7 @@ export default function SplashPage() {
         muted
         playsInline
         onEnded={handleVideoEnd}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover"
       >
         <source src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -69,7 +71,7 @@ export default function SplashPage() {
           autoPlay
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain md:object-cover"
         >
           <source src="https://video.wixstatic.com/video/9bbed2_37cad7d1812b4f7d9bb5dd524a7185b4/file" type="video/mp4" />
           Your browser does not support the video tag.
@@ -88,7 +90,7 @@ export default function SplashPage() {
             <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-100" />
             <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-200" />
           </div>
-          <p className="text-white text-xs sm:text-sm font-medium">Loading...</p>
+          <p className="text-white text-xs sm:text-sm font-medium">{t('splash.loading')}</p>
         </motion.div>
       )}
       {/* Enter button - shows after video ends or after 5 seconds */}
@@ -97,15 +99,15 @@ export default function SplashPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute bottom-6 sm:bottom-16 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-xs"
+          className="absolute bottom-10 sm:bottom-16 left-0 right-0 flex justify-center z-50 pointer-events-none"
         >
           <motion.button
             onClick={handleEnter}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-xl font-bold text-primary transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg rounded-none"
+            className="pointer-events-auto flex items-center justify-center w-[200px] py-3 sm:py-4 text-base sm:text-lg font-bold text-primary transition-all duration-300 backdrop-blur-md bg-white border border-gray-200 hover:bg-gray-50 shadow-md rounded-none text-center"
           >
-            Enter
+            {t('splash.enter')}
           </motion.button>
         </motion.div>
       )}

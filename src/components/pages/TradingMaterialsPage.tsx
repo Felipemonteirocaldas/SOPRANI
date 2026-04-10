@@ -3,39 +3,42 @@ import { Boxes, TrendingUp, Globe, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
+import { useTranslation } from 'react-i18next';
 
 export default function TradingMaterialsPage() {
+  const { t } = useTranslation();
+  
   const materials = [
     {
-      title: 'Tinplate',
-      description: 'High-quality tinplate materials for metal packaging production. Available in various gauges and specifications for food and beverage containers.'
+      title: t('tradingPage.m1T'),
+      description: t('tradingPage.m1D')
     },
     {
-      title: 'Aluminum',
-      description: 'Premium aluminum materials for lightweight and durable metal packaging solutions. Ideal for beverage cans and specialty containers.'
+      title: t('tradingPage.m2T'),
+      description: t('tradingPage.m2D')
     }
   ];
 
   const benefits = [
     {
       icon: Globe,
-      title: 'Global Supply',
-      description: 'Access to quality materials from reliable suppliers worldwide.'
+      title: t('tradingPage.b1T'),
+      description: t('tradingPage.b1D')
     },
     {
       icon: TrendingUp,
-      title: 'Competitive Pricing',
-      description: 'Competitive rates on bulk orders with flexible payment terms.'
+      title: t('tradingPage.b2T'),
+      description: t('tradingPage.b2D')
     },
     {
       icon: CheckCircle,
-      title: 'Quality Assurance',
-      description: 'All materials verified for quality and specifications.'
+      title: t('tradingPage.b3T'),
+      description: t('tradingPage.b3D')
     },
     {
       icon: Boxes,
-      title: 'Flexible Orders',
-      description: 'Flexible order quantities to match your production needs.'
+      title: t('tradingPage.b4T'),
+      description: t('tradingPage.b4D')
     }
   ];
 
@@ -47,10 +50,10 @@ export default function TradingMaterialsPage() {
         <section className="bg-primary text-white py-20 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              Trading Materials
+              {t('tradingPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              Tinplate and aluminum trading for metal packaging production
+              {t('tradingPage.heroSub')}
             </p>
           </div>
         </section>
@@ -61,13 +64,13 @@ export default function TradingMaterialsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                  Quality Materials for Metal Packaging
+                  {t('tradingPage.introTitle')}
                 </h2>
                 <p className="text-gray-600 mb-4 leading-relaxed">
-                  We provide direct access to quality tinplate and aluminum materials used in metal packaging production. Our trading operations connect manufacturers with reliable suppliers, ensuring consistent supply of materials that meet industry standards.
+                  {t('tradingPage.introP1')}
                 </p>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Whether you need tinplate for food and beverage cans or aluminum for lightweight packaging solutions, we offer competitive pricing and flexible order quantities to support your production needs.
+                  {t('tradingPage.introP2')}
                 </p>
               </div>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
@@ -85,7 +88,7 @@ export default function TradingMaterialsPage() {
         <section className="py-20 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-center">
-              Materials We Trade
+              {t('tradingPage.matTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {materials.map((material, idx) => (
@@ -95,19 +98,19 @@ export default function TradingMaterialsPage() {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span className="text-gray-600">Various gauges and specifications</span>
+                      <span className="text-gray-600">{t('tradingPage.matFeature1')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span className="text-gray-600">Quality verified materials</span>
+                      <span className="text-gray-600">{t('tradingPage.matFeature2')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span className="text-gray-600">Competitive pricing</span>
+                      <span className="text-gray-600">{t('tradingPage.matFeature3')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span className="text-gray-600">Flexible order quantities</span>
+                      <span className="text-gray-600">{t('tradingPage.matFeature4')}</span>
                     </li>
                   </ul>
                 </div>
@@ -120,7 +123,7 @@ export default function TradingMaterialsPage() {
         <section className="py-20 md:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-16 text-center">
-              Why Choose Soprani Engineering for Materials Trading?
+              {t('tradingPage.whyTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map((benefit, idx) => {
@@ -141,33 +144,33 @@ export default function TradingMaterialsPage() {
         <section className="py-20 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
-              Our Trading Services
+              {t('tradingPage.svcTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {[
                 {
-                  title: 'Material Sourcing',
-                  description: 'Direct sourcing of tinplate and aluminum from reliable suppliers with quality assurance.'
+                  title: t('tradingPage.s1T'),
+                  description: t('tradingPage.s1D')
                 },
                 {
-                  title: 'Specification Matching',
-                  description: 'Precise matching of materials to your specific production requirements and standards.'
+                  title: t('tradingPage.s2T'),
+                  description: t('tradingPage.s2D')
                 },
                 {
-                  title: 'Bulk Orders',
-                  description: 'Competitive pricing on bulk orders with flexible payment and delivery terms.'
+                  title: t('tradingPage.s3T'),
+                  description: t('tradingPage.s3D')
                 },
                 {
-                  title: 'Logistics Support',
-                  description: 'Efficient logistics and delivery coordination to ensure timely material arrival.'
+                  title: t('tradingPage.s4T'),
+                  description: t('tradingPage.s4D')
                 },
                 {
-                  title: 'Quality Verification',
-                  description: 'All materials undergo quality verification before delivery to ensure compliance.'
+                  title: t('tradingPage.s5T'),
+                  description: t('tradingPage.s5D')
                 },
                 {
-                  title: 'Technical Consultation',
-                  description: 'Expert guidance on material selection and specifications for your production needs.'
+                  title: t('tradingPage.s6T'),
+                  description: t('tradingPage.s6D')
                 }
               ].map((feature, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-lg shadow-sm">
@@ -183,23 +186,23 @@ export default function TradingMaterialsPage() {
         <section className="py-20 md:py-32 bg-primary text-white">
           <div className="container mx-auto px-4 md:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              Looking for Quality Materials?
+              {t('tradingPage.ctaTitle')}
             </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Contact us for tinplate and aluminum trading opportunities. We'll help you find the right materials at competitive prices.
+              {t('tradingPage.ctaDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Contact Us
+                {t('tradingPage.ctaBtn1')}
               </a>
               <a
                 href="/request-quotation"
                 className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
-                Request a Quote
+                {t('tradingPage.ctaBtn2')}
               </a>
             </div>
           </div>

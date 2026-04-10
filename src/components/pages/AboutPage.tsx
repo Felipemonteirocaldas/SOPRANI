@@ -3,8 +3,10 @@ import { Globe, Award, Users, Zap } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
+import { useTranslation } from 'react-i18next';
 
 export default function AboutPage() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
       <Header />
@@ -14,10 +16,10 @@ export default function AboutPage() {
         <section className="bg-primary text-white py-16 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 md:mb-6">
-              About Soprani
+              {t('aboutPage.heroTitle')}
             </h1>
             <p className="text-base md:text-xl text-white/90 max-w-2xl">
-              Your trusted partner in metal packaging solutions worldwide.
+              {t('aboutPage.heroSub')}
             </p>
           </div>
         </section>
@@ -28,16 +30,16 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
                 <h2 className="text-2xl md:text-4xl font-heading font-bold mb-4 md:mb-6">
-                  International Excellence
+                  {t('aboutPage.intExcTitle')}
                 </h2>
                 <p className="text-sm md:text-base text-gray-600 mb-3 md:mb-4 leading-relaxed">
-                  Soprani Engineering is a premier partner in metal packaging, offering machinery sourcing, spare parts, technical assistance, and material trading.
+                  {t('aboutPage.intExcP1')}
                 </p>
                 <p className="text-sm md:text-base text-gray-600 mb-3 md:mb-4 leading-relaxed">
-                  With decades of experience, we serve manufacturers globally across Europe, Middle East, North Africa, Asia, and the Americas.
+                  {t('aboutPage.intExcP2')}
                 </p>
                 <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  We're committed to technical excellence, flexibility, and lasting partnerships.
+                  {t('aboutPage.intExcP3')}
                 </p>
               </div>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
@@ -55,29 +57,29 @@ export default function AboutPage() {
         <section className="py-16 md:py-32 bg-gray-50">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-2xl md:text-4xl font-heading font-bold mb-12 md:mb-16 text-center">
-              Our Core Values
+              {t('aboutPage.coreValuesTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {[
                 {
                   icon: Award,
-                  title: 'Technical Competence',
-                  description: 'Deep expertise in machinery and solutions'
+                  title: t('aboutPage.cv1T'),
+                  description: t('aboutPage.cv1D')
                 },
                 {
                   icon: Globe,
-                  title: 'Global Network',
-                  description: 'International presence worldwide'
+                  title: t('aboutPage.cv2T'),
+                  description: t('aboutPage.cv2D')
                 },
                 {
                   icon: Zap,
-                  title: 'Flexibility',
-                  description: 'Tailored solutions for your needs'
+                  title: t('aboutPage.cv3T'),
+                  description: t('aboutPage.cv3D')
                 },
                 {
                   icon: Users,
-                  title: 'Partnerships',
-                  description: 'Lasting relationships with clients'
+                  title: t('aboutPage.cv4T'),
+                  description: t('aboutPage.cv4D')
                 }
               ].map((value, idx) => {
                 const Icon = value.icon;
@@ -97,33 +99,33 @@ export default function AboutPage() {
         <section className="py-16 md:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-2xl md:text-4xl font-heading font-bold mb-12 md:mb-16 text-center">
-              Our Expertise
+              {t('aboutPage.expertiseTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {[
                 {
-                  title: 'Machinery Sourcing',
-                  description: 'Sourcing the right machinery for your production needs.'
+                  title: t('aboutPage.ex1T'),
+                  description: t('aboutPage.ex1D')
                 },
                 {
-                  title: 'Spare Parts Supply',
-                  description: 'Comprehensive parts supply to minimize downtime.'
+                  title: t('aboutPage.ex2T'),
+                  description: t('aboutPage.ex2D')
                 },
                 {
-                  title: 'Technical Assistance',
-                  description: 'Expert troubleshooting and maintenance coordination.'
+                  title: t('aboutPage.ex3T'),
+                  description: t('aboutPage.ex3D')
                 },
                 {
-                  title: 'Revamping Projects',
-                  description: 'Equipment improvement and upgrading services.'
+                  title: t('aboutPage.ex4T'),
+                  description: t('aboutPage.ex4D')
                 },
                 {
-                  title: 'Material Trading',
-                  description: 'Trading in tinplate and aluminum materials.'
+                  title: t('aboutPage.ex5T'),
+                  description: t('aboutPage.ex5D')
                 },
                 {
-                  title: 'Industrial Expertise',
-                  description: 'Decades of experience in metal packaging sectors.'
+                  title: t('aboutPage.ex6T'),
+                  description: t('aboutPage.ex6D')
                 }
               ].map((item, idx) => (
                 <div key={idx} className="border-l-4 border-accent pl-4 md:pl-6">
@@ -139,7 +141,7 @@ export default function AboutPage() {
         <section className="py-16 md:py-32 bg-primary text-white">
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-2xl md:text-4xl font-heading font-bold mb-10 md:mb-12 text-center">
-              Global Reach
+              {t('aboutPage.reachTitle')}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 text-center">
               {['Europe', 'Middle East', 'North Africa', 'Asia', 'Americas'].map((region, idx) => (

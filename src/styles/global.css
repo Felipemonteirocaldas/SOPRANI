@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply bg-background text-primary font-paragraph;
+    @apply bg-background text-primary font-paragraph overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

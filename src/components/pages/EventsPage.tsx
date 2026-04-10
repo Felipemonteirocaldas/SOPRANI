@@ -5,6 +5,7 @@ import { Image } from '@/components/ui/image';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,6 +48,7 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
 };
 
 export default function EventsPage() {
+  const { t } = useTranslation();
   const [events, setEvents] = useState<IndustryEvents[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -81,10 +83,10 @@ export default function EventsPage() {
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              Industry Events
+              {t('eventsPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              Meet us at upcoming exhibitions and discover our latest innovations
+              {t('eventsPage.heroSub')}
             </p>
           </AnimatedElement>
         </div>
@@ -140,7 +142,7 @@ export default function EventsPage() {
                           
                           {event.boothDetails && (
                             <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                              <p className="text-sm font-medium text-gray-700 mb-1">Booth Details:</p>
+                              <p className="text-sm font-medium text-gray-700 mb-1">{t('eventsPage.boothDetails')}</p>
                               <p className="text-gray-600">{event.boothDetails}</p>
                             </div>
                           )}
@@ -158,7 +160,7 @@ export default function EventsPage() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 hover:scale-105 transition-all duration-200"
                             >
-                              Learn More
+                              {t('eventsPage.btnLearnMore')}
                               <ExternalLink size={18} className="ml-2" />
                             </a>
                           )}
@@ -171,8 +173,8 @@ export default function EventsPage() {
             ) : (
               <div className="text-center py-20">
                 <Calendar size={64} className="mx-auto text-gray-300 mb-4" />
-                <p className="text-gray-500 text-lg">No upcoming events at the moment.</p>
-                <p className="text-gray-400 text-sm mt-2">Check back soon for new event announcements.</p>
+                <p className="text-gray-500 text-lg">{t('eventsPage.emptyTitle')}</p>
+                <p className="text-gray-400 text-sm mt-2">{t('eventsPage.emptySub')}</p>
               </div>
             )}
           </div>
@@ -185,16 +187,16 @@ export default function EventsPage() {
           <AnimatedElement>
             <div className="max-w-3xl mx-auto text-center bg-primary rounded-3xl p-12 shadow-xl">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-                Want to Meet Us?
+                {t('eventsPage.ctaTitle')}
               </h2>
               <p className="text-lg text-white/90 mb-8">
-                Contact us to schedule a meeting at any of our upcoming events
+                {t('eventsPage.ctaDesc')}
               </p>
               <a
                 href="/contact"
                 className="inline-flex items-center px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 hover:scale-105 transition-all duration-200"
               >
-                Get in Touch
+                {t('eventsPage.ctaBtn')}
               </a>
             </div>
           </AnimatedElement>

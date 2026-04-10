@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-rou
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import { lazy, Suspense } from 'react';
+import '../i18n/config';
 
 const SplashPage = lazy(() => import('@/components/pages/SplashPage'));
 const HomePage = lazy(() => import('@/components/pages/HomePage'));

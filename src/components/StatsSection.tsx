@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Package, Droplet, Zap, Leaf, Truck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface StatItem {
   id: string;
@@ -19,6 +20,7 @@ interface ServiceItem {
 }
 
 const StatsSection = () => {
+  const { t } = useTranslation();
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const [animatedValues, setAnimatedValues] = useState({
@@ -31,69 +33,68 @@ const StatsSection = () => {
   const stats: StatItem[] = [
     {
       id: 'num1',
-      label: 'Clientes Satisfeitos',
-      sublabel: 'Empresas confiando em nós',
+      label: t('stats.label1'),
+      sublabel: t('stats.sublabel1'),
       value: 100,
       suffix: '+',
       duration: 2,
     },
     {
       id: 'num2',
-      label: 'Anos de Experiência',
-      sublabel: 'Tradição e inovação',
+      label: t('stats.label2'),
+      sublabel: t('stats.sublabel2'),
       value: 30,
       suffix: '+',
       duration: 2,
     },
     {
       id: 'num3',
-      label: 'Suporte Disponível',
-      sublabel: 'Sempre pronto para ajudar',
+      label: t('stats.label3'),
+      sublabel: t('stats.sublabel3'),
       value: 0,
       suffix: '',
       duration: 0,
     },
     {
       id: 'num4',
-      label: 'Continentes',
-      sublabel: 'Alcance global',
+      label: t('stats.label4'),
+      sublabel: t('stats.sublabel4'),
       value: 5,
       suffix: '',
       duration: 2,
     },
   ];
 
-  // Serviços com ícones
   const services: ServiceItem[] = [
     {
       id: 'service1',
       icon: <Package className="w-6 h-6" />,
-      title: 'Embalagens',
-      description: 'Soluções de embalagem premium',
+      title: t('stats.s1'),
+      description: t('stats.s1d'),
     },
     {
       id: 'service2',
       icon: <Droplet className="w-6 h-6" />,
-      title: 'Bebidas',
-      description: 'Recipientes para bebidas',
+      title: t('stats.s2'),
+      description: t('stats.s2d'),
     },
     {
       id: 'service3',
       icon: <Zap className="w-6 h-6" />,
-      title: 'Energia',
-      description: 'Soluções energéticas',
+      title: t('stats.s3'),
+      description: t('stats.s3d'),
     },
     {
       id: 'service4',
       icon: <Leaf className="w-6 h-6" />,
-      title: 'Sustentabilidade',
-      description: 'Produtos eco-friendly',
+      title: t('stats.s4'),
+      description: t('stats.s4d'),
     },
     {
       id: 'service5',
       icon: <Truck className="w-6 h-6" />,
-      title: 'Logística',
-      description: 'Entrega rápida e segura',
+      title: t('stats.s5'),
+      description: t('stats.s5d'),
     },
   ];
 
@@ -161,10 +162,10 @@ const StatsSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-            Números que Falam
+            {t('stats.title')}
           </h2>
           <p className="font-paragraph text-lg text-gray-300 max-w-2xl mx-auto">
-            Conheça nossos resultados e o impacto que geramos para nossos clientes ao redor do mundo.
+            {t('stats.desc')}
           </p>
         </motion.div>
 

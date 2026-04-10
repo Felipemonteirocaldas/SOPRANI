@@ -2,8 +2,10 @@ import { Subsidiaries } from '@/entities';
 import { BaseCrudService } from '@/integrations';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation();
   const [subsidiaries, setSubsidiaries] = useState<Subsidiaries[]>([]);
 
   useEffect(() => {
@@ -27,32 +29,32 @@ export default function Footer() {
           <div>
             <h3 className="text-base xs:text-lg font-heading font-bold mb-3 xs:mb-4 text-white">Soprani Engineering</h3>
             <p className="text-xs xs:text-sm text-gray-300 leading-relaxed">
-              Advanced metal packaging solutions with over 30+ years of innovation. Your trusted partner for machinery, spare parts, and technical support worldwide.
+              {t('footer.companyDesc')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">Services</h4>
+            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.services')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
                 <Link to="/machinery" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Machinery
+                  {t('header.machinery')}
                 </Link>
               </li>
               <li>
                 <Link to="/spare-parts" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Spare Parts
+                  {t('header.spareParts')}
                 </Link>
               </li>
               <li>
                 <Link to="/technical-assistance" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Technical Assistance
+                  {t('header.technicalAssistance')}
                 </Link>
               </li>
               <li>
                 <Link to="/trading-materials" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Trading Materials
+                  {t('header.tradingMaterials')}
                 </Link>
               </li>
             </ul>
@@ -60,26 +62,26 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">Company</h4>
+            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.company')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
                 <Link to="/about" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  About Us
+                  {t('footer.aboutUs')}
                 </Link>
               </li>
               <li>
                 <Link to="/company" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Company Info
+                  {t('footer.companyInfo')}
                 </Link>
               </li>
               <li>
                 <Link to="/events" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Events
+                  {t('header.events')}
                 </Link>
               </li>
               <li>
                 <Link to="/news" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  News
+                  {t('header.news')}
                 </Link>
               </li>
             </ul>
@@ -87,26 +89,26 @@ export default function Footer() {
 
           {/* Contact & Legal */}
           <div>
-            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">Contact</h4>
+            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.contact')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
                 <Link to="/contact" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Get in Touch
+                  {t('footer.getInTouch')}
                 </Link>
               </li>
               <li>
                 <Link to="/request-quotation" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Request Quotation
+                  {t('header.requestQuotation')}
                 </Link>
               </li>
               <li>
                 <a href="#" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Privacy Policy
+                  {t('footer.privacyPolicy')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  Terms of Service
+                  {t('footer.termsOfService')}
                 </a>
               </li>
             </ul>
@@ -116,7 +118,7 @@ export default function Footer() {
         {/* Subsidiaries Section */}
         {subsidiaries.length > 0 && (
           <div className="border-t border-gray-700 pt-8 xs:pt-10 sm:pt-12 mb-8 xs:mb-10 sm:mb-12">
-            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">Global Presence</h4>
+            <h4 className="text-xs xs:text-sm font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('footer.globalPresence')}</h4>
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 xs:gap-4">
               {subsidiaries.map((subsidiary) => (
                 <div key={subsidiary._id} className="text-xs xs:text-sm text-gray-300">
@@ -132,17 +134,17 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-6 xs:pt-8">
           <div className="flex flex-col xs:flex-row justify-between items-center gap-3 xs:gap-4">
             <p className="text-xs text-gray-400 text-center xs:text-left">
-              © 2026 Soprani Engineering. All rights reserved.
+              © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
             </p>
             <div className="flex space-x-4 xs:space-x-6">
               <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                Privacy
+                {t('footer.privacy')}
               </a>
               <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                Terms
+                {t('footer.terms')}
               </a>
               <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                Cookies
+                {t('footer.cookies')}
               </a>
             </div>
           </div>

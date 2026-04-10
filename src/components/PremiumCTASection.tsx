@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function PremiumCTASection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -41,22 +43,22 @@ export default function PremiumCTASection() {
             {/* Status Badge */}
             <div className="inline-block">
               <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="font-paragraph text-xs tracking-widest font-semibold text-border-light">SOPRANI ENGINEERING: ACTIVE GLOBAL SUPPORT</span>
+                <span className="font-paragraph text-xs tracking-widest font-semibold text-border-light">{t('premiumCta.badge')}</span>
               </div>
             </div>
 
             {/* Main Title with Varied Weights */}
             <div>
               <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Precision Engineering for the{' '}
-                <span className="font-black text-accent">Global</span>{' '}
-                Metal Packaging Industry
+                {t('premiumCta.title1')}{' '}
+                <span className="font-black text-accent">{t('premiumCta.titleHighlight')}</span>{' '}
+                {t('premiumCta.title2')}
               </h2>
             </div>
 
             {/* Body Text */}
             <p className="font-paragraph text-lg text-gray-300 leading-relaxed max-w-lg">
-              From machinery sourcing and revamping projects to high-precision spare parts and technical assistance, we provide the industrial expertise to keep your production lines at peak performance.
+              {t('premiumCta.desc')}
             </p>
 
             {/* CTA Buttons */}
@@ -74,7 +76,7 @@ export default function PremiumCTASection() {
                     hoveredButton === 'engineers' ? 'opacity-20' : 'opacity-0'
                   }`}
                 />
-                <span className="relative z-10">[ CONSULT OUR ENGINEERS ]</span>
+                <span className="relative z-10">{t('premiumCta.btnConsult')}</span>
               </motion.button>
 
               {/* Button 2 - Outline with Subtle Glow */}
@@ -96,7 +98,7 @@ export default function PremiumCTASection() {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 rounded-lg border-gray-200 border border-none text-border-light bg-[#0f172aff]"
                 />
-                <span className="relative z-10">[ REQUEST TECHNICAL QUOTE ]</span>
+                <span className="relative z-10">{t('premiumCta.btnQuote')}</span>
                 {hoveredButton === 'quote' && (
                   <motion.div
                     className="absolute inset-0 pointer-events-none"

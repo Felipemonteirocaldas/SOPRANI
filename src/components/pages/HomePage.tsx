@@ -13,6 +13,7 @@ import { BaseCrudService } from '@/integrations';
 import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // --- Animation Components ---
 
@@ -73,6 +74,7 @@ const AnimatedElement: React.FC<{
 // --- Main Page Component ---
 
 export default function HomePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [news, setNews] = useState<NewsandUpdates[]>([]);
   const [events, setEvents] = useState<IndustryEvents[]>([]);
@@ -157,23 +159,23 @@ export default function HomePage() {
              <AnimatedElement direction="left" className="max-w-2xl">
                <div>
                  <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 xs:mb-5 sm:mb-6 leading-tight tracking-tight">
-                   Industrial Solutions for Metal Packaging
+                   {t('hero.title')}
                  </h1>
                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 mb-6 xs:mb-7 sm:mb-8 leading-relaxed">
-                   Machinery, spare parts, technical assistance, and material trading for the global metal packaging industry.
+                   {t('hero.subtitle')}
                  </p>
                  <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                    <Link
                      to="/request-quotation"
                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
-                     Request Quotation
+                     {t('hero.requestQuotation')}
                    </Link>
                    <Link
                      to="/contact"
                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-200 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
-                     Contact Us
+                     {t('hero.contactUs')}
                    </Link>
                  </div>
                </div>
