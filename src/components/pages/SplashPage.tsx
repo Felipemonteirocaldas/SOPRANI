@@ -92,12 +92,14 @@ export default function SplashPage() {
           transition={{ duration: 0.5 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <button
+          <motion.button
             onClick={handleEnter}
-            className="px-8 py-3 bg-accent hover:bg-accent-light text-white font-semibold rounded-lg transition-colors duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-4 text-xl font-bold text-white rounded-2xl transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg"
           >
             Enter
-          </button>
+          </motion.button>
         </motion.div>
       )}
     </motion.div>
