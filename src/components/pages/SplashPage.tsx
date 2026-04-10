@@ -81,14 +81,14 @@ export default function SplashPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 z-50"
+          className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 z-50 px-4"
         >
           <div className="flex gap-2">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
             <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-100" />
             <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-200" />
           </div>
-          <p className="text-white text-sm font-medium">Loading...</p>
+          <p className="text-white text-xs sm:text-sm font-medium">Loading...</p>
         </motion.div>
       )}
       {/* Enter button - shows after video ends or after 5 seconds */}
@@ -97,13 +97,13 @@ export default function SplashPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-50"
+          className="absolute bottom-6 sm:bottom-16 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-xs"
         >
           <motion.button
             onClick={handleEnter}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 text-xl font-bold text-primary transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg rounded-none"
+            className="w-full px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-xl font-bold text-primary transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg rounded-none"
           >
             Enter
           </motion.button>
