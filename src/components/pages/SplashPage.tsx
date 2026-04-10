@@ -1,26 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 export default function SplashPage() {
-  const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const handleVideoEnd = () => {
-      navigate('/');
-    };
-
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('ended', handleVideoEnd);
-      return () => video.removeEventListener('ended', handleVideoEnd);
-    }
-  }, [navigate]);
-
-  const handleSkip = () => {
-    navigate('/');
-  };
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
@@ -29,6 +11,7 @@ export default function SplashPage() {
         ref={videoRef}
         autoPlay
         muted
+        loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
@@ -50,16 +33,7 @@ export default function SplashPage() {
         </video>
       </div>
 
-      {/* Skip Button */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        onClick={handleSkip}
-        className="absolute top-6 right-6 px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-colors z-10"
-      >
-        Skip
-      </motion.button>
+
 
       {/* Loading indicator */}
       <motion.div
