@@ -73,7 +73,7 @@ export default function SplashPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 z-50"
         >
           <div className="flex gap-2">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
@@ -90,7 +90,7 @@ export default function SplashPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center z-50"
         >
           <motion.button
             onClick={handleEnter}
