@@ -36,8 +36,19 @@ export default function SplashPage() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Overlay with Video */}
+      <div className="absolute inset-0 bg-black/20">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://video.wixstatic.com/video/9bbed2_37cad7d1812b4f7d9bb5dd524a7185b4/file" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
       {/* Skip Button */}
       <motion.button
