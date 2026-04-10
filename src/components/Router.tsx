@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "splash",
+        index: true,
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <SplashPage />
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        index: true,
+        path: "home",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <HomePage />
