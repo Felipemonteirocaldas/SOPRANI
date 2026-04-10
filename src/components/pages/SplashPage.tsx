@@ -63,7 +63,6 @@ export default function SplashPage() {
         <source src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
       {/* Overlay with Video */}
       <div className="absolute inset-0 bg-black/20">
         <video
@@ -76,7 +75,6 @@ export default function SplashPage() {
           Your browser does not support the video tag.
         </video>
       </div>
-
       {/* Loading indicator - shows while video is playing */}
       {!videoEnded && (
         <motion.div
@@ -93,7 +91,6 @@ export default function SplashPage() {
           <p className="text-white text-sm font-medium">Loading...</p>
         </motion.div>
       )}
-
       {/* Enter button - shows after video ends or after 5 seconds */}
       {(showButton && !shouldFadeOut) && (
         <motion.div
@@ -106,7 +103,7 @@ export default function SplashPage() {
             onClick={handleEnter}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 text-xl font-bold text-primary rounded-2xl transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg"
+            className="px-10 py-4 text-xl font-bold text-primary transition-all duration-300 backdrop-blur-md bg-white/10 border border-white/30 hover:bg-white/20 hover:border-white/50 shadow-lg rounded-none"
           >
             Enter
           </motion.button>
