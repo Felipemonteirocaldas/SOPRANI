@@ -7,9 +7,19 @@ export default function SplashPage() {
   const navigate = useNavigate();
   const [videoEnded, setVideoEnded] = useState(false);
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    // Show button after 5 seconds as fallback
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (videoEnded) {
+      setShowButton(true);
       const timer = setTimeout(() => {
         setShouldFadeOut(true);
       }, 3000);
@@ -84,8 +94,8 @@ export default function SplashPage() {
         </motion.div>
       )}
 
-      {/* Enter button - shows after video ends */}
-      {videoEnded && !shouldFadeOut && (
+      {/* Enter button - shows after video ends or after 5 seconds */}
+      {(showButton && !shouldFadeOut) && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
