@@ -11,7 +11,6 @@ export default function SplashPage() {
         ref={videoRef}
         autoPlay
         muted
-        loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
@@ -24,7 +23,6 @@ export default function SplashPage() {
         <video
           autoPlay
           muted
-          loop
           playsInline
           className="w-full h-full object-cover"
         >
