@@ -98,7 +98,7 @@ export default function NewsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {news.map((item, index) => (
                   <AnimatedElement key={item._id} delay={index * 50}>
-                    <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full">
+                    <article className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full">
                       {item.coverImage && (
                         <div className="aspect-video overflow-hidden">
                           <Image 
@@ -163,7 +163,7 @@ export default function NewsPage() {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
           <AnimatedElement>
-            <div className="max-w-3xl mx-auto text-center bg-white rounded-3xl p-12 shadow-lg border border-gray-100">
+            <div className="max-w-3xl mx-auto text-center bg-white rounded-none p-12 shadow-lg border border-gray-100">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
                 {t('newsPage.ctaTitle')}
               </h2>
@@ -180,7 +180,7 @@ export default function NewsPage() {
                 <input
                   type="email"
                   placeholder={t('newsPage.placeholderEmail')}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                   required
                 />
                 <button

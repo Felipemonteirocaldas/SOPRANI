@@ -5,7 +5,6 @@ import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import { lazy, Suspense } from 'react';
 import '../i18n/config';
 
-const SplashPage = lazy(() => import('@/components/pages/SplashPage'));
 const HomePage = lazy(() => import('@/components/pages/HomePage'));
 const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
 const ServicesPage = lazy(() => import('@/components/pages/ServicesPage'));
@@ -44,23 +43,16 @@ const router = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<LoadingFallback />}>
-            <SplashPage />
-          </Suspense>
-        ),
-        routeMetadata: {
-          pageIdentifier: 'splash',
-        },
-      },
-      {
-        path: "home",
-        element: (
-          <Suspense fallback={<LoadingFallback />}>
             <HomePage />
           </Suspense>
         ),
         routeMetadata: {
           pageIdentifier: 'home',
         },
+      },
+      {
+        path: "home",
+        element: <Navigate to="/" replace />,
       },
       {
         path: "about",

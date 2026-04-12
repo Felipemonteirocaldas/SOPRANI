@@ -68,7 +68,7 @@ export default function SparePartsPage() {
                   {t('sparePartsPage.introP2')}
                 </p>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_5deb68287d3f44a58ef9ec0320d1a8ed~mv2.png?originWidth=896&originHeight=640"
                   alt="Spare parts for can making machines"
@@ -89,7 +89,7 @@ export default function SparePartsPage() {
               {benefits.map((benefit, idx) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                  <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                     <Icon className="w-10 h-10 text-accent mb-4" />
                     <h3 className="text-xl font-heading font-bold mb-3">{benefit.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
@@ -155,13 +155,13 @@ export default function SparePartsPage() {
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto bg-white p-2 md:p-4 rounded-2xl shadow-xl border border-gray-200">
+            <div className="max-w-5xl mx-auto bg-white p-2 md:p-4 rounded-none shadow-xl border border-gray-200">
               {isMounted ? (
                 <Suspense fallback={<div className="w-full h-[400px] md:h-[500px] flex items-center justify-center bg-gray-50 rounded-xl"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div></div>}>
                   <ThreeDViewer />
                 </Suspense>
               ) : (
-                <div className="w-full h-[400px] md:h-[500px] flex items-center justify-center bg-gray-50 rounded-xl">
+                <div className="w-full h-[400px] md:h-[500px] flex items-center justify-center bg-gray-50 rounded-none">
                   <span className="text-gray-400">Loading 3D Engine...</span>
                 </div>
               )}

@@ -61,7 +61,7 @@ export default function TechnicalAssistancePage() {
                   {t('techPage.introP2')}
                 </p>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_bb527cba8c2b4e2dbc7e494ccfff2925~mv2.png?originWidth=896&originHeight=640"
                   alt="Metal packaging technical service"
@@ -82,7 +82,7 @@ export default function TechnicalAssistancePage() {
               {services.map((service, idx) => {
                 const Icon = service.icon;
                 return (
-                  <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                  <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                     <Icon className="w-10 h-10 text-accent mb-4" />
                     <h3 className="text-xl font-heading font-bold mb-3">{service.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{service.description}</p>

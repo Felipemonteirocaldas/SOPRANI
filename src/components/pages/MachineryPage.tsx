@@ -75,7 +75,7 @@ export default function MachineryPage() {
                   {t('machineryPage.introBtn')} <ArrowRight size={16} className="ml-2" />
                 </a>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_f2b5dbf30b074ac7b31be1ac1e8e60db~mv2.png?originWidth=1152&originHeight=896"
                   alt="Metal packaging machinery"
@@ -94,7 +94,7 @@ export default function MachineryPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {machineryCategories.map((category, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                   <h3 className="text-xl font-heading font-bold mb-4 text-primary">{category.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{category.description}</p>
                 </div>

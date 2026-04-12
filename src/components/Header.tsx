@@ -12,9 +12,15 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaMenuTimeout, setMegaMenuTimeout] = useState<NodeJS.Timeout | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const megaMenuColumns = [
@@ -81,7 +87,13 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[9999] bg-white border-b border-border-light shadow-md transition-all duration-300">
+    <header 
+      className={`sticky top-0 z-[9999] transition-all duration-300 border-b ${
+        isScrolled 
+          ? 'bg-white py-0 shadow-xl border-border-light' 
+          : 'bg-white py-2 shadow-md border-border-light'
+      }`}
+    >
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 opacity-[1]">
         <div className="flex items-center justify-between h-20 sm:h-24 md:h-24">
           {/* Logo */}
@@ -130,9 +142,9 @@ export default function Header() {
               {/* Mega Menu Panel - Full Width */}
               <div
                 id="mega-panel"
-                className={`fixed left-0 right-0 top-20 sm:top-24 md:top-24 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out pointer-events-none ${megaMenuOpen
+                className={`fixed left-0 right-0 top-20 sm:top-24 md:top-24 bg-white border-t-4 border-accent shadow-2xl z-40 transition-all duration-300 ease-out pointer-events-none ${megaMenuOpen
                     ? 'opacity-100 pointer-events-auto translate-y-0'
-                    : 'opacity-0 -translate-y-2'
+                    : 'opacity-0 -translate-y-4'
                   }`}
                 onMouseEnter={handleMegaMenuEnter}
                 onMouseLeave={handleMegaMenuLeave}
@@ -166,14 +178,14 @@ export default function Header() {
 
                         {/* Promo Section */}
                         {column.promo && (
-                          <div className="mt-3.5 p-4 bg-blue-50 border-l-4 border-accent">
+                          <div className="mt-3.5 p-4 bg-background-alt border-l-4 border-accent">
                             <div className="text-xs font-bold uppercase tracking-widest text-accent mb-1.25">
                               {column.promo.tag}
                             </div>
                             <div className="text-sm font-bold text-primary mb-1">
                               {column.promo.title}
                             </div>
-                            <div className="text-xs font-light text-gray-500">
+                            <div className="text-xs font-light text-text-muted">
                               {column.promo.subtitle}
                             </div>
                           </div>
@@ -198,7 +210,7 @@ export default function Header() {
               
               {/* Dropdown Menu (With Invisible Hover Bridge) */}
               <div className="absolute right-0 top-full pt-2 w-16 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
-                <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-md flex flex-col py-1.5 overflow-hidden">
+                <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-none flex flex-col py-1.5 overflow-hidden">
                   {languages.map((lng) => (
                     <button
                       key={lng.code}
@@ -228,7 +240,7 @@ export default function Header() {
 
             <Link
               to="/request-quotation"
-              className="hidden sm:inline-flex ml-2 px-3 sm:px-3 lg:px-4 py-1.5 bg-accent/90 hover:bg-accent text-white hover:shadow-lg hover:shadow-accent/30 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 items-center gap-2 rounded-md backdrop-blur-sm border border-white/10"
+              className="hidden sm:inline-flex ml-2 px-3 sm:px-3 lg:px-4 py-1.5 bg-accent/90 hover:bg-accent text-white hover:shadow-lg hover:shadow-accent/30 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 items-center gap-2 rounded-none backdrop-blur-sm border border-white/10"
               aria-label={t('header.requestQuotation')}
             >
               {t('header.requestQuotation')}
@@ -264,7 +276,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                  className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-none"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -274,7 +286,7 @@ export default function Header() {
               {/* Mobile More Menu */}
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
-                className="w-full text-left px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md flex items-center justify-between"
+                className="w-full text-left px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-none flex items-center justify-between"
               >
                 {t('header.more')}
                 <ChevronDown size={16} className={`transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
@@ -287,7 +299,7 @@ export default function Header() {
                     <Link
                       key={idx}
                       to={link.href}
-                      className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-md"
+                      className="block px-3 xs:px-4 py-2 text-xs xs:text-sm font-medium text-primary hover:text-accent hover:bg-background-alt transition-colors rounded-none"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setMegaMenuOpen(false);
@@ -300,7 +312,7 @@ export default function Header() {
               )}
 
               {/* Mobile Language Switcher */}
-              <div className="flex bg-gray-50 border border-gray-100 rounded-lg p-1 mt-2 justify-between">
+              <div className="flex bg-gray-50 border border-gray-100 rounded-none p-1 mt-2 justify-between">
                 {languages.map((lng) => (
                   <button
                     key={lng.code}
@@ -308,7 +320,7 @@ export default function Header() {
                       i18n.changeLanguage(lng.code);
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex-1 text-xs font-bold py-2 rounded-md transition-all duration-200 ${i18n.resolvedLanguage === lng.code
+                    className={`flex-1 text-xs font-bold py-2 rounded-none transition-all duration-200 ${i18n.resolvedLanguage === lng.code
                         ? 'text-accent bg-white shadow-sm'
                         : 'text-gray-400 hover:text-primary'
                       }`}
@@ -320,7 +332,7 @@ export default function Header() {
 
               <Link
                 to="/request-quotation"
-                className="w-full mt-3 xs:mt-4 px-4 xs:px-5 py-2.5 xs:py-3 bg-accent text-white text-xs xs:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
+                className="w-full mt-3 xs:mt-4 px-4 xs:px-5 py-2.5 xs:py-3 bg-accent text-white text-xs xs:text-sm font-semibold uppercase tracking-wider rounded-none transition-all duration-300 hover:bg-accent-dark hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
                 aria-label={t('header.requestQuotation')}
                 onClick={() => setMobileMenuOpen(false)}
               >

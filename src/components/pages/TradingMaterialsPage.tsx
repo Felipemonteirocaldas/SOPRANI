@@ -73,7 +73,7 @@ export default function TradingMaterialsPage() {
                   {t('tradingPage.introP2')}
                 </p>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_ac665dcfa3f44e65887a6f85e57da040~mv2.png?originWidth=1152&originHeight=896"
                   alt="Tinplate and aluminum trading"
@@ -92,7 +92,7 @@ export default function TradingMaterialsPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {materials.map((material, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                   <h3 className="text-2xl font-heading font-bold mb-4 text-primary">{material.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">{material.description}</p>
                   <ul className="space-y-2">
@@ -129,7 +129,7 @@ export default function TradingMaterialsPage() {
               {benefits.map((benefit, idx) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={idx} className="bg-gray-50 p-8 rounded-lg text-center">
+                  <div key={idx} className="bg-gray-50 p-8 rounded-none text-center">
                     <Icon className="w-10 h-10 text-accent mx-auto mb-4" />
                     <h3 className="text-lg font-heading font-bold mb-3">{benefit.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
@@ -173,7 +173,7 @@ export default function TradingMaterialsPage() {
                   description: t('tradingPage.s6D')
                 }
               ].map((feature, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-sm">
+                <div key={idx} className="bg-white p-8 rounded-none shadow-sm">
                   <h3 className="text-xl font-heading font-bold mb-3">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </div>

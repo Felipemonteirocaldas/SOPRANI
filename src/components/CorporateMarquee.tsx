@@ -31,7 +31,7 @@ const CorporateMarquee = () => {
   const duplicatedItems = [...items, ...items];
 
   return (
-    <div className="w-full bg-[#F4F6F9] h-[60px] overflow-hidden flex items-center">
+    <div className="w-full bg-background-alt h-[60px] overflow-hidden flex items-center border-y border-border-light/50">
       <motion.div
         className="flex items-center gap-0 whitespace-nowrap"
         animate={{ x: '-50%' }}
@@ -53,13 +53,13 @@ const CorporateMarquee = () => {
               <Icon
                 size={18}
                 strokeWidth={1.5}
-                className="text-[#C8102E] flex-shrink-0"
+                className="text-accent flex-shrink-0"
               />
-              <span className="text-[14px] text-[#00205B] font-medium whitespace-nowrap flex-shrink-0">
+              <span className="text-sm text-primary font-medium whitespace-nowrap flex-shrink-0">
                 {item.text}
               </span>
               {index < duplicatedItems.length - 1 && (
-                <div className="w-px h-6 bg-gray-300 flex-shrink-0" />
+                <div className="w-px h-6 bg-border-light flex-shrink-0" />
               )}
             </div>
           );

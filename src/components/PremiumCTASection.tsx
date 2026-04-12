@@ -23,8 +23,20 @@ export default function PremiumCTASection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full from-[#00205B] via-[#041e42] to-[#0a192f] overflow-hidden py-20 md:py-32 opacity-[1] bg-primary"
+      className="relative w-full overflow-hidden py-24 md:py-32 bg-primary-dark"
     >
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
+      
+      {/* Dynamic Glow following mouse */}
+      <motion.div 
+        className="absolute w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none z-0"
+        animate={{
+          x: mousePosition.x * 100 - 300,
+          y: mousePosition.y * 100 - 300,
+        }}
+        transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+      />
       {/* Italian Flag Line at Top */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-[2px] w-32 flex">
 
@@ -42,7 +54,7 @@ export default function PremiumCTASection() {
           >
             {/* Status Badge */}
             <div className="inline-block">
-              <div className="px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="px-4 py-2 bg-white/10 border border-white/20">
                 <span className="font-paragraph text-xs tracking-widest font-semibold text-border-light">{t('premiumCta.badge')}</span>
               </div>
             </div>
@@ -62,21 +74,24 @@ export default function PremiumCTASection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 rounded-lg bg-primary">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 rounded-none bg-primary">
               {/* Button 1 - Solid High Contrast */}
               <motion.button
+                onClick={() => navigate('/contact')}
                 onHoverStart={() => setHoveredButton('engineers')}
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 bg-white text-[#0a192f] font-paragraph font-bold text-sm tracking-widest overflow-hidden group rounded-none"
+                className="relative px-8 py-4 bg-white text-primary font-paragraph font-bold text-sm tracking-widest overflow-hidden group rounded-none shadow-lg hover:shadow-white/10 transition-all duration-300"
               >
                 <div
-                  className={`absolute inset-0 bg-blue-400 transition-all duration-300 ${
-                    hoveredButton === 'engineers' ? 'opacity-20' : 'opacity-0'
+                   className={`absolute inset-0 bg-accent transition-all duration-500 ${
+                    hoveredButton === 'engineers' ? 'opacity-10' : 'opacity-0'
                   }`}
                 />
-                <span className="relative z-10">{t('premiumCta.btnConsult')}</span>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  {t('premiumCta.btnConsult')}
+                </span>
               </motion.button>
 
               {/* Button 2 - Outline with Subtle Glow */}
@@ -86,26 +101,26 @@ export default function PremiumCTASection() {
                 onHoverEnd={() => setHoveredButton(null)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-8 py-4 font-paragraph font-bold text-sm tracking-widest overflow-hidden group text-[#e2e8f0ff] border-2 border-solid border-[#e2e8f0ff]"
+                className="relative px-8 py-4 font-paragraph font-bold text-sm tracking-widest overflow-hidden group text-white border-2 border-accent rounded-none bg-transparent"
               >
                 <motion.div
                   animate={{
                     backgroundColor:
                       hoveredButton === 'quote'
-                        ? 'rgba(96, 165, 250, 0.1)'
+                        ? 'rgba(220, 38, 38, 0.1)'
                         : 'transparent',
                   }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 rounded-lg border-gray-200 border border-none text-border-light bg-[#0f172aff]"
+                  className="absolute inset-0"
                 />
                 <span className="relative z-10">{t('premiumCta.btnQuote')}</span>
                 {hoveredButton === 'quote' && (
                   <motion.div
                     className="absolute inset-0 pointer-events-none"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    animate={{ opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 2, repeat: Infinity }}
                     style={{
-                      boxShadow: '0 0 20px rgba(96, 165, 250, 0.4), inset 0 0 20px rgba(96, 165, 250, 0.1)',
+                      boxShadow: '0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(220, 38, 38, 0.1)',
                     }}
                   />
                 )}
@@ -147,7 +162,7 @@ export default function PremiumCTASection() {
                     cy="265"
                     r="5"
                     fill="none"
-                    stroke="#60a5fa"
+                    stroke="#DC2626"
                     strokeWidth="1.5"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
@@ -158,31 +173,31 @@ export default function PremiumCTASection() {
 
                 {/* 3. Station 1: Shaping/Press (Left) */}
                 <g opacity="0.8">
-                  <rect x="40" y="150" width="40" height="90" fill="none" stroke="#60a5fa" strokeWidth="2" />
+                  <rect x="40" y="150" width="40" height="90" fill="none" stroke="#DC2626" strokeWidth="2" />
                   <motion.rect
                     x="50"
                     y="150"
                     width="20"
                     height="30"
-                    fill="#60a5fa"
+                    fill="#DC2626"
                     opacity="0.5"
                     animate={{ y: [150, 200, 150] }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                   {/* Raw material line feeding in */}
-                  <path d="M 0 200 L 40 200" stroke="#60a5fa" strokeWidth="2" opacity="0.5" />
+                  <path d="M 0 200 L 40 200" stroke="#DC2626" strokeWidth="2" opacity="0.5" />
                 </g>
 
                 {/* 4. Station 2: Seaming/Welding (Center) */}
                 <g opacity="0.8">
-                  <rect x="180" y="130" width="60" height="110" fill="none" stroke="#34d399" strokeWidth="2" />
+                  <rect x="180" y="130" width="60" height="110" fill="none" stroke="#DC2626" strokeWidth="2" />
                   {/* Rotating welding head */}
                   <motion.circle
                     cx="210"
                     cy="180"
                     r="15"
                     fill="none"
-                    stroke="#34d399"
+                    stroke="#DC2626"
                     strokeWidth="2"
                     strokeDasharray="4 4"
                     animate={{ rotate: 360 }}
@@ -195,7 +210,7 @@ export default function PremiumCTASection() {
                     y1="195"
                     x2="210"
                     y2="240"
-                    stroke="#34d399"
+                    stroke="#DC2626"
                     strokeWidth="2"
                     animate={{ opacity: [0, 1, 0] }}
                     transition={{ duration: 0.5, repeat: Infinity }}
@@ -204,14 +219,14 @@ export default function PremiumCTASection() {
 
                 {/* 5. Station 3: Inspection/Scanning (Right) */}
                 <g opacity="0.8">
-                  <path d="M 320 180 L 360 180 L 350 240 L 330 240 Z" fill="none" stroke="#f87171" strokeWidth="2" />
+                  <path d="M 320 180 L 360 180 L 350 240 L 330 240 Z" fill="none" stroke="#DC2626" strokeWidth="2" />
                   {/* Scanning beam */}
                   <motion.line
                     x1="320"
                     y1="210"
                     x2="360"
                     y2="210"
-                    stroke="#f87171"
+                    stroke="#DC2626"
                     strokeWidth="1"
                     opacity="0.6"
                     animate={{ y1: [190, 230, 190], y2: [190, 230, 190] }}
@@ -227,13 +242,14 @@ export default function PremiumCTASection() {
                   {/* Array of cans spaced out along the belt */}
                   {[-100, 0, 100, 200, 300, 400].map((startX, i) => {
                     // Change style based on position to simulate states
-                    let color = "#475569"; // Raw/Default
+                    // Using brand Red (accent) and Navy (primary) tones
+                    let color = "#64748B"; // text-muted (Raw material)
                     let opacity = 0.4;
                     let height = 30;
 
-                    if (startX >= 100) { color = "#60a5fa"; opacity = 0.6; } // Shaped
-                    if (startX >= 200) { color = "#34d399"; opacity = 0.8; } // Welded
-                    if (startX >= 300) { color = "#f87171"; opacity = 0.9; } // Inspected
+                    if (startX >= 100) { color = "#94A3B8"; opacity = 0.6; } // Slate (Shaped)
+                    if (startX >= 200) { color = "#DC2626"; opacity = 0.8; } // Brand Red (Welded)
+                    if (startX >= 300) { color = "#0F172A"; opacity = 0.9; } // Brand Navy (Inspected/Finished)
 
                     return (
                       <g key={`can-${i}`} transform={`translate(${startX}, 210)`}>

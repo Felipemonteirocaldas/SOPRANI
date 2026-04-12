@@ -50,7 +50,7 @@ export default function MPHPage() {
         <section className="py-20 md:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="bg-accent/10 border-2 border-accent p-12 rounded-lg mb-12">
+              <div className="bg-accent/10 border-2 border-accent p-12 rounded-none mb-12">
                 <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
                   {t('mphPage.csTitle')}
                 </h2>
@@ -71,7 +71,7 @@ export default function MPHPage() {
                     {t('mphPage.whatP2')}
                   </p>
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+                <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                   <Image
                     src="https://static.wixstatic.com/media/9bbed2_095d1e1a9b9a462badc2a0ddd3cc28a8~mv2.png?originWidth=768&originHeight=576"
                     alt="Metal Packaging Hub"
@@ -93,7 +93,7 @@ export default function MPHPage() {
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                  <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                     <Icon className="w-10 h-10 text-accent mb-4" />
                     <h3 className="text-lg font-heading font-bold mb-3">{feature.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
@@ -167,7 +167,7 @@ export default function MPHPage() {
                   description: t('mphPage.w3D')
                 }
               ].map((reason, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-sm text-center">
+                <div key={idx} className="bg-white p-8 rounded-none shadow-sm text-center">
                   <h3 className="text-xl font-heading font-bold mb-4">{reason.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{reason.description}</p>
                 </div>

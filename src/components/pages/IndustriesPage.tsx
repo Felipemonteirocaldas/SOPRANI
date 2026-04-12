@@ -70,7 +70,7 @@ export default function IndustriesPage() {
                   Whether you're producing food cans, beverage containers, or specialized industrial packaging, we have the machinery, spare parts, and technical expertise to support your operations.
                 </p>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_f08f2dc238c742ea8773ab0f4e5fd930~mv2.png?originWidth=896&originHeight=640"
                   alt="Metal packaging industries"
@@ -89,7 +89,7 @@ export default function IndustriesPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {industries.map((industry, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                <div key={idx} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                   <h3 className="text-lg font-heading font-bold mb-4 text-primary">{industry.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{industry.description}</p>
                 </div>

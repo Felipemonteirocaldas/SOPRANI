@@ -100,7 +100,7 @@ export default function EventsPage() {
               <div className="max-w-5xl mx-auto space-y-8">
                 {events.map((event, index) => (
                   <AnimatedElement key={event._id} delay={index * 100}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
+                    <div className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
                       <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                         {/* Image Section */}
                         {event.eventImage && (
@@ -117,7 +117,7 @@ export default function EventsPage() {
                         {/* Content Section */}
                         <div className={`${event.eventImage ? 'lg:col-span-2' : 'lg:col-span-3'} p-8`}>
                           {event.eventDate && (
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full mb-4">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-none mb-4">
                               <Calendar size={16} />
                               <span className="text-sm font-medium">
                                 {new Date(event.eventDate).toLocaleDateString('en-US', { 
@@ -141,7 +141,7 @@ export default function EventsPage() {
                           )}
                           
                           {event.boothDetails && (
-                            <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                            <div className="bg-gray-50 rounded-none p-4 mb-4">
                               <p className="text-sm font-medium text-gray-700 mb-1">{t('eventsPage.boothDetails')}</p>
                               <p className="text-gray-600">{event.boothDetails}</p>
                             </div>
@@ -158,7 +158,7 @@ export default function EventsPage() {
                               href={event.eventUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 hover:scale-105 transition-all duration-200"
+                              className="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-none hover:bg-accent/90 hover:scale-105 transition-all duration-200"
                             >
                               {t('eventsPage.btnLearnMore')}
                               <ExternalLink size={18} className="ml-2" />
@@ -185,7 +185,7 @@ export default function EventsPage() {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-background">
         <div className="container mx-auto px-4">
           <AnimatedElement>
-            <div className="max-w-3xl mx-auto text-center bg-primary rounded-3xl p-12 shadow-xl">
+            <div className="max-w-3xl mx-auto text-center bg-primary rounded-none p-12 shadow-xl">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
                 {t('eventsPage.ctaTitle')}
               </h2>
@@ -194,7 +194,7 @@ export default function EventsPage() {
               </p>
               <a
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 hover:scale-105 transition-all duration-200"
+                className="inline-flex items-center px-8 py-4 bg-accent text-white font-medium rounded-none hover:bg-accent/90 hover:scale-105 transition-all duration-200"
               >
                 {t('eventsPage.ctaBtn')}
               </a>

@@ -148,9 +148,10 @@ export default function HomePage() {
           WebkitBackgroundSize: 'cover',
           WebkitBackgroundAttachment: isMobile ? 'scroll' : 'fixed'
         }}>
-          {/* Overlay for text readability */}
+          {/* Overlay for text readability with grid pattern */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/60" />
+            <div className="absolute inset-0 grid-pattern opacity-10" />
           </div>
 
          {/* Hero Content */}
@@ -167,13 +168,13 @@ export default function HomePage() {
                  <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                    <Link
                      to="/request-quotation"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:scale-105 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
                      {t('hero.requestQuotation')}
                    </Link>
                    <Link
                      to="/contact"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-200 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white/30 backdrop-blur-sm text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
                    >
                      {t('hero.contactUs')}
                    </Link>
@@ -214,10 +215,10 @@ export default function HomePage() {
             <AnimatedElement>
               <div className="text-center mb-10 xs:mb-12 sm:mb-16">
                 <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3 xs:mb-4">
-                  Latest News & Updates
+                  {t('newsPage.heroTitle')}
                 </h2>
                 <p className="text-sm xs:text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
-                  Stay informed about industry trends and company updates
+                  {t('newsPage.heroSub')}
                 </p>
               </div>
             </AnimatedElement>
@@ -229,7 +230,7 @@ export default function HomePage() {
                 {/* Featured News (Left) */}
                 <div className="lg:col-span-7">
                   <AnimatedElement direction="up" delay={100} className="h-full">
-                    <Link to={`/news`} className="group block h-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-border-light">
+                    <Link to={`/news`} className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-light">
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                         {news[0].coverImage ? (
                           <Image
@@ -238,7 +239,7 @@ export default function HomePage() {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
+                          <div className="w-full h-full flex items-center justify-center text-gray-400">...</div>
                         )}
                       </div>
                       <div className="p-8">
@@ -260,7 +261,7 @@ export default function HomePage() {
                 <div className="lg:col-span-5 flex flex-col gap-4">
                   {news.slice(1, 5).map((item, idx) => (
                     <AnimatedElement key={item._id} direction="up" delay={200 + (idx * 100)}>
-                      <Link to={`/news`} className="group flex bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[120px] border border-border-light">
+                      <Link to={`/news`} className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-[120px] border border-border-light">
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.coverImage ? (
                             <Image
@@ -269,7 +270,7 @@ export default function HomePage() {
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No Image</div>
+                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs text-center font-bold px-4">SOPRANI INDUSTRIAL SOLUTION</div>
                           )}
                         </div>
                         <div className="w-2/3 p-4 flex flex-col justify-center">
@@ -294,7 +295,7 @@ export default function HomePage() {
                 onClick={() => navigate('/news')}
                 className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-none"
               >
-                View All News
+                {t('newsPage.readMore')}
               </button>
             </AnimatedElement>
           </div>
@@ -305,7 +306,7 @@ export default function HomePage() {
           <div className="py-8 bg-primary">
             <div className="max-w-[100rem] mx-auto px-4 md:px-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white">
-                Upcoming Events
+                {t('eventsPage.heroTitle')}
               </h2>
             </div>
           </div>
@@ -337,7 +338,7 @@ export default function HomePage() {
                             to={`/events`}
                             className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
                           >
-                            Learn More
+                            {t('eventsPage.btnLearnMore')}
                           </Link>
                         </div>
                       </div>
@@ -347,7 +348,7 @@ export default function HomePage() {
 
                 {/* Featured Event Image */}
                 <AnimatedElement direction="right" delay={200} className="h-full hidden lg:block">
-                  <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl group border border-border-light">
+                  <div className="relative h-full min-h-[400px] rounded-none overflow-hidden shadow-2xl group border border-border-light bg-white">
                     <Image
                       src={events[0]?.eventImage || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"}
                       alt="Featured Event"

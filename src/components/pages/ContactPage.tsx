@@ -1,48 +1,27 @@
-import { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Globe, ShieldCheck, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [delay]);
-  
-  return (
-    <div 
-      ref={ref} 
-      className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
-      style={{
-        transitionProperty: 'opacity, transform',
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
-        pointerEvents: isVisible ? 'auto' : 'none'
-      }}
-    >
-      {children}
+const HubCard = ({ region, locations, delay }: { region: string, locations: string, delay: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ delay }}
+    viewport={{ once: true }}
+    className="p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-none hover:bg-white/10 transition-all duration-300 group"
+  >
+    <div className="flex items-center gap-3 mb-4">
+      <div className="w-8 h-8 rounded-none bg-accent/20 flex items-center justify-center border border-accent/20">
+        <Globe size={16} className="text-accent group-hover:rotate-12 transition-transform" />
+      </div>
+      <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white text-left">{region}</h3>
     </div>
-  );
-};
+    <p className="text-xs text-gray-400 font-medium leading-relaxed uppercase tracking-wider text-left">{locations}</p>
+  </motion.div>
+);
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -57,301 +36,370 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [italyTime, setItalyTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: 'Europe/Rome',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      setItalyTime(new Intl.DateTimeFormat([], options).format(new Date()));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
     setSubmitted(true);
     setFormData({
-      name: '',
-      company: '',
-      country: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
+      name: '', company: '', country: '', email: '', phone: '', subject: '', message: ''
     });
     setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
       <Header />
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-dark">
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
-          }}
-        />
-        <div className="relative max-w-[100rem] mx-auto px-4 md:px-8 text-center">
-          <AnimatedElement>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              {t('contactPage.heroTitle')}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
-              {t('contactPage.heroSub')}
-            </p>
-          </AnimatedElement>
-        </div>
-      </section>
-      {/* Contact Content */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            {/* Contact Information */}
-            <div className="lg:col-span-1">
-              <AnimatedElement>
-                <h2 className="text-2xl font-heading font-bold text-primary mb-6">
-                  {t('contactPage.getInTouch')}
-                </h2>
-                <p className="text-text-muted mb-8">
-                  {t('contactPage.getInTouchDesc')}
+      
+      <main className="flex-grow">
+        {/* Dynamic Industrial Hero */}
+        <section className="relative pt-32 pb-48 md:pt-40 md:pb-64 bg-[#0F172A] overflow-hidden">
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
+            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />
+          </div>
+          
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center lg:text-left lg:mx-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="flex justify-center lg:justify-start">
+                  <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-8 border border-accent/20">
+                    Global Interaction Hub
+                  </span>
+                </div>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-8 tracking-tighter leading-[0.95]">
+                  {t('contactPage.heroTitle')}
+                </h1>
+                <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-12 mx-auto lg:mx-0">
+                  {t('contactPage.heroSub')}
                 </p>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="text-accent" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.email')}</h3>
-                      <p className="text-text-muted">info@sopraniengineering.com</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="text-accent" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.phone')}</h3>
-                      <p className="text-text-muted">+1 (234) 567-890</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="text-accent" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-primary mb-1">{t('contactPage.presence')}</h3>
-                      <p className="text-text-muted">
-                        Europe, Middle East, North Africa, Asia, Americas
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </AnimatedElement>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <AnimatedElement delay={200}>
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-border-light">
-                  <h2 className="text-2xl font-heading font-bold text-primary mb-6">
-                    {t('contactPage.msgTitle')}
-                  </h2>
-                  
-                  {submitted ? (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                      <h3 className="text-xl font-heading font-bold text-green-900 mb-2">{t('contactPage.thxTitle')}</h3>
-                      <p className="text-green-800">{t('contactPage.thxDesc')}</p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
-                            {t('contactPage.formName')}
-                          </label>
-                          <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder={t('contactPage.formPlaceN')}
-                          />
-                        </div>
-                        
-                        <div>
-                          <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
-                            {t('contactPage.email')} *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder="your@email.com"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label htmlFor="company" className="block text-sm font-medium text-primary mb-2">
-                            {t('contactPage.formCompany')}
-                          </label>
-                          <input
-                            type="text"
-                            id="company"
-                            name="company"
-                            value={formData.company}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder={t('contactPage.formPlaceC')}
-                          />
-                        </div>
-                        
-                        <div>
-                          <label htmlFor="country" className="block text-sm font-medium text-primary mb-2">
-                            {t('contactPage.formCountry')}
-                          </label>
-                          <input
-                            type="text"
-                            id="country"
-                            name="country"
-                            value={formData.country}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                            placeholder={t('contactPage.formCountry')}
-                          />
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-primary mb-2">
-                          {t('contactPage.phone')}
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                          placeholder="+1 (555) 000-0000"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="subject" className="block text-sm font-medium text-primary mb-2">
-                          {t('contactPage.formSubject')}
-                        </label>
-                        <select
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-background-alt"
-                        >
-                          <option value="">{t('contactPage.subSelect')}</option>
-                          <option value="machinery">{t('contactPage.sub1')}</option>
-                          <option value="spare-parts">{t('contactPage.sub2')}</option>
-                          <option value="technical">{t('contactPage.sub3')}</option>
-                          <option value="trading">{t('contactPage.sub4')}</option>
-                          <option value="general">{t('contactPage.sub5')}</option>
-                          <option value="partnership">{t('contactPage.sub6')}</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-primary mb-2">
-                          {t('contactPage.formMsg')}
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          rows={6}
-                          className="w-full px-4 py-3 border border-border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none bg-background-alt"
-                          placeholder={t('contactPage.formPlaceP')}
-                        />
-                      </div>
-                      
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold hover:bg-accent-dark hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-none"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <span className="animate-spin mr-2">⏳</span>
-                            {t('contactPage.formSending')}
-                          </>
-                        ) : (
-                          <>
-                            {t('contactPage.formSend')}
-                            <Send size={18} className="ml-2" />
-                          </>
-                        )}
-                      </button>
-                    </form>
-                  )}
-                </div>
-              </AnimatedElement>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
-      {/* Additional Info Section */}
-      <section className="py-20 md:py-32 bg-background-alt">
-        <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <AnimatedElement>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.reqQuote')}</h3>
-                  <p className="text-text-muted mb-4">{t('contactPage.reqQuoteSub')}</p>
-                  <a href="/request-quotation" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    {t('contactPage.reqQuoteBtn')}
-                  </a>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.svcSub')}</h3>
-                  <p className="text-text-muted mb-4">{t('contactPage.svcSub')}</p>
-                  <a href="/services" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    {t('contactPage.svcBtn')}
-                  </a>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-heading font-bold text-primary mb-2">{t('contactPage.aboutUs')}</h3>
-                  <p className="text-text-muted mb-4">{t('contactPage.aboutSub')}</p>
-                  <a href="/about" className="text-accent hover:text-accent-dark font-semibold transition-colors">
-                    {t('contactPage.aboutBtn')}
-                  </a>
+        </section>
+
+        {/* Global Access Grid */}
+        <section className="relative -mt-32 md:-mt-48 pb-32">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl overflow-hidden bg-white">
+              
+              {/* Technical Information Panel (Dark) */}
+              <div className="lg:col-span-5 bg-[#0F172A] p-8 md:p-12 lg:p-16 relative">
+                <div className="relative z-10 flex flex-col h-full text-left">
+                  <div className="mb-12">
+                    <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-accent mb-6">
+                      Soprani HQ Status
+                    </h2>
+                    
+                    {/* Live Clock Interface */}
+                    <div className="flex flex-col mb-8">
+                      <div className="text-5xl md:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex items-end gap-2">
+                        {italyTime}
+                        <span className="text-[10px] uppercase text-gray-500 pb-2">CET (Italy)</span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-4">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-none h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-green-500">Technical Desk: Online & Active</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-8 pt-6 border-t border-white/10">
+                      <ContactMethod 
+                        icon={Mail} 
+                        label={t('contactPage.email')} 
+                        value="info@sopraniengineering.com" 
+                        action="mailto:info@sopraniengineering.com" 
+                      />
+                      <ContactMethod 
+                        icon={Phone} 
+                        label={t('contactPage.phone')} 
+                        value="+39 051 000 0000" 
+                        action="tel:+390510000000" 
+                      />
+                      <ContactMethod 
+                        icon={MapPin} 
+                        label={t('contactPage.presence')} 
+                        value="Europe · Asia · Americas · MENA" 
+                      />
+                    </div>
+                  </div>
+
+                  {/* WhatsApp Priority Support */}
+                  <div className="mt-auto pt-10">
+                    <a 
+                      href="https://wa.me/390510000000" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-4 group"
+                    >
+                      <div className="w-14 h-14 bg-[#25D366] text-white flex items-center justify-center group-hover:scale-110 transition-transform rounded-none">
+                        <MessageCircle size={28} />
+                      </div>
+                      <div className="text-left">
+                        <span className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Priority WhatsApp</span>
+                        <span className="text-sm font-bold text-white uppercase tracking-widest border-b border-transparent group-hover:border-accent transition-all">Direct Messaging</span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </AnimatedElement>
+
+              {/* Inquiry Form Panel (Light) */}
+              <div className="lg:col-span-7 bg-white p-8 md:p-12 lg:p-16">
+                <AnimatePresence mode="wait">
+                  {submitted ? (
+                    <motion.div 
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="h-full flex flex-col items-center justify-center text-center py-20"
+                    >
+                      <div className="w-20 h-20 bg-green-50 text-green-600 rounded-none flex items-center justify-center mb-8">
+                        <ShieldCheck size={40} />
+                      </div>
+                      <h2 className="text-3xl font-heading font-black text-primary mb-4 uppercase tracking-tighter">
+                        {t('contactPage.thxTitle')}
+                      </h2>
+                      <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed mb-10">
+                        {t('contactPage.thxDesc')}
+                      </p>
+                      <button 
+                        onClick={() => setSubmitted(false)}
+                        className="px-10 py-4 bg-[#0F172A] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
+                      >
+                        New Message
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col">
+                      <div className="mb-10 text-left">
+                        <h2 className="text-2xl font-heading font-black text-primary mb-4 uppercase tracking-tighter">
+                          {t('contactPage.msgTitle')}
+                        </h2>
+                        <div className="h-1 w-12 bg-accent" />
+                      </div>
+
+                      <form onSubmit={handleSubmit} className="space-y-6 text-left">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <CustomInput label={t('contactPage.formName')} name="name" value={formData.name} onChange={handleChange} required placeholder={t('contactPage.formPlaceN')} icon={CheckCircle2} />
+                          <CustomInput label={t('contactPage.email')} name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="corporate@company.com" icon={Mail} />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <CustomInput label={t('contactPage.formCompany')} name="company" value={formData.company} onChange={handleChange} placeholder={t('contactPage.formPlaceC')} icon={Building2} />
+                          <CustomInput label={t('contactPage.formCountry')} name="country" value={formData.country} onChange={handleChange} placeholder="Italy / Global" icon={Globe} />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <CustomInput label={t('contactPage.phone')} name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+00 000 000" icon={Phone} />
+                          <div className="space-y-2 flex flex-col">
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t('contactPage.formSubject')}</label>
+                            <div className="relative group">
+                              <select
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
+                                className="w-full h-[52px] px-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all appearance-none cursor-pointer"
+                              >
+                                <option value="">{t('contactPage.subSelect')}</option>
+                                <option value="machinery">{t('contactPage.sub1')}</option>
+                                <option value="spare-parts">{t('contactPage.sub2')}</option>
+                                <option value="technical">{t('contactPage.sub3')}</option>
+                                <option value="trading">{t('contactPage.sub4')}</option>
+                                <option value="partnership">{t('contactPage.sub6')}</option>
+                                <option value="general">{t('contactPage.sub5')}</option>
+                              </select>
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                <ChevronDown size={14} />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t('contactPage.formMsg')}</label>
+                          <textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                            rows={4}
+                            className="w-full p-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all resize-none"
+                            placeholder={t('contactPage.formPlaceP')}
+                          />
+                        </div>
+
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full py-5 bg-accent text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-opacity-95 transition-all duration-300 disabled:opacity-30 group flex items-center justify-center gap-3"
+                        >
+                          {isSubmitting ? t('contactPage.formSending') : (
+                            <>
+                              {t('contactPage.formSend')}
+                              <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            </>
+                          )}
+                        </button>
+                      </form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Global Hubs Section */}
+        <section className="py-24 bg-[#0F172A] overflow-hidden">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
+              <div className="max-w-xl text-left">
+                <span className="text-xs font-bold text-accent uppercase tracking-[0.3em] block mb-4">Network Connectivity</span>
+                <h2 className="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tighter leading-none mb-6">
+                  SOPRANI Global Service Hubs
+                </h2>
+                <div className="h-1 w-24 bg-accent" />
+              </div>
+              <p className="text-gray-400 text-sm font-medium leading-relaxed max-w-sm md:text-right text-left">
+                Our specialized decentralized support ensures that machinery and materials are handled with local expertise across major industrial regions.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <HubCard region="Europe" locations="Italy · Germany · Poland · UK" delay={0.1} />
+              <HubCard region="Americas" locations="USA · Brazil · Mexico · Canada" delay={0.2} />
+              <HubCard region="MENA" locations="UAE · Saudi Arabia · Egypt · Turkey" delay={0.3} />
+              <HubCard region="Asia Pacific" locations="China · India · Vietnam · Australia" delay={0.4} />
+            </div>
+          </div>
+        </section>
+
+        {/* Rapid Access Section */}
+        <section className="py-24 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 md:px-8 text-center">
+            <h2 className="text-2xl font-heading font-black text-primary mb-16 uppercase tracking-widest tracking-tighter">
+              Priority Channels
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <RapidLink 
+                title={t('contactPage.reqQuote')} 
+                desc={t('contactPage.reqQuoteSub')} 
+                btn={t('contactPage.reqQuoteBtn')} 
+                href="/request-quotation" 
+              />
+              <RapidLink 
+                title={t('contactPage.aboutUs')} 
+                desc={t('contactPage.aboutSub')} 
+                btn={t('contactPage.aboutBtn')} 
+                href="/about" 
+              />
+              <RapidLink 
+                title="Service Centers" 
+                desc="Locate our registered technical centers." 
+                btn="View Map" 
+                href="/services" 
+              />
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </div>
+  );
+}
+
+const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label: string, value: string, action?: string }) => (
+  <div className="flex items-center gap-6 group text-left">
+    <div className="w-12 h-12 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
+      <Icon size={20} />
+    </div>
+    <div className="flex flex-col">
+      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">{label}</span>
+      {action ? (
+        <a href={action} className="text-sm font-black text-white hover:text-accent transition-colors tracking-wider uppercase">
+          {value}
+        </a>
+      ) : (
+        <span className="text-sm font-black text-white tracking-wider uppercase">{value}</span>
+      )}
+    </div>
+  </div>
+);
+
+const CustomInput = ({ label, icon: Icon, ...props }: any) => (
+  <div className="space-y-2 text-left">
+    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</label>
+    <div className="relative group">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-focus-within:text-accent transition-colors">
+        <Icon size={16} />
+      </div>
+      <input
+        {...props}
+        className="w-full h-[52px] pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all placeholder:text-gray-300"
+      />
+    </div>
+  </div>
+);
+
+const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, btn: string, href: string }) => (
+  <div className="flex flex-col items-center group">
+    <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3">{title}</h3>
+    <p className="text-xs text-gray-500 mb-8 max-w-xs">{desc}</p>
+    <a 
+      href={href} 
+      className="inline-flex items-center gap-2 group text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent hover:border-accent transition-all"
+    >
+      {btn}
+      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+    </a>
+  </div>
+);
+
+// Helper for select arrow
+function ChevronDown({ size }: { size: number }) {
+  return (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+    >
+      <path d="m6 9 6 6 6-6"/>
+    </svg>
   );
 }

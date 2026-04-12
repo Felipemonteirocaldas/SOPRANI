@@ -128,7 +128,7 @@ export default function ProductsPage() {
               </div>
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-none font-medium transition-all ${
                   selectedCategory === 'all'
                     ? 'bg-accent text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -140,7 +140,7 @@ export default function ProductsPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  className={`px-4 py-2 rounded-none font-medium transition-all ${
                     selectedCategory === category
                       ? 'bg-accent text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -158,7 +158,7 @@ export default function ProductsPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..." 
-                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all shadow-sm"
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all shadow-sm"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function ProductsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 {filteredProducts.map((product, index) => (
                   <AnimatedElement key={product._id} delay={index * 50}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                    <div className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                       {product.solutionImage && (
                         <div className="aspect-[4/3] overflow-hidden bg-gray-100">
                           <Image 
@@ -189,7 +189,7 @@ export default function ProductsPage() {
                       )}
                       <div className="p-6">
                         {product.category && (
-                          <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-3">
+                          <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-none mb-3">
                             {product.category}
                           </span>
                         )}

@@ -120,7 +120,7 @@ export default function ServicesPage() {
                         </ul>
                       </div>
                       <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg w-full bg-gray-100">
+                        <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-lg w-full bg-gray-100">
                           <Image
                             // AQUI A MÁGICA ACONTECE: ele usa a URL do objeto
                             src={service.imageUrl || "/placeholder-image.png"}

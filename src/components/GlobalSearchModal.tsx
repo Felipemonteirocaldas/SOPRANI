@@ -33,7 +33,7 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh] bg-black/40 backdrop-blur-sm px-4" onClick={() => onOpenChange(false)}>
       <div 
-        className="w-full max-w-2xl bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden"
+        className="w-full max-w-2xl bg-white rounded-none shadow-2xl border border-gray-200 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <Command label="Global Search" className="flex flex-col w-full bg-transparent">
@@ -63,9 +63,9 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
                     <Command.Item
                       key={route.path}
                       onSelect={() => handleSelect(route.path)}
-                      className="flex items-center px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50"
+                      className="flex items-center px-4 py-3 rounded-none cursor-pointer hover:bg-gray-50"
                     >
-                      <div className="bg-gray-100 p-2 rounded-md mr-4 text-gray-500">
+                      <div className="bg-gray-100 p-2 rounded-none mr-4 text-accent">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div className="flex flex-col">
