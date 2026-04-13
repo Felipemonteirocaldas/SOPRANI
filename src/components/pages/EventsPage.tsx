@@ -72,7 +72,7 @@ export default function EventsPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
+      <section className="relative pt-24 sm:pt-28 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div 
           className="absolute inset-0 opacity-10"
           style={{

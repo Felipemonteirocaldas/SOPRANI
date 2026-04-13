@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       { path: "request-quotation", element: <Suspense fallback={<LoadingFallback />}><RequestQuotationPage /></Suspense> },
       { path: "products", element: <Suspense fallback={<LoadingFallback />}><ProductsPage /></Suspense> },
       { path: "company", element: <Suspense fallback={<LoadingFallback />}><CompanyPage /></Suspense> },
-      { path: "events", element: <Suspense fallback={<LoadingFallback />}><EventsPage /></Suspense> },
+      { path: "events", element: <Navigate to="/news?tab=events" replace /> },
       { path: "news", element: <Suspense fallback={<LoadingFallback />}><NewsPage /></Suspense> },
       { path: "*", element: <Navigate to="/" replace /> },
     ],

@@ -75,7 +75,7 @@ export default function ContactPage() {
       
       <main className="flex-grow">
         {/* Dynamic Industrial Hero */}
-        <section className="relative pt-32 pb-48 md:pt-40 md:pb-64 bg-[#001F5F] overflow-hidden">
+        <section className="relative pt-24 sm:pt-28 pb-48 md:pb-64 bg-[#001F5F] overflow-hidden">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />

@@ -173,7 +173,7 @@ export default function ProductsPage() {
       <Header />
       
       {/* Premium Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-[#001F5F]">
+      <section className="relative pt-24 sm:pt-28 pb-24 overflow-hidden bg-[#001F5F]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]" />
@@ -211,8 +211,8 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Filter & Search Bar - Fixed functionality, Premium Look */}
-      <div className="sticky top-0 z-50 py-4 border-b shadow-xl bg-white/80 backdrop-blur-md border-slate-200">
+      {/* Filter & Search Bar - Static following Wix Vibe Pattern */}
+      <div className="relative z-40 py-4 border-b shadow-xl bg-white/80 backdrop-blur-md border-slate-200">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
             <div className="flex items-center w-full gap-2 overflow-x-auto lg:w-auto no-scrollbar scroll-smooth">

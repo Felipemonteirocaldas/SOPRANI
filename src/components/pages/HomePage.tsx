@@ -140,7 +140,7 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-16 xs:pt-18 sm:pt-20 bg-cover bg-center bg-no-repeat" style={{
+        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-cover bg-center bg-no-repeat" style={{
           backgroundImage: 'url(/images/hero-bg.png)',
           backgroundAttachment: isMobile ? 'scroll' : 'fixed',
           backgroundSize: 'cover',
@@ -150,8 +150,9 @@ export default function HomePage() {
         }}>
           {/* Overlay for text readability with grid pattern */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent" />
-            <div className="absolute inset-0 grid-pattern opacity-5" />
+            <div className="absolute inset-0 bg-[#001F5F]/65" /> {/* Strategic darken layer for text pop */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#001F5F]/40 via-transparent to-[#001F5F]/40" /> {/* Stronger side vignettes */}
+            <div className="absolute inset-0 grid-pattern opacity-10 z-0" />
           </div>
 
           {/* Hero Content */}
@@ -159,22 +160,22 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
               <AnimatedElement direction="left" className="max-w-2xl">
                 <div>
-                  <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-white mb-6 leading-[1.05] tracking-tight">
+                  <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-5xl font-heading font-black text-white mb-6 leading-tight tracking-tight">
                     {t('hero.title')}
                   </h1>
-                  <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-slate-100 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-normal">
+                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-slate-200 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-light">
                     {t('hero.subtitle')}
                   </p>
-                  <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
+                  <div className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10">
                     <Link
                       to="/request-quotation"
-                      className="px-8 xs:px-9 sm:px-10 py-4 xs:py-4.5 sm:py-5 bg-accent text-white font-bold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm xs:text-base sm:text-lg rounded-none"
+                      className="px-10 py-5 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-base sm:text-lg min-w-[220px]"
                     >
                       {t('hero.requestQuotation')}
                     </Link>
                     <Link
                       to="/contact"
-                      className="px-8 xs:px-9 sm:px-10 py-4 xs:py-4.5 sm:py-5 border-2 border-white/30 backdrop-blur-sm text-white font-bold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-sm xs:text-base sm:text-lg rounded-none"
+                      className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-base sm:text-lg min-w-[220px]"
                     >
                       {t('hero.contactUs')}
                     </Link>
@@ -332,7 +333,7 @@ export default function HomePage() {
                             <MapPin size={14} className="mr-2" /> {event.location}
                           </p>
                           <Link
-                            to={`/events`}
+                            to={`/news?tab=events`}
                             className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
                           >
                             {t('eventsPage.btnLearnMore')}

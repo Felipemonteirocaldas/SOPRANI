@@ -8,92 +8,122 @@ import { cn } from "@/lib/utils";
 import { useRef } from 'react';
 
 const MenuContent = ({
-  title,
-  links,
-  featured,
   t,
   onClose
 }: {
-  title: string;
-  links: any[];
-  featured: { title: string; desc: string };
   t: any;
   onClose: () => void;
-}) => (
-  <div className="w-screen max-w-[100rem] mx-auto px-6 sm:px-8 lg:px-12">
-    <div className="grid grid-cols-12 gap-0 py-8 lg:py-12">
-      {/* DYNAMIC CATEGORIES */}
-      <div className="col-span-12 lg:col-span-9">
-        <div className="space-y-6">
-          <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 border-b border-gray-100 pb-3">
-            {title}
-          </h3>
-          <div className={cn(
-            "grid gap-x-8 gap-y-2",
-            links.length > 3 ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 md:grid-cols-2"
-          )}>
-            {links.map((link, idx) => {
-              const Icon = link.icon;
-              return (
-                <Link
-                  key={idx}
-                  to={link.href}
-                  className="group flex items-start gap-4 p-3 -mx-3 hover:bg-slate-50 transition-all duration-300 rounded-lg"
-                  onClick={onClose}
-                >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Icon size={20} />
-                  </div>
-                  <div className="space-y-0.5">
-                    <div className="text-sm font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                      {link.label}
-                    </div>
-                    <div className="text-[11px] text-gray-500 leading-snug">
-                      {link.desc}
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+}) => {
+  const servicesLinks = [
+    { label: t('header.allServices'), href: '/services', icon: ArrowRight },
+    { label: t('header.machinery'), href: '/machinery', icon: Wrench },
+    { label: t('header.spareParts'), href: '/spare-parts', icon: Package },
+    { label: t('header.technicalAssistance'), href: '/technical-assistance', icon: Headphones },
+    { label: t('header.tradingMaterials'), href: '/trading-materials', icon: Truck },
+  ];
 
-      {/* SPOTLIGHT COLUMN */}
-      <div className="hidden lg:block lg:col-span-3 lg:pl-10 lg:ml-10 border-l border-gray-100">
-        <div className="h-full flex flex-col">
-          <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 border-b border-gray-100 pb-3 mb-6">
-            {t('header.featuredTitle')}
-          </h3>
-          <div className="relative flex-grow bg-slate-900 rounded-xl overflow-hidden group/card shadow-xl shadow-slate-200/50 flex flex-col p-6 text-white min-h-[250px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-accent/90 z-0 opacity-90 transition-opacity duration-500 group-hover/card:opacity-100" />
-            <div className="absolute inset-0 grid-pattern opacity-10 z-0" />
+  const productsLinks = [
+    { label: t('header.productSolutions'), href: '/products', icon: Zap },
+    { label: t('header.industries'), href: '/industries', icon: Wrench },
+  ];
 
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-4">
-                <Zap className="text-accent" size={20} />
-              </div>
-              <h4 className="text-lg font-bold leading-tight mb-2">
-                {featured.title}
-              </h4>
-              <p className="text-[11px] text-white/70 leading-relaxed mb-auto">
-                {featured.desc}
-              </p>
+  const resourcesLinks = [
+    { label: t('header.events'), href: '/news?tab=events', icon: Zap },
+    { label: t('header.news'), href: '/news', icon: Package },
+  ];
+
+  return (
+    <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-6 sm:py-8 lg:py-9">
+        {/* COLUMN 1: SERVIÇOS */}
+        <div className="space-y-0">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+            {t('header.services')}
+          </h3>
+          <div className="flex flex-col">
+            {servicesLinks.map((link, idx) => (
               <Link
-                to="/request-quotation"
-                className="mt-4 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white hover:text-accent transition-colors duration-300 group/btn"
+                key={idx}
+                to={link.href}
+                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
                 onClick={onClose}
               >
-                {t('header.requestQuotation')}
-                <ArrowRight size={14} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <span>{link.label}</span>
               </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* COLUMN 2: PRODUTOS */}
+        <div className="space-y-0">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+            {t('header.products')}
+          </h3>
+          <div className="flex flex-col">
+            {productsLinks.map((link, idx) => (
+              <Link
+                key={idx}
+                to={link.href}
+                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+                onClick={onClose}
+              >
+                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <span>{link.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* COLUMN 3: RECURSOS */}
+        <div className="space-y-0">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+            {t('header.resources')}
+          </h3>
+          <div className="flex flex-col">
+            {resourcesLinks.map((link, idx) => (
+              <Link
+                key={idx}
+                to={link.href}
+                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+                onClick={onClose}
+              >
+                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <span>{link.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* COLUMN 4: PLATAFORMA */}
+        <div className="space-y-0">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+            {t('header.platform') || 'PLATAFORMA'}
+          </h3>
+          <div className="flex flex-col space-y-4">
+            <Link
+              to="/request-quotation"
+              className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+              onClick={onClose}
+            >
+              <Zap size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+              <span>{t('header.requestQuotation')}</span>
+            </Link>
+
+            {/* CTA CARD */}
+            <div className="mt-3.5 p-4 bg-primary/5 border-l-4 border-accent">
+              <span className="text-xs font-bold uppercase tracking-widest text-accent mb-1.25 block">{t('header.platformNew') || 'NOVO'}</span>
+              <h4 className="text-sm font-bold text-primary mb-1">{t('header.platformMph') || 'Plataforma MPH'}</h4>
+              <p className="text-xs font-light text-[#666]">
+                {t('header.platformDesc') || 'Sistema avançado de gestão industrial'}
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -124,29 +154,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const servicesLinks = [
-    { label: t('header.machinery'), desc: t('header.machineryDesc'), href: '/machinery', icon: Wrench },
-    { label: t('header.spareParts'), desc: t('header.sparePartsDesc'), href: '/spare-parts', icon: Package },
-    { label: t('header.technicalAssistance'), desc: t('header.technicalAssistanceDesc'), href: '/technical-assistance', icon: Headphones },
-    { label: t('header.tradingMaterials'), desc: t('header.tradingMaterialsDesc'), href: '/trading-materials', icon: Truck },
-  ];
-
-  const productsLinks = [
-    { label: t('header.productSolutions'), desc: t('header.productSolutionsDesc'), href: '/products', icon: Zap },
-    { label: t('header.industries'), desc: t('header.industriesDesc'), href: '/industries', icon: Wrench },
-  ];
-
-  const newsroomLinks = [
-    { label: t('header.news'), desc: t('header.newsDesc'), href: '/news', icon: Zap },
-    { label: t('header.pressKit'), desc: t('header.pressKitDesc'), href: '/press', icon: Package },
-  ];
-
-  const moreLinks = [
-    { label: t('header.events'), desc: t('header.eventsDesc'), href: '/events', icon: Zap },
-    { label: t('header.requestQuotation'), desc: t('header.requestQuotationDesc'), href: '/request-quotation', icon: Wrench },
-    { label: t('header.faq'), desc: t('header.faqDesc'), href: '/faq', icon: Headphones },
-  ];
-
   const languages = [
     { code: 'en', label: 'EN' },
     { code: 'it', label: 'IT' },
@@ -154,289 +161,196 @@ export default function Header() {
     { code: 'pt', label: 'PT' }
   ];
 
-  const isHeaderWhite = isScrolled || !!activeMenu;
+  const isHeaderWhite = true;
 
   if (!isMounted) return null;
 
   const handleClose = () => setActiveMenu(undefined);
 
   return (
-    <header className={cn(
-      "fixed w-full z-50 pointer-events-none transition-all duration-500",
-      activeMenu ? "h-screen" : "h-auto"
-    )}>
-      <div className={cn(
-        "w-full pointer-events-auto transition-all duration-500",
-        isHeaderWhite ? "bg-white/95 backdrop-blur-md shadow-lg py-2" : "bg-transparent py-4 sm:py-6"
-      )}>
-        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Logo */}
-            <Link
-              to="/"
-              className="flex items-center group relative z-[61]"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleClose();
-              }}
-            >
-              <div className="flex items-center">
-                <span className={cn(
-                  "text-xl sm:text-2xl font-black font-heading tracking-tighter transition-colors duration-300",
-                  isHeaderWhite ? "text-primary" : "text-white"
-                )}>
-                  SOPRANI
-                </span>
-                <span className="text-xl sm:text-2xl font-light font-heading tracking-tighter text-accent ml-1">
-                  ENGINEERING
-                </span>
-              </div>
-            </Link>
-
-            {/* Desktop Navigation using Radix UI for maximum stability */}
-            <div className="hidden lg:flex items-center space-x-2 xl:space-x-4 h-full relative">
-              <nav className="flex items-center h-full space-x-1 sm:space-x-2 xl:space-x-4">
-                {/* Services */}
-                <div
-                  className="relative h-full flex items-center"
-                  onMouseEnter={() => handleMouseEnter('services')}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button className={cn(
-                    "h-full flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white",
-                    activeMenu === 'services' && "text-accent"
-                  )}>
-                    {t('header.services')}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", activeMenu === 'services' && "rotate-180")} />
-                  </button>
-                </div>
-
-                {/* Products */}
-                <div
-                  className="relative h-full flex items-center"
-                  onMouseEnter={() => handleMouseEnter('products')}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button className={cn(
-                    "h-full flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white",
-                    activeMenu === 'products' && "text-accent"
-                  )}>
-                    {t('header.products')}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", activeMenu === 'products' && "rotate-180")} />
-                  </button>
-                </div>
-
-                {/* Newsroom */}
-                <div
-                  className="relative h-full flex items-center"
-                  onMouseEnter={() => handleMouseEnter('newsroom')}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button className={cn(
-                    "h-full flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white",
-                    activeMenu === 'newsroom' && "text-accent"
-                  )}>
-                    {t('header.newsroom') || 'Newsroom'}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", activeMenu === 'newsroom' && "rotate-180")} />
-                  </button>
-                </div>
-
-                {/* Company */}
-                <Link
-                  to="/company"
-                  className={cn(
-                    "inline-flex items-center justify-center text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white"
-                  )}
-                >
-                  {t('header.company')}
-                </Link>
-
-                {/* Contact */}
-                <Link
-                  to="/contact"
-                  className={cn(
-                    "inline-flex items-center justify-center text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white"
-                  )}
-                >
-                  {t('header.contact')}
-                </Link>
-
-                {/* More */}
-                <div
-                  className="relative h-full flex items-center"
-                  onMouseEnter={() => handleMouseEnter('more')}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button className={cn(
-                    "h-full flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest px-3 sm:px-4 py-2 transition-colors",
-                    isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white",
-                    activeMenu === 'more' && "text-accent"
-                  )}>
-                    {t('header.more') || 'More'}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", activeMenu === 'more' && "rotate-180")} />
-                  </button>
-                </div>
-              </nav>
-
-              {/* CUSTOM MEGA-MENU VIEWPORT (Safe Bridge) */}
-              {activeMenu && (
-                <div
-                  className="fixed left-0 top-[64px] sm:top-[80px] w-screen bg-white border-t border-gray-100 shadow-2xl z-[60] animate-in fade-in slide-in-from-top-2 duration-300"
-                  onMouseEnter={() => {
-                    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-                  }}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="w-full flex justify-center">
-                    {activeMenu === 'services' && (
-                      <MenuContent
-                        title={t('header.services')}
-                        links={servicesLinks}
-                        featured={{ title: t('header.servicesFeaturedTitle'), desc: t('header.servicesFeaturedDesc') }}
-                        t={t}
-                        onClose={handleClose}
-                      />
-                    )}
-                    {activeMenu === 'products' && (
-                      <MenuContent
-                        title={t('header.products')}
-                        links={productsLinks}
-                        featured={{ title: t('header.productsFeaturedTitle'), desc: t('header.productsFeaturedDesc') }}
-                        t={t}
-                        onClose={handleClose}
-                      />
-                    )}
-                    {activeMenu === 'newsroom' && (
-                      <MenuContent
-                        title={t('header.newsroom') || 'Newsroom'}
-                        links={newsroomLinks}
-                        featured={{ title: t('header.newsroomFeaturedTitle') || 'Industrial Insights', desc: t('header.newsroomFeaturedDesc') || 'Latest updates from Soprani Engineering' }}
-                        t={t}
-                        onClose={handleClose}
-                      />
-                    )}
-                    {activeMenu === 'more' && (
-                      <MenuContent
-                        title={t('header.more') || 'More'}
-                        links={moreLinks}
-                        featured={{ title: t('header.moreFeaturedTitle') || 'Global Presence', desc: t('header.moreFeaturedDesc') || 'Explore our worldwide reach and events' }}
-                        t={t}
-                        onClose={handleClose}
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
+    <header className="sticky top-0 z-[9999] bg-white border-b border-gray-100 shadow-md transition-all duration-300">
+      <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
+        <div className="flex justify-between items-center h-20 sm:h-24 md:h-24">
+          <Link
+            to="/"
+            className="flex items-center h-full flex-shrink-0 relative z-[10000]"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              handleClose();
+            }}
+          >
+            <div className="flex items-center justify-center h-full">
+              <img
+                src="/images/logo.png"
+                alt="Soprani Engineering"
+                className="h-[68px] xs:h-[76px] sm:h-[84px] md:h-[88px] w-auto object-contain transition-all duration-500"
+              />
             </div>
+          </Link>
 
-            {/* Language Switcher */}
-            <div className="flex items-center border-l border-gray-200 pl-2 md:pl-3 mx-1 md:mx-2 relative group h-full">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main navigation">
+            {[
+              { label: t('header.services'), href: '/services' },
+              { label: t('header.products'), href: '/products' },
+              { label: t('header.company'), href: '/company' },
+              { label: t('header.contact'), href: '/contact' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="relative px-2 xs:px-2.5 sm:px-3 py-2 text-xs sm:text-sm lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-300 group"
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[70%] rounded-full opacity-0 group-hover:opacity-100"></span>
+              </Link>
+            ))}
+
+            {/* More / Mega Menu Trigger */}
+            <div
+              className="relative"
+              onMouseEnter={() => handleMouseEnter('more')}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 className={cn(
-                  "flex items-center gap-2 text-sm font-bold transition-colors duration-300 px-3 py-1.5 relative",
-                  isHeaderWhite ? "text-gray-700 hover:text-accent" : "text-white/90 hover:text-white"
+                  "relative flex items-center gap-1 px-2 xs:px-2.5 sm:px-3 py-2 text-xs sm:text-sm lg:text-sm font-medium text-primary hover:text-accent transition-colors duration-300 group",
+                  activeMenu === 'more' && "text-accent"
                 )}
               >
-                {i18n.resolvedLanguage?.toUpperCase() || 'EN'}
-                <ChevronDown size={14} className={cn(
-                  "transition-transform duration-300 group-hover:rotate-180",
-                  isHeaderWhite ? "text-gray-400" : "text-white/60"
-                )} />
+                {t('header.more') || 'More'}
+                <ChevronDown size={16} className={cn("transition-transform duration-300", activeMenu === 'more' && "rotate-180")} />
+                <span className={cn(
+                  "absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out rounded-full opacity-0 group-hover:w-[70%] group-hover:opacity-100",
+                  activeMenu === 'more' && "w-[70%] opacity-100"
+                )}></span>
               </button>
+
+              {/* Mega Panel (More) - Fixed structure matching reference */}
+              <div
+                className={cn(
+                  "fixed left-0 right-0 top-20 sm:top-24 md:top-24 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out",
+                  activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                )}
+              >
+                <MenuContent t={t} onClose={handleClose} />
+              </div>
+            </div>
+          </nav>
+
+          {/* Right Actions Cluster */}
+          <div className="flex items-center">
+            {/* Language Selection */}
+            <div className="hidden md:flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group">
+              <button
+                className="flex items-center gap-1.5 text-xs font-bold text-primary/80 hover:text-accent px-2 py-1 relative transition-colors duration-300"
+                aria-label="Language selection"
+              >
+                {i18n.language.toUpperCase()}
+                <ChevronDown size={14} className="text-primary/40 group-hover:rotate-180 transition-transform duration-300" />
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[60%] rounded-full opacity-0 group-hover:opacity-100"></span>
+              </button>
+              
+              {/* Dropdown menu */}
               <div className="absolute right-0 top-full pt-2 w-16 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
-                <div className="bg-white border border-gray-100 shadow-xl flex flex-col py-1.5">
-                  {languages.map((lng) => (
+                <div className="bg-white border border-gray-100 shadow-xl flex flex-col py-1.5 overflow-hidden">
+                  {languages.map((lang) => (
                     <button
-                      key={lng.code}
-                      onClick={() => i18n.changeLanguage(lng.code)}
+                      key={lang.code}
+                      onClick={() => i18n.changeLanguage(lang.code)}
                       className={cn(
                         "text-xs font-semibold px-3 py-2 transition-colors",
-                        i18n.resolvedLanguage === lng.code ? "text-accent bg-accent/5" : "text-gray-500 hover:bg-gray-50"
+                        i18n.language === lang.code ? "text-accent bg-accent/5" : "text-gray-500 hover:bg-slate-50 hover:text-primary"
                       )}
                     >
-                      {lng.label}
+                      {lang.label}
                     </button>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Search Trigger */}
+            {/* Global Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className={cn(
-                "hidden lg:flex items-center justify-center p-2 rounded-full transition-colors mr-2",
-                isHeaderWhite ? "text-gray-400 hover:text-accent hover:bg-gray-50" : "text-white/60 hover:text-white hover:bg-white/10"
-              )}
+              className="hidden lg:flex items-center justify-center p-2 text-gray-400 hover:text-accent hover:bg-slate-50 rounded-full transition-colors mr-2"
+              aria-label="Search"
             >
               <Search size={18} />
             </button>
 
+            {/* Request Quotation Button */}
             <Link
               to="/request-quotation"
-              className={cn(
-                "hidden sm:inline-flex ml-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 items-center gap-2 border",
-                isHeaderWhite
-                  ? "bg-accent text-white hover:bg-accent-dark border-accent/20"
-                  : "bg-white/10 text-white hover:bg-white/20 border-white/20"
-              )}
+              className="hidden sm:inline-flex ml-2 px-3 sm:px-3 lg:px-4 py-1.5 bg-accent/90 hover:bg-accent text-white hover:shadow-lg hover:shadow-accent/30 text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 items-center gap-2 rounded-none backdrop-blur-sm border border-white/10"
+              aria-label="Request Quotation"
             >
               {t('header.requestQuotation')}
               <ArrowRight size={12} />
             </Link>
-          </div>
 
-          {/* Mobile Actions */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className={cn("p-2 transition-colors", isHeaderWhite ? "text-primary" : "text-white")}
-            >
-              <Search size={20} />
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={cn("p-2 transition-colors", isHeaderWhite ? "text-primary" : "text-white")}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex md:hidden items-center gap-1">
+               {/* Mobile Language */}
+               <button 
+                 className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
+                 onClick={() => {
+                   const nextLang = languages[(languages.findIndex(l => l.code === i18n.language) + 1) % languages.length].code;
+                   i18n.changeLanguage(nextLang);
+                 }}
+               >
+                 {i18n.language.toUpperCase()}
+                 <ChevronDown size={14} className="text-gray-400" />
+               </button>
+
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="p-2 text-primary hover:text-accent transition-colors"
+                aria-label="Search"
+              >
+                <Search size={20} />
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-primary hover:text-accent transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Panel */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-100 bg-white">
-            <div className="flex flex-col space-y-2 px-4">
-              {[
-                { label: t('header.services'), href: '/services' },
-                { label: t('header.products'), href: '/products' },
-                { label: t('header.newsroom') || 'Newsroom', href: '/newsroom' },
-                { label: t('header.company'), href: '/company' },
-                { label: t('header.contact'), href: '/contact' },
-                { label: t('header.more') || 'More', href: '#' },
-              ].map((link) => (
+          <nav className="md:hidden py-4 border-t border-gray-100 bg-white max-h-[80vh] overflow-y-auto animate-in slide-in-from-top-4 duration-300">
+            <div className="flex flex-col space-y-2 px-4 shadow-inner">
+              <Link to="/services" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                {t('header.services')}
+              </Link>
+              <Link to="/products" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                {t('header.products')}
+              </Link>
+              <Link to="/company" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                {t('header.company')}
+              </Link>
+              <Link to="/contact" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                {t('header.contact')}
+              </Link>
+              <Link to="/news" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                {t('header.news')}
+              </Link>
+              
+              <div className="pt-4 border-t border-gray-50 mt-2">
                 <Link
-                  key={link.href}
-                  to={link.href}
-                  className="block py-2 text-sm font-medium text-gray-700 hover:text-accent"
+                  to="/request-quotation"
+                  className="flex items-center justify-center gap-2 py-3 bg-accent text-white text-xs font-bold uppercase tracking-wider rounded-none"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  {t('header.requestQuotation')}
+                  <ArrowRight size={16} />
                 </Link>
-              ))}
-              <Link
-                to="/request-quotation"
-                className="flex items-center justify-center gap-2 py-3 bg-accent text-white text-xs font-bold uppercase tracking-wider"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t('header.requestQuotation')}
-                <ArrowRight size={16} />
-              </Link>
+              </div>
             </div>
           </nav>
         )}

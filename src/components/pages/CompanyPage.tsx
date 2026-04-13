@@ -198,7 +198,7 @@ export default function CompanyPage() {
       <div className="h-1 bg-gradient-to-r from-green-600 via-white to-[#C41230]" />
 
       {/* Hero Section with Technical Diagram */}
-      <section className="relative pt-32 pb-48 md:pt-40 md:pb-60 bg-[#001F5F] overflow-hidden text-left">
+      <section className="relative pt-24 sm:pt-28 pb-48 md:pb-60 bg-[#001F5F] overflow-hidden text-left">
         <div className="absolute inset-0 z-0 opacity-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent blur-[160px] rounded-full opacity-20" />
         </div>

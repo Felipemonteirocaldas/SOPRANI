@@ -10,7 +10,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12 mb-8 xs:mb-10 sm:mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-lg xs:text-xl font-heading font-bold mb-4 xs:mb-5 text-white">Soprani Engineering</h3>
+            <div className="mb-6">
+              <img 
+                src="/images/logo.png" 
+                alt="Soprani Engineering" 
+                className="h-10 w-auto brightness-0 invert" 
+              />
+            </div>
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
               {t('footer.companyDesc')}
             </p>
@@ -58,7 +64,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/events" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/news?tab=events" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
                   {t('header.events')}
                 </Link>
               </li>
