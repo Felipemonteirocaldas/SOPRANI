@@ -13,7 +13,6 @@ const SparePartsPage = lazy(() => import('@/components/pages/SparePartsPage'));
 const TechnicalAssistancePage = lazy(() => import('@/components/pages/TechnicalAssistancePage'));
 const TradingMaterialsPage = lazy(() => import('@/components/pages/TradingMaterialsPage'));
 const IndustriesPage = lazy(() => import('@/components/pages/IndustriesPage'));
-const MPHPage = lazy(() => import('@/components/pages/MPHPage'));
 const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
 const RequestQuotationPage = lazy(() => import('@/components/pages/RequestQuotationPage'));
 const ProductsPage = lazy(() => import('@/components/pages/ProductsPage'));
@@ -58,7 +57,6 @@ const router = createBrowserRouter([
       { path: "technical-assistance", element: <Suspense fallback={<LoadingFallback />}><TechnicalAssistancePage /></Suspense> },
       { path: "trading-materials", element: <Suspense fallback={<LoadingFallback />}><TradingMaterialsPage /></Suspense> },
       { path: "industries", element: <Suspense fallback={<LoadingFallback />}><IndustriesPage /></Suspense> },
-      { path: "mph", element: <Suspense fallback={<LoadingFallback />}><MPHPage /></Suspense> },
       { path: "contact", element: <Suspense fallback={<LoadingFallback />}><ContactPage /></Suspense> },
       { path: "request-quotation", element: <Suspense fallback={<LoadingFallback />}><RequestQuotationPage /></Suspense> },
       { path: "products", element: <Suspense fallback={<LoadingFallback />}><ProductsPage /></Suspense> },

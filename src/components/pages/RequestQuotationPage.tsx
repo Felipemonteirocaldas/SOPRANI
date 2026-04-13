@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertCircle, ArrowRight, Building2, Mail, MessageSquare, Phone, ShieldCheck, Zap } from 'lucide-react';
+import { AlertCircle, ArrowRight, Building2, Globe, Hash, Layers, Mail, MessageSquare, Paperclip, Phone, ShieldCheck, X, Zap } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
@@ -33,6 +33,7 @@ export default function RequestQuotationPage() {
     message: ''
   });
 
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,6 +43,17 @@ export default function RequestQuotationPage() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files);
+      setSelectedFiles(prev => [...prev, ...filesArray]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,6 +77,7 @@ export default function RequestQuotationPage() {
         urgency: 'normal',
         message: ''
       });
+      setSelectedFiles([]);
     }, 1500);
   };
 
@@ -74,10 +87,10 @@ export default function RequestQuotationPage() {
       
       <main className="flex-grow">
         {/* Modern Hero Section */}
-        <section className="relative overflow-hidden bg-[#0F172A] pt-20 pb-32 md:pt-28 md:pb-40">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-20 pb-32 md:pt-28 md:pb-40">
           {/* Subtle Background Elements */}
           <div className="absolute inset-0 z-0 opacity-10 text-left">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#DC2626_0%,transparent_50%)]" />
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#C41230_0%,transparent_50%)]" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#1E293B_0%,transparent_50%)]" />
           </div>
           
@@ -95,20 +108,20 @@ export default function RequestQuotationPage() {
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">
                     {t('reqPage.heroTitle')}
                   </h1>
-                  <p className="text-base md:text-lg text-gray-300 max-w-xl leading-relaxed mb-10 text-left">
+                  <p className="text-base md:text-lg text-blue-100 max-w-xl leading-relaxed mb-10 text-left">
                     {t('reqPage.heroSub')}
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FeatureItem 
                       icon={ShieldCheck} 
-                      title={t('reqPage.prVal1')} 
-                      desc={t('servicesSection.usedMachineryDesc')}
+                      title={t('reqPage.feat1Title')} 
+                      desc={t('reqPage.feat1Desc')}
                     />
                     <FeatureItem 
                       icon={Zap} 
-                      title={t('reqPage.prVal3')} 
-                      desc={t('aboutPage.ex3D')}
+                      title={t('reqPage.feat2Title')} 
+                      desc={t('reqPage.feat2Desc')}
                     />
                   </div>
                 </motion.div>
@@ -145,170 +158,170 @@ export default function RequestQuotationPage() {
                         </p>
                         <button
                           onClick={() => setSubmitted(false)}
-                          className="px-8 py-3 bg-[#0F172A] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all duration-300"
+                          className="px-8 py-3 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all duration-300"
                         >
                           {t('reqPage.thxBtn')}
                         </button>
                       </div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-6 text-left">
-                        {/* Company Details */}
+
+                        {/* Row 1: Company Name + Contact Person */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coName')}</label>
                             <div className="relative">
-                              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                              <input
-                                type="text"
-                                name="companyName"
-                                value={formData.companyName}
-                                onChange={handleChange}
-                                required
+                              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="Soprani Engineering Srl"
-                              />
+                                placeholder="Soprani Engineering Srl" />
                             </div>
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coPerson')}</label>
-                            <input
-                              type="text"
-                              name="contactPerson"
-                              value={formData.contactPerson}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                            />
+                            <input type="text" name="contactPerson" value={formData.contactPerson} onChange={handleChange} required
+                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium" />
                           </div>
                         </div>
 
+                        {/* Row 2: Email + Phone */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coEmail')}</label>
                             <div className="relative">
-                              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                              <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
+                              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="email" name="email" value={formData.email} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="corporate@company.com"
-                              />
+                                placeholder="corporate@company.com" />
                             </div>
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coPhone')}</label>
                             <div className="relative">
-                              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                              <input
-                                type="tel"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                required
+                              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium" />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Row 3: Country + Product / Service */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coCountry')}</label>
+                            <div className="relative">
+                              <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="text" name="country" value={formData.country} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                              />
+                                placeholder="..." />
+                            </div>
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.prOpt')}</label>
+                            <select name="productOrService" value={formData.productOrService} onChange={handleChange} required
+                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white">
+                              <option value="">{t('reqPage.prVal0')}</option>
+                              <option value="machinery">{t('reqPage.prVal1')}</option>
+                              <option value="spare-parts">{t('reqPage.prVal2')}</option>
+                              <option value="technical-assistance">{t('reqPage.prVal3')}</option>
+                              <option value="trading-materials">{t('reqPage.prVal4')}</option>
+                              <option value="revamping">{t('reqPage.prVal5')}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Row 4: Machine Type + Part Reference */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.macType')}</label>
+                            <div className="relative">
+                              <Zap className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="text" name="machineType" value={formData.machineType} onChange={handleChange}
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
+                                placeholder={t('reqPage.macTypePlace')} />
+                            </div>
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.sparRef')}</label>
+                            <div className="relative">
+                              <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="text" name="sparePartReference" value={formData.sparePartReference} onChange={handleChange}
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
+                                placeholder={t('reqPage.sparRefPlace')} />
                             </div>
                           </div>
                         </div>
 
-                        {/* Request Details */}
-                        <div className="pt-4 border-t border-gray-100">
-                          <div className="grid grid-cols-1 gap-4">
-                            <div className="space-y-1.5">
-                              <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.prOpt')}</label>
-                              <select
-                                name="productOrService"
-                                value={formData.productOrService}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white"
-                              >
-                                <option value="">{t('reqPage.prVal0')}</option>
-                                <option value="machinery">{t('reqPage.prVal1')}</option>
-                                <option value="spare-parts">{t('reqPage.prVal2')}</option>
-                                <option value="technical-assistance">{t('reqPage.prVal3')}</option>
-                                <option value="trading-materials">{t('reqPage.prVal4')}</option>
-                                <option value="revamping">{t('reqPage.prVal5')}</option>
-                              </select>
+                        {/* Row 5: Quantity + Urgency */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.qty')}</label>
+                            <div className="relative">
+                              <Layers className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
+                              <input type="text" name="quantity" value={formData.quantity} onChange={handleChange}
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
+                                placeholder={t('reqPage.qtyPlace')} />
                             </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.macType')}</label>
-                                <input
-                                  type="text"
-                                  name="machineType"
-                                  value={formData.machineType}
-                                  onChange={handleChange}
-                                  className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                  placeholder={t('reqPage.macTypePlace')}
-                                />
-                              </div>
-                              <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.urg')}</label>
-                                <select
-                                  name="urgency"
-                                  value={formData.urgency}
-                                  onChange={handleChange}
-                                  className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white"
-                                >
-                                  <option value="low">{t('reqPage.urg1')}</option>
-                                  <option value="normal">{t('reqPage.urg2')}</option>
-                                  <option value="high">{t('reqPage.urg3')}</option>
-                                  <option value="critical">{t('reqPage.urg4')}</option>
-                                </select>
-                              </div>
-                            </div>
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.urg')}</label>
+                            <select name="urgency" value={formData.urgency} onChange={handleChange}
+                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white">
+                              <option value="low">{t('reqPage.urg1')}</option>
+                              <option value="normal">{t('reqPage.urg2')}</option>
+                              <option value="high">{t('reqPage.urg3')}</option>
+                              <option value="critical">{t('reqPage.urg4')}</option>
+                            </select>
                           </div>
                         </div>
 
-                        {/* Message Area */}
+                        {/* Row 6: Message */}
                         <div className="space-y-1.5 pt-4 border-t border-gray-100">
                           <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.msgLbl')}</label>
-                          <textarea
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows={4}
+                          <textarea name="message" value={formData.message} onChange={handleChange} rows={4}
                             className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium resize-none"
-                            placeholder={t('reqPage.msgPlace')}
-                          />
+                            placeholder={t('reqPage.msgPlace')} />
                         </div>
 
-                        {/* File Notice and Submit */}
-                        <div className="space-y-6 pt-6">
-                          <div className="flex gap-3 items-center px-4 py-3 bg-gray-50 border-l-2 border-accent text-left">
-                            <AlertCircle className="w-4 h-4 text-accent" />
-                            <p className="text-[10px] text-gray-500 font-medium leading-relaxed">
-                              {t('reqPage.fileInfo')}
-                            </p>
+                        {/* Row 7: File Attachments */}
+                        <div className="space-y-3 pt-4 border-t border-gray-100">
+                          <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.fileAttach')}</label>
+                          <div className="flex flex-wrap gap-3">
+                            {selectedFiles.map((file, idx) => (
+                              <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 text-[10px] font-medium text-gray-600">
+                                <Paperclip className="w-3 h-3 text-accent" />
+                                <span className="max-w-[120px] truncate">{file.name}</span>
+                                <button type="button" onClick={() => removeFile(idx)} className="p-0.5 hover:bg-gray-200 transition-colors">
+                                  <X className="w-3 h-3 text-blue-300" />
+                                </button>
+                              </div>
+                            ))}
+                            <label className="flex items-center gap-2 px-4 py-1.5 bg-white border border-dashed border-gray-300 hover:border-accent hover:text-accent cursor-pointer transition-all text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                              <Paperclip className="w-3 h-3" />
+                              {t('reqPage.selectFile')}
+                              <input type="file" multiple onChange={handleFileChange} className="hidden" />
+                            </label>
                           </div>
-
-                          <div className="flex flex-col sm:flex-row gap-3">
-                            <button
-                              type="submit"
-                              disabled={isLoading}
-                              className="flex-1 bg-accent hover:bg-opacity-95 text-white py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 disabled:bg-gray-400 flex items-center justify-center gap-2 group"
-                            >
-                              {isLoading ? t('reqPage.subBtnL') : (
-                                <>
-                                  {t('reqPage.subBtn')}
-                                  {/* Arrow Right manually implemented since lucide might have issues with some versions in build */}
-                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </>
-                              )}
-                            </button>
-                            <a
-                              href="/"
-                              className="px-6 py-3.5 border border-gray-200 text-gray-400 hover:text-primary hover:border-primary text-xs font-bold uppercase tracking-widest text-center transition-all duration-300"
-                            >
-                              {t('reqPage.cancelBtn')}
-                            </a>
-                          </div>
+                          <p className="text-[9px] text-gray-400 italic">{t('reqPage.fileInfo')}</p>
                         </div>
+
+                        {/* Submit Row */}
+                        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                          <button type="submit" disabled={isLoading}
+                            className="flex-1 bg-accent hover:bg-opacity-95 text-white py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 disabled:bg-gray-400 flex items-center justify-center gap-2 group">
+                            {isLoading ? t('reqPage.subBtnL') : (
+                              <>
+                                {t('reqPage.subBtn')}
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                              </>
+                            )}
+                          </button>
+                          <a href="/"
+                            className="px-6 py-3.5 border border-gray-200 text-gray-400 hover:text-primary hover:border-primary text-xs font-bold uppercase tracking-widest text-center transition-all duration-300">
+                            {t('reqPage.cancelBtn')}
+                          </a>
+                        </div>
+
                       </form>
                     )}
                   </div>
@@ -377,3 +390,6 @@ const ContactCard = ({ icon: Icon, title, val, link }: { icon: any, title: strin
     </a>
   </div>
 );
+
+
+

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap');
 @import './fonts.css';
 
 @tailwind base;
@@ -26,8 +27,26 @@
     @apply transition-all duration-300;
   }
 
+  /* Universal form contrast — ensures legibility on light backgrounds */
+  input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  textarea,
+  select {
+    color: #1a2540;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+  }
+
+  /* Ensure labels are never too light on white */
+  label {
+    color: #374151;
+  }
+
   ::selection {
-    @apply bg-accent/30 text-primary;
+    @apply bg-accent/20 text-primary;
   }
 
   /* Custom Premium Scrollbar */
@@ -48,15 +67,15 @@
 @layer components {
   /* Buttons */
   .btn-primary {
-    @apply px-6 py-3 bg-accent text-white font-semibold uppercase tracking-wider rounded-none hover:bg-accent-dark transition-all duration-200 hover:shadow-lg;
+    @apply px-8 py-4 bg-accent text-white font-bold uppercase tracking-wider rounded-none hover:bg-accent-dark transition-all duration-200 hover:shadow-lg text-sm md:text-base;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 font-semibold uppercase tracking-wider rounded-none;
+    @apply px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 font-bold uppercase tracking-wider rounded-none text-sm md:text-base;
   }
 
   .btn-outline {
-    @apply px-6 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200 font-semibold uppercase tracking-wider rounded-none;
+    @apply px-10 py-4.5 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 font-bold uppercase tracking-[0.2em] rounded-none text-sm;
   }
 
   /* Cards */
@@ -88,12 +107,12 @@
   }
 
   .glass-morphism-dark {
-    @apply bg-primary/40 backdrop-blur-lg border border-white/10 shadow-2xl;
+    @apply bg-primary/40 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
   /* Industrial Grid Background */
   .grid-pattern {
-    background-image: radial-gradient(circle, rgba(220, 38, 38, 0.1) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(196, 18, 48, 0.1) 1px, transparent 1px);
     background-size: 30px 30px;
   }
 

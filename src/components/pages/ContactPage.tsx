@@ -19,7 +19,7 @@ const HubCard = ({ region, locations, delay }: { region: string, locations: stri
       </div>
       <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white text-left">{region}</h3>
     </div>
-    <p className="text-xs text-gray-400 font-medium leading-relaxed uppercase tracking-wider text-left">{locations}</p>
+    <p className="text-xs text-blue-200 font-medium leading-relaxed uppercase tracking-wider text-left">{locations}</p>
   </motion.div>
 );
 
@@ -75,7 +75,7 @@ export default function ContactPage() {
       
       <main className="flex-grow">
         {/* Dynamic Industrial Hero */}
-        <section className="relative pt-32 pb-48 md:pt-40 md:pb-64 bg-[#0F172A] overflow-hidden">
+        <section className="relative pt-32 pb-48 md:pt-40 md:pb-64 bg-[#001F5F] overflow-hidden">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-8 tracking-tighter leading-[0.95]">
                   {t('contactPage.heroTitle')}
                 </h1>
-                <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-12 mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed mb-12 mx-auto lg:mx-0">
                   {t('contactPage.heroSub')}
                 </p>
               </motion.div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl overflow-hidden bg-white">
               
               {/* Technical Information Panel (Dark) */}
-              <div className="lg:col-span-5 bg-[#0F172A] p-8 md:p-12 lg:p-16 relative">
+              <div className="lg:col-span-5 bg-[#001F5F] p-8 md:p-12 lg:p-16 relative">
                 <div className="relative z-10 flex flex-col h-full text-left">
                   <div className="mb-12">
                     <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-accent mb-6">
@@ -121,7 +121,7 @@ export default function ContactPage() {
                     <div className="flex flex-col mb-8">
                       <div className="text-5xl md:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex items-end gap-2">
                         {italyTime}
-                        <span className="text-[10px] uppercase text-gray-500 pb-2">CET (Italy)</span>
+                        <span className="text-[10px] uppercase text-blue-300 pb-2">CET (Italy)</span>
                       </div>
                       <div className="flex items-center gap-2 mt-4">
                         <span className="relative flex h-2 w-2">
@@ -165,7 +165,7 @@ export default function ContactPage() {
                         <MessageCircle size={28} />
                       </div>
                       <div className="text-left">
-                        <span className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Priority WhatsApp</span>
+                        <span className="block text-[10px] font-bold uppercase tracking-widest text-blue-200 mb-1">Priority WhatsApp</span>
                         <span className="text-sm font-bold text-white uppercase tracking-widest border-b border-transparent group-hover:border-accent transition-all">Direct Messaging</span>
                       </div>
                     </a>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                       </p>
                       <button 
                         onClick={() => setSubmitted(false)}
-                        className="px-10 py-4 bg-[#0F172A] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
+                        className="px-10 py-4 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
                       >
                         New Message
                       </button>
@@ -222,7 +222,7 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <CustomInput label={t('contactPage.phone')} name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+00 000 000" icon={Phone} />
                           <div className="space-y-2 flex flex-col">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t('contactPage.formSubject')}</label>
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('contactPage.formSubject')}</label>
                             <div className="relative group">
                               <select
                                 name="subject"
@@ -247,7 +247,7 @@ export default function ContactPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t('contactPage.formMsg')}</label>
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('contactPage.formMsg')}</label>
                           <textarea
                             name="message"
                             value={formData.message}
@@ -281,7 +281,7 @@ export default function ContactPage() {
         </section>
 
         {/* Global Hubs Section */}
-        <section className="py-24 bg-[#0F172A] overflow-hidden">
+        <section className="py-24 bg-[#001F5F] overflow-hidden">
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
               <div className="max-w-xl text-left">
@@ -291,7 +291,7 @@ export default function ContactPage() {
                 </h2>
                 <div className="h-1 w-24 bg-accent" />
               </div>
-              <p className="text-gray-400 text-sm font-medium leading-relaxed max-w-sm md:text-right text-left">
+              <p className="text-blue-200 text-sm font-medium leading-relaxed max-w-sm md:text-right text-left">
                 Our specialized decentralized support ensures that machinery and materials are handled with local expertise across major industrial regions.
               </p>
             </div>
@@ -345,7 +345,7 @@ const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label:
       <Icon size={20} />
     </div>
     <div className="flex flex-col">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">{label}</span>
+      <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-1">{label}</span>
       {action ? (
         <a href={action} className="text-sm font-black text-white hover:text-accent transition-colors tracking-wider uppercase">
           {value}
@@ -359,14 +359,14 @@ const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label:
 
 const CustomInput = ({ label, icon: Icon, ...props }: any) => (
   <div className="space-y-2 text-left">
-    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</label>
+    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{label}</label>
     <div className="relative group">
       <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-focus-within:text-accent transition-colors">
         <Icon size={16} />
       </div>
       <input
         {...props}
-        className="w-full h-[52px] pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all placeholder:text-gray-300"
+        className="w-full h-[52px] pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-semibold text-gray-800 focus:outline-none transition-all placeholder:text-gray-400 placeholder:font-normal"
       />
     </div>
   </div>
@@ -403,3 +403,5 @@ function ChevronDown({ size }: { size: number }) {
     </svg>
   );
 }
+
+

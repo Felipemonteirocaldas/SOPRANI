@@ -65,10 +65,10 @@ export default function SplitLayoutSection() {
 
           {/* Body Text */}
           <div className="space-y-4 mb-8 max-w-lg">
-            <p className="font-paragraph text-base text-text-muted leading-relaxed">
+            <p className="font-paragraph text-base text-slate-700 leading-relaxed font-normal">
               {t('splitLayout.desc1')}
             </p>
-            <p className="font-paragraph text-base text-text-muted leading-relaxed">
+            <p className="font-paragraph text-base text-slate-700 leading-relaxed font-normal">
               {t('splitLayout.desc2')}
             </p>
           </div>
@@ -80,9 +80,8 @@ export default function SplitLayoutSection() {
               return (
                 <div
                   key={index}
-                  className={`grid grid-cols-[40px_1fr] gap-4 py-5 ${
-                    index !== features.length - 1 ? 'border-b border-border-light' : ''
-                  }`}
+                  className={`grid grid-cols-[40px_1fr] gap-4 py-5 ${index !== features.length - 1 ? 'border-b border-border-light' : ''
+                    }`}
                 >
                   {/* Icon */}
                   <div className="flex items-start justify-center pt-0.5">
@@ -94,7 +93,7 @@ export default function SplitLayoutSection() {
                     <h3 className="font-heading text-sm font-bold text-primary mb-1">
                       {feature.title}
                     </h3>
-                    <p className="font-paragraph text-sm text-text-muted leading-relaxed">
+                    <p className="font-paragraph text-sm text-slate-600 leading-relaxed font-normal">
                       {feature.description}
                     </p>
                   </div>

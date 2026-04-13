@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
 import OurServicesProducts from '@/components/OurServicesProducts';
-import PremiumCTASection from '@/components/PremiumCTASection';
+import PartnersSection from '@/components/PartnersSection';
 import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
@@ -150,8 +150,8 @@ export default function HomePage() {
         }}>
           {/* Overlay for text readability with grid pattern */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/60" />
-            <div className="absolute inset-0 grid-pattern opacity-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent" />
+            <div className="absolute inset-0 grid-pattern opacity-5" />
           </div>
 
           {/* Hero Content */}
@@ -159,22 +159,22 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
               <AnimatedElement direction="left" className="max-w-2xl">
                 <div>
-                  <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 xs:mb-5 sm:mb-6 leading-tight tracking-tight">
+                  <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-white mb-6 leading-[1.05] tracking-tight">
                     {t('hero.title')}
                   </h1>
-                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 mb-6 xs:mb-7 sm:mb-8 leading-relaxed">
+                  <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-slate-100 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-normal">
                     {t('hero.subtitle')}
                   </p>
                   <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
                     <Link
                       to="/request-quotation"
-                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                      className="px-8 xs:px-9 sm:px-10 py-4 xs:py-4.5 sm:py-5 bg-accent text-white font-bold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm xs:text-base sm:text-lg rounded-none"
                     >
                       {t('hero.requestQuotation')}
                     </Link>
                     <Link
                       to="/contact"
-                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white/30 backdrop-blur-sm text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                      className="px-8 xs:px-9 sm:px-10 py-4 xs:py-4.5 sm:py-5 border-2 border-white/30 backdrop-blur-sm text-white font-bold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-sm xs:text-base sm:text-lg rounded-none"
                     >
                       {t('hero.contactUs')}
                     </Link>
@@ -204,11 +204,8 @@ export default function HomePage() {
         <SplitLayoutSection />
         {/* OUR SERVICES SECTION */}
         <OurServicesSection />
-        {/* SERVICES OVERVIEW SECTION */}
-        {/* INDUSTRIES SECTION */}
-
-        {/* PREMIUM CTA SECTION */}
-        <PremiumCTASection />
+        {/* PARTNERS SECTION */}
+        <PartnersSection />
         {/* LATEST NEWS SECTION */}
         <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
@@ -246,7 +243,7 @@ export default function HomePage() {
                         <h3 className="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors duration-300">
                           {news[0].headline}
                         </h3>
-                        <p className="text-text-muted mb-6 line-clamp-3 text-sm leading-relaxed">
+                        <p className="text-primary/70 mb-6 line-clamp-3 text-base md:text-lg leading-relaxed font-light">
                           {news[0].content}
                         </p>
                         <span className="text-accent text-sm font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
@@ -365,124 +362,6 @@ export default function HomePage() {
         </section>
         {/* OUR SERVICES PRODUCTS SECTION */}
         <OurServicesProducts />
-        {/* VISION & PROTECTION SECTION */}
-        {/* TRADING MATERIALS FEATURED SECTION */}
-        {/* MPH HIGHLIGHTS SECTION - FULL WIDTH */}
-        <section className="relative w-full min-h-screen md:min-h-auto py-16 md:py-24 lg:py-32 bg-primary-dark text-white overflow-hidden hidden">
-          {/* Watermark MPH Background */}
-          <div className="absolute inset-0 z-0 flex items-center justify-end overflow-hidden bg-primary">
-            <div className="absolute right-1/2 translate-x-1/2 md:right-0 md:translate-x-0 top-1/2 -translate-y-1/2 text-[12rem] md:text-[25rem] lg:text-[30rem] font-black font-sans opacity-5 leading-none whitespace-nowrap pointer-events-none">
-              MPH
-            </div>
-          </div>
-
-          <div className="relative z-10 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-0 min-h-full">
-              {/* LEFT COLUMN - MAIN CONTENT */}
-              <div className="px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-24 flex flex-col justify-center space-y-8">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-3 w-fit">
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
-                    <div className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
-                    </div>
-                    <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-white">
-                      Coming Soon — New Digital Platform
-                    </span>
-                  </div>
-                </div>
-
-                {/* Subtitle with line */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-px bg-gray-500" />
-                  <span className="text-sm md:text-base font-medium uppercase tracking-widest text-gray-400">
-                    The Future of the Sector
-                  </span>
-                </div>
-
-                {/* Main Title */}
-                <div className="space-y-2">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black leading-tight text-white">
-                    Introducing MPH
-                  </h2>
-                  <p className="text-xl md:text-2xl font-heading font-semibold text-gray-400">
-                    Metal Packaging Hub
-                  </p>
-                </div>
-
-                {/* Description */}
-                <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-lg">
-                  A dedicated platform for the global metal packaging industry. One stop. The entire supply chain. Machinery, spare parts, and materials worldwide.
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-3 pt-4">
-                  {['Machinery Marketplace', 'Spare Parts Network', 'Material Trading', 'Global Suppliers'].map((tag, idx) => (
-                    <div
-                      key={idx}
-                      className="px-4 py-2 border border-white/20 text-xs md:text-sm font-semibold uppercase tracking-wider text-white hover:border-white/40 transition-colors duration-300 rounded-none"
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <div className="pt-4">
-                  <button className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 border border-white/40 rounded-none text-white font-semibold uppercase tracking-wider text-sm md:text-base hover:border-white hover:bg-white/5 transition-all duration-300">
-                    Register Your Interest
-                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              {/* RIGHT COLUMN - FEATURES LIST */}
-              <div className="px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-24 flex flex-col justify-center space-y-0 relative z-20">
-                {[
-                  {
-                    number: '01',
-                    title: 'Peak & Complete Machinery',
-                    description: 'Industry-leading equipment and complete packaging machinery from global suppliers'
-                  },
-                  {
-                    number: '02',
-                    title: 'Source Quality Parts & Spares',
-                    description: 'Genuine replacement parts and spare components for all major packaging equipment'
-                  },
-                  {
-                    number: '03',
-                    title: 'Trade Materials & Aluminum',
-                    description: 'Premium raw materials and aluminum sourcing for metal packaging production'
-                  },
-                  {
-                    number: '04',
-                    title: 'Verified Supplier Directory',
-                    description: 'Trusted network of verified suppliers and manufacturers in the metal packaging industry'
-                  }
-                ].map((item, idx) => (
-                  <div key={idx} className={`py-6 md:py-8 ${idx !== 3 ? 'border-b border-white/10' : ''}`}>
-                    <div className="flex gap-4 md:gap-6">
-                      <span className="text-2xl md:text-3xl font-black text-gray-500 flex-shrink-0 min-w-fit">
-                        {item.number}
-                      </span>
-                      <div className="flex-1">
-                        <h3 className="text-base md:text-lg font-heading font-bold text-white mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

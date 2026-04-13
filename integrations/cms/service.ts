@@ -133,12 +133,17 @@ export class BaseCrudService {
         ? includeRefs
         : [...(includeRefs?.singleRef || []), ...(includeRefs?.multiRef || [])];
 
-      let query = items.query(collectionId);
+      const query = items.query(collectionId);
+      let queryWithRefs = query;
+      
       if (allRefs.length > 0) {
-        query = query.include(...allRefs);
+        queryWithRefs = query.include(...allRefs);
       }
 
-      const result = await query.skip(skip).limit(limit).find({ returnTotalCount: true });
+      const result = await queryWithRefs
+        .skip(skip)
+        .limit(limit)
+        .find({ returnTotalCount: true });
       const hasNext = result.hasNext();
 
       return {

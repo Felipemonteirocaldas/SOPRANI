@@ -173,7 +173,7 @@ export default function ProductsPage() {
       <Header />
       
       {/* Premium Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-[#0F172A]">
+      <section className="relative pt-32 pb-24 overflow-hidden bg-[#001F5F]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]" />
@@ -437,3 +437,4 @@ export default function ProductsPage() {
     </div>
   );
 }
+

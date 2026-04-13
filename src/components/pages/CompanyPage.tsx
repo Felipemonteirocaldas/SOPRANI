@@ -96,45 +96,45 @@ const TechnicalDiagram: React.FC = () => {
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke="#DC2626"
+                stroke="#C41230"
                 strokeWidth="3"
                 opacity="0.8"
               />
             );
           })}
           {/* Main circle */}
-          <circle cx="0" cy="0" r="50" fill="none" stroke="#DC2626" strokeWidth="2" opacity="0.6" />
-          <circle cx="0" cy="0" r="35" fill="none" stroke="#DC2626" strokeWidth="1.5" opacity="0.4" />
-          <circle cx="0" cy="0" r="15" fill="#DC2626" opacity="0.3" />
+          <circle cx="0" cy="0" r="50" fill="none" stroke="#C41230" strokeWidth="2" opacity="0.6" />
+          <circle cx="0" cy="0" r="35" fill="none" stroke="#C41230" strokeWidth="1.5" opacity="0.4" />
+          <circle cx="0" cy="0" r="15" fill="#C41230" opacity="0.3" />
         </g>
 
         {/* Production Line Elements */}
         <g>
           {/* Left press */}
-          <rect x="20" y="120" width="40" height="60" fill="none" stroke="#DC2626" strokeWidth="2" opacity="0.7" />
-          <line x1="30" y1="120" x2="30" y2="100" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
-          <line x1="50" y1="120" x2="50" y2="100" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
+          <rect x="20" y="120" width="40" height="60" fill="none" stroke="#C41230" strokeWidth="2" opacity="0.7" />
+          <line x1="30" y1="120" x2="30" y2="100" stroke="#C41230" strokeWidth="1.5" opacity="0.5" />
+          <line x1="50" y1="120" x2="50" y2="100" stroke="#C41230" strokeWidth="1.5" opacity="0.5" />
 
           {/* Connection lines */}
-          <line x1="60" y1="150" x2="110" y2="150" stroke="#DC2626" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
-          <line x1="190" y1="150" x2="240" y2="150" stroke="#DC2626" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
+          <line x1="60" y1="150" x2="110" y2="150" stroke="#C41230" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
+          <line x1="190" y1="150" x2="240" y2="150" stroke="#C41230" strokeWidth="1" opacity="0.4" strokeDasharray="5,5" />
 
           {/* Right component */}
-          <rect x="240" y="130" width="35" height="40" fill="none" stroke="#DC2626" strokeWidth="2" opacity="0.7" />
-          <circle cx="257.5" cy="150" r="8" fill="none" stroke="#DC2626" strokeWidth="1.5" opacity="0.6" />
+          <rect x="240" y="130" width="35" height="40" fill="none" stroke="#C41230" strokeWidth="2" opacity="0.7" />
+          <circle cx="257.5" cy="150" r="8" fill="none" stroke="#C41230" strokeWidth="1.5" opacity="0.6" />
         </g>
 
         {/* Performance indicators */}
         <g>
           {/* Efficiency bar */}
-          <rect x="20" y="30" width="80" height="6" fill="none" stroke="#DC2626" strokeWidth="1" opacity="0.4" />
-          <rect x="20" y="30" width="64" height="6" fill="#DC2626" opacity="0.5" />
-          <text x="20" y="20" fontSize="10" fill="#DC2626" opacity="0.7">{t('aboutPage.ex1T')}</text>
+          <rect x="20" y="30" width="80" height="6" fill="none" stroke="#C41230" strokeWidth="1" opacity="0.4" />
+          <rect x="20" y="30" width="64" height="6" fill="#C41230" opacity="0.5" />
+          <text x="20" y="20" fontSize="10" fill="#C41230" opacity="0.7">{t('aboutPage.ex1T')}</text>
 
           {/* Accuracy bar */}
-          <rect x="200" y="30" width="80" height="6" fill="none" stroke="#DC2626" strokeWidth="1" opacity="0.4" />
-          <rect x="200" y="30" width="76" height="6" fill="#DC2626" opacity="0.5" />
-          <text x="200" y="20" fontSize="10" fill="#DC2626" opacity="0.7">{t('aboutPage.cv1T')}</text>
+          <rect x="200" y="30" width="80" height="6" fill="none" stroke="#C41230" strokeWidth="1" opacity="0.4" />
+          <rect x="200" y="30" width="76" height="6" fill="#C41230" opacity="0.5" />
+          <text x="200" y="20" fontSize="10" fill="#C41230" opacity="0.7">{t('aboutPage.cv1T')}</text>
         </g>
       </svg>
 
@@ -158,7 +158,7 @@ const PerformanceIndicator: React.FC<{ label: string; value: number }> = ({ labe
             cy="48"
             r="44"
             fill="none"
-            stroke="#DC2626"
+            stroke="#C41230"
             strokeWidth="2"
             strokeDasharray={`${(value / 100) * 276} 276`}
             opacity="0.8"
@@ -195,10 +195,10 @@ export default function CompanyPage() {
     <div className="min-h-screen bg-background font-paragraph">
       <Header />
       {/* Italian Flag Gradient Line */}
-      <div className="h-1 bg-gradient-to-r from-green-600 via-white to-red-600" />
+      <div className="h-1 bg-gradient-to-r from-green-600 via-white to-[#C41230]" />
 
       {/* Hero Section with Technical Diagram */}
-      <section className="relative pt-32 pb-48 md:pt-40 md:pb-60 bg-[#0F172A] overflow-hidden text-left">
+      <section className="relative pt-32 pb-48 md:pt-40 md:pb-60 bg-[#001F5F] overflow-hidden text-left">
         <div className="absolute inset-0 z-0 opacity-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent blur-[160px] rounded-full opacity-20" />
         </div>
@@ -213,8 +213,8 @@ export default function CompanyPage() {
                 {t('companyPage.heroTitle')}
               </h1>
               <div className="prose prose-sm prose-invert max-w-none">
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">{t('companyPage.p1')}</p>
-                <p className="text-gray-400 text-lg leading-relaxed">{t('companyPage.p2')}</p>
+                <p className="text-blue-100 text-lg leading-relaxed mb-6">{t('companyPage.p1')}</p>
+                <p className="text-blue-200 text-lg leading-relaxed">{t('companyPage.p2')}</p>
               </div>
             </AnimatedElement>
 
@@ -320,7 +320,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-[#0F172A] text-white">
+      <section className="py-24 bg-[#001F5F] text-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-heading font-black uppercase tracking-tighter leading-none mb-8">
@@ -372,8 +372,10 @@ const ValueCard = ({ icon: Icon, title, desc, delay, className = "" }: { icon: a
     <h3 className="text-sm font-black uppercase tracking-[0.2em] mb-4 group-hover:text-accent transition-colors">
       {title}
     </h3>
-    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+    <p className="text-blue-200 text-sm leading-relaxed font-medium">
       {desc}
     </p>
   </AnimatedElement>
 );
+
+

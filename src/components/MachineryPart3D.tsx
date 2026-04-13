@@ -108,7 +108,7 @@ export default function MachineryPart3D() {
     <div className="w-full h-full relative cursor-grab active:cursor-grabbing">
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[5, 2, 8]} fov={35} />
-        <color attach="background" args={['#0F172A']} />
+        <color attach="background" args={['#001F5F']} />
         
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
@@ -143,12 +143,7 @@ export default function MachineryPart3D() {
         />
       </Canvas>
       
-      {/* Overlay Text */}
-      <div className="absolute bottom-6 left-6 pointer-events-none">
-        <h4 className="text-white/20 text-4xl font-black uppercase tracking-tighter select-none">
-          Precision Engineering
-        </h4>
-      </div>
     </div>
   );
 }
+

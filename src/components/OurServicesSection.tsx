@@ -1,4 +1,4 @@
-import { Briefcase, Wrench, Clipboard, RotateCw, ShoppingCart } from 'lucide-react';
+import { Briefcase, Wrench, Clipboard, RotateCw, ShoppingCart, Hammer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function OurServicesSection() {
@@ -30,9 +30,15 @@ export default function OurServicesSection() {
     },
     {
       number: '05',
-      title: t('header.tradingMaterials') + ' — Tinplate & Aluminum',
+      title: t('header.tradingMaterials') + ' — Tinplate',
       description: t('servicesSection.tradingDesc'),
       icon: ShoppingCart,
+    },
+    {
+      number: '06',
+      title: t('servicesSection.assetMarketTitle'),
+      description: t('servicesSection.assetMarketDesc'),
+      icon: Hammer,
     },
   ];
 
@@ -57,7 +63,7 @@ export default function OurServicesSection() {
                 {t('servicesSection.ourServices')}
               </h2>
               <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-text-muted">
-                {t('servicesSection.fiveAreas')}
+                {t('servicesSection.sixAreas')}
               </p>
             </div>
           </div>
@@ -69,43 +75,37 @@ export default function OurServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="bg-white">
+        <div className="bg-white shadow-xl shadow-slate-200/50">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               const isLastColumn = (index + 1) % 3 === 0;
-              const isLastRow = index >= 3;
               const isLastCard = index === services.length - 1;
-              const isSmallScreen = true; // Mobile-first approach
 
               return (
                 <div
                   key={service.number}
-                  className={`p-6 sm:p-8 lg:p-10 border-b border-[#EAEAEA] ${
+                  className={`p-8 sm:p-10 lg:p-14 border-b border-slate-100 group hover:bg-slate-50 transition-all duration-500 ${
                     !isLastColumn && !isLastCard ? 'lg:border-r' : ''
-                  } ${
-                    isLastRow && index % 3 !== 2 ? 'sm:border-b' : ''
-                  } ${
-                    isLastCard ? 'sm:col-span-2 lg:col-span-1' : ''
                   }`}
                 >
-                  {/* Number */}
-                  <div className="text-xs font-heading text-[#D1D5DB] font-semibold mb-6 sm:mb-8">
+                  {/* Number Overlay */}
+                  <div className="text-[5rem] font-heading text-slate-50 font-black absolute translate-y-[-2rem] translate-x-[-1rem] pointer-events-none group-hover:text-slate-100 transition-colors duration-500">
                     {service.number}
                   </div>
 
                   {/* Icon Box */}
-                  <div className="w-12 h-12 border border-[#D1D5DB] flex items-center justify-center mb-4 sm:mb-6">
-                    <IconComponent className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                  <div className="w-16 h-16 bg-white border border-slate-200 flex items-center justify-center mb-8 relative z-10 shadow-sm group-hover:border-accent/30 group-hover:shadow-md transition-all duration-500">
+                    <IconComponent className="w-7 h-7 text-primary group-hover:text-accent transition-colors duration-500" strokeWidth={1} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base sm:text-lg font-heading font-bold text-primary mb-3 sm:mb-4">
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-primary mb-4 relative z-10">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm font-paragraph text-text-muted leading-relaxed">
+                  <p className="text-base sm:text-lg font-paragraph text-slate-700 leading-relaxed relative z-10 font-normal">
                     {service.description}
                   </p>
                 </div>

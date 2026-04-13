@@ -17,7 +17,7 @@ class ThreeErrorCatcher extends Component<{ children: React.ReactNode }, { hasEr
   render() {
     if (this.state.hasError) {
       return (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-red-50 text-red-600 p-4 overflow-auto">
+        <div className="w-full h-full flex flex-col items-center justify-center bg-red-50 text-[#C41230] p-4 overflow-auto">
           <h2 className="font-bold text-lg mb-2">3D Engine Crash:</h2>
           <pre className="text-xs whitespace-pre-wrap">{this.state.error}</pre>
         </div>

@@ -164,7 +164,7 @@ const StatsSection = () => {
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             {t('stats.title')}
           </h2>
-          <p className="font-paragraph text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="font-paragraph text-lg text-slate-100 max-w-2xl mx-auto">
             {t('stats.desc')}
           </p>
         </motion.div>
@@ -217,7 +217,7 @@ const StatsSection = () => {
               </h3>
 
               {/* Sublabel */}
-              <p className="font-paragraph text-xs md:text-sm text-gray-400">
+              <p className="font-paragraph text-xs md:text-sm text-slate-300 font-medium">
                 {stat.sublabel}
               </p>
             </motion.div>
@@ -248,7 +248,7 @@ const StatsSection = () => {
               </h4>
 
               {/* Descrição */}
-              <p className="font-paragraph text-xs md:text-sm text-gray-400">
+              <p className="font-paragraph text-xs md:text-sm text-slate-200 font-medium leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
