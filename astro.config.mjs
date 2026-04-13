@@ -29,6 +29,8 @@ export default defineConfig({
       include: [
         'react',
         'react-dom',
+        'react-dom/client', // Adicione esta linha
+        'react-router-dom',  // Adicione esta linha
         'zustand',
         'framer-motion',
         'date-fns',

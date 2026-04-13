@@ -1,20 +1,21 @@
 ---
-// Removemos os imports da Wix (SEO e Vibe Plugins)
+// Importações de componentes e estilos
 import { Head } from "@/components/Head";
 import AppRouter from "@/components/Router";
 import "@/styles/global.css";
 
-// Como não temos mais o loadSEOTags da Wix, definimos o básico aqui.
-// No futuro, você pode expandir isso usando o Astro SEO.
+// Definições de SEO para a Soprani
 const title = "Soprani Engineering | Industrial Metal Packaging Solutions";
 const description = "Global leader in industrial machinery, spare parts, and technical assistance for the metal packaging industry.";
 ---
 
-<html lang="it" class="w-full h-full"> <head>
+<html lang="it" class="w-full h-full">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <Head /> <title>{title}</title>
+    <Head /> 
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -24,7 +25,6 @@ const description = "Global leader in industrial machinery, spare parts, and tec
   </head>
   <body class="w-full h-full bg-background text-primary">
     <div id="root" class="w-full h-full">
-      {/* O AppRouter (React) continua cuidando das sub-rotas */}
       <AppRouter client:only="react" />
     </div>
   </body>
