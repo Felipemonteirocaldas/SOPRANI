@@ -1,0 +1,14 @@
+[
+    {
+        "_id": "p1",
+        "title": "Industrial Packaging Machine A1",
+        "description": "High-speed metal packaging solution for industrial scale.",
+        "imageUrl": "https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png"
+    },
+    {
+        "_id": "p2",
+        "title": "Precision Spare Parts Kit",
+        "description": "Original spare parts for Soprani machinery maintenance.",
+        "imageUrl": "https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png"
+    }
+]

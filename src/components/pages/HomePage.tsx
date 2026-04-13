@@ -9,7 +9,7 @@ import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
-import { BaseCrudService } from '@/integrations';
+import { MockBaseCrudService as BaseCrudService } from '@/lib/mockService';
 import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -91,7 +91,7 @@ export default function HomePage() {
       const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       setIsMobile(isMobileDevice);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -141,7 +141,7 @@ export default function HomePage() {
       <main className="flex-grow">
         {/* HERO SECTION */}
         <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-16 xs:pt-18 sm:pt-20 bg-cover bg-center bg-no-repeat" style={{
-          backgroundImage: 'url(https://static.wixstatic.com/media/9bbed2_7beb404c5dec4a3c84cf9c1b13aa551e~mv2.png)',
+          backgroundImage: 'url(/images/hero-bg.png)',
           backgroundAttachment: isMobile ? 'scroll' : 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -154,50 +154,50 @@ export default function HomePage() {
             <div className="absolute inset-0 grid-pattern opacity-10" />
           </div>
 
-         {/* Hero Content */}
-         <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10 w-full">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-             <AnimatedElement direction="left" className="max-w-2xl">
-               <div>
-                 <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 xs:mb-5 sm:mb-6 leading-tight tracking-tight">
-                   {t('hero.title')}
-                 </h1>
-                 <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 mb-6 xs:mb-7 sm:mb-8 leading-relaxed">
-                   {t('hero.subtitle')}
-                 </p>
-                 <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
-                   <Link
-                     to="/request-quotation"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
-                   >
-                     {t('hero.requestQuotation')}
-                   </Link>
-                   <Link
-                     to="/contact"
-                     className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white/30 backdrop-blur-sm text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
-                   >
-                     {t('hero.contactUs')}
-                   </Link>
-                 </div>
-               </div>
-             </AnimatedElement>
+          {/* Hero Content */}
+          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+              <AnimatedElement direction="left" className="max-w-2xl">
+                <div>
+                  <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 xs:mb-5 sm:mb-6 leading-tight tracking-tight">
+                    {t('hero.title')}
+                  </h1>
+                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-200 mb-6 xs:mb-7 sm:mb-8 leading-relaxed">
+                    {t('hero.subtitle')}
+                  </p>
+                  <div className="flex flex-col xs:flex-row gap-3 xs:gap-4">
+                    <Link
+                      to="/request-quotation"
+                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 bg-accent text-white font-semibold uppercase tracking-wider hover:bg-accent-dark transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                    >
+                      {t('hero.requestQuotation')}
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="px-6 xs:px-7 sm:px-8 py-3 xs:py-3.5 sm:py-4 border-2 border-white/30 backdrop-blur-sm text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-center text-xs xs:text-sm sm:text-base rounded-none"
+                    >
+                      {t('hero.contactUs')}
+                    </Link>
+                  </div>
+                </div>
+              </AnimatedElement>
 
-             {/* Hero Image */}
-             <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''}>
+              {/* Hero Image */}
+              <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''}>
 
-             </AnimatedElement>
-           </div>
-         </div>
+              </AnimatedElement>
+            </div>
+          </div>
 
-         {/* Scroll Down Indicator */}
-         <button
-           onClick={scrollToContent}
-           className="absolute bottom-6 xs:bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
-           aria-label="Scroll to content"
-         >
-           <ChevronDown size={32} className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-         </button>
-       </section>
+          {/* Scroll Down Indicator */}
+          <button
+            onClick={scrollToContent}
+            className="absolute bottom-6 xs:bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
+            aria-label="Scroll to content"
+          >
+            <ChevronDown size={32} className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+          </button>
+        </section>
         {/* CORPORATE MARQUEE - Below Hero */}
         <CorporateMarquee />
         {/* SPLIT LAYOUT SECTION */}
@@ -372,8 +372,8 @@ export default function HomePage() {
           {/* Watermark MPH Background */}
           <div className="absolute inset-0 z-0 flex items-center justify-end overflow-hidden bg-primary">
             <div className="absolute right-1/2 translate-x-1/2 md:right-0 md:translate-x-0 top-1/2 -translate-y-1/2 text-[12rem] md:text-[25rem] lg:text-[30rem] font-black font-sans opacity-5 leading-none whitespace-nowrap pointer-events-none">
-  MPH
-</div>
+              MPH
+            </div>
           </div>
 
           <div className="relative z-10 w-full">
@@ -384,9 +384,9 @@ export default function HomePage() {
                 <div className="inline-flex items-center gap-3 w-fit">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
                     <div className="relative flex h-2 w-2">
-  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
-</div>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
+                    </div>
                     <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-white">
                       Coming Soon — New Digital Platform
                     </span>

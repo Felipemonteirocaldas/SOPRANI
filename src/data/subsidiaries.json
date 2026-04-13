@@ -1,0 +1,17 @@
+[
+    {
+        "_id": "s1",
+        "subsidiaryName": "Soprani Italy (HQ)",
+        "location": "Bologna, Italy"
+    },
+    {
+        "_id": "s2",
+        "subsidiaryName": "Soprani Germany",
+        "location": "Düsseldorf, Germany"
+    },
+    {
+        "_id": "s3",
+        "subsidiaryName": "Soprani USA",
+        "location": "Chicago, IL"
+    }
+]

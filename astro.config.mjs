@@ -1,47 +1,29 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import cloudProviderFetchAdapter from "@wix/cloud-provider-fetch-adapter";
-import wix from "@wix/astro";
-import monitoring from "@wix/monitoring-astro";
 import react from "@astrojs/react";
-import sourceAttrsPlugin from "@wix/babel-plugin-jsx-source-attrs";
-import dynamicDataPlugin from "@wix/babel-plugin-jsx-dynamic-data";
-import customErrorOverlayPlugin from "./vite-error-overlay-plugin.js";
-import postcssPseudoToData from "@wix/postcss-pseudo-to-data";
-
-const isBuild = process.env.NODE_ENV == "production";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
+  // 'server' permite SSR (Server Side Rendering), necessário se você for usar 
+  // funções de backend ou o adapter da Vercel de forma dinâmica.
   output: "server",
-  integrations: [
-    {
-      name: "framewire",
-      hooks: {
-        "astro:config:setup": ({ injectScript, command }) => {
-          if (command === "dev") {
-            injectScript(
-              "page",
-              `import loadFramewire from "framewire.js";
-              loadFramewire(true);`
-            );
-          }
-        },
-      },
+
+  // Configuração do Adapter para Deploy na Vercel
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
     },
+  }),
+
+  integrations: [
     tailwind(),
-    wix({
-      htmlEmbeds: isBuild,
-      auth: true,
-    }),
-    ...(isBuild ? [monitoring()] : []),
-    react(isBuild ? {} : {
-      babel: { plugins: [sourceAttrsPlugin, dynamicDataPlugin] },
-    }),
+    react(), // React limpo, sem os plugins de inspeção da Wix
   ],
+
   vite: {
-    plugins: [customErrorOverlayPlugin()],
+    // Limpeza de cache e otimização de dependências padrão
     cacheDir: 'node_modules/.cache/.vite',
     optimizeDeps: {
       include: [
@@ -53,31 +35,25 @@ export default defineConfig({
         'clsx',
         'class-variance-authority',
         'tailwind-merge',
-        '@radix-ui/*',
-        '@wix/*',
         'zod',
       ],
     },
-    css: !isBuild ? {
-      postcss: {
-        plugins: [
-          postcssPseudoToData(),
-        ],
-      },
-    } : undefined,
   },
-  ...(isBuild && { adapter: cloudProviderFetchAdapter({}) }),
+
+  image: {
+    // Mantemos o domínio da Wix aqui para que as imagens que já estão 
+    // cadastradas continuem carregando enquanto você não as migra.
+    domains: ["static.wixstatic.com"],
+  },
+
+  // Configurações de servidor para desenvolvimento local
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
+
+  // Desabilita a barra de ferramentas do Astro para um preview mais limpo
   devToolbar: {
     enabled: false,
   },
-  image: {
-    domains: ["static.wixstatic.com"],
-  },
-  server: {
-    allowedHosts: true,
-    host: true,
-  },
-  security: {
-    checkOrigin: false
-  }
 });

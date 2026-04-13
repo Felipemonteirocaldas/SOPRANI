@@ -87,24 +87,22 @@ export default function Header() {
   };
 
   return (
-    <header 
-      className={`sticky top-0 z-[9999] transition-all duration-300 border-b ${
-        isScrolled 
-          ? 'bg-white py-0 shadow-xl border-border-light' 
-          : 'bg-white py-2 shadow-md border-border-light'
-      }`}
+    <header
+      className={`sticky top-0 z-[9999] transition-all duration-300 border-b ${isScrolled
+        ? 'bg-white py-0 shadow-xl border-border-light'
+        : 'bg-white py-2 shadow-md border-border-light'
+        }`}
     >
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 opacity-[1]">
         <div className="flex items-center justify-between h-20 sm:h-24 md:h-24">
           {/* Logo */}
-          <Link to="/home" className="flex items-center h-full flex-shrink-0 relative z-[10000]">
+          <Link to="/" className="flex items-center h-full flex-shrink-0 relative z-[10000]">
             <div className="flex items-center justify-center h-full">
-              <Image
-                src="https://static.wixstatic.com/media/9bbed2_6d5be05d84b24c47a85cbd3100bbe220~mv2.png"
+              <img
+                src="/images/logo.png"
                 className="h-[68px] xs:h-[76px] sm:h-[84px] md:h-[88px] w-auto object-contain"
-                originWidth={2173}
-                originHeight={753}
-                alt="Company Logo" />
+                alt="Soprani Logo"
+              />
             </div>
           </Link>
 
@@ -143,8 +141,8 @@ export default function Header() {
               <div
                 id="mega-panel"
                 className={`fixed left-0 right-0 top-20 sm:top-24 md:top-24 bg-white border-t-4 border-accent shadow-2xl z-40 transition-all duration-300 ease-out pointer-events-none ${megaMenuOpen
-                    ? 'opacity-100 pointer-events-auto translate-y-0'
-                    : 'opacity-0 -translate-y-4'
+                  ? 'opacity-100 pointer-events-auto translate-y-0'
+                  : 'opacity-0 -translate-y-4'
                   }`}
                 onMouseEnter={handleMegaMenuEnter}
                 onMouseLeave={handleMegaMenuLeave}
@@ -207,7 +205,7 @@ export default function Header() {
                 <ChevronDown size={14} className="text-gray-400 group-hover:rotate-180 transition-transform duration-300" />
                 <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[60%] rounded-full opacity-0 group-hover:opacity-100" />
               </button>
-              
+
               {/* Dropdown Menu (With Invisible Hover Bridge) */}
               <div className="absolute right-0 top-full pt-2 w-16 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
                 <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-none flex flex-col py-1.5 overflow-hidden">
@@ -215,11 +213,10 @@ export default function Header() {
                     <button
                       key={lng.code}
                       onClick={() => i18n.changeLanguage(lng.code)}
-                      className={`text-xs font-semibold px-3 py-2 transition-colors ${
-                        i18n.resolvedLanguage === lng.code 
-                          ? 'text-accent bg-accent/5' 
-                          : 'text-gray-500 hover:bg-gray-50 hover:text-primary'
-                      }`}
+                      className={`text-xs font-semibold px-3 py-2 transition-colors ${i18n.resolvedLanguage === lng.code
+                        ? 'text-accent bg-accent/5'
+                        : 'text-gray-500 hover:bg-gray-50 hover:text-primary'
+                        }`}
                     >
                       {lng.label}
                     </button>
@@ -321,8 +318,8 @@ export default function Header() {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 text-xs font-bold py-2 rounded-none transition-all duration-200 ${i18n.resolvedLanguage === lng.code
-                        ? 'text-accent bg-white shadow-sm'
-                        : 'text-gray-400 hover:text-primary'
+                      ? 'text-accent bg-white shadow-sm'
+                      : 'text-gray-400 hover:text-primary'
                       }`}
                   >
                     {lng.label}

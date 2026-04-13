@@ -1,5 +1,5 @@
 import { Subsidiaries } from '@/entities';
-import { BaseCrudService } from '@/integrations';
+import { MockBaseCrudService as BaseCrudService } from '@/lib/mockService';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
