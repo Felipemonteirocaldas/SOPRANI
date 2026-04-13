@@ -269,12 +269,69 @@
     "btnSubscribe": "Subscribe"
   },
   "productsPage": {
-    "heroTitle": "Solutions and Systems",
-    "heroSub": "Technical portfolio focused on efficiency and reliability for the metal industry.",
-    "filterBy": "Sector:",
-    "allProducts": "Complete Systems",
+    "heroTitle": "High-Performance Solutions and Systems",
+    "heroSub": "State-of-the-art engineering for metal packaging manufacturing. Complete lines and specialized machinery for global production.",
+    "filterBy": "Process:",
+    "allProducts": "All Systems",
     "keyFeatures": "Technical Attributes:",
-    "emptyProducts": "No systems found for this selection."
+    "emptyProducts": "No systems found for this selection.",
+    "viewDetails": "Technical Specifications",
+    "requestQuote": "Request Technical Quotation",
+    "featuredTitle": "Featured Machinery",
+    "cadence": "Cadence:",
+    "formatRange": "Diameters:",
+    "power": "Consumption:",
+    "dimensions": "Dimensions:",
+    "featured": {
+      "line3p": {
+        "name": "SP-3000 Food Can Line",
+        "category": "Complete Lines",
+        "description": "High-speed automated system for 3-piece food can production.",
+        "features": "Quick format changeovers, full synchronization, integrated vision inspection.",
+        "specs": "Capacity: Up to 600 cpm | Diameters: 52mm - 99mm | Standard: CE/ISO",
+        "application": "Food (Tomato, preserves, vegetables)"
+      },
+      "aerosol": {
+        "name": "AeroTech Weld-X System",
+        "category": "Aerosol",
+        "description": "Precision welding and shaping station for steel aerosol cans.",
+        "features": "Low-consumption welding, electronically controlled necking, high repeatability.",
+        "specs": "Capacity: 450 cpm | Diameters: 45mm - 65mm | Material: Tinplate",
+        "application": "Cosmetics, Insecticides, Technical Products"
+      },
+      "press": {
+        "name": "PowerPress EOE-500",
+        "category": "Components",
+        "description": "High-cadence press specifically for Easy Open End (EOE) manufacturing.",
+        "features": "Precision dies, servo-assisted feeding system, automatic lubrication.",
+        "specs": "Cadence: 500 strokes/min | Material: Steel/Tinplate | Precision: +/- 0.01mm",
+        "application": "Easy open lids, Standard ends"
+      },
+      "welder": {
+        "name": "SopraWeld HF-75 Induction",
+        "category": "Body & Welding",
+        "description": "High-frequency induction welder for can body side-seams.",
+        "features": "Next-generation inverter technology, optimized cooling, invisible seams.",
+        "specs": "Speed: Up to 80 m/min | Height: 50mm - 300mm | Power: 75kW",
+        "application": "Cylindrical steel can bodies"
+      },
+      "coating": {
+        "name": "CleanCoat Pro 5 Line",
+        "category": "Lacquering & Curing",
+        "description": "Integrated coating and thermal curing unit for metallic protection.",
+        "features": "Mist-free uniform application, optional UV/Thermal curing, digital micron control.",
+        "specs": "Width: Up to 1200mm | Speed: 60 ppm | Sensors: Integrated IR",
+        "application": "Food cans, aerosols, industrial pails"
+      },
+      "pail": {
+        "name": "PailMaster EXP-18/20",
+        "category": "General Line",
+        "description": "Rotary expander for 18L and 20L industrial steel pail shaping.",
+        "features": "Controlled hydraulic expansion, reinforcement ring forming, high robustness.",
+        "specs": "Diameter: Up to 300mm | Volume: 18L-25L | Cycle: 15 pails/min",
+        "application": "Paints, Varnishes, Industrial chemicals"
+      }
+    }
   },
   "machineryPage": {
     "heroTitle": "Performance Machinery",
