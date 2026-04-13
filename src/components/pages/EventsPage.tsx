@@ -7,14 +7,14 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
+const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -26,14 +26,14 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       },
       { threshold: 0.1 }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [delay]);
-  
+
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         transitionProperty: 'opacity, transform',
@@ -73,7 +73,7 @@ export default function EventsPage() {
 
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-28 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)',
@@ -105,22 +105,22 @@ export default function EventsPage() {
                         {/* Image Section */}
                         {event.eventImage && (
                           <div className="lg:col-span-1 aspect-video lg:aspect-auto overflow-hidden">
-                            <Image 
-                              src={event.eventImage} 
+                            <Image
+                              src={event.eventImage}
                               alt={event.eventName || 'Event image'}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               width={400}
                             />
                           </div>
                         )}
-                        
+
                         {/* Content Section */}
                         <div className={`${event.eventImage ? 'lg:col-span-2' : 'lg:col-span-3'} p-8`}>
                           {event.eventDate && (
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-none mb-4">
                               <Calendar size={16} />
                               <span className="text-sm font-medium">
-                                {new Date(event.eventDate).toLocaleDateString('en-US', { 
+                                {new Date(event.eventDate).toLocaleDateString('en-US', {
                                   day: 'numeric',
                                   month: 'long',
                                   year: 'numeric'
@@ -128,31 +128,31 @@ export default function EventsPage() {
                               </span>
                             </div>
                           )}
-                          
+
                           <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors">
                             {event.eventName}
                           </h3>
-                          
+
                           {event.location && (
                             <div className="flex items-center gap-2 text-gray-600 mb-4">
                               <MapPin size={18} />
                               <span className="font-medium">{event.location}</span>
                             </div>
                           )}
-                          
+
                           {event.boothDetails && (
                             <div className="bg-gray-50 rounded-none p-4 mb-4">
                               <p className="text-sm font-medium text-gray-700 mb-1">{t('eventsPage.boothDetails')}</p>
                               <p className="text-gray-600">{event.boothDetails}</p>
                             </div>
                           )}
-                          
+
                           {event.description && (
                             <p className="text-gray-600 mb-6 leading-relaxed">
                               {event.description}
                             </p>
                           )}
-                          
+
                           {event.eventUrl && (
                             <a
                               href={event.eventUrl}

@@ -10,7 +10,7 @@ const ThreeDViewer = lazy(() => import('@/components/ThreeDViewer'));
 export default function SparePartsPage() {
   const { t } = useTranslation();
   const [isMounted, setIsMounted] = useState(false);
-  
+
   useEffect(() => {
     setIsMounted(true);
   }, []);

@@ -59,7 +59,7 @@ export default function RequestQuotationPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setSubmitted(true);
@@ -84,7 +84,7 @@ export default function RequestQuotationPage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white">
       <Header />
-      
+
       <main className="flex-grow">
         {/* Modern Hero Section */}
         <section className="relative overflow-hidden bg-[#001F5F] pt-24 sm:pt-28 pb-32 md:pb-40">
@@ -93,7 +93,7 @@ export default function RequestQuotationPage() {
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#C41230_0%,transparent_50%)]" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#1E293B_0%,transparent_50%)]" />
           </div>
-          
+
           <div className="container mx-auto px-4 md:px-8 relative z-10 text-left">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
@@ -111,16 +111,16 @@ export default function RequestQuotationPage() {
                   <p className="text-base md:text-lg text-blue-100 max-w-xl leading-relaxed mb-10 text-left">
                     {t('reqPage.heroSub')}
                   </p>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <FeatureItem 
-                      icon={ShieldCheck} 
-                      title={t('reqPage.feat1Title')} 
+                    <FeatureItem
+                      icon={ShieldCheck}
+                      title={t('reqPage.feat1Title')}
                       desc={t('reqPage.feat1Desc')}
                     />
-                    <FeatureItem 
-                      icon={Zap} 
-                      title={t('reqPage.feat2Title')} 
+                    <FeatureItem
+                      icon={Zap}
+                      title={t('reqPage.feat2Title')}
                       desc={t('reqPage.feat2Desc')}
                     />
                   </div>
@@ -135,7 +135,7 @@ export default function RequestQuotationPage() {
               >
                 {/* Visual Accent */}
                 <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/5 rounded-full blur-3xl" />
-                
+
                 <div className="bg-white rounded-none shadow-2xl overflow-hidden border border-gray-100 text-left">
                   <div className="bg-gray-50 px-8 py-6 border-b border-gray-100 flex items-center justify-between">
                     <h2 className="text-sm font-bold uppercase tracking-widest text-primary">
@@ -312,7 +312,7 @@ export default function RequestQuotationPage() {
                             {isLoading ? t('reqPage.subBtnL') : (
                               <>
                                 {t('reqPage.subBtn')}
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                               </>
                             )}
                           </button>
@@ -342,17 +342,17 @@ export default function RequestQuotationPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <ContactCard 
-                icon={Mail} 
-                title={t('reqPage.wEmail')} 
-                val="info@sopraniengineering.com" 
-                link="mailto:info@sopraniengineering.com" 
+              <ContactCard
+                icon={Mail}
+                title={t('reqPage.wEmail')}
+                val="info@sopraniengineering.com"
+                link="mailto:info@sopraniengineering.com"
               />
-              <ContactCard 
-                icon={Phone} 
-                title={t('reqPage.wPhone')} 
-                val="+39 051 000 000" 
-                link="tel:+39051000000" 
+              <ContactCard
+                icon={Phone}
+                title={t('reqPage.wPhone')}
+                val="+39 051 000 000"
+                link="tel:+39051000000"
               />
               <div className="p-8 border border-gray-100 shadow-sm bg-gray-50 text-center flex flex-col items-center">
                 <div className="w-12 h-12 bg-white rounded-none flex items-center justify-center shadow-sm border border-gray-100 mb-6 font-bold text-accent">
