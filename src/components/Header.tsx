@@ -356,7 +356,7 @@ export default function Header() {
         )}
       </div>
 
-      <GlobalSearchModal open={searchOpen} onOpenChange={setSearchOpen} />
+      <GlobalSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
