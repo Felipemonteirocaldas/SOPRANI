@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HubCard = ({ region, locations, delay }: { region: string, locations: string, delay: number }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, scale: 0.95 }}
     whileInView={{ opacity: 1, scale: 1 }}
     transition={{ delay }}
@@ -72,7 +72,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
       <Header />
-      
+
       <main className="flex-grow">
         {/* Dynamic Industrial Hero */}
         <section className="relative pt-24 sm:pt-28 pb-48 md:pb-64 bg-[#001F5F] overflow-hidden">
@@ -80,7 +80,7 @@ export default function ContactPage() {
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />
           </div>
-          
+
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center lg:text-left lg:mx-0">
               <motion.div
@@ -108,7 +108,7 @@ export default function ContactPage() {
         <section className="relative -mt-32 md:-mt-48 pb-32">
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl overflow-hidden bg-white">
-              
+
               {/* Technical Information Panel (Dark) */}
               <div className="lg:col-span-5 bg-[#001F5F] p-8 md:p-12 lg:p-16 relative">
                 <div className="relative z-10 flex flex-col h-full text-left">
@@ -116,7 +116,7 @@ export default function ContactPage() {
                     <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-accent mb-6">
                       Soprani HQ Status
                     </h2>
-                    
+
                     {/* Live Clock Interface */}
                     <div className="flex flex-col mb-8">
                       <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2">
@@ -133,31 +133,31 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-8 pt-6 border-t border-white/10">
-                      <ContactMethod 
-                        icon={Mail} 
-                        label={t('contactPage.email')} 
-                        value="info@sopraniengineering.com" 
-                        action="mailto:info@sopraniengineering.com" 
+                      <ContactMethod
+                        icon={Mail}
+                        label={t('contactPage.email')}
+                        value="info@sopraniengineering.com"
+                        action="mailto:info@sopraniengineering.com"
                       />
-                      <ContactMethod 
-                        icon={Phone} 
-                        label={t('contactPage.phone')} 
-                        value="+39 051 000 0000" 
-                        action="tel:+390510000000" 
+                      <ContactMethod
+                        icon={Phone}
+                        label={t('contactPage.phone')}
+                        value="+39 051 000 0000"
+                        action="tel:+390510000000"
                       />
-                      <ContactMethod 
-                        icon={MapPin} 
-                        label={t('contactPage.presence')} 
-                        value="Europe · Asia · Americas · MENA" 
+                      <ContactMethod
+                        icon={MapPin}
+                        label={t('contactPage.presence')}
+                        value="Europe · Asia · Americas · MENA"
                       />
                     </div>
                   </div>
 
                   {/* WhatsApp Priority Support */}
                   <div className="mt-auto pt-10">
-                    <a 
-                      href="https://wa.me/390510000000" 
-                      target="_blank" 
+                    <a
+                      href="https://wa.me/390510000000"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-4 group"
                     >
@@ -177,7 +177,7 @@ export default function ContactPage() {
               <div className="lg:col-span-7 bg-white p-8 md:p-12 lg:p-16">
                 <AnimatePresence mode="wait">
                   {submitted ? (
-                    <motion.div 
+                    <motion.div
                       key="success"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -192,7 +192,7 @@ export default function ContactPage() {
                       <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed mb-10">
                         {t('contactPage.thxDesc')}
                       </p>
-                      <button 
+                      <button
                         onClick={() => setSubmitted(false)}
                         className="px-10 py-4 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
                       >
@@ -312,23 +312,23 @@ export default function ContactPage() {
               Priority Channels
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <RapidLink 
-                title={t('contactPage.reqQuote')} 
-                desc={t('contactPage.reqQuoteSub')} 
-                btn={t('contactPage.reqQuoteBtn')} 
-                href="/request-quotation" 
+              <RapidLink
+                title={t('contactPage.reqQuote')}
+                desc={t('contactPage.reqQuoteSub')}
+                btn={t('contactPage.reqQuoteBtn')}
+                href="/request-quotation"
               />
-              <RapidLink 
-                title={t('contactPage.aboutUs')} 
-                desc={t('contactPage.aboutSub')} 
-                btn={t('contactPage.aboutBtn')} 
-                href="/about" 
+              <RapidLink
+                title={t('contactPage.aboutUs')}
+                desc={t('contactPage.aboutSub')}
+                btn={t('contactPage.aboutBtn')}
+                href="/about"
               />
-              <RapidLink 
-                title="Service Centers" 
-                desc="Locate our registered technical centers." 
-                btn="View Map" 
-                href="/services" 
+              <RapidLink
+                title="Service Centers"
+                desc="Locate our registered technical centers."
+                btn="View Map"
+                href="/services"
               />
             </div>
           </div>
@@ -376,8 +376,8 @@ const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, bt
   <div className="flex flex-col items-center group">
     <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3">{title}</h3>
     <p className="text-xs text-gray-500 mb-8 max-w-xs">{desc}</p>
-    <a 
-      href={href} 
+    <a
+      href={href}
       className="inline-flex items-center gap-2 group text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent hover:border-accent transition-all"
     >
       {btn}
@@ -389,17 +389,17 @@ const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, bt
 // Helper for select arrow
 function ChevronDown({ size }: { size: number }) {
   return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="m6 9 6 6 6-6"/>
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }

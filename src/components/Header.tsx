@@ -265,7 +265,7 @@ export default function Header() {
                 <ChevronDown size={14} className="text-primary/40 group-hover:rotate-180 transition-transform duration-300" />
                 <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[60%] rounded-full opacity-0 group-hover:opacity-100"></span>
               </button>
-              
+
               {/* Dropdown menu */}
               <div className="absolute right-0 top-full pt-2 w-16 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
                 <div className="bg-white border border-gray-100 shadow-xl flex flex-col py-1.5 overflow-hidden">
@@ -306,40 +306,40 @@ export default function Header() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-1">
-               {/* Mobile Language Dropdown */}
-               <div ref={mobileLangRef} className="relative">
-                 <button 
-                   className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
-                   onClick={() => setMobileLangOpen(prev => !prev)}
-                   aria-label="Select language"
-                 >
-                   {i18n.language.toUpperCase()}
-                   <ChevronDown size={14} className={cn("text-gray-400 transition-transform duration-200", mobileLangOpen && "rotate-180")} />
-                 </button>
+              {/* Mobile Language Dropdown */}
+              <div ref={mobileLangRef} className="relative">
+                <button
+                  className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
+                  onClick={() => setMobileLangOpen(prev => !prev)}
+                  aria-label="Select language"
+                >
+                  {i18n.language.toUpperCase()}
+                  <ChevronDown size={14} className={cn("text-gray-400 transition-transform duration-200", mobileLangOpen && "rotate-180")} />
+                </button>
 
-                 {/* Dropdown */}
-                 {mobileLangOpen && (
-                   <div className="absolute right-0 top-full mt-1 w-16 bg-white border border-gray-100 shadow-xl z-[10001] overflow-hidden">
-                     {languages.map((lang) => (
-                       <button
-                         key={lang.code}
-                         onClick={() => {
-                           i18n.changeLanguage(lang.code);
-                           setMobileLangOpen(false);
-                         }}
-                         className={cn(
-                           "w-full text-xs font-semibold px-3 py-2.5 text-left transition-colors",
-                           i18n.language === lang.code
-                             ? "text-accent bg-accent/5"
-                             : "text-gray-500 hover:bg-slate-50 hover:text-primary"
-                         )}
-                       >
-                         {lang.label}
-                       </button>
-                     ))}
-                   </div>
-                 )}
-               </div>
+                {/* Dropdown */}
+                {mobileLangOpen && (
+                  <div className="absolute right-0 top-full mt-1 w-16 bg-white border border-gray-100 shadow-xl z-[10001] overflow-hidden">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => {
+                          i18n.changeLanguage(lang.code);
+                          setMobileLangOpen(false);
+                        }}
+                        className={cn(
+                          "w-full text-xs font-semibold px-3 py-2.5 text-left transition-colors",
+                          i18n.language === lang.code
+                            ? "text-accent bg-accent/5"
+                            : "text-gray-500 hover:bg-slate-50 hover:text-primary"
+                        )}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <button
                 onClick={() => setSearchOpen(true)}
@@ -378,7 +378,7 @@ export default function Header() {
               <Link to="/news" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
                 {t('header.news')}
               </Link>
-              
+
               <div className="pt-4 border-t border-gray-50 mt-2">
                 <Link
                   to="/request-quotation"

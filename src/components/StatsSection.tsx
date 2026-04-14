@@ -182,11 +182,9 @@ const StatsSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`py-8 md:py-12 px-4 md:px-8 text-center border-b border-gray-600 ${
-                index % 2 === 0 && index < stats.length - 1 ? 'border-r border-gray-600 lg:border-r-0' : ''
-              } ${
-                index !== stats.length - 1 ? 'lg:border-r border-gray-600' : ''
-              }`}
+              className={`py-8 md:py-12 px-4 md:px-8 text-center border-b border-gray-600 ${index % 2 === 0 && index < stats.length - 1 ? 'border-r border-gray-600 lg:border-r-0' : ''
+                } ${index !== stats.length - 1 ? 'lg:border-r border-gray-600' : ''
+                }`}
             >
               {/* Número com animação */}
               <div className="mb-4">

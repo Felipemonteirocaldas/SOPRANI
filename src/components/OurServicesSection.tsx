@@ -85,9 +85,8 @@ export default function OurServicesSection() {
               return (
                 <div
                   key={service.number}
-                  className={`p-6 sm:p-8 lg:p-14 border-b border-slate-100 group hover:bg-slate-50 transition-all duration-500 relative overflow-hidden ${
-                    !isLastColumn && !isLastCard ? 'lg:border-r' : ''
-                  }`}
+                  className={`p-6 sm:p-8 lg:p-14 border-b border-slate-100 group hover:bg-slate-50 transition-all duration-500 relative overflow-hidden ${!isLastColumn && !isLastCard ? 'lg:border-r' : ''
+                    }`}
                 >
                   {/* Number Overlay */}
                   <div className="hidden sm:block text-[5rem] font-heading text-slate-50 font-black absolute translate-y-[-2rem] translate-x-[-1rem] pointer-events-none group-hover:text-slate-100 transition-colors duration-500">
