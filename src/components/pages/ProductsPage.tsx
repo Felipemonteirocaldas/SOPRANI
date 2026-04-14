@@ -199,7 +199,7 @@ export default function ProductsPage() {
             className="max-w-4xl mx-auto text-center"
           >
             <Badge className="box-content px-4 py-1 mb-6 font-semibold uppercase tracking-widest bg-accent text-white border-transparent">
-              Premium Industrial Engineering
+              PRECISION INDUSTRIAL ENGINEERING
             </Badge>
             <h1 className="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl font-heading">
               {t('productsPage.heroTitle')}

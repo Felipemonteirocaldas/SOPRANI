@@ -16,12 +16,11 @@
                 "resources": "Recursos",
                 "events": "Eventos",
                 "news": "Notícias",
-                "industriesDesc": "Setores que atendemos",
-                "featuredDesc": "Obtenha suporte direto da nossa equipe de engenharia para o seu próximo projeto de alta complexidade.",
-                "newsDesc": "Informações do setor",
-                "eventsDesc": "Feiras e eventos globais",
-                "requestQuotationDesc": "Obtenha uma proposta técnica",
-                "tradingMaterialsDesc": "Suprimentos industriais premium",
+                "sellMachinery": "Vender uma Máquina",
+                "opportunities": "Oportunidades",
+                "sellMachineryCardTitle": "Compramos seu Equipamento",
+                "sellMachineryCardDesc": "Tem maquinário desativado ou linha completa para venda? Nós avaliamos e compramos.",
+                "tradingMaterialsDesc": "Suprimentos industriais especializados",
                 "machineryDesc": "Linhas de produção de alta performance",
                 "productSolutionsDesc": "Sistemas de maquinário turnkey",
                 "featuredTitle": "Excelência Industrial",
@@ -79,7 +78,7 @@
                 "revampingDesc": "Atualização e modernização de linhas de produção existentes para prolongar a vida útil dos ativos, melhorar a eficiência e reduzir paradas — do planejamento à execução completa.",
                 "assetMarketTitle": "Mercado de Ativos Industriais",
                 "assetMarketDesc": "Aquisição e revenda de máquinas usadas e ativos de produção — conectando vendedores e compradores no mercado global de equipamentos para embalagens metálicas.",
-                "tradingDesc": "Fornecimento de folha de flandres premium e componentes envernizados (cúpulas, fundos e válvulas) para a indústria de aerossóis."
+                "tradingDesc": "Fornecimento de folha de flandres de alta precisão e componentes envernizados (cúpulas, fundos e válvulas) para a indústria de aerossóis."
         },
         "productsSection": {
                 "learnMore": "Detalhes",
@@ -108,7 +107,11 @@
                 "title2": " de Embalagens",
                 "desc": "Desde o fornecimento técnico até a modernização completa de linhas produtivas.",
                 "btnConsult": "Consultar Especialista",
-                "btnQuote": "Solicitar Cotação Técnica"
+                "btnQuote": "Solicitar Cotação Técnica",
+                "sellTitle": "Venda seu Maquinário",
+                "sellDesc": "A Soprani Engineering adquire ativos industriais e linhas completas para o mercado global. Entre em contato para uma avaliação técnica.",
+                "industrialLiquidityTitle": "LIQUIDEZ INDUSTRIAL.",
+                "industrialLiquidityDesc": "Adquirimos ativos industriais de alta performance globalmente. Transformando linhas desativadas em capital estratégico."
         },
         "splitLayout": {
                 "who": "Institucional",
@@ -449,7 +452,7 @@
         "tradingPage": {
                 "heroTitle": "Trading de Metais",
                 "heroSub": "Fornecimento global de folha de flandres e alumínio para fabricantes de embalagens metálicas.",
-                "introTitle": "Matérias-Primas Premium",
+                "introTitle": "Matérias-Primas de Alta Performance",
                 "introP1": "Acesso estratégico aos principais centros de refino e fabricação de metais. Conectamos sua planta industrial a suprimentos certificados.",
                 "introP2": "Garantimos volumes flexíveis e especificações técnicas precisas para atender aos seus cronogramas de produção.",
                 "matTitle": "Ecossistema de Materiais",

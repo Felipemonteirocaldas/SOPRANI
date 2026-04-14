@@ -16,12 +16,16 @@
     "resources": "Recursos",
     "events": "Eventos",
     "news": "Noticias",
+    "sellMachinery": "Vender una Máquina",
+    "opportunities": "Oportunidades",
+    "sellMachineryCardTitle": "Compramos su Equipo",
+    "sellMachineryCardDesc": "¿Interesado en desmantelar una línea o vender máquinas individuales? Nosotros las compramos.",
     "industriesDesc": "Sectores que atendemos",
     "featuredDesc": "Obtenga soporte directo de nuestro equipo de ingeniera para su prximo gran proyecto.",
     "newsDesc": "Informacin del sector",
     "eventsDesc": "Ferias y eventos globales",
     "requestQuotationDesc": "Obtenga una propuesta tcnica",
-    "tradingMaterialsDesc": "Suministros industriales premium",
+    "tradingMaterialsDesc": "Suministros industriales especializados",
     "machineryDesc": "Lneas de produccin de alto rendimiento",
     "productSolutionsDesc": "Sistemas de maquinaria llave en mano",
     "featuredTitle": "Excelencia Industrial",
@@ -79,7 +83,7 @@
     "revampingDesc": "Actualización y modernización de líneas de producción existentes para prolongar la vida útil de los activos, mejorar la eficiencia y reducir paradas — desde la planificación hasta la ejecución completa.",
     "assetMarketTitle": "Mercado de Activos Industriales",
     "assetMarketDesc": "Adquisición y reventa de maquinaria usada y activos de producción — conectando vendedores y compradores en el mercado global de equipos para envases metálicos.",
-    "tradingDesc": "Suministro de hojalata premium y componentes barnizados (domos, fondos y cúpulas de montaje) para la industria del aerosol."
+    "tradingDesc": "Suministro de hojalata de alta precisión y componentes barnizados (domos, fondos y cúpulas de montaje) para la industria del aerosol."
   },
   "productsSection": {
     "learnMore": "Detalles",
@@ -108,7 +112,11 @@
     "title2": " de Envases",
     "desc": "Desde el suministro técnico hasta la modernización completa de líneas productivas.",
     "btnConsult": "Consultar a un Especialista",
-    "btnQuote": "Solicitar Cotización Técnica"
+    "btnQuote": "Solicitar Cotización Técnica",
+    "sellTitle": "Venda su Maquinaria",
+    "sellDesc": "Soprani Engineering adquiere activos industriales y líneas completas para el mercado global. Contáctenos para una valoración técnica.",
+    "industrialLiquidityTitle": "LIQUIDEZ INDUSTRIAL.",
+    "industrialLiquidityDesc": "Adquirimos activos industriales de alto rendimiento para el mercado global. Transformamos líneas descatalogadas en capital estratégico."
   },
   "splitLayout": {
     "who": "Institucional",
@@ -392,7 +400,7 @@
   "tradingPage": {
     "heroTitle": "Trading de Metales",
     "heroSub": "Suministro global de hojalata y aluminio para fabricantes de envases metálicos.",
-    "introTitle": "Materias Primas Premium",
+    "introTitle": "Materias Primas de Alta Calidad",
     "introP1": "Acceso estratégico a los principales centros de refinado y fabricación de metales. Conectamos su planta industrial con suministros certificados.",
     "introP2": "Garantizamos volúmenes flexibles y especificaciones técnicas precisas para cumplir con sus cronogramas de producción.",
     "matTitle": "Ecosistema de Materiales",

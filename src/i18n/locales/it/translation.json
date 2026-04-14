@@ -16,12 +16,16 @@
     "resources": "Risorse",
     "events": "Eventi",
     "news": "News",
+    "sellMachinery": "Vendi un Macchinario",
+    "opportunities": "Opportunità",
+    "sellMachineryCardTitle": "Compriamo la tua Attrezzatura",
+    "sellMachineryCardDesc": "Interessato a dismettere una linea o vendere macchinari singoli? Noi li acquistiamo.",
     "industriesDesc": "Settori che serviamo",
     "featuredDesc": "Ottieni supporto diretto dal nostro team di ingegneri per il tuo prossimo grande progetto.",
     "newsDesc": "Approfondimenti industriali",
     "eventsDesc": "Fiere ed eventi globali",
     "requestQuotationDesc": "Ottieni una proposta tecnica",
-    "tradingMaterialsDesc": "Forniture industriali premium",
+    "tradingMaterialsDesc": "Forniture industriali specializzate",
     "machineryDesc": "Linee di produzione ad alte prestazioni",
     "productSolutionsDesc": "Sistemi di macchinari chiavi in mano",
     "featuredTitle": "Eccellenza Industriale",
@@ -79,7 +83,7 @@
     "revampingDesc": "Aggiornamento e modernizzazione di linee di produzione esistenti per prolungare la vita utile degli asset, migliorare l'efficienza e ridurre i fermi — dalla pianificazione all'esecuzione completa.",
     "assetMarketTitle": "Mercato Asset Industriali",
     "assetMarketDesc": "Acquisizione e rivendita di macchinari usati e asset produttivi — mettendo in contatto venditori e acquirenti nel mercato globale delle attrezzature per imballaggi metallici.",
-    "tradingDesc": "Fornitura di banda stagnata premium e componenti verniciati (cupole, fondi e valvole) per l'industria degli aerosol."
+    "tradingDesc": "Fornitura di banda stagnata di alta precisione e componenti verniciati (cupole, fondi e valvole) per l'industria degli aerosol."
   },
   "productsSection": {
     "learnMore": "Dettagli",
@@ -108,7 +112,11 @@
     "title2": " dell'Imballaggio",
     "desc": "Dalla fornitura tecnica alla modernizzazione completa delle linee produttive.",
     "btnConsult": "Consulta uno Specialista",
-    "btnQuote": "Richiedi Preventivo Tecnico"
+    "btnQuote": "Richiedi Preventivo Tecnico",
+    "sellTitle": "Vendi il tuo Macchinario",
+    "sellDesc": "Soprani Engineering acquisisce asset industriali e linee complete per il mercato globale. Contattaci per una valutazione tecnica.",
+    "industrialLiquidityTitle": "LIQUIDITÀ INDUSTRIALE.",
+    "industrialLiquidityDesc": "Acquisiamo asset industriali ad alte prestazioni a livello globale. Trasformiamo le linee dismesse in capitale strategico."
   },
   "splitLayout": {
     "who": "Istituzionale",
@@ -392,7 +400,7 @@
   "tradingPage": {
     "heroTitle": "Trading di Metalli",
     "heroSub": "Fornitura globale di banda stagnata e alluminio per i produttori di imballaggi metallici.",
-    "introTitle": "Materie Prime Premium",
+    "introTitle": "Materie Prime di Alta Qualità",
     "introP1": "Accesso strategico ai principali centri di raffinazione e produzione di metalli. Colleghiamo il vostro impianto industriale a forniture certificate.",
     "introP2": "Garantiamo volumi flessibili e specifiche tecniche precise per soddisfare i vostri programmi di produzione.",
     "matTitle": "Ecosistema Materiali",

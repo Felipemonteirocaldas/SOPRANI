@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
 import OurServicesProducts from '@/components/OurServicesProducts';
 import PartnersSection from '@/components/PartnersSection';
+import SellAssetCTA from '@/components/SellAssetCTA';
 import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
@@ -207,6 +208,7 @@ export default function HomePage() {
         <OurServicesSection />
         {/* PARTNERS SECTION */}
         <PartnersSection />
+
         {/* LATEST NEWS SECTION */}
         <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
@@ -363,6 +365,9 @@ export default function HomePage() {
         </section>
         {/* OUR SERVICES PRODUCTS SECTION */}
         <OurServicesProducts />
+
+        {/* SELL ASSET CTA SECTION (CLOSING HOOK) */}
+        <SellAssetCTA />
       </main>
       <Footer />
     </div>

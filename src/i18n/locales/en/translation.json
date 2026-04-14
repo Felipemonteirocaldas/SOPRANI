@@ -16,16 +16,12 @@
     "resources": "Resources",
     "events": "Events",
     "news": "News",
-    "allServicesDesc": "Comprehensive technical solutions",
-    "machineryDesc": "High-performance production lines",
-    "sparePartsDesc": "Precision OEM components",
-    "technicalAssistanceDesc": "Direct engineering support",
-    "tradingMaterialsDesc": "Premium industrial supplies",
+    "sellMachinery": "Sell a Machine",
+    "opportunities": "Opportunities",
+    "sellMachineryCardTitle": "We Buy Your Equipment",
+    "sellMachineryCardDesc": "Interested in decommissioning a line or selling individual machines? We buy them.",
+    "tradingMaterialsDesc": "Specialized industrial supplies",
     "productSolutionsDesc": "Turnkey machinery systems",
-    "industriesDesc": "Sectors we serve",
-    "eventsDesc": "Global trade fairs",
-    "newsDesc": "Industrial insights",
-    "requestQuotationDesc": "Get a technical proposal",
     "featuredTitle": "Industrial Excellence",
     "featuredDesc": "Get direct support from our engineering team for your next big project.",
     "productsFeaturedTitle": "Global Solutions",
@@ -79,7 +75,7 @@
     "revampingDesc": "Upgrade and modernization of existing production lines to extend asset life, improve efficiency, and reduce downtime — from planning to full execution.",
     "assetMarketTitle": "Industrial Asset Market",
     "assetMarketDesc": "Acquisition and resale of used machinery and production assets — connecting sellers and buyers in the global metal packaging equipment market.",
-    "tradingDesc": "Supply of premium tinplate and varnished components (domes, bottoms, and mounting cups) for the aerosol industry."
+    "tradingDesc": "Supply of high-precision tinplate and varnished components (domes, bottoms, and mounting cups) for the aerosol industry."
   },
   "productsSection": {
     "learnMore": "Details",
@@ -108,7 +104,11 @@
     "title2": " Packaging Industry",
     "desc": "From technical sourcing to complete modernization of production lines.",
     "btnConsult": "Consult a Specialist",
-    "btnQuote": "Request Technical Quote"
+    "btnQuote": "Request Technical Quote",
+    "sellTitle": "Sell Your Machinery",
+    "sellDesc": "Soprani Engineering acquires industrial assets and complete lines for the global market. Contact us for a technical valuation.",
+    "industrialLiquidityTitle": "INDUSTRIAL LIQUIDITY.",
+    "industrialLiquidityDesc": "We acquire high-performance industrial assets globally. Transforming decommissioned lines into strategic capital."
   },
   "splitLayout": {
     "who": "Institutional",
@@ -449,7 +449,7 @@
   "tradingPage": {
     "heroTitle": "Metal Trading",
     "heroSub": "Global supply of tinplate and aluminum for metal packaging manufacturers.",
-    "introTitle": "Premium Raw Materials",
+    "introTitle": "High-Performance Raw Materials",
     "introP1": "Strategic access to the main metal refining and manufacturing centers. We connect your industrial plant to certified supplies.",
     "introP2": "We ensure flexible volumes and precise technical specifications to meet your production schedules.",
     "matTitle": "Material Ecosystem",

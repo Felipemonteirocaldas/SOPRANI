@@ -95,10 +95,10 @@ const MenuContent = ({
           </div>
         </div>
 
-        {/* COLUMN 4: PLATAFORMA */}
+        {/* COLUMN 4: OPORTUNIDADES */}
         <div className="space-y-0">
           <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
-            {t('header.platform') || 'PLATAFORMA'}
+            {t('header.opportunities')}
           </h3>
           <div className="flex flex-col space-y-4">
             <Link
@@ -110,14 +110,26 @@ const MenuContent = ({
               <span>{t('header.requestQuotation')}</span>
             </Link>
 
-            {/* CTA CARD */}
-            <div className="mt-3.5 p-4 bg-primary/5 border-l-4 border-accent">
-              <span className="text-xs font-bold uppercase tracking-widest text-accent mb-1.25 block">{t('header.platformNew') || 'NOVO'}</span>
-              <h4 className="text-sm font-bold text-primary mb-1">{t('header.platformMph') || 'Plataforma MPH'}</h4>
-              <p className="text-xs font-light text-[#666]">
-                {t('header.platformDesc') || 'Sistema avançado de gestão industrial'}
-              </p>
-            </div>
+            <Link
+              to="/contact"
+              className="group/card block transition-all duration-300"
+              onClick={onClose}
+            >
+              <div className="mt-3.5 p-4 bg-primary/5 border-l-4 border-accent transition-all duration-300 group-hover/card:bg-primary/10 group-hover/card:translate-x-1">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-1.5 block">
+                  {t('header.sellMachinery')}
+                </span>
+                <h4 className="text-sm font-bold text-primary mb-1">
+                  {t('header.sellMachineryCardTitle')}
+                </h4>
+                <p className="text-xs font-light text-slate-600 leading-relaxed">
+                  {t('header.sellMachineryCardDesc')}
+                </p>
+                <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-primary uppercase tracking-wider opacity-0 -translate-x-2 transition-all duration-300 group-hover/card:opacity-100 group-hover/card:translate-x-0">
+                  {t('header.more')} →
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
