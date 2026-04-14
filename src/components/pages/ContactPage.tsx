@@ -74,8 +74,8 @@ export default function ContactPage() {
       <Header />
 
       <main className="flex-grow">
-        {/* Dynamic Industrial Hero */}
-        <section className="relative pt-24 sm:pt-28 pb-48 md:pb-64 bg-[#001F5F] overflow-hidden">
+        {/* Hero — compact no mobile, espaçoso no desktop */}
+        <section className="relative pt-24 sm:pt-28 pb-28 md:pb-56 bg-[#001F5F] overflow-hidden">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />
@@ -89,14 +89,14 @@ export default function ContactPage() {
                 transition={{ duration: 0.6 }}
               >
                 <div className="flex justify-center lg:justify-start">
-                  <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-8 border border-accent/20">
+                  <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-5 sm:mb-8 border border-accent/20">
                     Global Interaction Hub
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 sm:mb-8 tracking-tighter leading-[0.95]">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-4 sm:mb-6 tracking-tighter leading-[0.95]">
                   {t('contactPage.heroTitle')}
                 </h1>
-                <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed mb-12 mx-auto lg:mx-0">
+                <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed mb-0 mx-auto lg:mx-0">
                   {t('contactPage.heroSub')}
                 </p>
               </motion.div>
@@ -104,35 +104,40 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Global Access Grid */}
-        <section className="relative -mt-32 md:-mt-48 pb-32">
+        {/* Main contact block — overlap na seção seguinte */}
+        <section className="relative -mt-16 md:-mt-40 pb-20 sm:pb-28 md:pb-32">
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl overflow-hidden bg-white">
 
-              {/* Technical Information Panel (Dark) */}
-              <div className="lg:col-span-5 bg-[#001F5F] p-5 sm:p-8 md:p-12 lg:p-16 relative">
-                <div className="relative z-10 flex flex-col h-full text-left">
-                  <div className="mb-12">
-                    <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-accent mb-6">
+              {/* ─── Painel de Informações (Dark) ─── */}
+              <div className="lg:col-span-4 bg-[#001F5F] relative">
+                <div className="relative z-10 flex flex-col h-full text-left p-5 sm:p-8 md:p-10 lg:p-12">
+
+                  {/* HQ Status + Clock */}
+                  <div className="mb-6 sm:mb-8">
+                    <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-4">
                       Soprani HQ Status
                     </h2>
 
-                    {/* Live Clock Interface */}
-                    <div className="flex flex-col mb-8">
-                      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2">
+                    {/* Relógio — menor no mobile */}
+                    <div className="flex flex-col mb-5 sm:mb-7">
+                      <div className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2 leading-none">
                         {italyTime}
-                        <span className="text-[10px] uppercase text-blue-300 pb-1">CET (Italy)</span>
+                        <span className="text-[9px] uppercase text-blue-300 pb-1">CET (Italy)</span>
                       </div>
-                      <div className="flex items-center gap-2 mt-4">
+                      <div className="flex items-center gap-2 mt-3">
                         <span className="relative flex h-2 w-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-none h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-green-500">Technical Desk: Online & Active</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-green-500">
+                          Technical Desk: Online &amp; Active
+                        </span>
                       </div>
                     </div>
 
-                    <div className="space-y-8 pt-6 border-t border-white/10">
+                    {/* Métodos de contato */}
+                    <div className="space-y-5 sm:space-y-7 pt-5 border-t border-white/10">
                       <ContactMethod
                         icon={Mail}
                         label={t('contactPage.email')}
@@ -153,8 +158,8 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* WhatsApp Priority Support — Premium */}
-                  <div className="mt-auto pt-8">
+                  {/* WhatsApp CTA */}
+                  <div className="mt-auto pt-5 sm:pt-7">
                     <a
                       href="https://wa.me/390510000000"
                       target="_blank"
@@ -162,15 +167,13 @@ export default function ContactPage() {
                       className="group relative block overflow-hidden border border-white/10 hover:border-[#25D366]/50 transition-all duration-500"
                       style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.07) 0%, rgba(37,211,102,0.02) 100%)' }}
                     >
-                      {/* Hover shimmer */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                         style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.1) 0%, transparent 60%)' }} />
 
-                      <div className="relative flex items-center gap-4 sm:gap-5 px-4 sm:px-6 py-5">
-                        {/* Icon with live pulse */}
+                      <div className="relative flex items-center gap-4 px-5 py-4">
                         <div className="relative flex-shrink-0">
-                          <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:shadow-[#25D366]/40 transition-shadow duration-500">
-                            <MessageCircle size={20} className="text-white" />
+                          <div className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:shadow-[#25D366]/40 transition-shadow duration-500">
+                            <MessageCircle size={18} className="text-white" />
                           </div>
                           <span className="absolute -top-0.5 -right-0.5 w-3 h-3">
                             <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-60" />
@@ -178,16 +181,15 @@ export default function ContactPage() {
                           </span>
                         </div>
 
-                        {/* Text */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-0.5">
                             <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#25D366]">● Online</span>
                           </div>
-                          <p className="text-[13px] sm:text-sm font-black text-white uppercase tracking-widest leading-none">{t('contactPage.whatsappTitle')}</p>
-
+                          <p className="text-sm font-black text-white uppercase tracking-widest leading-none">
+                            {t('contactPage.whatsappTitle')}
+                          </p>
                         </div>
 
-                        {/* Arrow */}
                         <svg className="flex-shrink-0 text-white/20 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
@@ -197,63 +199,108 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Inquiry Form Panel (Light) */}
-              <div className="lg:col-span-7 bg-white p-6 md:p-12 lg:p-16">
+              {/* ─── Painel do Formulário (Light) ─── */}
+              <div className="lg:col-span-8 bg-white p-5 sm:p-8 md:p-10 lg:p-12">
                 <AnimatePresence mode="wait">
                   {submitted ? (
                     <motion.div
                       key="success"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="h-full flex flex-col items-center justify-center text-center py-20"
+                      className="h-full flex flex-col items-center justify-center text-center py-16 sm:py-20"
                     >
-                      <div className="w-20 h-20 bg-green-50 text-green-600 rounded-none flex items-center justify-center mb-8">
-                        <ShieldCheck size={40} />
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-50 text-green-600 rounded-none flex items-center justify-center mb-6 sm:mb-8">
+                        <ShieldCheck size={36} />
                       </div>
-                      <h2 className="text-3xl font-heading font-black text-primary mb-4 uppercase tracking-tighter">
+                      <h2 className="text-2xl sm:text-3xl font-heading font-black text-primary mb-3 uppercase tracking-tighter">
                         {t('contactPage.thxTitle')}
                       </h2>
-                      <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed mb-10">
+                      <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed mb-8 sm:mb-10">
                         {t('contactPage.thxDesc')}
                       </p>
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="px-10 py-4 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
+                        className="px-8 sm:px-10 py-4 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
                       >
                         New Message
                       </button>
                     </motion.div>
                   ) : (
                     <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col">
-                      <div className="mb-10 text-left">
-                        <h2 className="text-2xl font-heading font-black text-primary mb-4 uppercase tracking-tighter">
+                      {/* Cabeçalho do formulário */}
+                      <div className="mb-6 sm:mb-8 text-left">
+                        <h2 className="text-xl sm:text-2xl font-heading font-black text-primary mb-3 uppercase tracking-tighter">
                           {t('contactPage.msgTitle')}
                         </h2>
-                        <div className="h-1 w-12 bg-accent" />
+                        <div className="h-1 w-10 bg-accent" />
                       </div>
 
-                      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-left">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <CustomInput label={t('contactPage.formName')} name="name" value={formData.name} onChange={handleChange} required placeholder={t('contactPage.formPlaceN')} icon={CheckCircle2} />
-                          <CustomInput label={t('contactPage.email')} name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="corporate@company.com" icon={Mail} />
+                      <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+                        {/* Linha 1: Nome + Email */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <CustomInput
+                            label={t('contactPage.formName')}
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            placeholder={t('contactPage.formPlaceN')}
+                            icon={CheckCircle2}
+                          />
+                          <CustomInput
+                            label={t('contactPage.email')}
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            placeholder="corporate@company.com"
+                            icon={Mail}
+                          />
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <CustomInput label={t('contactPage.formCompany')} name="company" value={formData.company} onChange={handleChange} placeholder={t('contactPage.formPlaceC')} icon={Building2} />
-                          <CustomInput label={t('contactPage.formCountry')} name="country" value={formData.country} onChange={handleChange} placeholder="Italy / Global" icon={Globe} />
+                        {/* Linha 2: Empresa + País */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <CustomInput
+                            label={t('contactPage.formCompany')}
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            placeholder={t('contactPage.formPlaceC')}
+                            icon={Building2}
+                          />
+                          <CustomInput
+                            label={t('contactPage.formCountry')}
+                            name="country"
+                            value={formData.country}
+                            onChange={handleChange}
+                            placeholder="Italy / Global"
+                            icon={Globe}
+                          />
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <CustomInput label={t('contactPage.phone')} name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+00 000 000" icon={Phone} />
-                          <div className="space-y-2 flex flex-col">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('contactPage.formSubject')}</label>
+                        {/* Linha 3: Telefone + Assunto */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <CustomInput
+                            label={t('contactPage.phone')}
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+00 000 000"
+                            icon={Phone}
+                          />
+                          <div className="space-y-1.5 flex flex-col">
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">
+                              {t('contactPage.formSubject')}
+                            </label>
                             <div className="relative group">
                               <select
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
                                 required
-                                className="w-full h-[52px] px-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all appearance-none cursor-pointer"
+                                className="w-full h-[48px] px-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all appearance-none cursor-pointer"
                               >
                                 <option value="">{t('contactPage.subSelect')}</option>
                                 <option value="machinery">{t('contactPage.sub1')}</option>
@@ -270,8 +317,11 @@ export default function ContactPage() {
                           </div>
                         </div>
 
-                        <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('contactPage.formMsg')}</label>
+                        {/* Mensagem */}
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">
+                            {t('contactPage.formMsg')}
+                          </label>
                           <textarea
                             name="message"
                             value={formData.message}
@@ -283,10 +333,11 @@ export default function ContactPage() {
                           />
                         </div>
 
+                        {/* Botão de envio */}
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-5 bg-accent text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-opacity-95 transition-all duration-300 disabled:opacity-30 group flex items-center justify-center gap-3"
+                          className="w-full py-4 sm:py-5 bg-accent text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-opacity-95 transition-all duration-300 disabled:opacity-30 group flex items-center justify-center gap-3 mt-1"
                         >
                           {isSubmitting ? t('contactPage.formSending') : (
                             <>
@@ -304,8 +355,8 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Global Hubs Section */}
-        <section className="py-24 bg-[#001F5F] overflow-hidden">
+        {/* Global Hubs */}
+        <section className="py-16 sm:py-24 bg-[#001F5F] overflow-hidden">
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 md:mb-20">
               <div className="max-w-xl text-left">
@@ -320,7 +371,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <HubCard region="Europe" locations="Italy · Germany · Poland · UK" delay={0.1} />
               <HubCard region="Americas" locations="USA · Brazil · Mexico · Canada" delay={0.2} />
               <HubCard region="MENA" locations="UAE · Saudi Arabia · Egypt · Turkey" delay={0.3} />
@@ -329,13 +380,13 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Rapid Access Section */}
-        <section className="py-24 bg-white border-b border-gray-100">
+        {/* Priority Channels */}
+        <section className="py-16 sm:py-24 bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 md:px-8 text-center">
-            <h2 className="text-2xl font-heading font-black text-primary mb-16 uppercase tracking-widest tracking-tighter">
+            <h2 className="text-2xl font-heading font-black text-primary mb-10 sm:mb-16 uppercase tracking-widest tracking-tighter">
               Priority Channels
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
               <RapidLink
                 title={t('contactPage.reqQuote')}
                 desc={t('contactPage.reqQuoteSub')}
@@ -364,18 +415,18 @@ export default function ContactPage() {
 }
 
 const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label: string, value: string, action?: string }) => (
-  <div className="flex items-center gap-4 sm:gap-6 group text-left">
-    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
-      <Icon size={18} className="sm:size-5" />
+  <div className="flex items-center gap-4 group text-left">
+    <div className="w-10 h-10 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
+      <Icon size={16} />
     </div>
     <div className="flex flex-col min-w-0">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-1">{label}</span>
+      <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-0.5">{label}</span>
       {action ? (
-        <a href={action} className="text-xs sm:text-sm font-black text-white hover:text-accent transition-colors tracking-wide sm:tracking-wider uppercase break-all">
+        <a href={action} className="text-xs font-black text-white hover:text-accent transition-colors tracking-wider uppercase truncate">
           {value}
         </a>
       ) : (
-        <span className="text-xs sm:text-sm font-black text-white tracking-wide sm:tracking-wider uppercase break-words">
+        <span className="text-xs font-black text-white tracking-wider uppercase">
           {value}
         </span>
       )}
@@ -384,15 +435,15 @@ const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label:
 );
 
 const CustomInput = ({ label, icon: Icon, ...props }: any) => (
-  <div className="space-y-2 text-left">
+  <div className="space-y-1.5 text-left">
     <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{label}</label>
     <div className="relative group">
       <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-focus-within:text-accent transition-colors">
-        <Icon size={14} className="sm:size-4" />
+        <Icon size={14} />
       </div>
       <input
         {...props}
-        className="w-full h-[48px] sm:h-[52px] pl-10 sm:pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-semibold text-gray-800 focus:outline-none transition-all placeholder:text-gray-400 placeholder:font-normal"
+        className="w-full h-[48px] pl-10 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-semibold text-gray-800 focus:outline-none transition-all placeholder:text-gray-400 placeholder:font-normal"
       />
     </div>
   </div>
@@ -401,7 +452,7 @@ const CustomInput = ({ label, icon: Icon, ...props }: any) => (
 const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, btn: string, href: string }) => (
   <div className="flex flex-col items-center group">
     <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3">{title}</h3>
-    <p className="text-xs text-gray-500 mb-8 max-w-xs">{desc}</p>
+    <p className="text-xs text-gray-500 mb-6 sm:mb-8 max-w-xs">{desc}</p>
     <a
       href={href}
       className="inline-flex items-center gap-2 group text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent hover:border-accent transition-all"
@@ -412,7 +463,6 @@ const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, bt
   </div>
 );
 
-// Helper for select arrow
 function ChevronDown({ size }: { size: number }) {
   return (
     <svg
@@ -425,9 +475,7 @@ function ChevronDown({ size }: { size: number }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="m6 9 6 6 6-6" />
+      <path d="M6 9l6 6 6-6" />
     </svg>
   );
 }
-
-
