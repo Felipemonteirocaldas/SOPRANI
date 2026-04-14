@@ -250,7 +250,7 @@ export default function Header() {
                 <ChevronDown size={14} className="text-primary/40 group-hover:rotate-180 transition-transform duration-300" />
                 <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[60%] rounded-full opacity-0 group-hover:opacity-100"></span>
               </button>
-              
+
               {/* Dropdown menu */}
               <div className="absolute right-0 top-full pt-2 w-16 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
                 <div className="bg-white border border-gray-100 shadow-xl flex flex-col py-1.5 overflow-hidden">
@@ -291,17 +291,17 @@ export default function Header() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-1">
-               {/* Mobile Language */}
-               <button 
-                 className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
-                 onClick={() => {
-                   const nextLang = languages[(languages.findIndex(l => l.code === i18n.language) + 1) % languages.length].code;
-                   i18n.changeLanguage(nextLang);
-                 }}
-               >
-                 {i18n.language.toUpperCase()}
-                 <ChevronDown size={14} className="text-gray-400" />
-               </button>
+              {/* Mobile Language */}
+              <button
+                className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
+                onClick={() => {
+                  const nextLang = languages[(languages.findIndex(l => l.code === i18n.language) + 1) % languages.length].code;
+                  i18n.changeLanguage(nextLang);
+                }}
+              >
+                {i18n.language.toUpperCase()}
+                <ChevronDown size={14} className="text-gray-400" />
+              </button>
 
               <button
                 onClick={() => setSearchOpen(true)}
@@ -340,7 +340,7 @@ export default function Header() {
               <Link to="/news" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
                 {t('header.news')}
               </Link>
-              
+
               <div className="pt-4 border-t border-gray-50 mt-2">
                 <Link
                   to="/request-quotation"
@@ -356,7 +356,7 @@ export default function Header() {
         )}
       </div>
 
-      <GlobalSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <GlobalSearchModal open={searchOpen} onOpenChange={setSearchOpen} />
     </header>
   );
 }
