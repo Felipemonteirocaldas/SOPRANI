@@ -175,7 +175,7 @@ export default function HomePage() {
                     </Link>
                     <Link
                       to="/contact"
-                      className="w-full sm:w-auto px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
+                      className="w-full sm:w-auto px-8 py-4 border-2 border-white bg-white/10 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
                     >
                       {t('hero.contactUs')}
                     </Link>
