@@ -209,7 +209,7 @@ export default function CompanyPage() {
               <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-8 border border-accent/20">
                 Corporate Legacy
               </span>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-8 tracking-tighter leading-[0.95]">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-8 tracking-tight leading-[0.95]">
                 {t('companyPage.heroTitle')}
               </h1>
               <div className="prose prose-sm prose-invert max-w-none">
@@ -228,7 +228,7 @@ export default function CompanyPage() {
       {/* Key Achievements */}
       <section className="relative -mt-24 pb-24">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 shadow-2xl bg-white border border-gray-100">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 shadow-2xl bg-white border border-gray-100">
             <AchievementBox value="30+" label={t('companyPage.ach1A')} delay={100} />
             <AchievementBox value="350+" label={t('companyPage.ach2A')} delay={200} />
             <AchievementBox value={t('companyPage.ach3V')} label={t('companyPage.ach3A')} delay={300} />
@@ -358,8 +358,8 @@ export default function CompanyPage() {
 }
 
 const AchievementBox = ({ value, label, delay }: { value: string, label: string, delay: number }) => (
-  <AnimatedElement delay={delay} className="p-10 text-center border-r border-gray-100 last:border-0 hover:bg-gray-50 transition-colors duration-500">
-    <div className="text-4xl md:text-5xl font-heading font-black text-accent mb-4 tracking-tighter uppercase">{value}</div>
+  <AnimatedElement delay={delay} className="p-6 md:p-10 text-center border-b border-r border-gray-100 last:border-r-0 odd:last:border-r even:last:border-r-0 hover:bg-gray-50 transition-colors duration-500">
+    <div className="text-3xl md:text-5xl font-heading font-black text-accent mb-3 md:mb-4 tracking-tighter uppercase">{value}</div>
     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 leading-relaxed">{label}</p>
   </AnimatedElement>
 );

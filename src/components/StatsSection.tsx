@@ -174,7 +174,7 @@ const StatsSection = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 mb-12 md:mb-16 border-l border-r border-gray-600"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-0 mb-12 md:mb-16 border border-gray-600"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -182,8 +182,10 @@ const StatsSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`py-8 md:py-12 px-6 md:px-8 text-center border-b border-gray-600 md:border-b-0 ${
-                index !== stats.length - 1 ? 'lg:border-r' : ''
+              className={`py-8 md:py-12 px-4 md:px-8 text-center border-b border-gray-600 ${
+                index % 2 === 0 && index < stats.length - 1 ? 'border-r border-gray-600 lg:border-r-0' : ''
+              } ${
+                index !== stats.length - 1 ? 'lg:border-r border-gray-600' : ''
               }`}
             >
               {/* Número com animação */}
@@ -229,7 +231,7 @@ const StatsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
         >
           {services.map((service, index) => (
             <motion.div

@@ -112,7 +112,7 @@ export default function OurServicesProducts() {
   }, [t]);
 
   return (
-    <section className="py-32 bg-primary/[0.02] overflow-hidden">
+    <section className="hidden lg:block py-32 bg-primary/[0.02] overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
@@ -141,7 +141,8 @@ export default function OurServicesProducts() {
           </motion.p>
         </div>
 
-        {/* --- Highlighted 3D Showcase --- */}
+        {/* --- Highlighted 3D Showcase (desktop only) --- */}
+        <motion.div className="hidden lg:block">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -205,6 +206,7 @@ export default function OurServicesProducts() {
               </div>
             </div>
           </div>
+        </motion.div>
         </motion.div>
 
         {/* Products Grid */}

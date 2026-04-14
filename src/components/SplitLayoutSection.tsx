@@ -24,7 +24,7 @@ export default function SplitLayoutSection() {
 
   return (
     <section className="w-full bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen lg:min-h-[600px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[600px]">
         {/* Left Side - Navy Background with Blueprint Image */}
         <div className="bg-primary relative overflow-hidden flex items-center justify-center p-8 lg:p-0">
           {/* Blueprint overlay image with low opacity */}

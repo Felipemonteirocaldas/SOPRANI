@@ -95,7 +95,7 @@ export default function PartnersSection() {
 
                 {/* Logo Area */}
                 <div
-                  className="flex items-center justify-center px-10 py-10"
+                  className="flex items-center justify-center px-6 py-8 sm:px-10 sm:py-10"
                   style={{ backgroundColor: partner.logoBg }}
                 >
                   <img
@@ -137,8 +137,8 @@ export default function PartnersSection() {
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-6 border-t border-white/10">
                     <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-gray-500" strokeWidth={1.5} />
-                      <span className="text-[10px] text-blue-300 uppercase tracking-wider font-heading">
+                      <Award className="w-4 h-4" strokeWidth={1.5} style={{ color: '#D4AF37' }} />
+                      <span className="text-[10px] uppercase tracking-wider font-heading font-semibold" style={{ color: '#D4AF37' }}>
                         {t('partners.officialPartner')}
                       </span>
                     </div>

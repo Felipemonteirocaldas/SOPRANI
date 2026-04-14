@@ -93,7 +93,7 @@ export default function ContactPage() {
                     Global Interaction Hub
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-8 tracking-tighter leading-[0.95]">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 sm:mb-8 tracking-tighter leading-[0.95]">
                   {t('contactPage.heroTitle')}
                 </h1>
                 <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed mb-12 mx-auto lg:mx-0">
@@ -119,9 +119,9 @@ export default function ContactPage() {
                     
                     {/* Live Clock Interface */}
                     <div className="flex flex-col mb-8">
-                      <div className="text-5xl md:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex items-end gap-2">
+                      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2">
                         {italyTime}
-                        <span className="text-[10px] uppercase text-blue-300 pb-2">CET (Italy)</span>
+                        <span className="text-[10px] uppercase text-blue-300 pb-1">CET (Italy)</span>
                       </div>
                       <div className="flex items-center gap-2 mt-4">
                         <span className="relative flex h-2 w-2">
@@ -283,7 +283,7 @@ export default function ContactPage() {
         {/* Global Hubs Section */}
         <section className="py-24 bg-[#001F5F] overflow-hidden">
           <div className="container mx-auto px-4 md:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 md:mb-20">
               <div className="max-w-xl text-left">
                 <span className="text-xs font-bold text-accent uppercase tracking-[0.3em] block mb-4">Network Connectivity</span>
                 <h2 className="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tighter leading-none mb-6">

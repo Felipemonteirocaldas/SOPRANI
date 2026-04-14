@@ -166,16 +166,16 @@ export default function HomePage() {
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-slate-200 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-light">
                     {t('hero.subtitle')}
                   </p>
-                  <div className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-10">
                     <Link
                       to="/request-quotation"
-                      className="px-10 py-5 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-base sm:text-lg min-w-[220px]"
+                      className="w-full sm:w-auto px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
                     >
                       {t('hero.requestQuotation')}
                     </Link>
                     <Link
                       to="/contact"
-                      className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-base sm:text-lg min-w-[220px]"
+                      className="w-full sm:w-auto px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
                     >
                       {t('hero.contactUs')}
                     </Link>

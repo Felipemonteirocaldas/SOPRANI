@@ -128,11 +128,13 @@ const MenuContent = ({
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLangOpen, setMobileLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | undefined>(undefined);
   const closeTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const mobileLangRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = (menuId: string) => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
@@ -151,7 +153,20 @@ export default function Header() {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Close mobile lang dropdown on outside click
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileLangRef.current && !mobileLangRef.current.contains(e.target as Node)) {
+        setMobileLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, []);
 
   const languages = [
@@ -291,17 +306,40 @@ export default function Header() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-1">
-               {/* Mobile Language */}
-               <button 
-                 className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
-                 onClick={() => {
-                   const nextLang = languages[(languages.findIndex(l => l.code === i18n.language) + 1) % languages.length].code;
-                   i18n.changeLanguage(nextLang);
-                 }}
-               >
-                 {i18n.language.toUpperCase()}
-                 <ChevronDown size={14} className="text-gray-400" />
-               </button>
+               {/* Mobile Language Dropdown */}
+               <div ref={mobileLangRef} className="relative">
+                 <button 
+                   className="flex items-center gap-1 p-2 text-primary hover:text-accent transition-colors text-xs font-bold"
+                   onClick={() => setMobileLangOpen(prev => !prev)}
+                   aria-label="Select language"
+                 >
+                   {i18n.language.toUpperCase()}
+                   <ChevronDown size={14} className={cn("text-gray-400 transition-transform duration-200", mobileLangOpen && "rotate-180")} />
+                 </button>
+
+                 {/* Dropdown */}
+                 {mobileLangOpen && (
+                   <div className="absolute right-0 top-full mt-1 w-16 bg-white border border-gray-100 shadow-xl z-[10001] overflow-hidden">
+                     {languages.map((lang) => (
+                       <button
+                         key={lang.code}
+                         onClick={() => {
+                           i18n.changeLanguage(lang.code);
+                           setMobileLangOpen(false);
+                         }}
+                         className={cn(
+                           "w-full text-xs font-semibold px-3 py-2.5 text-left transition-colors",
+                           i18n.language === lang.code
+                             ? "text-accent bg-accent/5"
+                             : "text-gray-500 hover:bg-slate-50 hover:text-primary"
+                         )}
+                       >
+                         {lang.label}
+                       </button>
+                     ))}
+                   </div>
+                 )}
+               </div>
 
               <button
                 onClick={() => setSearchOpen(true)}

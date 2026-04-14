@@ -87,7 +87,7 @@ export default function RequestQuotationPage() {
 
       <main className="flex-grow">
         {/* Modern Hero Section */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-24 sm:pt-28 pb-32 md:pb-40">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-24 sm:pt-28 pb-16 md:pb-40">
           {/* Subtle Background Elements */}
           <div className="absolute inset-0 z-0 opacity-10 text-left">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#C41230_0%,transparent_50%)]" />
@@ -95,7 +95,7 @@ export default function RequestQuotationPage() {
           </div>
 
           <div className="container mx-auto px-4 md:px-8 relative z-10 text-left">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
               <div>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -112,7 +112,7 @@ export default function RequestQuotationPage() {
                     {t('reqPage.heroSub')}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <FeatureItem
                       icon={ShieldCheck}
                       title={t('reqPage.feat1Title')}
@@ -141,7 +141,7 @@ export default function RequestQuotationPage() {
                     <h2 className="text-sm font-bold uppercase tracking-widest text-primary">
                       {submitted ? t('reqPage.thxTitle') : t('reqPage.coInfo')}
                     </h2>
-                    {!submitted && <div className="text-[10px] text-accent font-bold">* {t('reqPage.reqLbl').split('.')[0]}</div>}
+                    {!submitted && <div className="text-[10px] text-accent font-bold">{t('reqPage.reqLbl').split('.')[0]}</div>}
                   </div>
 
                   <div className="p-8">
