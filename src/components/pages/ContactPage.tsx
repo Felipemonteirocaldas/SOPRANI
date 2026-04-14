@@ -110,7 +110,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-2xl overflow-hidden bg-white">
 
               {/* Technical Information Panel (Dark) */}
-              <div className="lg:col-span-5 bg-[#001F5F] p-8 md:p-12 lg:p-16 relative">
+              <div className="lg:col-span-5 bg-[#001F5F] p-5 sm:p-8 md:p-12 lg:p-16 relative">
                 <div className="relative z-10 flex flex-col h-full text-left">
                   <div className="mb-12">
                     <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-accent mb-6">
@@ -166,7 +166,7 @@ export default function ContactPage() {
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                         style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.1) 0%, transparent 60%)' }} />
 
-                      <div className="relative flex items-center gap-5 px-6 py-5">
+                      <div className="relative flex items-center gap-4 sm:gap-5 px-4 sm:px-6 py-5">
                         {/* Icon with live pulse */}
                         <div className="relative flex-shrink-0">
                           <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:shadow-[#25D366]/40 transition-shadow duration-500">
@@ -183,7 +183,7 @@ export default function ContactPage() {
                           <div className="flex items-center gap-2 mb-0.5">
                             <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#25D366]">● Online</span>
                           </div>
-                          <p className="text-sm font-black text-white uppercase tracking-widest leading-none">{t('contactPage.whatsappTitle')}</p>
+                          <p className="text-[13px] sm:text-sm font-black text-white uppercase tracking-widest leading-none">{t('contactPage.whatsappTitle')}</p>
 
                         </div>
 
@@ -198,7 +198,7 @@ export default function ContactPage() {
               </div>
 
               {/* Inquiry Form Panel (Light) */}
-              <div className="lg:col-span-7 bg-white p-8 md:p-12 lg:p-16">
+              <div className="lg:col-span-7 bg-white p-6 md:p-12 lg:p-16">
                 <AnimatePresence mode="wait">
                   {submitted ? (
                     <motion.div
@@ -232,18 +232,18 @@ export default function ContactPage() {
                         <div className="h-1 w-12 bg-accent" />
                       </div>
 
-                      <form onSubmit={handleSubmit} className="space-y-6 text-left">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-left">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <CustomInput label={t('contactPage.formName')} name="name" value={formData.name} onChange={handleChange} required placeholder={t('contactPage.formPlaceN')} icon={CheckCircle2} />
                           <CustomInput label={t('contactPage.email')} name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="corporate@company.com" icon={Mail} />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <CustomInput label={t('contactPage.formCompany')} name="company" value={formData.company} onChange={handleChange} placeholder={t('contactPage.formPlaceC')} icon={Building2} />
                           <CustomInput label={t('contactPage.formCountry')} name="country" value={formData.country} onChange={handleChange} placeholder="Italy / Global" icon={Globe} />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <CustomInput label={t('contactPage.phone')} name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+00 000 000" icon={Phone} />
                           <div className="space-y-2 flex flex-col">
                             <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{t('contactPage.formSubject')}</label>
@@ -364,18 +364,20 @@ export default function ContactPage() {
 }
 
 const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label: string, value: string, action?: string }) => (
-  <div className="flex items-center gap-6 group text-left">
-    <div className="w-12 h-12 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
-      <Icon size={20} />
+  <div className="flex items-center gap-4 sm:gap-6 group text-left">
+    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
+      <Icon size={18} className="sm:size-5" />
     </div>
-    <div className="flex flex-col">
+    <div className="flex flex-col min-w-0">
       <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-1">{label}</span>
       {action ? (
-        <a href={action} className="text-sm font-black text-white hover:text-accent transition-colors tracking-wider uppercase">
+        <a href={action} className="text-xs sm:text-sm font-black text-white hover:text-accent transition-colors tracking-wide sm:tracking-wider uppercase break-all">
           {value}
         </a>
       ) : (
-        <span className="text-sm font-black text-white tracking-wider uppercase">{value}</span>
+        <span className="text-xs sm:text-sm font-black text-white tracking-wide sm:tracking-wider uppercase break-words">
+          {value}
+        </span>
       )}
     </div>
   </div>
@@ -385,12 +387,12 @@ const CustomInput = ({ label, icon: Icon, ...props }: any) => (
   <div className="space-y-2 text-left">
     <label className="text-[10px] font-bold uppercase tracking-widest text-gray-700">{label}</label>
     <div className="relative group">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-focus-within:text-accent transition-colors">
-        <Icon size={16} />
+      <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-focus-within:text-accent transition-colors">
+        <Icon size={14} className="sm:size-4" />
       </div>
       <input
         {...props}
-        className="w-full h-[52px] pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-semibold text-gray-800 focus:outline-none transition-all placeholder:text-gray-400 placeholder:font-normal"
+        className="w-full h-[48px] sm:h-[52px] pl-10 sm:pl-12 pr-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-semibold text-gray-800 focus:outline-none transition-all placeholder:text-gray-400 placeholder:font-normal"
       />
     </div>
   </div>

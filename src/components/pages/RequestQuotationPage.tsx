@@ -137,14 +137,14 @@ export default function RequestQuotationPage() {
                 <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/5 rounded-full blur-3xl" />
 
                 <div className="bg-white rounded-none shadow-2xl overflow-hidden border border-gray-100 text-left">
-                  <div className="bg-gray-50 px-8 py-6 border-b border-gray-100 flex items-center justify-between">
+                  <div className="bg-gray-50 px-5 py-4 sm:px-8 sm:py-6 border-b border-gray-100 flex items-center justify-between">
                     <h2 className="text-sm font-bold uppercase tracking-widest text-primary">
                       {submitted ? t('reqPage.thxTitle') : t('reqPage.coInfo')}
                     </h2>
                     {!submitted && <div className="text-[10px] text-accent font-bold">{t('reqPage.reqLbl').split('.')[0]}</div>}
                   </div>
 
-                  <div className="p-8">
+                  <div className="p-5 sm:p-8">
                     {submitted ? (
                       <div className="py-12 text-center">
                         <div className="w-16 h-16 bg-green-100 text-green-600 rounded-none flex items-center justify-center mx-auto mb-6">
@@ -164,20 +164,20 @@ export default function RequestQuotationPage() {
                         </button>
                       </div>
                     ) : (
-                      <form onSubmit={handleSubmit} className="space-y-6 text-left">
+                      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-left">
 
                         {/* Row 1: Company Name + Contact Person */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-1.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coName')}</label>
                             <div className="relative">
                               <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="Soprani Engineering Srl" />
+                                placeholder="..." />
                             </div>
                           </div>
-                          <div className="space-y-1.5">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coPerson')}</label>
                             <input type="text" name="contactPerson" value={formData.contactPerson} onChange={handleChange} required
                               className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium" />
@@ -185,17 +185,17 @@ export default function RequestQuotationPage() {
                         </div>
 
                         {/* Row 2: Email + Phone */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-1.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coEmail')}</label>
                             <div className="relative">
                               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="email" name="email" value={formData.email} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="corporate@company.com" />
+                                placeholder="..." />
                             </div>
                           </div>
-                          <div className="space-y-1.5">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coPhone')}</label>
                             <div className="relative">
                               <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
@@ -206,8 +206,8 @@ export default function RequestQuotationPage() {
                         </div>
 
                         {/* Row 3: Country + Product / Service */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-1.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coCountry')}</label>
                             <div className="relative">
                               <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
@@ -216,10 +216,10 @@ export default function RequestQuotationPage() {
                                 placeholder="..." />
                             </div>
                           </div>
-                          <div className="space-y-1.5">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.prOpt')}</label>
                             <select name="productOrService" value={formData.productOrService} onChange={handleChange} required
-                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white">
+                              className="w-full h-[41px] px-4 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-xs font-medium bg-white">
                               <option value="">{t('reqPage.prVal0')}</option>
                               <option value="machinery">{t('reqPage.prVal1')}</option>
                               <option value="spare-parts">{t('reqPage.prVal2')}</option>
@@ -231,8 +231,8 @@ export default function RequestQuotationPage() {
                         </div>
 
                         {/* Row 4: Machine Type + Part Reference */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
-                          <div className="space-y-1.5">
+                        <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 pt-3 sm:pt-4 border-t border-gray-100">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.macType')}</label>
                             <div className="relative">
                               <Zap className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
@@ -241,7 +241,7 @@ export default function RequestQuotationPage() {
                                 placeholder={t('reqPage.macTypePlace')} />
                             </div>
                           </div>
-                          <div className="space-y-1.5">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.sparRef')}</label>
                             <div className="relative">
                               <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
@@ -253,8 +253,8 @@ export default function RequestQuotationPage() {
                         </div>
 
                         {/* Row 5: Quantity + Urgency */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-1.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.qty')}</label>
                             <div className="relative">
                               <Layers className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
@@ -263,10 +263,10 @@ export default function RequestQuotationPage() {
                                 placeholder={t('reqPage.qtyPlace')} />
                             </div>
                           </div>
-                          <div className="space-y-1.5">
+                          <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.urg')}</label>
                             <select name="urgency" value={formData.urgency} onChange={handleChange}
-                              className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium bg-white">
+                              className="w-full px-4 h-[41px] border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-xs font-medium bg-white">
                               <option value="low">{t('reqPage.urg1')}</option>
                               <option value="normal">{t('reqPage.urg2')}</option>
                               <option value="high">{t('reqPage.urg3')}</option>
@@ -276,21 +276,22 @@ export default function RequestQuotationPage() {
                         </div>
 
                         {/* Row 6: Message */}
-                        <div className="space-y-1.5 pt-4 border-t border-gray-100">
+                        <div className="space-y-1 sm:space-y-1.5 pt-3 sm:pt-4 border-t border-gray-100">
                           <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.msgLbl')}</label>
-                          <textarea name="message" value={formData.message} onChange={handleChange} rows={4}
-                            className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium resize-none"
+                          <textarea name="message" value={formData.message} onChange={handleChange} rows={3}
+                            className="w-full px-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium resize-none shadow-inner bg-gray-50/30"
                             placeholder={t('reqPage.msgPlace')} />
                         </div>
 
                         {/* Row 7: File Attachments */}
-                        <div className="space-y-3 pt-4 border-t border-gray-100">
+                        <div className="space-y-2 pt-3 sm:pt-4 border-t border-gray-100">
                           <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.fileAttach')}</label>
-                          <div className="flex flex-wrap gap-3">
+                          <p className="text-[9px] text-gray-400 italic mb-2">{t('reqPage.fileInfo')}</p>
+                          <div className="flex flex-wrap gap-2">
                             {selectedFiles.map((file, idx) => (
                               <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 text-[10px] font-medium text-gray-600">
                                 <Paperclip className="w-3 h-3 text-accent" />
-                                <span className="max-w-[120px] truncate">{file.name}</span>
+                                <span className="max-w-[100px] truncate">{file.name}</span>
                                 <button type="button" onClick={() => removeFile(idx)} className="p-0.5 hover:bg-gray-200 transition-colors">
                                   <X className="w-3 h-3 text-blue-300" />
                                 </button>
@@ -302,7 +303,6 @@ export default function RequestQuotationPage() {
                               <input type="file" multiple onChange={handleFileChange} className="hidden" />
                             </label>
                           </div>
-                          <p className="text-[9px] text-gray-400 italic">{t('reqPage.fileInfo')}</p>
                         </div>
 
                         {/* Submit Row */}
