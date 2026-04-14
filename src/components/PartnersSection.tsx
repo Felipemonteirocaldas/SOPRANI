@@ -87,15 +87,15 @@ export default function PartnersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative"
+              className="group relative h-full"
             >
-              <div className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden">
+              <div className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden h-full flex flex-col">
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-700" />
 
-                {/* Logo Area */}
+                {/* Logo Area — fixed height so both cards align */}
                 <div
-                  className="flex items-center justify-center px-6 py-8 sm:px-10 sm:py-10"
+                  className="flex items-center justify-center px-6 sm:px-10 h-32 sm:h-36 flex-shrink-0"
                   style={{ backgroundColor: partner.logoBg }}
                 >
                   <img
@@ -107,7 +107,7 @@ export default function PartnersSection() {
                 </div>
 
                 {/* Content */}
-                <div className="p-8 md:p-10">
+                <div className="p-8 md:p-10 flex flex-col flex-1">
                   {/* Badge */}
                   <div className="flex items-center gap-2 mb-5">
                     <ShieldCheck className="w-3.5 h-3.5 text-accent" strokeWidth={2} />
@@ -120,12 +120,12 @@ export default function PartnersSection() {
                   <h3 className="text-xl md:text-2xl font-heading font-black text-white mb-1 leading-tight">
                     {partner.name}
                   </h3>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-heading font-semibold mb-5">
+                  <p className="text-xs text-slate-400 uppercase tracking-wider font-heading font-semibold mb-5">
                     {partner.tagline}
                   </p>
 
                   {/* Specialty tag */}
-                  <div className="inline-block px-3 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
+                  <div className="inline-block px-3 py-1 bg-accent text-white text-[10px] font-bold uppercase tracking-wider mb-5">
                     {t(partner.specialtyKey)}
                   </div>
 
@@ -135,7 +135,7 @@ export default function PartnersSection() {
                   </p>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-between pt-6 border-t border-white/10 mt-auto">
                     <div className="flex items-center gap-2">
                       <Award className="w-4 h-4" strokeWidth={1.5} style={{ color: '#D4AF37' }} />
                       <span className="text-[10px] uppercase tracking-wider font-heading font-semibold" style={{ color: '#D4AF37' }}>

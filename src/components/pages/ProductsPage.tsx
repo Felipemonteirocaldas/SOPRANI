@@ -171,40 +171,40 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-primary">
       <Header />
-      
+
       {/* Premium Hero Section */}
       <section className="relative pt-24 sm:pt-28 pb-24 overflow-hidden bg-[#001F5F]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]" />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               opacity: [0.1, 0.2, 0.1],
-              scale: [1, 1.1, 1] 
+              scale: [1, 1.1, 1]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full" 
+            className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full"
           />
-          <div 
+          <div
             className="absolute inset-0 opacity-[0.03]"
             style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}
           />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto">
-          <motion.div 
+          <motion.div
             initial="initial"
             animate="animate"
             variants={fadeUp}
             className="max-w-4xl mx-auto text-center"
           >
-            <Badge variant="outline" className="box-content px-4 py-1 mb-6 font-semibold uppercase border-accent text-accent tracking-widest bg-accent/5">
+            <Badge className="box-content px-4 py-1 mb-6 font-semibold uppercase tracking-widest bg-accent text-white border-transparent">
               Premium Industrial Engineering
             </Badge>
             <h1 className="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl font-heading">
               {t('productsPage.heroTitle')}
             </h1>
-            <p className="max-w-2xl mx-auto text-lg leading-relaxed md:text-xl text-slate-400">
+            <p className="max-w-2xl mx-auto text-lg leading-relaxed md:text-xl text-slate-200">
               {t('productsPage.heroSub')}
             </p>
           </motion.div>
@@ -223,11 +223,10 @@ export default function ProductsPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`whitespace-nowrap px-4 py-2 text-sm font-semibold transition-all duration-300 border-b-2 ${
-                    selectedCategory === cat 
-                      ? 'border-accent text-accent bg-accent/5' 
-                      : 'border-transparent text-slate-500 hover:text-primary hover:bg-slate-50'
-                  }`}
+                  className={`whitespace-nowrap px-4 py-2 text-sm font-semibold transition-all duration-300 border-b-2 ${selectedCategory === cat
+                    ? 'border-accent text-accent bg-accent/5'
+                    : 'border-transparent text-slate-500 hover:text-primary hover:bg-slate-50'
+                    }`}
                 >
                   {cat === 'all' ? t('productsPage.allProducts') : cat}
                 </button>
@@ -257,7 +256,7 @@ export default function ProductsPage() {
             </div>
           ) : (
             <AnimatePresence mode="wait">
-              <motion.div 
+              <motion.div
                 key={selectedCategory + searchQuery}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -293,7 +292,7 @@ export default function ProductsPage() {
                             {product.tag}
                           </Badge>
                         </div>
-                        <button 
+                        <button
                           onClick={() => setSelectedProduct(product)}
                           className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
                         >
@@ -313,26 +312,26 @@ export default function ProductsPage() {
                         <p className="mb-8 text-sm leading-relaxed text-slate-500 line-clamp-3">
                           {product.description}
                         </p>
-                        
+
                         <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                           <div className="flex items-start gap-2">
                             <Zap size={16} className="mt-1 text-accent shrink-0" />
                             <div>
-                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Performance</p>
-                                <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.specs.split('|')[0]}</p>
+                              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Performance</p>
+                              <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.specs.split('|')[0]}</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-2">
                             <Cpu size={16} className="mt-1 text-accent shrink-0" />
                             <div>
-                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Technology</p>
-                                <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.features.split(',')[0]}</p>
+                              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Technology</p>
+                              <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.features.split(',')[0]}</p>
                             </div>
                           </div>
                         </div>
 
-                        <Button 
-                          variant="ghost" 
+                        <Button
+                          variant="ghost"
                           onClick={() => setSelectedProduct(product)}
                           className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn"
                         >
@@ -346,18 +345,7 @@ export default function ProductsPage() {
             </AnimatePresence>
           )}
 
-          {!isLoading && allFilteredProducts.length === 0 && (
-            <div className="py-32 text-center">
-              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 bg-slate-100 rounded-full">
-                <Search size={32} className="text-slate-400" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold">{t('productsPage.emptyProducts')}</h3>
-              <p className="text-slate-500">Try adjusting your filters or search terms.</p>
-              <Button onClick={() => {setSelectedCategory('all'); setSearchQuery('');}} variant="link" className="mt-4 text-accent uppercase font-bold tracking-widest text-xs">
-                Reset All Filters
-              </Button>
-            </div>
-          )}
+
         </div>
       </section>
 
@@ -367,8 +355,8 @@ export default function ProductsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="relative h-64 md:h-full bg-slate-900">
               {selectedProduct?.image && (
-                <Image 
-                  src={selectedProduct.image} 
+                <Image
+                  src={selectedProduct.image}
                   alt={selectedProduct.name}
                   className="object-cover w-full h-full opacity-80"
                   width={800}
@@ -381,16 +369,13 @@ export default function ProductsPage() {
               </div>
             </div>
             <div className="p-10 bg-white">
-              <div className="flex justify-between items-start mb-6">
+              <div className="mb-6">
                 <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{selectedProduct?.category}</span>
-                <button onClick={() => setSelectedProduct(null)} className="p-2 transition-colors rounded-full text-slate-400 hover:bg-slate-100">
-                  <X size={20} />
-                </button>
               </div>
-              
+
               <div className="space-y-8">
                 <div>
-                  <h4 className="mb-3 text-sm font-bold text-primary uppercase tracking-wider">{t('productsPage.heroSub')}</h4>
+                  <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Overview</h4>
                   <p className="text-sm leading-relaxed text-slate-600">{selectedProduct?.description}</p>
                 </div>
 
@@ -400,7 +385,7 @@ export default function ProductsPage() {
                       <Zap size={18} className="text-accent" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Specifications</p>
+                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Specifications</p>
                       <p className="text-sm font-semibold text-primary">{selectedProduct?.specs}</p>
                     </div>
                   </div>
@@ -409,7 +394,7 @@ export default function ProductsPage() {
                       <Cpu size={18} className="text-accent" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Key Features</p>
+                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Key Features</p>
                       <p className="text-sm font-semibold text-primary">{selectedProduct?.features}</p>
                     </div>
                   </div>
@@ -418,13 +403,13 @@ export default function ProductsPage() {
                       <Shield size={18} className="text-accent" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Industry Application</p>
+                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Industry Application</p>
                       <p className="text-sm font-semibold text-primary">{selectedProduct?.application}</p>
                     </div>
                   </div>
                 </div>
 
-                <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl">
+                <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white">
                   {t('productsPage.requestQuote')}
                 </Button>
               </div>

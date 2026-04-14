@@ -60,9 +60,9 @@
         },
         "infoBar": {
                 "regions": "Europa · Oriente Médio · África do Norte · Ásia · Américas",
-                "support": "Atendemos Fábricas de Latas \u0026 Compradores Industriais",
+                "support": "Atendemos Fábricas de Latas & Compradores Industriais",
                 "spareParts": "Peças Críticas para os Principais OEMs",
-                "trading": "Fornecimento de Folha de Flandres \u0026 Componentes Envernizados",
+                "trading": "Fornecimento de Folha de Flandres & Componentes Envernizados",
                 "partners": "Referenciádos por Traders e Investidores Industriais"
         },
         "servicesSection": {
@@ -96,10 +96,10 @@
                 "officialPartner": "Parceiro Oficial Soprani",
                 "visitWebsite": "Visitar Site",
                 "cta": "Nossas parcerias nos permitem oferecer profundidade técnica incomparável — do fornecimento ao comissionamento e além.",
-                "kbDesc": "A Koenig \u0026 Bauer Metal Print é o benchmark global em sistemas de decoração e impressão em metal. Como parceira autorizada, a Soprani Engineering facilita o acesso a seus maquinários de alto desempenho, peças de reposição e suporte em campo na Europa, MENA, Ásia e Américas.",
-                "kbSpecialty": "Sistemas de Decoração \u0026 Impressão em Metal",
+                "kbDesc": "A Koenig & Bauer Metal Print é o benchmark global em sistemas de decoração e impressão em metal. Como parceira autorizada, a Soprani Engineering facilita o acesso a seus maquinários de alto desempenho, peças de reposição e suporte em campo na Europa, MENA, Ásia e Américas.",
+                "kbSpecialty": "Sistemas de Decoração & Impressão em Metal",
                 "soudronicDesc": "A Soudronic é a fabricante líder mundial de linhas completas de fabricação de latas, sistemas de soldagem e equipamentos de fundo. Por meio dessa parceria estratégica, a Soprani Engineering apoia clientes no sourcing de maquinário Soudronic, coordenação de manutenção e projetos completos de revamping.",
-                "soudronicSpecialty": "Linhas Completas de Fabricação de Latas \u0026 Soldagem"
+                "soudronicSpecialty": "Linhas Completas de Fabricação de Latas & Soldagem"
         },
         "premiumCta": {
                 "badge": "SOPRANI ENGINEERING: GLOBAL REACH",
@@ -214,7 +214,13 @@
                 "ctaTitle": "Sua Planta em Máxima Performance",
                 "ctaDesc": "Consulte nossa equipe técnica para um diagnóstico personalizado de suas necessidades operacionais.",
                 "btnContact": "Falar com um Especialista",
-                "btnQuote": "Solicitar Orçamento"
+                "btnQuote": "Solicitar Orçamento",
+                "assetMarketT": "Mercado de Ativos Industriais",
+                "assetMarketD": "Aquisição e revenda de máquinas usadas e ativos de produção — conectando vendedores e compradores no mercado global de equipamentos para embalagens metálicas.",
+                "am1": "Catalogação e listagem de ativos industriais disponíveis",
+                "am2": "Conexão entre compradores e vendedores no setor de embalagens metálicas",
+                "am3": "Inspeção técnica e avaliação de ativos",
+                "am4": "Coordenação de logística e transferência internacional"
         },
         "companyPage": {
                 "heroTitle": "Excelência e Tradição",
@@ -238,7 +244,22 @@
                 "com2T": "Inovação",
                 "com2D": "Busca constante pelas melhores tecnologias de metalurgia.",
                 "com3T": "Resultado",
-                "com3D": "Entrega de soluções que impactam positivamente o balanço do cliente."
+                "com3D": "Entrega de soluções que impactam positivamente o balanço do cliente.",
+                "aboutEyebrow": "Quem Somos",
+                "aboutTitle": "Soprani Engineering: Excelência e Tradição em Embalagens Metálicas",
+                "aboutP1": "Fundada em Milão, em 1984, pelo Eng. Sergio Soprani, a Soprani Engineering nasceu de uma visão voltada para a inovação e o domínio técnico do mercado industrial. Com décadas de experiência, a empresa consolidou-se como uma referência na introdução de novas tecnologias na Itália — inicialmente no setor automotivo e, posteriormente, especializando-se no segmento estratégico de embalagens metálicas.",
+                "aboutP2": "Hoje, a continuidade desse legado é liderada por seu filho, Matteo Soprani, que conduz a expansão internacional da empresa com o mesmo compromisso com a confiabilidade e a competência técnica que definiram nossa fundação.",
+                "aboutGlobalTitle": "Atuação Global e Expertise Industrial",
+                "aboutGlobalP": "A Soprani Engineering opera globalmente, servindo como um parceiro estratégico para fabricantes de embalagens metálicas na Europa, Oriente Médio, Norte da África, Ásia e Américas. Nossa atuação abrange desde o fornecimento de maquinário especializado até o suporte técnico crítico e o comércio de matérias-primas.",
+                "aboutInfraTitle": "Infraestrutura e Diferenciais",
+                "aboutInfra1T": "Sede em Milão e Centros Logísticos",
+                "aboutInfra1D": "Além de nosso escritório central, dispomos de dois armazéns dedicados ao estoque e à manutenção rigorosa de equipamentos.",
+                "aboutInfra2T": "Flexibilidade Comercial",
+                "aboutInfra2D": "Oferecemos máquinas no estado (\"vistas e aceitas\") ou totalmente revisadas e modernizadas (revamping), com intervenções certificadas em componentes mecânicos e elétricos.",
+                "aboutInfra3T": "Parcerias de Elite",
+                "aboutInfra3D": "Como distribuidores autorizados do grupo Soudronic para o norte da Itália e parceiros da Koenig & Bauer Metal Print, garantimos aos nossos clientes acesso direto a peças de reposição originais e ao suporte técnico de mais alto nível do setor.",
+                "aboutCommitTitle": "Nosso Compromisso",
+                "aboutCommitP": "Nosso objetivo é ir além do fornecimento de máquinas — buscamos construir parcerias de longo prazo baseadas na competência técnica e na capacidade de oferecer soluções sob medida para cada desafio da produção industrial. Seja na produção de latas para alimentos e bebidas, aerossóis ou recipientes industriais, a Soprani Engineering é o elo que conecta sua fábrica à tecnologia de ponta."
         },
         "contactPage": {
                 "heroTitle": "Conectividade Global",
@@ -275,7 +296,8 @@
                 "svcBtn": "Ver Serviços",
                 "aboutUs": "Sobre a Soprani",
                 "aboutSub": "Liderança e história na indústria metalúrgica global.",
-                "aboutBtn": "Saiba Mais"
+                "aboutBtn": "Saiba Mais",
+                "whatsappTitle": "WhatsApp Prioritário"
         },
         "eventsPage": {
                 "heroTitle": "Eventos Industriais",
@@ -340,7 +362,7 @@
                         },
                         "welder": {
                                 "name": "SopraWeld HF-75 Induction",
-                                "category": "Corpo \u0026 Solda",
+                                "category": "Corpo & Solda",
                                 "description": "Soldadora por indução de alta frequência para costura lateral de corpos de latas.",
                                 "features": "Tecnologia de inversor de última geração, resfriamento otimizado, solda invisível.",
                                 "specs": "Velocidade: Até 80 m/min | Altura: 50mm - 300mm | Potência: 75kW",
@@ -348,7 +370,7 @@
                         },
                         "coating": {
                                 "name": "CleanCoat Pro 5 Line",
-                                "category": "Verniz \u0026 Cura",
+                                "category": "Verniz & Cura",
                                 "description": "Unidade integrada de aplicação de verniz e cura térmica para proteção metálica.",
                                 "features": "Aplicação uniforme sem névoa, cura UV/Térmica opcional, controle de micragem digital.",
                                 "specs": "Largura: Até 1200mm | Velocidade: 60 ppm | Sensores: IR Integrados",

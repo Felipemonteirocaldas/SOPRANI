@@ -153,20 +153,44 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* WhatsApp Priority Support */}
-                  <div className="mt-auto pt-10">
+                  {/* WhatsApp Priority Support — Premium */}
+                  <div className="mt-auto pt-8">
                     <a
                       href="https://wa.me/390510000000"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-4 group"
+                      className="group relative block overflow-hidden border border-white/10 hover:border-[#25D366]/50 transition-all duration-500"
+                      style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.07) 0%, rgba(37,211,102,0.02) 100%)' }}
                     >
-                      <div className="w-14 h-14 bg-[#25D366] text-white flex items-center justify-center group-hover:scale-110 transition-transform rounded-none">
-                        <MessageCircle size={28} />
-                      </div>
-                      <div className="text-left">
-                        <span className="block text-[10px] font-bold uppercase tracking-widest text-blue-200 mb-1">Priority WhatsApp</span>
-                        <span className="text-sm font-bold text-white uppercase tracking-widest border-b border-transparent group-hover:border-accent transition-all">Direct Messaging</span>
+                      {/* Hover shimmer */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                        style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.1) 0%, transparent 60%)' }} />
+
+                      <div className="relative flex items-center gap-5 px-6 py-5">
+                        {/* Icon with live pulse */}
+                        <div className="relative flex-shrink-0">
+                          <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:shadow-[#25D366]/40 transition-shadow duration-500">
+                            <MessageCircle size={20} className="text-white" />
+                          </div>
+                          <span className="absolute -top-0.5 -right-0.5 w-3 h-3">
+                            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-60" />
+                            <span className="relative block w-3 h-3 rounded-full bg-[#25D366] border-2 border-[#001F5F]" />
+                          </span>
+                        </div>
+
+                        {/* Text */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#25D366]">● Online</span>
+                          </div>
+                          <p className="text-sm font-black text-white uppercase tracking-widest leading-none">{t('contactPage.whatsappTitle')}</p>
+
+                        </div>
+
+                        {/* Arrow */}
+                        <svg className="flex-shrink-0 text-white/20 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </div>
                     </a>
                   </div>

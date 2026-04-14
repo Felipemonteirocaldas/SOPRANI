@@ -12,7 +12,7 @@ const FeatureItem = ({ icon: Icon, title, desc }: { icon: any, title: string, de
     </div>
     <div className="text-left">
       <h4 className="text-sm font-bold text-white mb-1 uppercase tracking-wider">{title}</h4>
-      <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
+      <p className="text-xs text-slate-200/80 leading-relaxed">{desc}</p>
     </div>
   </div>
 );
@@ -102,7 +102,7 @@ export default function RequestQuotationPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.2em] rounded-none mb-6 border border-accent/30 lowercase">
+                  <span className="inline-block px-3 py-1 bg-accent text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none mb-6 border border-accent/60">
                     B2B Technical Solutions
                   </span>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">

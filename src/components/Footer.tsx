@@ -11,10 +11,10 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-6">
-              <img 
-                src="/images/logo.png" 
-                alt="Soprani Engineering" 
-                className="h-10 w-auto brightness-0 invert" 
+              <img
+                src="/images/logo.png"
+                alt="Soprani Engineering"
+                className="h-10 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
@@ -108,21 +108,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-6 xs:pt-8">
-          <div className="flex flex-col xs:flex-row justify-between items-center gap-3 xs:gap-4">
-            <p className="text-xs text-gray-400 text-center xs:text-left">
+          <div className="flex justify-center items-center">
+            <p className="text-xs text-gray-400 text-center">
               © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
             </p>
-            <div className="flex space-x-4 xs:space-x-6">
-              <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                {t('footer.privacy')}
-              </a>
-              <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                {t('footer.terms')}
-              </a>
-              <a href="#" className="text-xs text-gray-400 hover:text-accent transition-colors duration-200">
-                {t('footer.cookies')}
-              </a>
-            </div>
           </div>
         </div>
       </div>

@@ -1,168 +1,268 @@
-import React from 'react';
-import { Wrench, Package, Zap, RefreshCw, TrendingUp } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Wrench, Package, Zap, RefreshCw, TrendingUp, Hammer, ArrowRight, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Image } from '@/components/ui/image';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
+
+const SERVICES = (t: (k: string) => string) => [
+  {
+    number: '01',
+    icon: Wrench,
+    titleKey: 'servicesPage.usedMachT',
+    descKey: 'servicesPage.usedMachD',
+    bullets: ['servicesPage.usedP1', 'servicesPage.usedP2', 'servicesPage.usedP3', 'servicesPage.usedP4'],
+    tag: 'Machinery',
+  },
+  {
+    number: '02',
+    icon: Package,
+    titleKey: 'servicesPage.sparePartsT',
+    descKey: 'servicesPage.sparePartsD',
+    bullets: ['servicesPage.spP1', 'servicesPage.spP2', 'servicesPage.spP3', 'servicesPage.spP4'],
+    tag: 'Parts',
+  },
+  {
+    number: '03',
+    icon: Zap,
+    titleKey: 'servicesPage.techAssistanceT',
+    descKey: 'servicesPage.techAssistanceD',
+    bullets: ['servicesPage.ta1', 'servicesPage.ta2', 'servicesPage.ta3', 'servicesPage.ta4'],
+    tag: 'Support',
+  },
+  {
+    number: '04',
+    icon: RefreshCw,
+    titleKey: 'servicesPage.revampingT',
+    descKey: 'servicesPage.revampingD',
+    bullets: ['servicesPage.rv1', 'servicesPage.rv2', 'servicesPage.rv3', 'servicesPage.rv4'],
+    tag: 'Upgrade',
+  },
+  {
+    number: '05',
+    icon: TrendingUp,
+    titleKey: 'servicesPage.tradingT',
+    descKey: 'servicesPage.tradingD',
+    bullets: ['servicesPage.tr1', 'servicesPage.tr2', 'servicesPage.tr3', 'servicesPage.tr4'],
+    tag: 'Trading',
+  },
+  {
+    number: '06',
+    icon: Hammer,
+    titleKey: 'servicesPage.assetMarketT',
+    descKey: 'servicesPage.assetMarketD',
+    bullets: ['servicesPage.am1', 'servicesPage.am2', 'servicesPage.am3', 'servicesPage.am4'],
+    tag: 'Asset Market',
+  },
+];
+
+interface Service {
+  number: string;
+  icon: React.ElementType;
+  titleKey: string;
+  descKey: string;
+  bullets: string[];
+  tag: string;
+}
+
+const ServiceRow = ({ service, index, t }: { service: Service; index: number; t: (k: string) => string }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+      className="relative group"
+    >
+      {/* Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_1fr] gap-0 border-b border-slate-200 last:border-b-0 py-12 lg:py-16">
+
+        {/* Left — Number + Tag */}
+        <div className="flex lg:flex-col items-center lg:items-start gap-4 lg:gap-3 mb-6 lg:mb-0 lg:pr-8">
+          <span
+            className="text-6xl lg:text-8xl font-heading font-black leading-none select-none"
+            style={{ color: '#001F5F', opacity: 0.15 }}
+          >
+            {service.number}
+          </span>
+          <div className="flex flex-col gap-1.5">
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
+              <span className="w-3 h-px bg-accent inline-block" />
+              {service.tag}
+            </span>
+            <div
+              className="w-10 h-10 flex items-center justify-center"
+              style={{ background: '#001F5F' }}
+            >
+              <Icon size={18} className="text-white" />
+            </div>
+          </div>
+        </div>
+
+        {/* Center — Title + Description */}
+        <div className="lg:pr-16 lg:border-r border-slate-200 mb-8 lg:mb-0">
+          <h2 className="text-2xl lg:text-3xl xl:text-4xl font-heading font-black text-[#001F5F] mb-4 leading-tight tracking-tight group-hover:text-accent transition-colors duration-300">
+            {t(service.titleKey)}
+          </h2>
+          <p className="text-slate-600 text-base leading-relaxed font-paragraph max-w-sm">
+            {t(service.descKey)}
+          </p>
+          <Link
+            to="/request-quotation"
+            className="inline-flex items-center gap-2 mt-8 text-[11px] font-black uppercase tracking-[0.2em] text-accent group/btn hover:gap-3 transition-all duration-300"
+          >
+            Request Quote
+            <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        {/* Right — Bullets */}
+        <div className="lg:pl-16">
+          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-5">
+            Key Capabilities
+          </p>
+          <ul className="space-y-3.5">
+            {service.bullets.map((bKey, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-5 h-5 mt-0.5 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Check size={11} className="text-accent" strokeWidth={3} />
+                </div>
+                <span className="text-sm text-slate-600 leading-relaxed font-paragraph">
+                  {t(bKey)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function ServicesPage() {
   const { t } = useTranslation();
-  const services = [
-    {
-      icon: Wrench,
-      title: t('servicesPage.usedMachT'),
-      // COLE O LINK DA IMAGEM 1 AQUI
-      imageUrl: 'https://static.wixstatic.com/media/9bbed2_2d4ee4f7b17c48f9bbdd646170c674af~mv2.png',
-      description: t('servicesPage.usedMachD'),
-      details: [
-        t('servicesPage.usedP1'),
-        t('servicesPage.usedP2'),
-        t('servicesPage.usedP3'),
-        t('servicesPage.usedP4')
-      ]
-    },
-    {
-      icon: Package,
-      title: t('servicesPage.sparePartsT'),
-      // COLE O LINK DA IMAGEM 2 AQUI
-      imageUrl: 'https://static.wixstatic.com/media/9bbed2_de826db4f57b45ceab4bd63871418080~mv2.png',
-      description: t('servicesPage.sparePartsD'),
-      details: [
-        t('servicesPage.spP1'),
-        t('servicesPage.spP2'),
-        t('servicesPage.spP3'),
-        t('servicesPage.spP4')
-      ]
-    },
-    {
-      icon: Zap,
-      title: t('servicesPage.techAssistanceT'),
-      imageUrl: '', // Link da imagem 3
-      description: t('servicesPage.techAssistanceD'),
-      details: [
-        t('servicesPage.ta1'),
-        t('servicesPage.ta2'),
-        t('servicesPage.ta3'),
-        t('servicesPage.ta4')
-      ]
-    },
-    {
-      icon: RefreshCw,
-      title: t('servicesPage.revampingT'),
-      imageUrl: '', // Link da imagem 4
-      description: t('servicesPage.revampingD'),
-      details: [
-        t('servicesPage.rv1'),
-        t('servicesPage.rv2'),
-        t('servicesPage.rv3'),
-        t('servicesPage.rv4')
-      ]
-    },
-    {
-      icon: TrendingUp,
-      title: t('servicesPage.tradingT'),
-      imageUrl: '', // Link da imagem 5
-      description: t('servicesPage.tradingD'),
-      details: [
-        t('servicesPage.tr1'),
-        t('servicesPage.tr2'),
-        t('servicesPage.tr3'),
-        t('servicesPage.tr4')
-      ]
-    }
-  ];
+  const services = SERVICES(t);
 
   return (
-    <div className="min-h-screen bg-background font-paragraph text-primary">
+    <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
       <Header />
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="text-white pt-24 sm:pt-28 pb-20 md:pb-32 bg-primary">
-          <div className="container mx-auto px-4 md:px-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              {t('servicesSection.ourServices')}
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              {t('servicesPage.heroSub')}
-            </p>
-          </div>
-        </section>
 
-        {/* Services Overview */}
-        <section className="py-12 md:py-32 bg-white">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="flex flex-col gap-6 md:gap-12">
-              {services.map((service, idx) => {
-                const Icon = service.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="w-full py-6 md:py-12 md:pb-12 md:border-b md:border-gray-100 md:last:border-0 md:last:pb-0 border-b border-gray-100 last:border-0"
+      <main>
+        {/* ── HERO ─────────────────────────────────────────── */}
+        <section className="relative overflow-hidden bg-[#001F5F] pt-28 pb-32">
+          {/* Background decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_60%,rgba(196,18,48,0.12),transparent_55%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.03),transparent_50%)]" />
+            {/* Subtle grid */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 container mx-auto px-4 md:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-3xl"
+            >
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-px bg-accent" />
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
+                  Industrial Services
+                </span>
+              </div>
+
+              {/* Heading */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.0] tracking-tight mb-8">
+                {t('servicesSection.ourServices')}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-medium">
+                {t('servicesPage.heroSub')}
+              </p>
+
+              {/* Service index pills */}
+              <div className="flex flex-wrap gap-2 mt-10">
+                {services.map((s) => (
+                  <span
+                    key={s.number}
+                    className="px-3 py-1.5 border border-white/15 text-white/60 text-[10px] font-bold uppercase tracking-widest hover:border-accent/60 hover:text-accent transition-colors duration-300 cursor-default"
                   >
-                    <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-12 items-start md:items-center">
-                      <div className={idx % 2 === 1 ? 'lg:order-2' : ''}>
-                        <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-4">
-                          <Icon className="w-8 md:w-10 h-8 md:h-10 text-accent flex-shrink-0 mt-0.5" />
-                          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading font-bold leading-snug md:leading-normal">
-                            {service.title}
-                          </h2>
-                        </div>
-                        <p className="text-sm md:text-lg text-gray-600 mb-4 md:mb-6 leading-relaxed">
-                          {service.description}
-                        </p>
-                        <ul className="space-y-2 md:space-y-3">
-                          {service.details.map((detail, didx) => (
-                            <li key={didx} className="flex items-start gap-3">
-                              <span className="inline-block w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-sm md:text-base text-gray-600 leading-relaxed">{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                        <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-lg w-full bg-gray-100">
-                          <Image
-                            // AQUI A MÁGICA ACONTECE: ele usa a URL do objeto
-                            src={service.imageUrl || "/placeholder-image.png"}
-                            alt={service.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                    {s.number} · {t(s.titleKey)}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom angled cut */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
+        </section>
+
+        {/* ── SERVICES LIST ──────────────────────────────────── */}
+        <section className="bg-white">
+          <div className="container mx-auto px-4 md:px-8">
+            {services.map((service, i) => (
+              <ServiceRow key={i} service={service} index={i} t={t} />
+            ))}
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 md:py-32 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-              {t('servicesPage.ctaTitle')}
-            </h2>
-            <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-              {t('servicesPage.ctaDesc')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="px-8 py-3 bg-accent text-white hover:bg-accent/90 transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
-              >
-                {t('servicesPage.btnContact')}
-              </a>
-              <a
-                href="/request-quotation"
-                className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium uppercase tracking-wider rounded-none"
-              >
-                {t('servicesPage.btnQuote')}
-              </a>
-            </div>
+        {/* ── CTA ──────────────────────────────────────────── */}
+        <section className="relative bg-[#001F5F] py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(196,18,48,0.1),transparent_60%)]" />
+          <div className="relative z-10 container mx-auto px-4 md:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-px bg-accent" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">
+                  Work With Us
+                </span>
+                <div className="w-8 h-px bg-accent" />
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-tight tracking-tight max-w-2xl mx-auto">
+                {t('servicesPage.ctaTitle')}
+              </h2>
+              <p className="text-slate-200 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10 font-paragraph font-medium">
+                {t('servicesPage.ctaDesc')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/contact"
+                  className="px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest text-sm hover:bg-accent/90 transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:scale-95"
+                >
+                  {t('servicesPage.btnContact')}
+                </Link>
+                <Link
+                  to="/request-quotation"
+                  className="px-8 py-4 border border-white/30 text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-[#001F5F] transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
+                >
+                  {t('servicesPage.btnQuote')}
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
