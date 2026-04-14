@@ -223,11 +223,7 @@ export default function OurServicesProducts() {
             <div className="col-span-full flex justify-center py-20">
               <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
             </div>
-          ) : (
-            <div className="col-span-full text-center py-12">
-              <p className="text-slate-400">{t('productsSection.noProducts')}</p>
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

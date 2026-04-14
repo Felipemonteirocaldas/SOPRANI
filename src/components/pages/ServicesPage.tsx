@@ -109,7 +109,7 @@ const ServiceRow = ({ service, index, t }: { service: Service; index: number; t:
           <h2 className="text-2xl lg:text-3xl xl:text-4xl font-heading font-black text-[#001F5F] mb-4 leading-tight tracking-tight group-hover:text-accent transition-colors duration-300">
             {t(service.titleKey)}
           </h2>
-          <p className="text-slate-600 text-base leading-relaxed font-paragraph max-w-sm">
+          <p className="text-slate-800 text-base leading-relaxed font-paragraph font-medium max-w-sm">
             {t(service.descKey)}
           </p>
           <Link
@@ -123,7 +123,7 @@ const ServiceRow = ({ service, index, t }: { service: Service; index: number; t:
 
         {/* Right — Bullets */}
         <div className="lg:pl-16">
-          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-5">
+          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 mb-5">
             Key Capabilities
           </p>
           <ul className="space-y-3.5">
@@ -132,7 +132,7 @@ const ServiceRow = ({ service, index, t }: { service: Service; index: number; t:
                 <div className="flex-shrink-0 w-5 h-5 mt-0.5 rounded-full bg-accent/10 flex items-center justify-center">
                   <Check size={11} className="text-accent" strokeWidth={3} />
                 </div>
-                <span className="text-sm text-slate-600 leading-relaxed font-paragraph">
+                <span className="text-sm text-slate-700 leading-relaxed font-paragraph font-medium">
                   {t(bKey)}
                 </span>
               </li>

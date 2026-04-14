@@ -216,7 +216,7 @@ export default function ProductsPage() {
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
             <div className="flex items-center w-full gap-2 overflow-x-auto lg:w-auto no-scrollbar scroll-smooth">
-              <span className="flex items-center gap-2 mr-4 text-sm font-bold tracking-wider uppercase text-slate-500">
+              <span className="flex items-center gap-2 mr-4 text-sm font-bold tracking-wider uppercase text-slate-700">
                 <Filter size={14} className="text-accent" /> {t('productsPage.filterBy')}
               </span>
               {categories.map((cat) => (
@@ -225,7 +225,7 @@ export default function ProductsPage() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`whitespace-nowrap px-4 py-2 text-sm font-semibold transition-all duration-300 border-b-2 ${selectedCategory === cat
                     ? 'border-accent text-accent bg-accent/5'
-                    : 'border-transparent text-slate-500 hover:text-primary hover:bg-slate-50'
+                    : 'border-transparent text-slate-600 hover:text-primary hover:bg-slate-50 font-medium'
                     }`}
                 >
                   {cat === 'all' ? t('productsPage.allProducts') : cat}
@@ -234,7 +234,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="relative w-full lg:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
               <input
                 type="text"
                 placeholder="Search technical solutions..."
@@ -304,12 +304,12 @@ export default function ProductsPage() {
                         <div className="flex items-center gap-2 mb-4">
                           <span className="text-xs font-bold tracking-widest uppercase text-accent">{product.category}</span>
                           <div className="w-1 h-1 rounded-full bg-slate-300" />
-                          <span className="text-xs font-medium text-slate-500">{product.application}</span>
+                          <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">{product.application}</span>
                         </div>
                         <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-accent transition-colors font-heading leading-tight">
                           {product.name}
                         </h3>
-                        <p className="mb-8 text-sm leading-relaxed text-slate-500 line-clamp-3">
+                        <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
                           {product.description}
                         </p>
 
@@ -317,14 +317,14 @@ export default function ProductsPage() {
                           <div className="flex items-start gap-2">
                             <Zap size={16} className="mt-1 text-accent shrink-0" />
                             <div>
-                              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Performance</p>
+                              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">Performance</p>
                               <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.specs.split('|')[0]}</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-2">
                             <Cpu size={16} className="mt-1 text-accent shrink-0" />
                             <div>
-                              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Technology</p>
+                              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">Technology</p>
                               <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.features.split(',')[0]}</p>
                             </div>
                           </div>

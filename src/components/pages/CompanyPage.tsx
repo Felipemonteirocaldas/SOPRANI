@@ -149,10 +149,10 @@ export default function CompanyPage() {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-8">
                   {t('companyPage.aboutTitle')}
                 </h2>
-                <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6 font-paragraph">
+                <p className="text-slate-800 text-base md:text-lg leading-relaxed mb-6 font-paragraph font-medium">
                   {t('companyPage.aboutP1')}
                 </p>
-                <p className="text-slate-500 text-base leading-relaxed font-paragraph">
+                <p className="text-slate-700 text-base leading-relaxed font-paragraph">
                   {t('companyPage.aboutP2')}
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default function CompanyPage() {
                 <div className="bg-slate-50 border border-slate-100 p-8 flex-1">
                   <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">Today</p>
                   <p className="text-[#001F5F] font-heading font-black text-lg mb-1">Matteo Soprani</p>
-                  <p className="text-slate-500 text-sm font-paragraph leading-relaxed">
+                  <p className="text-slate-700 text-sm font-paragraph leading-relaxed">
                     Leading international expansion with 40+ years of accumulated technical expertise.
                   </p>
                 </div>
@@ -190,13 +190,13 @@ export default function CompanyPage() {
                 <h3 className="text-2xl md:text-3xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-6">
                   {t('companyPage.aboutGlobalTitle')}
                 </h3>
-                <p className="text-slate-600 text-base leading-relaxed font-paragraph">
+                <p className="text-slate-800 text-base leading-relaxed font-paragraph font-medium">
                   {t('companyPage.aboutGlobalP')}
                 </p>
                 {/* Region tags */}
                 <div className="flex flex-wrap gap-2 mt-8">
                   {['Europe', 'Middle East', 'North Africa', 'Asia', 'Americas'].map(r => (
-                    <span key={r} className="px-3 py-1.5 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                    <span key={r} className="px-3 py-1.5 border border-slate-300 text-[10px] font-bold uppercase tracking-widest text-slate-700 bg-white">
                       {r}
                     </span>
                   ))}
@@ -223,7 +223,7 @@ export default function CompanyPage() {
                       </div>
                       <div>
                         <p className="font-heading font-black text-[#001F5F] text-sm mb-1">{t(item.titleKey)}</p>
-                        <p className="text-slate-500 text-sm leading-relaxed font-paragraph">{t(item.descKey)}</p>
+                        <p className="text-slate-700 text-sm leading-relaxed font-paragraph">{t(item.descKey)}</p>
                       </div>
                     </div>
                   ))}
@@ -264,7 +264,7 @@ export default function CompanyPage() {
                 </h2>
                 <div className="w-16 h-1 bg-accent" />
               </div>
-              <p className="text-slate-500 text-sm leading-relaxed max-w-xs font-paragraph">
+              <p className="text-slate-700 text-sm md:text-base leading-relaxed max-w-xs font-paragraph font-medium">
                 {t('companyPage.subDesc')}
               </p>
             </FadeUp>
@@ -297,7 +297,7 @@ export default function CompanyPage() {
                       )}
                     </div>
                     {sub.description && (
-                      <p className="text-slate-500 group-hover:text-slate-300 text-sm mb-8 line-clamp-3 leading-relaxed transition-colors duration-300">
+                      <p className="text-slate-700 group-hover:text-slate-300 text-sm mb-8 line-clamp-3 leading-relaxed transition-colors duration-300">
                         {sub.description}
                       </p>
                     )}
