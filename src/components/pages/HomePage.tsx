@@ -3,7 +3,7 @@ import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import OurServicesSection from '@/components/OurServicesSection';
-import OurServicesProducts from '@/components/OurServicesProducts';
+
 import PartnersSection from '@/components/PartnersSection';
 import SellAssetCTA from '@/components/SellAssetCTA';
 import SplitLayoutSection from '@/components/SplitLayoutSection';
@@ -141,17 +141,20 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-cover bg-center bg-no-repeat" style={{
-          backgroundImage: 'url(/images/hero-bg.png)',
-          backgroundAttachment: isMobile ? 'scroll' : 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          WebkitBackgroundSize: 'cover',
-          WebkitBackgroundAttachment: isMobile ? 'scroll' : 'fixed'
-        }}>
+        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-[#001F5F]">
+          {/* Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src="/video/videohero.mp4" type="video/mp4" />
+          </video>
           {/* Overlay for text readability with grid pattern */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[#001F5F]/65" /> {/* Strategic darken layer for text pop */}
+            <div className="absolute inset-0 bg-[#001F5F]/50" /> {/* Strategic darken layer for text pop */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#001F5F]/40 via-transparent to-[#001F5F]/40" /> {/* Stronger side vignettes */}
             <div className="absolute inset-0 grid-pattern opacity-10 z-0" />
           </div>
@@ -364,7 +367,7 @@ export default function HomePage() {
           </div>
         </section>
         {/* OUR SERVICES PRODUCTS SECTION */}
-        <OurServicesProducts />
+
 
         {/* SELL ASSET CTA SECTION (CLOSING HOOK) */}
         <SellAssetCTA />

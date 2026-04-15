@@ -19,42 +19,36 @@ export default function SellAssetCTA() {
   const features = [
     {
       icon: Globe,
-      title: "Global Network",
-      ptTitle: "Alcance Global",
-      desc: "Direct access to industrial hubs across Europe, Asia, and the Americas.",
-      ptDesc: "Acesso direto a polos industriais na Europa, Ásia e Américas."
+      title: t('premiumCta.feature1Title'),
+      desc: t('premiumCta.feature1Desc')
     },
     {
       icon: BarChart3,
-      title: "Strategic Valuation",
-      ptTitle: "Avaliação Estratégica",
-      desc: "Technical analysis optimized for maximum market yield.",
-      ptDesc: "Análise técnica otimizada para o máximo rendimento de mercado."
+      title: t('premiumCta.feature2Title'),
+      desc: t('premiumCta.feature2Desc')
     },
     {
       icon: ShieldCheck,
-      title: "Seamless Transition",
-      ptTitle: "Transição Ágil",
-      desc: "Full logistics and legal coordination handled by our elite team.",
-      ptDesc: "Coordenação logística e legal integral por nossa equipe de elite."
+      title: t('premiumCta.feature3Title'),
+      desc: t('premiumCta.feature3Desc')
     }
   ];
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-[#000]"
+      className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-primary"
     >
       {/* Immersive Background */}
       <motion.div
         style={{ y: backgroundY }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/40 z-10" />
         <img
           src="/images/asset-acquisition-bg.png"
           alt="Industrial Sourcing"
-          className="w-full h-full object-cover opacity-60 scale-110"
+          className="w-full h-full object-cover opacity-50 scale-105 filter greyscale brightness-50 contrast-125"
         />
       </motion.div>
 
@@ -69,29 +63,29 @@ export default function SellAssetCTA() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-accent" />
-              <span className="text-xs font-bold uppercase tracking-[0.4em] text-accent">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-0.5 bg-accent" />
+              <span className="text-xs font-heading font-semibold text-accent uppercase tracking-[0.3em]">
                 {t('header.opportunities')}
               </span>
             </div>
 
-            <h2 className="text-4xl lg:text-6xl font-heading font-bold text-white mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-5xl lg:text-7xl font-heading font-bold text-white mb-8 leading-[1.05] tracking-tight">
               {t('premiumCta.industrialLiquidityTitle')}
             </h2>
 
-            <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed font-light max-w-xl">
+            <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed font-paragraph font-light max-w-2xl">
               {t('premiumCta.industrialLiquidityDesc')}
             </p>
 
             <Link
               to="/contact"
-              className="group relative inline-flex items-center gap-6 px-10 py-5 bg-accent text-white font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-accent-dark hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/40"
+              className="group relative inline-flex items-center gap-8 px-12 py-6 bg-accent text-white font-heading font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-accent-dark hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30"
             >
               <span className="relative z-10">
                 {t('header.sellMachinery')}
               </span>
-              <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-all duration-500" />
+              <ArrowRight size={22} className="relative z-10 group-hover:translate-x-3 transition-transform duration-500 ease-out" />
             </Link>
           </motion.div>
 
@@ -105,18 +99,18 @@ export default function SellAssetCTA() {
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
                 viewport={{ once: true }}
                 whileHover={{ x: 10 }}
-                className="group p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-accent/40 transition-all duration-500 cursor-default"
+                className="group p-10 bg-white/[0.02] border border-white/[0.08] hover:bg-white/[0.04] hover:border-accent/40 transition-all duration-500 cursor-default"
               >
-                <div className="flex items-start gap-6">
-                  <div className="p-3 bg-accent/10 border border-accent/20 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
-                    <feature.icon size={24} strokeWidth={1.5} />
+                <div className="flex items-start gap-8">
+                  <div className="w-14 h-14 bg-white/[0.03] border border-white/[0.1] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500">
+                    <feature.icon size={26} strokeWidth={1} />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-2 uppercase tracking-wide">
-                      {i18n.language === 'pt' ? feature.ptTitle : feature.title}
+                  <div className="flex-1">
+                    <h4 className="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">
+                      {feature.title}
                     </h4>
-                    <p className="text-sm text-slate-400 font-light leading-relaxed">
-                      {i18n.language === 'pt' ? feature.ptDesc : feature.desc}
+                    <p className="text-base text-slate-400 font-paragraph font-light leading-relaxed">
+                      {feature.desc}
                     </p>
                   </div>
                 </div>

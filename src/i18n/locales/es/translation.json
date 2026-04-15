@@ -116,7 +116,13 @@
     "sellTitle": "Venda su Maquinaria",
     "sellDesc": "Soprani Engineering adquiere activos industriales y líneas completas para el mercado global. Contáctenos para una valoración técnica.",
     "industrialLiquidityTitle": "LIQUIDEZ INDUSTRIAL.",
-    "industrialLiquidityDesc": "Adquirimos activos industriales de alto rendimiento para el mercado global. Transformamos líneas descatalogadas en capital estratégico."
+    "industrialLiquidityDesc": "Adquirimos activos industriales de alto rendimiento para el mercado global. Transformamos líneas descatalogadas en capital estratégico.",
+    "feature1Title": "Red Global",
+    "feature1Desc": "Acceso directo a centros industriales en Europa, Asia y las Américas.",
+    "feature2Title": "Valoración Estratégica",
+    "feature2Desc": "Análisis técnico optimizado para el máximo rendimiento del mercado.",
+    "feature3Title": "Transición Ágil",
+    "feature3Desc": "Coordinación logística y legal integral a cargo de nuestro equipo de élite."
   },
   "splitLayout": {
     "who": "Institucional",

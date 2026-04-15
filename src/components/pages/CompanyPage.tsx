@@ -129,7 +129,7 @@ export default function CompanyPage() {
           </div>
 
           {/* Angled cut to white */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
+          <div className="absolute -bottom-px left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
         </section>
 
         {/* ── ABOUT / HISTORY ──────────────────────────────────────────────── */}
