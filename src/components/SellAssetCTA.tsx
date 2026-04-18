@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, BarChart3, Globe, ShieldCheck } from 'lucide-react';
+import ConversionButton from '@/components/ui/ConversionButton';
 
 export default function SellAssetCTA() {
   const { t, i18n } = useTranslation();
@@ -78,15 +79,29 @@ export default function SellAssetCTA() {
               {t('premiumCta.industrialLiquidityDesc')}
             </p>
 
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-8 px-12 py-6 bg-accent text-white font-heading font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-accent-dark hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30"
-            >
-              <span className="relative z-10">
+            {/* ✦ Primary CTA — ghost-dark ConversionButton */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <ConversionButton
+                to="/contact"
+                variant="primary"
+                shimmer={true}
+                magnetic={true}
+                id="sell-asset-contact-btn"
+                aria-label="Sell your machinery to Soprani Engineering"
+              >
                 {t('header.sellMachinery')}
-              </span>
-              <ArrowRight size={22} className="relative z-10 group-hover:translate-x-3 transition-transform duration-500 ease-out" />
-            </Link>
+              </ConversionButton>
+              <ConversionButton
+                to="/request-quotation"
+                variant="ghost-dark"
+                shimmer={false}
+                magnetic={true}
+                id="sell-asset-quote-btn"
+                aria-label="Request a machinery valuation"
+              >
+                {t('premiumCta.btnConsult')}
+              </ConversionButton>
+            </div>
           </motion.div>
 
           {/* Feature Cards Area */}

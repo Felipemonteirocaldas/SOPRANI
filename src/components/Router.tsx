@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
+import SEOHead from '@/components/SEOHead';
 import { lazy, Suspense } from 'react';
 import '../i18n/config';
 
@@ -30,6 +31,8 @@ function Layout() {
   return (
     <>
       <ScrollToTop />
+      {/* ✦ Dynamic SEO: title, description, og tags, html[lang] */}
+      <SEOHead />
       <Outlet />
     </>
   );

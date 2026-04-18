@@ -15,7 +15,12 @@
     @apply bg-background text-primary font-paragraph overflow-x-hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 
@@ -65,6 +70,7 @@
 
 /* Component Styles */
 @layer components {
+
   /* Buttons */
   .btn-primary {
     @apply px-8 py-4 bg-accent text-white font-bold uppercase tracking-wider rounded-none hover:bg-accent-dark transition-all duration-200 hover:shadow-lg text-sm md:text-base;
@@ -118,7 +124,7 @@
 
   .grid-pattern-light {
     background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
@@ -128,6 +134,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -135,8 +142,13 @@
   }
 
   @keyframes premiumSwipe {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
   }
 
   .animate-premium-swipe {
@@ -153,6 +165,50 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: premiumSwipe 3s infinite;
+  }
+
+  /* ✦ Button Shimmer — for Request Quotation CTA */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-150%) skewX(-15deg);
+    }
+
+    100% {
+      transform: translateX(350%) skewX(-15deg);
+    }
+  }
+
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(105deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.22) 50%,
+        transparent 80%);
+    animation: shimmer 2.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* end @layer components */
+
+/* ⚡ Performance — Skeleton shimmer keyframe */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
   }
 }
 

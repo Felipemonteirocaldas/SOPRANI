@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { BaseCrudService } from '@/integrations';
 import { IndustryEvents } from '@/entities';
@@ -192,12 +193,11 @@ export default function EventsPage() {
               <p className="text-lg text-white/90 mb-8">
                 {t('eventsPage.ctaDesc')}
               </p>
-              <a
-                href="/contact"
+              <Link to="/contact"
                 className="inline-flex items-center px-8 py-4 bg-accent text-white font-medium rounded-none hover:bg-accent/90 hover:scale-105 transition-all duration-200"
               >
                 {t('eventsPage.ctaBtn')}
-              </a>
+              </Link>
             </div>
           </AnimatedElement>
         </div>

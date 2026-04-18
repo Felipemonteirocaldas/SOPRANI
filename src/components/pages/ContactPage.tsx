@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Globe, ShieldCheck, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -391,19 +392,19 @@ export default function ContactPage() {
                 title={t('contactPage.reqQuote')}
                 desc={t('contactPage.reqQuoteSub')}
                 btn={t('contactPage.reqQuoteBtn')}
-                href="/request-quotation"
+                to="/request-quotation"
               />
               <RapidLink
                 title={t('contactPage.aboutUs')}
                 desc={t('contactPage.aboutSub')}
                 btn={t('contactPage.aboutBtn')}
-                href="/about"
+                to="/about"
               />
               <RapidLink
                 title="Service Centers"
                 desc="Locate our registered technical centers."
                 btn="View Map"
-                href="/services"
+                to="/services"
               />
             </div>
           </div>
@@ -449,17 +450,17 @@ const CustomInput = ({ label, icon: Icon, ...props }: any) => (
   </div>
 );
 
-const RapidLink = ({ title, desc, btn, href }: { title: string, desc: string, btn: string, href: string }) => (
+const RapidLink = ({ title, desc, btn, to }: { title: string, desc: string, btn: string, to: string }) => (
   <div className="flex flex-col items-center group">
     <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3">{title}</h3>
     <p className="text-xs text-gray-500 mb-6 sm:mb-8 max-w-xs">{desc}</p>
-    <a
-      href={href}
+    <Link
+      to={to}
       className="inline-flex items-center gap-2 group text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent hover:border-accent transition-all"
     >
       {btn}
       <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-    </a>
+    </Link>
   </div>
 );
 

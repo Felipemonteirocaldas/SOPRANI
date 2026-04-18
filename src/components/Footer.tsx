@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ConversionButton from '@/components/ui/ConversionButton';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -101,6 +102,21 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+
+            {/* ✦ Conversion CTA in footer */}
+            <div className="mt-6 pt-6 border-t border-white/10">
+              <ConversionButton
+                to="/request-quotation"
+                variant="primary"
+                shimmer={true}
+                magnetic={true}
+                id="footer-cta-request-quotation"
+                aria-label="Request a Technical Quotation"
+                className="text-[11px] px-5 py-3"
+              >
+                {t('header.requestQuotation')}
+              </ConversionButton>
+            </div>
           </div>
         </div>
 

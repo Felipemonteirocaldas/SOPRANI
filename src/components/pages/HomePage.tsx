@@ -1,23 +1,214 @@
 // WI-HPI
-import CorporateMarquee from '@/components/CorporateMarquee';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import OurServicesSection from '@/components/OurServicesSection';
-
-import PartnersSection from '@/components/PartnersSection';
-import SellAssetCTA from '@/components/SellAssetCTA';
-import SplitLayoutSection from '@/components/SplitLayoutSection';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import {
+  MarqueeSkeleton,
+  SplitLayoutSkeleton,
+  ServicesSkeleton,
+  PartnersSkeleton,
+  NewsSkeleton,
+  EventsSkeleton,
+} from '@/components/ui/SkeletonLoaders';
 import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
 import { MockBaseCrudService as BaseCrudService } from '@/lib/mockService';
 import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useMotionValue,
+  AnimatePresence,
+} from 'framer-motion';
 
-// --- Animation Components ---
+// ⚡ Lazy-loaded sections — only Hero renders immediately
+const CorporateMarquee = lazy(() => import('@/components/CorporateMarquee'));
+const SplitLayoutSection = lazy(() => import('@/components/SplitLayoutSection'));
+const OurServicesSection = lazy(() => import('@/components/OurServicesSection'));
+const PartnersSection = lazy(() => import('@/components/PartnersSection'));
+const SellAssetCTA = lazy(() => import('@/components/SellAssetCTA'));
 
+
+// ─────────────────────────────────────────────
+// 🔴 SCROLL PROGRESS BAR
+// ─────────────────────────────────────────────
+const ScrollProgressBar: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 40,
+    restDelta: 0.001,
+  });
+
+  return (
+    <motion.div
+      style={{ scaleX, transformOrigin: 'left' }}
+      className="fixed top-0 left-0 right-0 z-[9999] h-[3px] bg-accent"
+      aria-hidden="true"
+    />
+  );
+};
+
+// ─────────────────────────────────────────────
+// 🧲 MAGNETIC BUTTON
+// ─────────────────────────────────────────────
+interface MagneticButtonProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  as?: 'button' | 'a';
+  href?: string;
+  to?: string;
+  strength?: number;
+}
+
+const MagneticButton: React.FC<MagneticButtonProps & React.HTMLAttributes<HTMLElement>> = ({
+  children,
+  className = '',
+  strength = 12,
+  ...props
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const deltaX = (e.clientX - centerX) / (rect.width / 2);
+    const deltaY = (e.clientY - centerY) / (rect.height / 2);
+    x.set(deltaX * strength);
+    y.set(deltaY * strength);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="inline-block"
+    >
+      <motion.div style={{ x: springX, y: springY }}>
+        <div className={className} {...props}>
+          {children}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+// ─────────────────────────────────────────────
+// 📦 STAGGER CONTAINER VARIANTS
+// ─────────────────────────────────────────────
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const staggerCardVariant = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 120,
+      damping: 20,
+    },
+  },
+};
+
+const staggerLeftVariant = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 120,
+      damping: 20,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────
+// 🎥 INTERSECTION-BASED STAGGER WRAPPER
+// ─────────────────────────────────────────────
+const StaggerReveal: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  direction?: 'up' | 'left';
+}> = ({ children, className = '', direction = 'up' }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={staggerContainer}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// ─────────────────────────────────────────────
+// 🃏 STAGGER CARD ITEM
+// ─────────────────────────────────────────────
+const StaggerItem: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  direction?: 'up' | 'left';
+}> = ({ children, className = '', direction = 'up' }) => (
+  <motion.div
+    className={className}
+    variants={direction === 'left' ? staggerLeftVariant : staggerCardVariant}
+  >
+    {children}
+  </motion.div>
+);
+
+// ─────────────────────────────────────────────
+// 🧩 LEGACY ANIMATED ELEMENT (unchanged)
+// ─────────────────────────────────────────────
 const AnimatedElement: React.FC<{
   children: React.ReactNode;
   className?: string;
@@ -64,7 +255,7 @@ const AnimatedElement: React.FC<{
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
         willChange: 'opacity, transform',
-        pointerEvents: isVisible ? 'auto' : 'none'
+        pointerEvents: isVisible ? 'auto' : 'none',
       }}
     >
       {children}
@@ -72,8 +263,9 @@ const AnimatedElement: React.FC<{
   );
 };
 
-// --- Main Page Component ---
-
+// ─────────────────────────────────────────────
+// 🏠 MAIN PAGE COMPONENT
+// ─────────────────────────────────────────────
 export default function HomePage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -87,12 +279,10 @@ export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect if device is mobile/iOS
     const checkMobile = () => {
       const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       setIsMobile(isMobileDevice);
     };
-
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -104,9 +294,8 @@ export default function HomePage() {
         const [newsRes, eventsRes, productsRes] = await Promise.all([
           BaseCrudService.getAll<NewsandUpdates>('news', [], { limit: 5 }),
           BaseCrudService.getAll<IndustryEvents>('events', [], { limit: 3 }),
-          BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 8 })
+          BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 8 }),
         ]);
-
         setNews(newsRes.items || []);
         setEvents(eventsRes.items || []);
         setProducts(productsRes.items || []);
@@ -118,7 +307,6 @@ export default function HomePage() {
         setIsLoadingProducts(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -129,33 +317,40 @@ export default function HomePage() {
   const formatDate = (dateString?: string | Date) => {
     if (!dateString) return '';
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    }).replace(/\//g, '.');
+    return date
+      .toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      .replace(/\//g, '.');
   };
 
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
+      {/* ✦ SCROLL PROGRESS BAR */}
+      <ScrollProgressBar />
+
       <Header />
       <main className="flex-grow">
-        {/* HERO SECTION */}
+
+        {/* ══════════════════════════════════════
+            HERO SECTION
+        ══════════════════════════════════════ */}
         <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-[#001F5F]">
-          {/* Background Video */}
+          {/* Background Video — with poster for instant visual feedback */}
           <video
             autoPlay
             loop
             muted
             playsInline
+            poster="/images/hero-bg.png"
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover z-0"
           >
             <source src="/video/videohero.mp4" type="video/mp4" />
           </video>
-          {/* Overlay for text readability with grid pattern */}
+
+          {/* Overlays */}
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[#001F5F]/50" /> {/* Strategic darken layer for text pop */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#001F5F]/40 via-transparent to-[#001F5F]/40" /> {/* Stronger side vignettes */}
+            <div className="absolute inset-0 bg-[#001F5F]/50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#001F5F]/40 via-transparent to-[#001F5F]/40" />
             <div className="absolute inset-0 grid-pattern opacity-10 z-0" />
           </div>
 
@@ -170,27 +365,31 @@ export default function HomePage() {
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-slate-200 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-light">
                     {t('hero.subtitle')}
                   </p>
+
+                  {/* ✦ MAGNETIC CTA BUTTONS */}
                   <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                    <Link
-                      to="/request-quotation"
-                      className="w-full sm:w-auto px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
-                    >
-                      {t('hero.requestQuotation')}
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="w-full sm:w-auto px-8 py-4 border-2 border-white bg-white/10 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
-                    >
-                      {t('hero.contactUs')}
-                    </Link>
+                    <MagneticButton strength={10}>
+                      <Link
+                        to="/request-quotation"
+                        className="block w-full sm:w-auto px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base btn-shimmer"
+                      >
+                        {t('hero.requestQuotation')}
+                      </Link>
+                    </MagneticButton>
+                    <MagneticButton strength={10}>
+                      <Link
+                        to="/contact"
+                        className="block w-full sm:w-auto px-8 py-4 border-2 border-white bg-white/10 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
+                      >
+                        {t('hero.contactUs')}
+                      </Link>
+                    </MagneticButton>
                   </div>
                 </div>
               </AnimatedElement>
 
-              {/* Hero Image */}
-              <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''}>
-
-              </AnimatedElement>
+              {/* Hero Right Column (reserved) */}
+              <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''} />
             </div>
           </div>
 
@@ -200,19 +399,37 @@ export default function HomePage() {
             className="absolute bottom-6 xs:bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
             aria-label="Scroll to content"
           >
-            <ChevronDown size={32} className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+            <ChevronDown
+              size={32}
+              className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform"
+              strokeWidth={1.5}
+            />
           </button>
         </section>
-        {/* CORPORATE MARQUEE - Below Hero */}
-        <CorporateMarquee />
-        {/* SPLIT LAYOUT SECTION */}
-        <SplitLayoutSection />
-        {/* OUR SERVICES SECTION */}
-        <OurServicesSection />
-        {/* PARTNERS SECTION */}
-        <PartnersSection />
 
-        {/* LATEST NEWS SECTION */}
+        {/* ⚡ LAZY: CORPORATE MARQUEE */}
+        <Suspense fallback={<MarqueeSkeleton />}>
+          <CorporateMarquee />
+        </Suspense>
+
+        {/* ⚡ LAZY: SPLIT LAYOUT */}
+        <Suspense fallback={<SplitLayoutSkeleton />}>
+          <SplitLayoutSection />
+        </Suspense>
+
+        {/* ⚡ LAZY: OUR SERVICES */}
+        <Suspense fallback={<ServicesSkeleton />}>
+          <OurServicesSection />
+        </Suspense>
+
+        {/* ⚡ LAZY: PARTNERS */}
+        <Suspense fallback={<PartnersSkeleton />}>
+          <PartnersSection />
+        </Suspense>
+
+        {/* ══════════════════════════════════════
+            LATEST NEWS SECTION — Staggered Reveal
+        ══════════════════════════════════════ */}
         <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
             <AnimatedElement>
@@ -227,13 +444,18 @@ export default function HomePage() {
             </AnimatedElement>
 
             {isLoadingNews ? (
-              <div className="flex justify-center py-20"><LoadingSpinner /></div>
+              <div className="flex justify-center py-20">
+                <LoadingSpinner />
+              </div>
             ) : news.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Featured News (Left) */}
+                {/* Featured News */}
                 <div className="lg:col-span-7">
                   <AnimatedElement direction="up" delay={100} className="h-full">
-                    <Link to={`/news`} className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-light">
+                    <Link
+                      to="/news"
+                      className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-light"
+                    >
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                         {news[0].coverImage ? (
                           <Image
@@ -242,7 +464,9 @@ export default function HomePage() {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-gray-400">...</div>
+                          <div className="w-full h-full flex items-center justify-center text-gray-400">
+                            ...
+                          </div>
                         )}
                       </div>
                       <div className="p-8">
@@ -260,11 +484,14 @@ export default function HomePage() {
                   </AnimatedElement>
                 </div>
 
-                {/* News List (Right) */}
-                <div className="lg:col-span-5 flex flex-col gap-4">
-                  {news.slice(1, 5).map((item, idx) => (
-                    <AnimatedElement key={item._id} direction="up" delay={200 + (idx * 100)}>
-                      <Link to={`/news`} className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-[120px] border border-border-light">
+                {/* ✦ STAGGERED News List (Right) */}
+                <StaggerReveal className="lg:col-span-5 flex flex-col gap-4">
+                  {news.slice(1, 5).map((item) => (
+                    <StaggerItem key={item._id}>
+                      <Link
+                        to="/news"
+                        className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-[120px] border border-border-light"
+                      >
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.coverImage ? (
                             <Image
@@ -273,7 +500,9 @@ export default function HomePage() {
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs text-center font-bold px-4">SOPRANI INDUSTRIAL SOLUTION</div>
+                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs text-center font-bold px-4">
+                              SOPRANI INDUSTRIAL SOLUTION
+                            </div>
                           )}
                         </div>
                         <div className="w-2/3 p-4 flex flex-col justify-center">
@@ -285,9 +514,9 @@ export default function HomePage() {
                           </span>
                         </div>
                       </Link>
-                    </AnimatedElement>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerReveal>
               </div>
             ) : (
               <div className="text-center py-12 text-text-muted">No news available.</div>
@@ -303,7 +532,10 @@ export default function HomePage() {
             </AnimatedElement>
           </div>
         </section>
-        {/* EVENTS SECTION */}
+
+        {/* ══════════════════════════════════════
+            EVENTS SECTION — Staggered Reveal
+        ══════════════════════════════════════ */}
         <section className="bg-white">
           {/* Dark Header Strip */}
           <div className="py-8 bg-primary">
@@ -317,14 +549,16 @@ export default function HomePage() {
           {/* Events Content */}
           <div className="max-w-[100rem] mx-auto px-4 md:px-8 py-16 md:py-24">
             {isLoadingEvents ? (
-              <div className="flex justify-center py-12"><LoadingSpinner /></div>
+              <div className="flex justify-center py-12">
+                <LoadingSpinner />
+              </div>
             ) : events.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Events List */}
-                <div className="space-y-8">
-                  {events.map((event, idx) => (
-                    <AnimatedElement key={event._id} direction="left" delay={idx * 100}>
-                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 border-b border-border-light pb-8 last:border-0">
+                {/* ✦ STAGGERED Events List */}
+                <StaggerReveal direction="left">
+                  {events.map((event) => (
+                    <StaggerItem key={event._id} direction="left" className="border-b border-border-light pb-8 last:border-0">
+                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
                         <div className="md:w-32 flex-shrink-0">
                           <p className="text-accent font-bold text-lg">
                             {formatDate(event.eventDate)}
@@ -338,22 +572,25 @@ export default function HomePage() {
                             <MapPin size={14} className="mr-2" /> {event.location}
                           </p>
                           <Link
-                            to={`/news?tab=events`}
+                            to="/news?tab=events"
                             className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
                           >
                             {t('eventsPage.btnLearnMore')}
                           </Link>
                         </div>
                       </div>
-                    </AnimatedElement>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerReveal>
 
                 {/* Featured Event Image */}
                 <AnimatedElement direction="right" delay={200} className="h-full hidden lg:block">
                   <div className="relative h-full min-h-[400px] rounded-none overflow-hidden shadow-2xl group border border-border-light bg-white">
                     <Image
-                      src={events[0]?.eventImage || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"}
+                      src={
+                        events[0]?.eventImage ||
+                        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop'
+                      }
                       alt="Featured Event"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     />
@@ -366,11 +603,13 @@ export default function HomePage() {
             )}
           </div>
         </section>
+
         {/* OUR SERVICES PRODUCTS SECTION */}
 
-
-        {/* SELL ASSET CTA SECTION (CLOSING HOOK) */}
-        <SellAssetCTA />
+        {/* ⚡ LAZY: SELL ASSET CTA */}
+        <Suspense fallback={<div className="h-64 bg-primary" />}>
+          <SellAssetCTA />
+        </Suspense>
       </main>
       <Footer />
     </div>

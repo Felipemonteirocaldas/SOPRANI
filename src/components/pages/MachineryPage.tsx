@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
@@ -68,12 +69,11 @@ export default function MachineryPage() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {t('machineryPage.introP2')}
                 </p>
-                <a
-                  href="/contact"
+                <Link to="/contact"
                   className="inline-flex items-center px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
                 >
                   {t('machineryPage.introBtn')} <ArrowRight size={16} className="ml-2" />
-                </a>
+                </Link>
               </div>
               <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
@@ -113,18 +113,16 @@ export default function MachineryPage() {
               {t('machineryPage.ctaDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
+              <Link to="/contact"
                 className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 {t('machineryPage.ctaBtn1')}
-              </a>
-              <a
-                href="/request-quotation"
+              </Link>
+              <Link to="/request-quotation"
                 className="px-8 py-3 border border-white text-white hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 {t('machineryPage.ctaBtn2')}
-              </a>
+              </Link>
             </div>
           </div>
         </section>

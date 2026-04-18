@@ -1,0 +1,80 @@
+# 🚀 Soprani Engineering: THE ULTIMATE DOPAMINE UPGRADE
+
+Este documento é o seu **Centro de Comando** para transformar o site da Soprani em uma experiência de elite, moderna e altamente viciante (dopaminérgica). Copie e cole estes blocos no **Antigravity (Google Project IDX)**.
+
+---
+
+## 🧠 1. Design Dopaminérgico: Micro-interações de Luxo
+
+**Objetivo:** Criar uma interface que "responde" ao usuário com fluidez, usando a psicologia do feedback visual imediato.
+
+### Prompt para o IDX
+>
+> "Atue como um **Designer de Interação Sênior**. Instale `framer-motion`. No arquivo `src/components/pages/HomePage.tsx`, implemente:
+>
+> 1. **Magnetic Buttons:** Refatore os botões de CTA para que eles tenham um efeito magnético sutil (atração ao mouse) usando `useSpring` e `useMotionValue`.
+> 2. **Staggered Reveal:** As seções de 'Technical Services' e 'News' devem aparecer com um efeito de cascata (stagger), onde cada card entra com 0.1s de atraso em relação ao anterior, usando curvas `spring` (stiffness: 120, damping: 20).
+> 3. **Smooth Scroll Progress:** Adicione uma barra de progresso de leitura ultra-fina no topo da página que cresce conforme o scroll, usando a cor `accent` (#C41230)."
+
+---
+
+## ✨ 2. Modern UI: Glassmorphism & Industrial Depth
+
+**Objetivo:** Sair do layout "plano" e entrar em uma estética industrial moderna com profundidade e transparências.
+
+### Prompt para o IDX
+>
+> "Refatore o CSS/Tailwind dos cards de serviço e do Header:
+>
+> 1. **Glassmorphism:** Aplique `backdrop-blur-md` e uma borda semi-transparente (`border-white/10`) nos cards sobre fundos escuros.
+> 2. **Industrial Glow:** Adicione um efeito de 'glow' suave nos ícones industriais quando o card for focado ou sofrer hover.
+> 3. **Dynamic Gradients:** Substitua fundos sólidos por gradientes lineares sutis que simulam o reflexo do aço (Steel Grey para Deep Blue).
+> 4. **Bento Grid:** Se possível, reorganize a seção de indústrias em um layout 'Bento Grid' moderno, com tamanhos de cards variados para criar hierarquia visual."
+
+---
+
+## 🔍 3. SEO de Elite & Autoridade Técnica
+
+**Objetivo:** Dominar os resultados de busca e garantir que o site seja tecnicamente impecável para o Google.
+
+### Prompt para o IDX
+>
+> "Atue como **Engenheiro de SEO Sênior**.
+>
+> 1. Instale `react-helmet-async` e configure-o no `Router.tsx` para que cada rota atualize o `<title>` e a `<meta description>` dinamicamente.
+> 2. **Fix i18n SEO:** No `[...slug].astro`, remova o `lang='it'` fixo e injete o idioma atual do `i18n`. Adicione tags `rel='alternate' hreflang='x'` para todas as variações de idioma (en, pt, it, es).
+> 3. **Semantic HTML:** Garanta que os nomes das máquinas e serviços estejam dentro de tags `<strong>` ou `<h3>` otimizadas para as palavras-chave do briefing."
+
+---
+
+## ⚡ 4. Performance "Zero Latency"
+
+**Objetivo:** Carregamento instantâneo que não quebra o fluxo de navegação do usuário.
+
+### Prompt para o IDX
+>
+> "Otimize o pipeline de assets:
+>
+> 1. **Video Optimization:** Refatore a seção Hero para carregar uma imagem de fallback (poster) enquanto o vídeo não carrega. Use `priority` no carregamento da imagem do logo.
+> 2. **Clean Architecture:** Remova todos os vestígios de `@wix/image-kit` e mocks antigos que não são mais necessários, reduzindo o tamanho final do bundle JS.
+> 3. **Lazy Loading:** Garanta que apenas a seção Hero seja carregada imediatamente; todas as outras seções (Partners, News, etc.) devem usar `React.lazy` e `Suspense` com esqueletos de carregamento (Skeletons) elegantes."
+
+---
+
+## 🛠 5. Prompt Final: O "Botão Mágico" de Conversão
+
+### Prompt para o IDX
+>
+> "Transforme o botão 'View All Services' e os CTAs do Footer em componentes de alta conversão. Adicione um efeito de 'Shimmer' (brilho passando) contínuo e sutil no botão de 'Request Quotation'. Certifique-se de que todos os links internos usem o `Link` do `react-router-dom` para navegação instantânea sem refresh de página."
+
+---
+
+## 📋 Checklist de Sucesso
+
+- [ ] O site parece "vivo" ao mover o mouse?
+- [ ] As transições entre páginas são suaves (fade) ou bruscas?
+- [ ] O Google consegue ler títulos diferentes para cada página?
+- [ ] O carregamento inicial (LCP) é menor que 1.5 segundos?
+
+---
+*Relatório gerado por Manus AI - Designer & Dev Full Stack Sênior.*

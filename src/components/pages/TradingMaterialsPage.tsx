@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { Boxes, TrendingUp, Globe, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
@@ -192,18 +193,16 @@ export default function TradingMaterialsPage() {
               {t('tradingPage.ctaDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
+              <Link to="/contact"
                 className="px-8 py-3 bg-white text-primary hover:bg-gray-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 {t('tradingPage.ctaBtn1')}
-              </a>
-              <a
-                href="/request-quotation"
+              </Link>
+              <Link to="/request-quotation"
                 className="px-8 py-3 bg-accent text-white hover:bg-accent-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm transition-all duration-200 text-sm font-medium uppercase tracking-wider rounded-none"
               >
                 {t('tradingPage.ctaBtn2')}
-              </a>
+              </Link>
             </div>
           </div>
         </section>

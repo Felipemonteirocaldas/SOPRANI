@@ -25,22 +25,52 @@ export default function SplitLayoutSection() {
   return (
     <section className="w-full bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[600px]">
-        {/* Left Side - Navy Background with Blueprint Image */}
-        <div className="bg-primary relative overflow-hidden flex items-center justify-center p-8 lg:p-0">
-          {/* Blueprint overlay image with low opacity */}
-          <div className="absolute inset-0 opacity-20">
+        {/* ✦ Left Side — Dynamic Steel Gradient */}
+        <div
+          className="relative overflow-hidden flex items-center justify-center p-8 lg:p-0"
+          style={{
+            background: 'linear-gradient(135deg, #001F5F 0%, #011244 55%, #020D30 100%)',
+          }}
+        >
+          {/* Blueprint overlay image */}
+          <div className="absolute inset-0 opacity-15">
             <Image
               src="https://static.wixstatic.com/media/9bbed2_faa35e28edaf43dbaa4b80a14918bb82~mv2.jpeg"
               className="w-full h-full object-cover"
               width={500}
               originWidth={1600}
-              originHeight={1200} />
+              originHeight={1200}
+            />
           </div>
 
+          {/* Steel shimmer streak */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(115deg, transparent 30%, rgba(148,163,184,0.06) 50%, transparent 70%)',
+            }}
+          />
+
+          {/* Grid texture */}
+          <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
+
           {/* Content overlay */}
-          <div className="relative z-10 text-center text-white max-w-sm">
-            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">{t('splitLayout.blueprintTitle')}</h3>
-            <div className="space-y-2 text-sm font-paragraph opacity-90">
+          <div className="relative z-10 text-center text-white max-w-sm px-6">
+            <div
+              className="inline-flex items-center justify-center w-14 h-14 mb-6 mx-auto"
+              style={{
+                background: 'rgba(196,18,48,0.12)',
+                border: '1px solid rgba(196,18,48,0.35)',
+                boxShadow: '0 0 24px rgba(196,18,48,0.2)',
+              }}
+            >
+              <div className="w-2 h-2 rounded-full bg-accent" />
+            </div>
+            <h3 className="font-heading text-2xl lg:text-3xl font-bold mb-4">
+              {t('splitLayout.blueprintTitle')}
+            </h3>
+            <div className="space-y-2 text-sm font-paragraph" style={{ color: 'rgba(255,255,255,0.7)' }}>
               <p>{t('splitLayout.blueprintL1')}</p>
               <p>{t('splitLayout.blueprintL2')}</p>
               <p>{t('splitLayout.blueprintL3')}</p>
@@ -73,24 +103,34 @@ export default function SplitLayoutSection() {
             </p>
           </div>
 
-          {/* Features List */}
+          {/* ✦ Features List — Glassmorphism rows */}
           <div className="space-y-0">
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
                 <div
                   key={index}
-                  className={`grid grid-cols-[40px_1fr] gap-4 py-5 ${index !== features.length - 1 ? 'border-b border-border-light' : ''
-                    }`}
+                  className={`grid grid-cols-[44px_1fr] gap-4 py-5 group transition-all duration-300 ${index !== features.length - 1 ? 'border-b border-border-light' : ''}`}
                 >
-                  {/* Icon */}
+                  {/* ✦ Icon with glow */}
                   <div className="flex items-start justify-center pt-0.5">
-                    <IconComponent className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={1.5} />
+                    <div
+                      className="w-9 h-9 flex items-center justify-center transition-all duration-400"
+                      style={{
+                        background: 'rgba(0,31,95,0.05)',
+                        border: '1px solid rgba(0,31,95,0.1)',
+                      }}
+                    >
+                      <IconComponent
+                        className="w-4 h-4 text-primary group-hover:text-accent transition-colors duration-300 flex-shrink-0"
+                        strokeWidth={1.5}
+                      />
+                    </div>
                   </div>
 
                   {/* Text Content */}
                   <div className="flex flex-col justify-start">
-                    <h3 className="font-heading text-sm font-bold text-primary mb-1">
+                    <h3 className="font-heading text-sm font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
                       {feature.title}
                     </h3>
                     <p className="font-paragraph text-sm text-slate-600 leading-relaxed font-normal">

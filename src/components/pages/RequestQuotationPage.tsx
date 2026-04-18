@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AlertCircle, ArrowRight, Building2, Globe, Hash, Layers, Mail, MessageSquare, Paperclip, Phone, ShieldCheck, X, Zap } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
@@ -316,10 +317,10 @@ export default function RequestQuotationPage() {
                               </>
                             )}
                           </button>
-                          <a href="/"
+                          <Link to="/"
                             className="px-6 py-3.5 border border-gray-200 text-gray-400 hover:text-primary hover:border-primary text-xs font-bold uppercase tracking-widest text-center transition-all duration-300">
                             {t('reqPage.cancelBtn')}
-                          </a>
+                          </Link>
                         </div>
 
                       </form>
@@ -362,12 +363,12 @@ export default function RequestQuotationPage() {
                 <p className="text-xs text-gray-500 mb-6 leading-relaxed">
                   {t('reqPage.wFormsDesc')}
                 </p>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-[10px] font-black uppercase tracking-[0.2em]"
                 >
                   {t('reqPage.wFormsBtn')}
-                </a>
+                </Link>
               </div>
             </div>
           </div>

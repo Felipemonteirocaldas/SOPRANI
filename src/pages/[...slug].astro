@@ -4,24 +4,90 @@ import { Head } from "@/components/Head";
 import AppRouter from "@/components/Router";
 import "@/styles/global.css";
 
-// Definições de SEO para a Soprani
+// ── SEO Base (fallback; dinâmico feito pelo useSEO hook no cliente) ──
 const title = "Soprani Engineering | Industrial Metal Packaging Solutions";
-const description = "Global leader in industrial machinery, spare parts, and technical assistance for the metal packaging industry.";
+const description = "Global leader in industrial machinery, spare parts, and technical assistance for the metal packaging industry. Serving Europe, MENA, Asia & Americas.";
+
+// Supported languages / hreflang
+const LANGUAGES = ['en', 'pt', 'it', 'es'] as const;
+const BASE_URL   = "https://www.sopraniengineering.com";
 ---
 
-<html lang="it" class="w-full h-full">
+<!--
+  lang é corrigido no cliente via useSEO hook (document.documentElement.setAttribute).
+  Usamos "en" como padrão seguro para crawlers, evitando o "it" fixo incorreto.
+-->
+<html lang="en" class="w-full h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <Head /> 
+
+    <Head />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={BASE_URL} />
+    <meta property="og:image"       content={`${BASE_URL}/og-image.jpg`} />
+    <meta property="og:site_name"   content="Soprani Engineering" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- ✦ hreflang alternates — i18n SEO (Seção 3) -->
+    {LANGUAGES.map(lang => (
+      <link
+        rel="alternate"
+        hreflang={lang}
+        href={`${BASE_URL}/?lng=${lang}`}
+      />
+    ))}
+    <!-- x-default: fallback for unlisted locales -->
+    <link rel="alternate" hreflang="x-default" href={BASE_URL} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={BASE_URL} />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect for fonts (performance) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org JSON-LD — Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Soprani Engineering",
+      "description": description,
+      "url": BASE_URL,
+      "logo": `${BASE_URL}/logo.png`,
+      "foundingDate": "1984",
+      "foundingLocation": "Milan, Italy",
+      "areaServed": ["Europe", "Middle East", "North Africa", "Asia", "Americas"],
+      "knowsAbout": [
+        "Metal Packaging Machinery",
+        "Can-Making Equipment",
+        "Spare Parts Supply",
+        "Technical Assistance",
+        "Tinplate Trading",
+        "Industrial Revamping"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Italian", "Portuguese", "Spanish"]
+      }
+    })} />
   </head>
   <body class="w-full h-full bg-background text-primary">
     <div id="root" class="w-full h-full">
