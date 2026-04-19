@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { BaseCrudService } from '@/integrations';
 import { ProductSolutions } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
-import { Filter, Search, ArrowRight, Settings, Cpu, Shield, Zap, Maximize2, X } from 'lucide-react';
+import { Filter, Search, ArrowRight, Settings, Cpu, Shield, Zap, Maximize2, X, Layers } from 'lucide-react';
 import Header from '@/components/Header';
 import Fuse from 'fuse.js';
 import Footer from '@/components/Footer';
@@ -19,6 +20,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useProducts } from '@/hooks/useSanity';
+import { urlFor } from '@/lib/sanityClient';
+import { SanityProduct } from '@/types/sanity';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -26,147 +30,127 @@ const fadeUp = {
   transition: { duration: 0.6, ease: "easeOut" }
 };
 
-interface FeaturedProduct {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  features: string;
-  specs: string;
-  application: string;
-  image: string;
-  tag: string;
-}
+
 
 export default function ProductsPage() {
-  const { t, i18n } = useTranslation();
-  const [dbProducts, setDbProducts] = useState<ProductSolutions[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
+  const { data: products, loading: isLoading, error } = useProducts();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState<FeaturedProduct | null>(null);
-
-  // Hardcoded premium featured machinery as fallback/priority
-  const featuredProducts: FeaturedProduct[] = useMemo(() => [
-    {
-      id: 'line3p',
-      name: t('productsPage.featured.line3p.name'),
-      category: t('productsPage.featured.line3p.category'),
-      description: t('productsPage.featured.line3p.description'),
-      features: t('productsPage.featured.line3p.features'),
-      specs: t('productsPage.featured.line3p.specs'),
-      application: t('productsPage.featured.line3p.application'),
-      image: '/images/products/line3p.png',
-      tag: 'Line'
-    },
-    {
-      id: 'aerosol',
-      name: t('productsPage.featured.aerosol.name'),
-      category: t('productsPage.featured.aerosol.category'),
-      description: t('productsPage.featured.aerosol.description'),
-      features: t('productsPage.featured.aerosol.features'),
-      specs: t('productsPage.featured.aerosol.specs'),
-      application: t('productsPage.featured.aerosol.application'),
-      image: '/images/products/aerosol.png',
-      tag: 'Aerosol'
-    },
-    {
-      id: 'press',
-      name: t('productsPage.featured.press.name'),
-      category: t('productsPage.featured.press.category'),
-      description: t('productsPage.featured.press.description'),
-      features: t('productsPage.featured.press.features'),
-      specs: t('productsPage.featured.press.specs'),
-      application: t('productsPage.featured.press.application'),
-      image: '/images/products/press.png',
-      tag: 'EOE'
-    },
-    {
-      id: 'welder',
-      name: t('productsPage.featured.welder.name'),
-      category: t('productsPage.featured.welder.category'),
-      description: t('productsPage.featured.welder.description'),
-      features: t('productsPage.featured.welder.features'),
-      specs: t('productsPage.featured.welder.specs'),
-      application: t('productsPage.featured.welder.application'),
-      image: '/images/products/welder.png',
-      tag: 'Welding'
-    },
-    {
-      id: 'coating',
-      name: t('productsPage.featured.coating.name'),
-      category: t('productsPage.featured.coating.category'),
-      description: t('productsPage.featured.coating.description'),
-      features: t('productsPage.featured.coating.features'),
-      specs: t('productsPage.featured.coating.specs'),
-      application: t('productsPage.featured.coating.application'),
-      image: '/images/products/coating.png',
-      tag: 'Coating'
-    },
-    {
-      id: 'pail',
-      name: t('productsPage.featured.pail.name'),
-      category: t('productsPage.featured.pail.category'),
-      description: t('productsPage.featured.pail.description'),
-      features: t('productsPage.featured.pail.features'),
-      specs: t('productsPage.featured.pail.specs'),
-      application: t('productsPage.featured.pail.application'),
-      image: '/images/products/pail.png',
-      tag: 'Heavy Duty'
+  const [selectedBrand, setSelectedBrand] = useState<'all' | 'koenig-bauer' | 'soudronic'>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const brand = params.get('brand');
+      if (brand === 'koenig-bauer' || brand === 'soudronic') return brand;
     }
-  ], [t]);
+    return 'all';
+  });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState<SanityProduct | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    loadProducts();
+    setIsMounted(true);
   }, []);
 
-  const loadProducts = async () => {
-    try {
-      const result = await BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 50 });
-      setDbProducts(result.items);
-    } catch (error) {
-      console.error('Failed to load DB products:', error);
-    } finally {
-      setIsLoading(false);
-    }
+  // Helper for localized specs
+  const getLocalizedSpecKey = (key?: string) => {
+    if (!key) return '';
+    const rawKey = key.toLowerCase().trim();
+    const paramMap: Record<string, string> = {
+      'maximum sheet size': 'maxSheetSize',
+      'minimum sheet size': 'minSheetSize',
+      'sheet thickness': 'sheetThickness',
+      'production speed': 'productionSpeed',
+      'production output': 'productionOutput',
+      'coating speed': 'coatingSpeed',
+      'coating types': 'coatingTypes',
+      'size of printing plate': 'maxPrintingArea',
+      'maximum printing area': 'maxPrintingArea',
+      'energy savings': 'energySavings',
+      'technology': 'technology',
+      'feeding capacity': 'feedingCapacity',
+      'heating type': 'heatingType',
+      'container types': 'containerTypes',
+      'can shapes': 'canShapes',
+      'test types': 'testTypes',
+      'application': 'application',
+      'compatibility': 'compatibility'
+    };
+    const mappedKey = paramMap[rawKey];
+    if (mappedKey) return t(`productSpecs.${mappedKey}`);
+    return key;
   };
 
-  const categories = useMemo(() => {
-    const dbCats = dbProducts.map(p => p.category).filter(Boolean) as string[];
-    const featuredCats = featuredProducts.map(p => p.category);
-    return Array.from(new Set(['all', ...featuredCats, ...dbCats]));
-  }, [dbProducts, featuredProducts]);
+  // Body scroll lock
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = selectedProduct ? 'hidden' : '';
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        document.body.style.overflow = '';
+      }
+    };
+  }, [selectedProduct]);
 
   const allFilteredProducts = useMemo(() => {
-    // Merge DB products with featured ones for a unified search/filter experience
-    const mappedDbProducts = dbProducts.map(p => ({
-      id: p._id,
-      name: p.solutionName || '',
-      category: p.category || '',
-      description: p.detailedDescription || '',
-      features: p.keyFeatures || '',
-      specs: p.specifications || '',
-      application: 'Industrial Packaging',
-      image: p.solutionImage || '',
-      tag: 'System'
-    }));
-
-    let combined = [...featuredProducts, ...mappedDbProducts];
+    let combined = [...products];
 
     if (selectedCategory !== 'all') {
       combined = combined.filter(p => p.category === selectedCategory);
     }
 
+    if (selectedBrand !== 'all') {
+      combined = combined.filter(p => p.brand === selectedBrand);
+    }
+
     if (searchQuery.trim()) {
       const fuse = new Fuse(combined, {
-        keys: ['name', 'category', 'description', 'features', 'specs'],
+        keys: ['title', 'category', 'description', 'specs.key', 'specs.value'],
         threshold: 0.35,
       });
       combined = fuse.search(searchQuery).map(result => result.item);
     }
 
     return combined;
-  }, [selectedCategory, dbProducts, featuredProducts, searchQuery]);
+  }, [selectedCategory, selectedBrand, products, searchQuery]);
+
+  // Brand Filtering logic
+  const koenigProducts = useMemo(
+    () => allFilteredProducts.filter(p => p.brand === 'koenig-bauer'),
+    [allFilteredProducts]
+  );
+  const soudronicProducts = useMemo(
+    () => allFilteredProducts.filter(p => p.brand === 'soudronic'),
+    [allFilteredProducts]
+  );
+
+  // Derive available categories per brand (from all products, ignoring current search)
+  const categoriesForBrand = useMemo(() => {
+    const source = selectedBrand === 'all'
+      ? products
+      : products.filter(p => p.brand === selectedBrand);
+    const cats = Array.from(new Set(source.map(p => p.category).filter(Boolean)));
+    return ['all', ...cats];
+  }, [selectedBrand, products]);
+
+  // Reset category when brand changes if current category isn't in new list
+  useEffect(() => {
+    if (!categoriesForBrand.includes(selectedCategory)) {
+      setSelectedCategory('all');
+    }
+  }, [categoriesForBrand, selectedCategory]);
+
+  // Products shown based on active brand tab + category
+  const visibleKoenig = useMemo(() => {
+    if (selectedBrand === 'soudronic') return [];
+    return koenigProducts;
+  }, [selectedBrand, koenigProducts]);
+
+  const visibleSoudronic = useMemo(() => {
+    if (selectedBrand === 'koenig-bauer') return [];
+    return soudronicProducts;
+  }, [selectedBrand, soudronicProducts]);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-primary">
@@ -211,45 +195,114 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Filter & Search Bar - Static following Wix Vibe Pattern */}
-      <div className="relative z-40 py-4 border-b shadow-xl bg-white/80 backdrop-blur-md border-slate-200">
-        <div className="container px-4 mx-auto">
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
-            <div className="flex items-center w-full gap-2 overflow-x-auto lg:w-auto no-scrollbar scroll-smooth">
-              <span className="flex items-center gap-2 mr-4 text-sm font-bold tracking-wider uppercase text-slate-700">
-                <Filter size={14} className="text-accent" /> {t('productsPage.filterBy')}
-              </span>
-              {categories.map((cat) => (
+      {/* Brand Switcher Tabs + Category chips */}
+      <div className="sticky top-[64px] z-30 bg-white border-b border-slate-200 shadow-sm py-3 md:py-2">
+        <div className="container px-4 mx-auto flex flex-col gap-3">
+          
+          {/* Row 1: Search & Brand Filters */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            
+            {/* Desktop Brand Pills */}
+            <div className="hidden md:flex items-center gap-1">
+              {([
+                { id: 'all', label: 'All Brands' },
+                { id: 'koenig-bauer', label: 'Koenig Bauer Metalprint' },
+                { id: 'soudronic', label: 'Soudronic' },
+              ] as const).map(tab => (
                 <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`whitespace-nowrap px-4 py-2 text-sm font-semibold transition-all duration-300 border-b-2 ${selectedCategory === cat
-                    ? 'border-accent text-accent bg-accent/5'
-                    : 'border-transparent text-slate-600 hover:text-primary hover:bg-slate-50 font-medium'
+                  key={tab.id}
+                  onClick={() => setSelectedBrand(tab.id)}
+                  className={`whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedBrand === tab.id
+                      ? tab.id === 'koenig-bauer'
+                        ? 'bg-[#001F5F] text-white shadow-md shadow-[#001F5F]/20'
+                        : tab.id === 'soudronic'
+                          ? 'bg-accent text-white shadow-md shadow-accent/20'
+                          : 'bg-primary text-white shadow-md shadow-primary/20'
+                      : 'text-slate-600 hover:bg-slate-100'
                     }`}
                 >
-                  {cat === 'all' ? t('productsPage.allProducts') : cat}
+                  {tab.label}
                 </button>
               ))}
             </div>
 
-            <div className="relative w-full lg:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+            {/* Mobile Brand Select Dropdown */}
+            <div className="md:hidden relative w-full">
+              <select
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value as any)}
+                className="w-full appearance-none bg-slate-100 border-none text-xs font-bold uppercase tracking-wider text-slate-700 py-3.5 pl-5 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white shadow-sm transition-all"
+              >
+                <option value="all">{t('productsPage.allBrands') || 'All Brands'}</option>
+                <option value="koenig-bauer">Koenig Bauer Metalprint</option>
+                <option value="soudronic">Soudronic</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+                 <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+              </div>
+            </div>
+
+            {/* Search Input */}
+            <div className="relative shrink-0 w-full md:w-auto">
+              <Search className="absolute left-4 md:left-3 top-1/2 -translate-y-1/2 text-slate-400" size={15} />
               <input
                 type="text"
-                placeholder="Search technical solutions..."
+                placeholder={t('productsPage.searchPlaceholder') || "Search systems..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-[#F1F5F9] border-none rounded-xl focus:ring-2 focus:ring-accent focus:bg-white transition-all text-sm font-medium"
+                className="w-full md:w-56 pl-10 pr-4 py-3 md:py-2 bg-slate-100 border-none rounded-xl md:rounded-full focus:ring-2 focus:ring-accent focus:bg-white transition-all text-[13px] md:text-xs font-medium placeholder:text-slate-400 outline-none"
               />
             </div>
           </div>
+
+          {/* Row 2: Category Filters */}
+          {categoriesForBrand.length > 1 && (
+            <div className="flex flex-col md:flex-row md:items-center gap-2 overflow-x-auto no-scrollbar pt-1 md:pt-0 md:pb-1">
+              <span className="text-[10px] hidden md:inline-block font-black uppercase tracking-[0.3em] text-slate-400 shrink-0 mr-1">
+                {t('productsPage.category') || 'Category:'}
+              </span>
+              
+              {/* Desktop Category Chips */}
+              <div className="hidden md:flex items-center gap-2">
+                {categoriesForBrand.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`whitespace-nowrap px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 border ${selectedCategory === cat
+                        ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
+                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700'
+                      }`}
+                  >
+                    {cat === 'all' ? (t('productsPage.allCategories') || 'All Categories') : cat}
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile Category Select */}
+              <div className="md:hidden relative w-full mb-1">
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full appearance-none bg-white border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-600 py-3 pl-4 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-300"
+                >
+                  {categoriesForBrand.map(cat => (
+                    <option key={cat} value={cat}>
+                      {cat === 'all' ? (t('productsPage.allCategories') || 'All Categories') : cat}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+                   <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Main Grid Section */}
-      <section className="py-20">
-        <div className="container px-4 mx-auto">
+      {/* Main Brands Section */}
+      <section className="py-16">
+        <div className="container px-4 mx-auto space-y-20">
           {isLoading ? (
             <div className="flex items-center justify-center min-h-[400px]">
               <LoadingSpinner className="w-12 h-12 text-accent" />
@@ -257,166 +310,319 @@ export default function ProductsPage() {
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
-                key={selectedCategory + searchQuery}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                key={selectedBrand + searchQuery}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+                transition={{ duration: 0.3 }}
               >
-                {allFilteredProducts.map((product, idx) => (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    whileHover={{ y: -8 }}
-                    className="group"
-                  >
-                    <Card className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl">
-                      <div className="relative h-64 overflow-hidden bg-slate-100">
-                        {product.image ? (
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-                            width={600}
-                          />
-                        ) : (
-                          <div className="flex items-center justify-center w-full h-full bg-slate-200">
-                            <Settings className="w-12 h-12 text-slate-400 animate-spin-slow" />
-                          </div>
-                        )}
-                        <div className="absolute inset-0 transition-opacity opacity-0 bg-gradient-to-t from-primary/80 via-transparent group-hover:opacity-100" />
-                        <div className="absolute top-4 left-4">
-                          <Badge className="px-3 py-1 font-bold tracking-wider text-white border-none bg-accent shadow-lg shadow-accent/20">
-                            {product.tag}
-                          </Badge>
+                {/* ── Koenig Bauer Metalprint Group ── */}
+                {visibleKoenig.length > 0 && (
+                  <div>
+                    {/* Brand Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-10 pb-5 border-b-2 border-[#001F5F]/10">
+                      <div className="flex items-center gap-4">
+                        <div className="w-1 h-10 bg-[#001F5F] rounded-full shrink-0" />
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">Authorized Partner</p>
+                          <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
+                            Koenig Bauer Metalprint
+                          </h2>
                         </div>
-                        <button
-                          onClick={() => setSelectedProduct(product)}
-                          className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
-                        >
-                          <Maximize2 size={20} />
-                        </button>
                       </div>
+                      <span className="sm:ml-auto text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 border border-[#001F5F]/30 rounded-full text-[#001F5F] shrink-0">
+                        Metal Decorating &amp; Printing Systems
+                      </span>
+                    </div>
 
-                      <CardContent className="p-8">
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="text-xs font-bold tracking-widest uppercase text-accent">{product.category}</span>
-                          <div className="w-1 h-1 rounded-full bg-slate-300" />
-                          <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">{product.application}</span>
-                        </div>
-                        <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-accent transition-colors font-heading leading-tight">
-                          {product.name}
-                        </h3>
-                        <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
-                          {product.description}
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
-                          <div className="flex items-start gap-2">
-                            <Zap size={16} className="mt-1 text-accent shrink-0" />
-                            <div>
-                              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">Performance</p>
-                              <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.specs.split('|')[0]}</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-2">
-                            <Cpu size={16} className="mt-1 text-accent shrink-0" />
-                            <div>
-                              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">Technology</p>
-                              <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{product.features.split(',')[0]}</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <Button
-                          variant="ghost"
-                          onClick={() => setSelectedProduct(product)}
-                          className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn"
+                    {/* Cards */}
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                      {visibleKoenig.map((product, idx) => (
+                        <motion.div
+                          key={product.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.05 }}
+                          whileHover={{ y: -8 }}
+                          className="group"
                         >
-                          {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+                          <Card className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl">
+                            <div className="relative h-64 overflow-hidden bg-slate-100">
+                              {product.mainImage ? (
+                                <Image
+                                  src={urlFor(product.mainImage).url()}
+                                  alt={product.title}
+                                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                                  width={600}
+                                />
+                              ) : (
+                                <div className="flex items-center justify-center w-full h-full bg-slate-200">
+                                  <Settings className="w-12 h-12 text-slate-400 animate-spin-slow" />
+                                </div>
+                              )}
+                              <div className="absolute inset-0 transition-opacity opacity-0 bg-gradient-to-t from-[#001F5F]/80 via-transparent group-hover:opacity-100" />
+                              <div className="absolute top-4 left-4">
+                                <Badge className="px-3 py-1 font-bold tracking-wider text-white border-none bg-[#001F5F] shadow-lg shadow-[#001F5F]/20">
+                                  System
+                                </Badge>
+                              </div>
+                              <button
+                                onClick={() => setSelectedProduct(product)}
+                                className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
+                              >
+                                <Maximize2 size={20} />
+                              </button>
+                            </div>
+                            <CardContent className="p-8">
+                              <div className="flex items-center gap-2 mb-4">
+                                <span className="text-xs font-bold tracking-widest uppercase text-[#001F5F]">{product.category}</span>
+                                <div className="w-1 h-1 rounded-full bg-slate-300" />
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Industrial Packaging</span>
+                              </div>
+                              <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-[#001F5F] transition-colors font-heading leading-tight">
+                                {product.title}
+                              </h3>
+                              <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
+                                {product.description}
+                              </p>
+                              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+                                {product.specs?.slice(0, 2).map((spec, sIdx) => (
+                                  <div key={sIdx} className="flex items-start gap-2">
+                                    {sIdx === 0 ? <Zap size={16} className="mt-1 text-[#001F5F] shrink-0" /> : <Cpu size={16} className="mt-1 text-[#001F5F] shrink-0" />}
+                                    <div>
+                                      <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedSpecKey(spec.key)}</p>
+                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{spec.value}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              <Button
+                                variant="ghost"
+                                onClick={() => setSelectedProduct(product)}
+                                className="w-full mt-8 font-bold border rounded-xl hover:bg-[#001F5F] hover:text-white border-slate-100 group/btn"
+                              >
+                                {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Divider */}
+                {visibleKoenig.length > 0 && visibleSoudronic.length > 0 && (
+                  <div className="flex items-center gap-6 py-4">
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+                    <Layers size={16} className="text-slate-300 shrink-0" />
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+                  </div>
+                )}
+
+                {/* ── Soudronic Group ── */}
+                {visibleSoudronic.length > 0 && (
+                  <div>
+                    {/* Brand Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-10 pb-5 border-b-2 border-accent/10">
+                      <div className="flex items-center gap-4">
+                        <div className="w-1 h-10 bg-accent rounded-full shrink-0" />
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">Authorized Distributor</p>
+                          <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
+                            Soudronic
+                          </h2>
+                        </div>
+                      </div>
+                      <span className="sm:ml-auto text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 border border-accent/30 rounded-full text-accent shrink-0">
+                        Turnkey Can Making &amp; Welding Systems
+                      </span>
+                    </div>
+
+                    {/* Cards */}
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                      {visibleSoudronic.map((product, idx) => (
+                        <motion.div
+                          key={product.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.05 }}
+                          whileHover={{ y: -8 }}
+                          className="group"
+                        >
+                          <Card className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl">
+                            <div className="relative h-64 overflow-hidden bg-slate-100">
+                              {product.mainImage ? (
+                                <Image
+                                  src={urlFor(product.mainImage).url()}
+                                  alt={product.title}
+                                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                                  width={600}
+                                />
+                              ) : (
+                                <div className="flex items-center justify-center w-full h-full bg-slate-200">
+                                  <Settings className="w-12 h-12 text-slate-400 animate-spin-slow" />
+                                </div>
+                              )}
+                              <div className="absolute inset-0 transition-opacity opacity-0 bg-gradient-to-t from-accent/80 via-transparent group-hover:opacity-100" />
+                              <div className="absolute top-4 left-4">
+                                <Badge className="px-3 py-1 font-bold tracking-wider text-white border-none bg-accent shadow-lg shadow-accent/20">
+                                  System
+                                </Badge>
+                              </div>
+                              <button
+                                onClick={() => setSelectedProduct(product)}
+                                className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
+                              >
+                                <Maximize2 size={20} />
+                              </button>
+                            </div>
+                            <CardContent className="p-8">
+                              <div className="flex items-center gap-2 mb-4">
+                                <span className="text-xs font-bold tracking-widest uppercase text-accent">{product.category}</span>
+                                <div className="w-1 h-1 rounded-full bg-slate-300" />
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Industrial Packaging</span>
+                              </div>
+                              <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-accent transition-colors font-heading leading-tight">
+                                {product.title}
+                              </h3>
+                              <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
+                                {product.description}
+                              </p>
+                              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+                                {product.specs?.slice(0, 2).map((spec, sIdx) => (
+                                  <div key={sIdx} className="flex items-start gap-2">
+                                    {sIdx === 0 ? <Zap size={16} className="mt-1 text-accent shrink-0" /> : <Cpu size={16} className="mt-1 text-accent shrink-0" />}
+                                    <div>
+                                      <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedSpecKey(spec.key)}</p>
+                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{spec.value}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              <Button
+                                variant="ghost"
+                                onClick={() => setSelectedProduct(product)}
+                                className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn"
+                              >
+                                {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Empty state */}
+                {visibleKoenig.length === 0 && visibleSoudronic.length === 0 && (
+                  <div className="flex flex-col items-center justify-center min-h-[300px] text-slate-400 gap-3">
+                    <Search size={36} className="opacity-30" />
+                    <p className="text-sm font-semibold">{t('productsPage.emptyProducts')}</p>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           )}
-
-
         </div>
       </section>
 
-      {/* Machinery Details Modal */}
-      <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden border-none rounded-3xl">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative h-64 md:h-full bg-slate-900">
-              {selectedProduct?.image && (
-                <Image
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  className="object-cover w-full h-full opacity-80"
-                  width={800}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent" />
-              <div className="absolute bottom-8 left-8">
-                <Badge className="mb-4 bg-accent">{selectedProduct?.tag}</Badge>
-                <h2 className="text-3xl font-bold text-white font-heading">{selectedProduct?.name}</h2>
-              </div>
-            </div>
-            <div className="p-10 bg-white">
-              <div className="mb-6">
-                <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{selectedProduct?.category}</span>
+      {/* Machinery Details Drawer/Modal */}
+      {isMounted && createPortal(
+        <AnimatePresence>
+          {selectedProduct && (
+            <div className="fixed inset-0 z-[9999] overflow-y-auto w-[100vw] h-[100vh]">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProduct(null)}
+              className="fixed inset-0 bg-primary/60 backdrop-blur-sm"
+              style={{ position: 'fixed', top: 0, left: 0 }}
+            />
+            
+            {/* Panel/Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 h-[100vh] w-[100vw] md:w-[480px] bg-white shadow-2xl z-[10000] overflow-y-auto flex flex-col"
+              style={{ position: 'fixed', right: 0, top: 0 }}
+            >
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="absolute shadow-lg z-20 top-6 right-6 flex items-center justify-center w-10 h-10 bg-white hover:bg-slate-100 text-slate-700 rounded-full transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="relative h-72 shrink-0 bg-slate-900 overflow-hidden">
+                {selectedProduct.mainImage && (
+                  <Image
+                    src={urlFor(selectedProduct.mainImage).url()}
+                    alt={selectedProduct.title}
+                    className="object-cover w-full h-full opacity-80"
+                    width={800}
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                <div className="absolute bottom-6 left-8 right-8">
+                  <Badge className="mb-4 bg-accent">System</Badge>
+                  <h2 className="text-3xl font-bold text-white font-heading leading-tight">{selectedProduct.title}</h2>
+                </div>
               </div>
 
-              <div className="space-y-8">
-                <div>
-                  <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Overview</h4>
-                  <p className="text-sm leading-relaxed text-slate-600">{selectedProduct?.description}</p>
+              <div className="p-8 flex-1 flex flex-col bg-white">
+                <div className="mb-6">
+                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{selectedProduct.category}</span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 p-6 rounded-2xl bg-slate-50">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm">
-                      <Zap size={18} className="text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Specifications</p>
-                      <p className="text-sm font-semibold text-primary">{selectedProduct?.specs}</p>
-                    </div>
+                <div className="space-y-8 flex-1">
+                  <div>
+                    <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.viewSpecs') || 'Overview'}</h4>
+                    <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{selectedProduct.description}</p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm">
-                      <Cpu size={18} className="text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Key Features</p>
-                      <p className="text-sm font-semibold text-primary">{selectedProduct?.features}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm">
-                      <Shield size={18} className="text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Industry Application</p>
-                      <p className="text-sm font-semibold text-primary">{selectedProduct?.application}</p>
+
+                  <div className="flex flex-col gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    {selectedProduct.specs?.map((spec, idx) => (
+                      <div key={idx} className="flex items-center gap-4 border-b border-slate-200/60 pb-5 last:border-0 last:pb-0">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
+                          {idx % 3 === 0 ? <Zap size={18} className="text-accent" /> : idx % 3 === 1 ? <Cpu size={18} className="text-accent" /> : <Shield size={18} className="text-accent" />}
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{getLocalizedSpecKey(spec.key)}</p>
+                          <p className="text-sm font-semibold text-primary">{spec.value}</p>
+                        </div>
+                      </div>
+                    ))}
+                    
+                    <div className="flex items-center gap-4 pt-5 border-t border-slate-200/60">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
+                        <Layers size={18} className="text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Industry Application</p>
+                        <p className="text-sm font-semibold text-primary">Industrial Packaging</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white">
-                  {t('productsPage.requestQuote')}
-                </Button>
+                <a href={`/request-quotation?product=${encodeURIComponent(selectedProduct.title)}`} className="w-full block mt-10">
+                  <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white shrink-0">
+                    {t('productArsenal.requestInfo') || 'Request Information'}
+                  </Button>
+                </a>
               </div>
+            </motion.div>
             </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       <Footer />
     </div>

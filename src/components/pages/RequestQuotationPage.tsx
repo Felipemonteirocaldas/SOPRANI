@@ -38,6 +38,20 @@ export default function RequestQuotationPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const product = params.get('product');
+      if (product) {
+        setFormData(prev => ({
+          ...prev,
+          productOrService: 'machinery',
+          machineType: product
+        }));
+      }
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({

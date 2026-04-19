@@ -273,7 +273,7 @@ export default function Header() {
                 className="flex items-center gap-1.5 text-xs font-bold text-primary/80 hover:text-accent px-2 py-1 relative transition-colors duration-300"
                 aria-label="Language selection"
               >
-                {i18n.language.toUpperCase()}
+                {i18n.language.split('-')[0].toUpperCase()}
                 <ChevronDown size={14} className="text-primary/40 group-hover:rotate-180 transition-transform duration-300" />
                 <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-accent -translate-x-1/2 transition-all duration-300 ease-out group-hover:w-[60%] rounded-full opacity-0 group-hover:opacity-100"></span>
               </button>
@@ -325,7 +325,7 @@ export default function Header() {
                   onClick={() => setMobileLangOpen(prev => !prev)}
                   aria-label="Select language"
                 >
-                  {i18n.language.toUpperCase()}
+                  {i18n.language.split('-')[0].toUpperCase()}
                   <ChevronDown size={14} className={cn("text-gray-400 transition-transform duration-200", mobileLangOpen && "rotate-180")} />
                 </button>
 

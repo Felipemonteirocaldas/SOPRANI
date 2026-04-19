@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import {
   motion,
@@ -14,8 +15,12 @@ import {
   BarChart3,
   Layers,
   Maximize2,
-  Activity
+  Activity,
+  Loader2
 } from 'lucide-react';
+import { useProducts } from '@/hooks/useSanity';
+import { urlFor } from '@/lib/sanityClient';
+import { SanityProduct } from '@/types/sanity';
 
 // ─────────────────────────────────────────────
 // 📦 TYPES
@@ -26,26 +31,34 @@ interface ProductSpec {
   features: string[];
 }
 
-interface Product {
-  id: string;
-  image: string;
+interface BrandGroup {
+  brand: 'koenig-bauer' | 'soudronic';
+  label: string;
+  specialty: string;
+  accentColor: string;
 }
 
-const products: Product[] = [
-  { id: 'line3p', image: '/images/products/line3p.png' },
-  { id: 'coating', image: '/images/products/coating.png' },
-  { id: 'aerosol', image: '/images/products/aerosol.png' },
-  { id: 'pail', image: '/images/products/pail.png' },
-  { id: 'press', image: '/images/products/press.png' },
-  { id: 'welder', image: '/images/products/welder.png' },
-];
+const BRAND_CONFIG: Record<'koenig-bauer' | 'soudronic', { label: string; specialty: string; accentColor: string }> = {
+  'koenig-bauer': {
+    label: 'Koenig Bauer Metalprint',
+    specialty: 'Metal Decorating & Printing Systems',
+    accentColor: '#001F5F',
+  },
+  'soudronic': {
+    label: 'Soudronic',
+    specialty: 'Turnkey Can Making & Welding Systems',
+    accentColor: '#DC2626',
+  },
+};
+
+
 
 // ─────────────────────────────────────────────
 // 🃏 PRODUCT CARD COMPONENT
 // ─────────────────────────────────────────────
 const ProductCard: React.FC<{
-  product: Product;
-  onOpenSpecs: (id: string) => void;
+  product: SanityProduct;
+  onOpenSpecs: (product: SanityProduct) => void;
   index: number;
 }> = ({ product, onOpenSpecs, index }) => {
   const { t } = useTranslation();
@@ -57,8 +70,8 @@ const ProductCard: React.FC<{
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -10 }}
-      className="relative group h-[450px] w-full cursor-pointer"
-      onClick={() => onOpenSpecs(product.id)}
+      className="relative group min-h-[500px] w-full cursor-pointer"
+      onClick={() => onOpenSpecs(product)}
     >
       {/* ✧ Background Glow - Softer for light theme */}
       <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 blur-[60px] transition-opacity duration-700" />
@@ -70,10 +83,10 @@ const ProductCard: React.FC<{
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/[0.02] via-transparent to-primary/[0.05] opacity-40" />
 
         {/* Product Image - with scale transition */}
-        <div className="relative z-10 w-full h-48 mb-8">
+        <div className="relative z-10 w-full h-64 mb-8">
           <img
-            src={product.image}
-            alt={product.id}
+            src={urlFor(product.mainImage).url()}
+            alt={product.title}
             className="w-full h-full object-contain filter group-hover:drop-shadow-[0_15px_30px_rgba(0,31,95,0.12)] transition-all duration-700 ease-out group-hover:scale-110"
           />
         </div>
@@ -84,7 +97,7 @@ const ProductCard: React.FC<{
             Industrial Solution
           </span>
           <h3 className="text-2xl font-heading font-bold text-primary mb-6 tracking-tight">
-            {t(`productArsenal.specs.${product.id}.title`)}
+            {product.title}
           </h3>
 
           <div className="flex justify-center">
@@ -108,22 +121,57 @@ const ProductCard: React.FC<{
 // 🔬 SPECS MODAL COMPONENT
 // ─────────────────────────────────────────────
 const SpecsModal: React.FC<{
-  product: Product | null;
+  product: SanityProduct | null;
   onClose: () => void;
 }> = ({ product, onClose }) => {
   const { t } = useTranslation();
-  if (!product) return null;
+  const [isMounted, setIsMounted] = React.useState(false);
 
-  const specData = t(`productArsenal.specs.${product.id}`, { returnObjects: true }) as any;
-  const keys = Object.keys(specData).filter(key => key !== 'title' && key !== 'features');
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8"
-    >
+  const features = product?.specs || [];
+
+  const getLocalizedSpecKey = (key?: string) => {
+    if (!key) return '';
+    const rawKey = key.toLowerCase().trim();
+    const paramMap: Record<string, string> = {
+      'maximum sheet size': 'maxSheetSize',
+      'minimum sheet size': 'minSheetSize',
+      'sheet thickness': 'sheetThickness',
+      'production speed': 'productionSpeed',
+      'production output': 'productionOutput',
+      'coating speed': 'coatingSpeed',
+      'coating types': 'coatingTypes',
+      'size of printing plate': 'maxPrintingArea',
+      'maximum printing area': 'maxPrintingArea',
+      'energy savings': 'energySavings',
+      'technology': 'technology',
+      'feeding capacity': 'feedingCapacity',
+      'heating type': 'heatingType',
+      'container types': 'containerTypes',
+      'can shapes': 'canShapes',
+      'test types': 'testTypes',
+      'application': 'application',
+      'compatibility': 'compatibility'
+    };
+    const mappedKey = paramMap[rawKey];
+    if (mappedKey) return t(`productSpecs.${mappedKey}`);
+    return key;
+  };
+
+  if (!isMounted) return null;
+
+  return createPortal(
+    <AnimatePresence>
+      {product && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8"
+        >
       {/* Backdrop - Slightly lighter for light theme */}
       <div
         className="absolute inset-0 bg-primary/40 backdrop-blur-md"
@@ -155,8 +203,8 @@ const SpecsModal: React.FC<{
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              src={product.image}
-              alt={product.id}
+              src={urlFor(product.mainImage).url()}
+              alt={product.title}
               className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
             />
 
@@ -166,7 +214,7 @@ const SpecsModal: React.FC<{
               </div>
               <div className="w-1 h-1 rounded-full bg-slate-200" />
               <div className="text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
-                SPN-{product.id.toUpperCase()}
+                SPN-{product.slug.current.toUpperCase()}
               </div>
             </div>
           </div>
@@ -178,44 +226,41 @@ const SpecsModal: React.FC<{
                 Technical Mastery
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-black text-primary mb-8">
-                {specData.title}
+                {product.title}
               </h2>
+
+              {/* Description */}
+              <p className="text-slate-600 text-sm leading-relaxed mb-10 font-paragraph">
+                {product.description}
+              </p>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-1 gap-6 mb-12">
-                {keys.map((key) => (
-                  <div key={key} className="border-l-2 border-slate-200 pl-6 py-1 hover:border-accent transition-colors group">
-                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-accent/60 transition-colors">{key}</p>
-                    <p className="text-primary text-xl font-heading font-bold">{specData[key]}</p>
+                {features.map((spec, idx) => (
+                  <div key={idx} className="border-l-2 border-slate-200 pl-6 py-1 hover:border-accent transition-colors group">
+                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-accent/60 transition-colors">
+                      {getLocalizedSpecKey(spec.key)}
+                    </p>
+                    <p className="text-primary text-xl font-heading font-bold">{spec.value}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Features List */}
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2 mb-6">
-                  <Cpu size={14} className="text-accent" /> Key Features
-                </h4>
-                <div className="grid grid-cols-1 gap-3">
-                  {specData.features?.map((feature: string, i: number) => (
-                    <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 border border-slate-100 group transition-all">
-                      <div className="w-1.5 h-1.5 bg-accent" />
-                      <span className="text-slate-700 text-sm font-paragraph">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
             </div>
 
             <div className="mt-12 flex flex-col gap-4">
-              <button className="w-full py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary/10">
-                Request Information <ChevronRight size={14} />
-              </button>
+              <a href={`/request-quotation?product=${encodeURIComponent(product.title)}`} className="w-full py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary/10">
+                {t('productArsenal.requestInfo') || 'Request Information'} <ChevronRight size={14} />
+              </a>
             </div>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+        </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
   );
 };
 
@@ -224,7 +269,8 @@ const SpecsModal: React.FC<{
 // ─────────────────────────────────────────────
 export default function ProductArsenalSection() {
   const { t } = useTranslation();
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { data: products, loading, error } = useProducts();
+  const [selectedProduct, setSelectedProduct] = useState<SanityProduct | null>(null);
   const containerRef = useRef<HTMLElement>(null);
 
   // Parallax Scroll Effect
@@ -296,34 +342,131 @@ export default function ProductArsenalSection() {
           </motion.p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
-          {products.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              index={index}
-              onOpenSpecs={(id) => setSelectedProduct(products.find(p => p.id === id) || null)}
-            />
-          ))}
+        {/* Content */}
+        <div className="space-y-20 md:space-y-20">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-40 gap-4">
+              <Loader2 className="w-12 h-12 text-accent animate-spin" />
+              <p className="text-xs font-black uppercase tracking-[0.4em] text-slate-400">Loading Arsenal...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-40">
+              <p className="text-sm font-bold text-red-500 uppercase tracking-widest">Mastery Temporarily Offline</p>
+            </div>
+          ) : products.length === 0 ? (
+            <div className="text-center py-40">
+              <p className="text-sm font-black uppercase tracking-widest text-slate-400">No Industrial Systems Found</p>
+            </div>
+          ) : (
+            (['koenig-bauer', 'soudronic'] as const).map((brandKey) => {
+              const config = BRAND_CONFIG[brandKey];
+              const allBrandProducts = products.filter(p => p.brand === brandKey);
+              const brandProducts = allBrandProducts.slice(0, 3);
+              
+              if (allBrandProducts.length === 0) return null;
+
+              return (
+                <div key={brandKey}>
+                  {/* Brand Header */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.05 }}
+                    className="flex flex-col sm:flex-row sm:items-end gap-4 mb-10 md:mb-14 pb-6 border-b border-slate-200"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="w-1 h-12 shrink-0 rounded-full"
+                        style={{ background: config.accentColor }}
+                      />
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-1">
+                          Authorized Partner
+                        </p>
+                        <h3 className="text-2xl md:text-3xl font-heading font-black text-primary tracking-tight">
+                          {config.label}
+                        </h3>
+                      </div>
+                    </div>
+                    <span
+                      className="sm:ml-auto text-[11px] font-bold uppercase tracking-widest px-4 py-2 border rounded-full shrink-0"
+                      style={{ color: config.accentColor, borderColor: `${config.accentColor}40` }}
+                    >
+                      {config.specialty}
+                    </span>
+                  </motion.div>
+
+                  {/* Products Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    {brandProducts.map((product, index) => (
+                      <ProductCard
+                        key={product._id}
+                        product={product}
+                        index={index}
+                        onOpenSpecs={(p) => setSelectedProduct(p)}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Per-Brand View All Shortcut */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-10 flex justify-start"
+                  >
+                    <a
+                      href={`/products?brand=${brandKey}`}
+                      className="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-primary/40 hover:text-accent transition-colors"
+                    >
+                      View all {config.label} products
+                      <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </motion.div>
+                </div>
+              );
+            })
+          )}
         </div>
+
+        {/* View All Products CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-24 flex justify-center"
+        >
+          <a
+            href="/products"
+            className="group relative flex items-center gap-4 px-10 py-5 bg-primary text-white overflow-hidden shadow-2xl hover:shadow-accent/30 transition-all duration-500"
+          >
+            {/* Gloss effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            
+            <span className="relative z-10 text-sm font-black uppercase tracking-[0.3em]">
+              {t('productsPage.allProducts') || 'View All Products'}
+            </span>
+            <ChevronRight size={18} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300 text-accent" />
+            
+            {/* Border outline animation */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </a>
+        </motion.div>
       </div>
 
       {/* ✧ Specs Modal Overlay */}
-      <AnimatePresence>
-        {selectedProduct && (
-          <SpecsModal
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-          />
-        )}
-      </AnimatePresence>
+      <SpecsModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
 
       {/* ✧ Bottom Label Overlay */}
       <div className="absolute bottom-12 left-12 hidden lg:block opacity-30 pointer-events-none">
         <div className="flex flex-col gap-1">
           <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">Engineered by Soprani</span>
-          <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">Global Precision Standard ©2024</span>
+          <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">Global Precision Standard &copy;{new Date().getFullYear()}</span>
         </div>
       </div>
     </section>

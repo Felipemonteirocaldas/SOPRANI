@@ -70,8 +70,6 @@ const router = createBrowserRouter([
     ],
   },
 ], {
-  // Removido o import.meta.env.BASE_NAME para evitar conflitos com a Vercel
-  // A não ser que você vá hospedar em uma subpasta (ex: site.com/projeto/)
   basename: "/",
 });
 

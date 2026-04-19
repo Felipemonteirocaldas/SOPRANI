@@ -341,56 +341,14 @@
     "formatRange": "Diameters:",
     "power": "Consumption:",
     "dimensions": "Dimensions:",
-    "featured": {
-      "line3p": {
-        "name": "SP-3000 Food Can Line",
-        "category": "Complete Lines",
-        "description": "High-speed automated system for 3-piece food can production.",
-        "features": "Quick format changeovers, full synchronization, integrated vision inspection.",
-        "specs": "Capacity: Up to 600 cpm | Diameters: 52mm - 99mm | Standard: CE/ISO",
-        "application": "Food (Tomato, preserves, vegetables)"
-      },
-      "aerosol": {
-        "name": "AeroTech Weld-X System",
-        "category": "Aerosol",
-        "description": "Precision welding and shaping station for steel aerosol cans.",
-        "features": "Low-consumption welding, electronically controlled necking, high repeatability.",
-        "specs": "Capacity: 450 cpm | Diameters: 45mm - 65mm | Material: Tinplate",
-        "application": "Cosmetics, Insecticides, Technical Products"
-      },
-      "press": {
-        "name": "PowerPress EOE-500",
-        "category": "Components",
-        "description": "High-cadence press specifically for Easy Open End (EOE) manufacturing.",
-        "features": "Precision dies, servo-assisted feeding system, automatic lubrication.",
-        "specs": "Cadence: 500 strokes/min | Material: Steel/Tinplate | Precision: +/- 0.01mm",
-        "application": "Easy open lids, Standard ends"
-      },
-      "welder": {
-        "name": "SopraWeld HF-75 Induction",
-        "category": "Body & Welding",
-        "description": "High-frequency induction welder for can body side-seams.",
-        "features": "Next-generation inverter technology, optimized cooling, invisible seams.",
-        "specs": "Speed: Up to 80 m/min | Height: 50mm - 300mm | Power: 75kW",
-        "application": "Cylindrical steel can bodies"
-      },
-      "coating": {
-        "name": "CleanCoat Pro 5 Line",
-        "category": "Lacquering & Curing",
-        "description": "Integrated coating and thermal curing unit for metallic protection.",
-        "features": "Mist-free uniform application, optional UV/Thermal curing, digital micron control.",
-        "specs": "Width: Up to 1200mm | Speed: 60 ppm | Sensors: Integrated IR",
-        "application": "Food cans, aerosols, industrial pails"
-      },
-      "pail": {
-        "name": "PailMaster EXP-18/20",
-        "category": "General Line",
-        "description": "Rotary expander for 18L and 20L industrial steel pail shaping.",
-        "features": "Controlled hydraulic expansion, reinforcement ring forming, high robustness.",
-        "specs": "Diameter: Up to 300mm | Volume: 18L-25L | Cycle: 15 pails/min",
-        "application": "Paints, Varnishes, Industrial chemicals"
-      }
-    }
+    "authorizedPartner": "Authorized Partner",
+    "authorizedDistributor": "Authorized Distributor",
+    "industryApplication": "Industry Application",
+    "industrialPackaging": "Industrial Packaging",
+    "searchPlaceholder": "Search systems...",
+    "category": "Category",
+    "brand": "Brand",
+    "viewAll": "View all {{brand}} products"
   },
   "machineryPage": {
     "heroTitle": "Performance Machinery",
@@ -589,49 +547,43 @@
     "subtitle": "Explore the systems that define the global industrial standard. Robust solutions for high performance and absolute precision.",
     "viewSpecs": "Specifications",
     "close": "Close",
-    "specs": {
-      "line3p": {
-        "title": "3-Piece Lines",
-        "capacity": "Up to 1200 cans/min",
-        "material": "Tinplate / TFS",
-        "automation": "Level 5 - Fully Integrated",
-        "features": ["High-Frequency Welding", "Automatic Palletizing", "Real-Time Monitoring"]
-      },
-      "coating": {
-        "title": "Coating Systems",
-        "capacity": "High-Speed (UV/Gas Curing)",
-        "precision": "± 0.05μm thickness",
-        "eco": "Thermal Energy Recovery",
-        "features": ["Viscosity Control", "Quick Cylinder Change", "Certified Hygiene"]
-      },
-      "aerosol": {
-        "title": "Aerosol Lines",
-        "safety": "ATEX Zone 1 Certification",
-        "yield": "99.8% Efficiency",
-        "config": "Modular / Turn-Key",
-        "features": ["Reductive Crimping", "Water Bath Testing", "High-Precision Valves"]
-      },
-      "pail": {
-        "title": "Pails & Buckets",
-        "volume": "5L to 30L",
-        "construction": "Conical / Cylindrical",
-        "welding": "Soudronic Super-Pulse",
-        "features": ["Automatic Handle Insertion", "Bottom Expansion", "Electrostatic Inner Painting"]
-      },
-      "press": {
-        "title": "Industrial Presses",
-        "force": "300 to 800 Tons",
-        "strokes": "High-Speed Dynamic Balancing",
-        "die": "Changing Tools in < 15min",
-        "features": ["Progressive Dies", "Centralized Lubrication", "CNC Siemens / AB"]
-      },
-      "welder": {
-        "title": "Welding Systems",
-        "technology": "Laser / Electric Welding",
-        "speed": "Constant Linear Evolution",
-        "control": "Elite HMI Interface",
-        "features": ["Sensor Gap Detection", "Automatic Calibration", "Zero Scrap Logic"]
-      }
-    }
+    "loading": "Loading Arsenal...",
+    "offline": "Mastery Temporarily Offline",
+    "notFound": "No Industrial Systems Found",
+    "technicalMastery": "Technical Mastery",
+    "requestInfo": "Request Information",
+    "status": "Status",
+    "online": "Online",
+    "authorizedPartner": "Authorized Partner"
+  },
+  "productSpecs": {
+    "maxSheetSize": "Maximum sheet size",
+    "minSheetSize": "Minimum sheet size",
+    "sheetThickness": "Sheet thickness",
+    "productionSpeed": "Production speed",
+    "coatingSpeed": "Coating speed",
+    "coatingTypes": "Coating types",
+    "maxPrintingArea": "Maximum printing area",
+    "energySavings": "Energy savings",
+    "technology": "Technology",
+    "productionOutput": "Production output",
+    "feedingCapacity": "Feeding capacity",
+    "heatingType": "Heating type",
+    "containerTypes": "Container types",
+    "canShapes": "Can shapes",
+    "testTypes": "Test types",
+    "application": "Application",
+    "compatibility": "Compatibility"
+  },
+  "productsPage": {
+    "heroTitle": "Industrial Equipment & Systems",
+    "heroSub": "High-performance machinery, complete production lines, and systems for metal packaging manufacturing.",
+    "allBrands": "All Brands",
+    "searchPlaceholder": "Search systems...",
+    "category": "Category:",
+    "allCategories": "All Categories",
+    "viewDetails": "Technical Specifications",
+    "emptyProducts": "No Industrial Systems Found",
+    "allProducts": "View All Products"
   }
 }

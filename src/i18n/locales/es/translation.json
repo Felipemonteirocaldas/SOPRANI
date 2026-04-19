@@ -273,7 +273,7 @@
     "aboutInfra3T": "Partnerships de Élite",
     "aboutInfra3D": "Como distribuidores autorizados del grupo Soudronic para el norte de Italia y socios de Koenig & Bauer Metal Print, nuestros clientes tienen acceso directo a repuestos originales y al soporte técnico de más alto nivel del sector.",
     "aboutCommitTitle": "Nuestro Compromiso",
-    "aboutCommitP": "Nuestro objetivo va más allá del suministro de maquinaria — buscamos construir asociaciones a largo plazo basadas en la experiencia técnica y la capacidad de ofrecer soluciones a medida para cada desafío en la producción industrial. Ya sea produciendo latas para alimentos y bebidas, aerosoles o envases industriales, Soprani Engineering es el enlace que conecta su fábrica con la tecnología de vanguardia."
+    "aboutCommitP": "Nuestro objetivo va más allá del suministro de maquinaria — buscamos construir asociaciones a largo plazo basadas en la experiencia técnica y la capacidad de ofrecer soluciones a medida para cada desafío en la producción industrial. Ya sea produciendo latas para alimentos y bebidas, aerosoles o envases industriales, Soprani Engineering is el enlace que conecta su fábrica con la tecnología de vanguardia."
   },
   "contactPage": {
     "heroTitle": "Conectividad Global",
@@ -336,12 +336,27 @@
     "btnSubscribe": "Suscribirse"
   },
   "productsPage": {
-    "heroTitle": "Soluciones y Sistemas",
-    "heroSub": "Portafolio técnico enfocado en eficiencia y confiabilidad para la industria metalúrgica.",
-    "filterBy": "Sector:",
-    "allProducts": "Sistemas Completos",
+    "heroTitle": "Soluciones y Sistemas de Alto Rendimiento",
+    "heroSub": "Ingeniería de vanguardia para la manufactura de envases metálicos. Líneas completas y maquinaria especializada para producción global.",
+    "filterBy": "Proceso:",
+    "allProducts": "Todos los Sistemas",
     "keyFeatures": "Atributos Técnicos:",
-    "emptyProducts": "Ningún sistema encontrado para esta selección."
+    "emptyProducts": "Ningún sistema encontrado para esta selección.",
+    "viewDetails": "Especificaciones Técnicas",
+    "requestQuote": "Solicitar Cotización Técnica",
+    "featuredTitle": "Maquinaria Destacada",
+    "cadence": "Cadencia:",
+    "formatRange": "Diámetros:",
+    "power": "Consumo:",
+    "dimensions": "Dimensiones:",
+    "authorizedPartner": "Socio Autorizado",
+    "authorizedDistributor": "Distribuidor Autorizado",
+    "industryApplication": "Aplicación Industrial",
+    "industrialPackaging": "Embalaje Industrial",
+    "searchPlaceholder": "Buscar sistemas...",
+    "category": "Categoría",
+    "brand": "Marca",
+    "viewAll": "Ver todos los productos {{brand}}"
   },
   "machineryPage": {
     "heroTitle": "Maquinaria de Performance",
@@ -421,7 +436,7 @@
     "whyTitle": "Ventaja Competitiva Soprani",
     "b1T": "Acceso Directo",
     "b1D": "Conexión directa con productores, eliminando exceso de intermediarios.",
-    "b2T": "Optimización Logística",
+    "b2T": "Otimización Logística",
     "b2D": "Entrega vía hubs portuarios estratégicos para reducir plazos y costos.",
     "b3T": "Garantía Técnica",
     "b3D": "Control estricto de dureza, espesor y recubrimiento según pedido.",
@@ -540,49 +555,43 @@
     "subtitle": "Explore los sistemas que definen el estándar industrial global. Soluciones robustas para alto rendimiento y precisión absoluta.",
     "viewSpecs": "Especificaciones",
     "close": "Cerrar",
-    "specs": {
-      "line3p": {
-        "title": "Líneas de 3 Piezas",
-        "capacity": "Hasta 1200 latas/min",
-        "material": "Hojalata / TFS",
-        "automation": "Nivel 5 - Totalmente Integrado",
-        "features": ["Soldadura de Alta Frecuencia", "Paletización Automática", "Monitoreo en Tiempo Real"]
-      },
-      "coating": {
-        "title": "Sistemas de Barnizado",
-        "capacity": "Alta Velocidad (Curado UV/Gás)",
-        "precision": "± 0.05μm de espesor",
-        "eco": "Recuperación Térmica de Energía",
-        "features": ["Control de Viscosidad", "Cambio Rápido de Cilindro", "Higiene Certificada"]
-      },
-      "aerosol": {
-        "title": "Líneas de Aerosoles",
-        "safety": "Certificación ATEX Zona 1",
-        "yield": "99.8% Eficiencia",
-        "config": "Modular / Llave en mano",
-        "features": ["Cremado de Reducción", "Prueba de Baño de Agua", "Válvulas de Alta Precisión"]
-      },
-      "pail": {
-        "title": "Baldes & Pails",
-        "volume": "5L a 30L",
-        "construction": "Cónica / Cilíndrica",
-        "welding": "Soudronic Super-Pulso",
-        "features": ["Inserción de Asa Automática", "Expansión de Fondo", "Pintura Interna Electrostática"]
-      },
-      "press": {
-        "title": "Prensas Industriais",
-        "force": "300 a 800 Toneladas",
-        "strokes": "High-Speed Dynamic Balancing",
-        "die": "Cambio de Herramental en < 15min",
-        "features": ["Matrices Progresivas", "Lubricación Centralizada", "CNC Siemens / AB"]
-      },
-      "welder": {
-        "title": "Sistemas de Soldadura",
-        "technology": "Soldadura Láser / Eléctrica",
-        "speed": "Evolución Lineal Constante",
-        "control": "Interfaz HMI de Elite",
-        "features": ["Detección de Gap por Sensor", "Calibración Automática", "Lógica de Cero Desperdicio"]
-      }
-    }
+    "loading": "Cargando Arsenal...",
+    "offline": "Maestría Temporalmente Fuera de Línea",
+    "notFound": "No se Encontraron Sistemas Industriales",
+    "technicalMastery": "Maestría Técnica",
+    "requestInfo": "Solicitar Información",
+    "status": "Estado",
+    "online": "En Línea",
+    "authorizedPartner": "Socio Autorizado"
+  },
+  "productSpecs": {
+    "maxSheetSize": "Formato máximo de la chapa",
+    "minSheetSize": "Formato mínimo de la chapa",
+    "sheetThickness": "Espesor de la chapa",
+    "productionSpeed": "Velocidad de producción",
+    "coatingSpeed": "Velocidad de barnizado",
+    "coatingTypes": "Tipos de barniz",
+    "maxPrintingArea": "Área máxima de impresión",
+    "energySavings": "Ahorro de energía",
+    "technology": "Tecnología",
+    "productionOutput": "Capacidad de producción",
+    "feedingCapacity": "Capacidad de alimentación",
+    "heatingType": "Tipo de calentamiento",
+    "containerTypes": "Tipos de recipiente",
+    "canShapes": "Formas de lata",
+    "testTypes": "Tipos de prueba",
+    "application": "Aplicación",
+    "compatibility": "Compatibilidad"
+  },
+  "productsPage": {
+    "heroTitle": "Equipos y Sistemas Industriales",
+    "heroSub": "Maquinaria de alto rendimiento, líneas de producción completas y sistemas para la fabricación de envases metálicos.",
+    "allBrands": "Todas las Marcas",
+    "searchPlaceholder": "Buscar sistemas...",
+    "category": "Categoría:",
+    "allCategories": "Todas las Categorías",
+    "viewDetails": "Especificaciones Técnicas",
+    "emptyProducts": "Ningún sistema encontrado",
+    "allProducts": "Todos los Productos"
   }
 }

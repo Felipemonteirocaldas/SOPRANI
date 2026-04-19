@@ -1,6 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { BaseCrudService } from '@/integrations';
-import { NewsandUpdates, IndustryEvents } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { Calendar, User, MapPin, ExternalLink, Newspaper, CalendarDays, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
@@ -8,6 +6,8 @@ import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { cn } from "@/lib/utils";
+import { useNewsPosts, useEvents } from '@/hooks/useSanity';
+import { urlFor } from '@/lib/sanityClient';
 
 const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -54,29 +54,9 @@ export default function NewsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') === 'events' ? 'events' : 'news';
   
-  const [news, setNews] = useState<NewsandUpdates[]>([]);
-  const [events, setEvents] = useState<IndustryEvents[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async () => {
-    setIsLoading(true);
-    try {
-      const [newsResult, eventsResult] = await Promise.all([
-        BaseCrudService.getAll<NewsandUpdates>('news', [], { limit: 50 }),
-        BaseCrudService.getAll<IndustryEvents>('events', [], { limit: 50 })
-      ]);
-      setNews(newsResult.items);
-      setEvents(eventsResult.items);
-    } catch (error) {
-      console.error('Failed to load news or events:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { data: news, loading: newsLoading } = useNewsPosts();
+  const { data: events, loading: eventsLoading } = useEvents();
+  const isLoading = newsLoading || eventsLoading;
 
   const setTab = (tab: 'news' | 'events') => {
     if (tab === 'news') {
@@ -156,11 +136,11 @@ export default function NewsPage() {
                 {news.map((item, index) => (
                   <AnimatedElement key={item._id} delay={index * 50}>
                     <article className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full border border-gray-100">
-                      {item.coverImage && (
+                      {item.mainImage && (
                         <div className="aspect-video overflow-hidden">
                           <Image 
-                            src={item.coverImage} 
-                            alt={item.headline || 'News image'}
+                            src={urlFor(item.mainImage).url()} 
+                            alt={item.title || 'News image'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             width={600}
                           />
@@ -169,11 +149,11 @@ export default function NewsPage() {
                       
                       <div className="p-8 flex flex-col flex-grow">
                         <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
-                          {item.publicationDate && (
+                          {item.publishedAt && (
                             <div className="flex items-center gap-1.5">
                               <Calendar size={12} className="text-accent" />
                               <span>
-                                {new Date(item.publicationDate).toLocaleDateString('en-US', { 
+                                {new Date(item.publishedAt).toLocaleDateString('en-US', { 
                                   year: 'numeric', 
                                   month: 'short', 
                                   day: 'numeric' 
@@ -181,21 +161,16 @@ export default function NewsPage() {
                               </span>
                             </div>
                           )}
-                          {item.author && (
-                            <div className="flex items-center gap-1.5">
-                              <User size={12} className="text-accent" />
-                              <span>{item.author}</span>
-                            </div>
-                          )}
+                          {/* Author removal since it's not in the basic schema but can be added back if needed */}
                         </div>
                         
                         <h3 className="text-xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors flex-grow">
-                          {item.headline}
+                          {item.title}
                         </h3>
                         
-                        {item.content && (
+                        {item.excerpt && (
                           <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
-                            {item.content}
+                            {item.excerpt}
                           </p>
                         )}
                         
@@ -222,11 +197,11 @@ export default function NewsPage() {
                   <AnimatedElement key={event._id} delay={index * 100}>
                     <div className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col md:flex-row h-full">
                       {/* Image Section */}
-                      {event.eventImage && (
+                      {event.mainImage && (
                         <div className="md:w-1/3 aspect-video md:aspect-auto overflow-hidden bg-gray-100">
                           <Image 
-                            src={event.eventImage} 
-                            alt={event.eventName || 'Event image'}
+                            src={urlFor(event.mainImage).url()} 
+                            alt={event.title || 'Event image'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                             width={500}
                           />
@@ -236,11 +211,11 @@ export default function NewsPage() {
                       {/* Content Section */}
                       <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
                         <div className="flex flex-wrap items-center gap-4 mb-6">
-                          {event.eventDate && (
+                          {event.date && (
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-white text-[10px] font-black uppercase tracking-widest">
                               <Calendar size={12} />
                               <span>
-                                {new Date(event.eventDate).toLocaleDateString('en-US', { 
+                                {new Date(event.date).toLocaleDateString('en-US', { 
                                   day: 'numeric',
                                   month: 'long',
                                   year: 'numeric'
@@ -257,15 +232,10 @@ export default function NewsPage() {
                         </div>
                         
                         <h3 className="text-2xl md:text-3xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors">
-                          {event.eventName}
+                          {event.title}
                         </h3>
                         
-                        {event.boothDetails && (
-                          <div className="border-l-4 border-accent pl-4 mb-6 py-1">
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">{t('eventsPage.boothDetails')}</p>
-                            <p className="text-sm font-bold text-primary">{event.boothDetails}</p>
-                          </div>
-                        )}
+                        {/* Booth Details removed as it's not in the basic schema but can be added back if needed */}
                         
                         {event.description && (
                           <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 font-light line-clamp-3">
@@ -273,9 +243,9 @@ export default function NewsPage() {
                           </p>
                         )}
                         
-                        {event.eventUrl && (
+                        {event.registrationUrl && (
                           <a
-                            href={event.eventUrl}
+                            href={event.registrationUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 text-accent text-[11px] font-black uppercase tracking-widest hover:text-primary transition-all duration-300 self-start group/btn"

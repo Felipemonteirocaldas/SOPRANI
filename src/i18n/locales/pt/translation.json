@@ -344,56 +344,14 @@
                 "formatRange": "Diâmetros:",
                 "power": "Consumo:",
                 "dimensions": "Dimensões:",
-                "featured": {
-                        "line3p": {
-                                "name": "Linha SP-3000 Food Can",
-                                "category": "Linhas Completas",
-                                "description": "Sistema automatizado de alta velocidade para produção de latas de comida de 3 peças.",
-                                "features": "Troca rápida de formato, sincronização total, inspeção por visão integrada.",
-                                "specs": "Capacidade: Até 600 cpm | Diâmetros: 52mm - 99mm | Norma: CE/ISO",
-                                "application": "Alimentos (Tomate, conservas, vegetais)"
-                        },
-                        "aerosol": {
-                                "name": "AeroTech Weld-X System",
-                                "category": "Aerosol",
-                                "description": "Estação de soldadura e conformação de precisão para latas de aerosol em aço.",
-                                "features": "Solda de baixo consumo, necking controlado eletronicamente, alta repetibilidade.",
-                                "specs": "Capacidade: 450 cpm | Diâmetros: 45mm - 65mm | Material: Folha de Flandres",
-                                "application": "Cosméticos, Inseticidas, Produtos Técnicos"
-                        },
-                        "press": {
-                                "name": "PowerPress EOE-500",
-                                "category": "Componentes",
-                                "description": "Prensa de alta cadência específica para fabricação de tampas Easy Open Ends (EOE).",
-                                "features": "Matrizes de precisão, sistema de alimentação servo-assistido, lubrificação automática.",
-                                "specs": "Cadência: 500 golpes/min | Material: Aço/Flandres | Precisão: +/- 0.01mm",
-                                "application": "Tampas de abertura fácil, Fundos padrão"
-                        },
-                        "welder": {
-                                "name": "SopraWeld HF-75 Induction",
-                                "category": "Corpo & Solda",
-                                "description": "Soldadora por indução de alta frequência para costura lateral de corpos de latas.",
-                                "features": "Tecnologia de inversor de última geração, resfriamento otimizado, solda invisível.",
-                                "specs": "Velocidade: Até 80 m/min | Altura: 50mm - 300mm | Potência: 75kW",
-                                "application": "Corpos cilíndricos de latas de aço"
-                        },
-                        "coating": {
-                                "name": "CleanCoat Pro 5 Line",
-                                "category": "Verniz & Cura",
-                                "description": "Unidade integrada de aplicação de verniz e cura térmica para proteção metálica.",
-                                "features": "Aplicação uniforme sem névoa, cura UV/Térmica opcional, controle de micragem digital.",
-                                "specs": "Largura: Até 1200mm | Velocidade: 60 ppm | Sensores: IR Integrados",
-                                "application": "Latas de alimentos, aerossóis, baldes industriais"
-                        },
-                        "pail": {
-                                "name": "PailMaster EXP-18/20",
-                                "category": "Linha Geral",
-                                "description": "Expansora rotativa para formatação de baldes industriais de 18L e 20L.",
-                                "features": "Expansão hidráulica controlada, conformação de anéis de reforço, alta robustez.",
-                                "specs": "Diâmetro: Até 300mm | Volume: 18L-25L | Ciclo: 15 pails/min",
-                                "application": "Tintas, Vernizes, Químicos industriais"
-                        }
-                }
+                "authorizedPartner": "Parceiro Autorizado",
+                "authorizedDistributor": "Distribuidor Autorizado",
+                "industryApplication": "Aplicação Industrial",
+                "industrialPackaging": "Embalagem Industrial",
+                "searchPlaceholder": "Buscar sistemas...",
+                "category": "Categoria",
+                "brand": "Marca",
+                "viewAll": "Ver todos os produtos {{brand}}"
         },
         "machineryPage": {
                 "heroTitle": "Maquinário de Performance",
@@ -593,52 +551,46 @@
         },
         "productArsenal": {
                 "title": "Arsenal Tecnológico. Engenharia em Estado Puro.",
-                "subtitle": "Explore os sistemas que definem o padrão industrial global. Soluções robustas para alta performance e precisão absoluta.",
+                "subtitle": "Explore the sistemas que definem o padrão industrial global. Soluções robustas para alta performance e precisão absoluta.",
                 "viewSpecs": "Especificações",
                 "close": "Fechar",
-                "specs": {
-                        "line3p": {
-                                "title": "Linhas 3 Peças",
-                                "capacity": "Até 1200 latas/min",
-                                "material": "Folha de Flandres / TFS",
-                                "automation": "Nível 5 - Totalmente Integrado",
-                                "features": ["Soldagem de Alta Frequência", "Paletização Automática", "Monitoramento em Tempo Real"]
-                        },
-                        "coating": {
-                                "title": "Sistemas de Envernizamento",
-                                "capacity": "Alta Velocidade (Cura UV/Gás)",
-                                "precision": "± 0.05μm de espessura",
-                                "eco": "Recuperação Térmica de Energia",
-                                "features": ["Controle de Viscosidade", "Troca Rápida de Cilindro", "Higiene Certificada"]
-                        },
-                        "aerosol": {
-                                "title": "Linhas de Aerossóis",
-                                "safety": "Certificação ATEX Zona 1",
-                                "yield": "99.8% Eficiência",
-                                "config": "Modular / Turn-Key",
-                                "features": ["Cravagem de Redução", "Teste de Banho de Água", "Válvulas de Alta Precisão"]
-                        },
-                        "pail": {
-                                "title": "Baldes & Pails",
-                                "volume": "5L a 30L",
-                                "construction": "Cônica / Cilíndrica",
-                                "welding": "Soudronic Super-Pulso",
-                                "features": ["Inserção de Alça Automática", "Expansão de Fundo", "Pintura Interna Eletrostática"]
-                        },
-                        "press": {
-                                "title": "Prensas Industriais",
-                                "force": "300 a 800 Toneladas",
-                                "strokes": "High-Speed Dynamic Balancing",
-                                "die": "Troca de Ferramental em < 15min",
-                                "features": ["Matrizes Progressivas", "Lubrificação Centralizada", "CNC Siemens / AB"]
-                        },
-                        "welder": {
-                                "title": "Sistemas de Soldagem",
-                                "technology": "Solda a Laser / Elétrica",
-                                "speed": "Evolução Linear Constante",
-                                "control": "Interface IHM de Elite",
-                                "features": ["Deteção de Gap por Sensor", "Calibração Automática", "Zero Scrap Logic"]
-                        }
-                }
+                "loading": "Carregando Arsenal...",
+                "offline": "Maestria Temporariamente Offline",
+                "notFound": "Nenhum Sistema Industrial Encontrado",
+                "technicalMastery": "Maestria Técnica",
+                "requestInfo": "Solicitar Informações",
+                "status": "Status",
+                "online": "Online",
+                "authorizedPartner": "Parceiro Autorizado"
+        },
+        "productSpecs": {
+                "maxSheetSize": "Formato máximo da chapa",
+                "minSheetSize": "Formato mínimo da chapa",
+                "sheetThickness": "Espessura da chapa",
+                "productionSpeed": "Velocidade de produção",
+                "coatingSpeed": "Velocidade de envernizamento",
+                "coatingTypes": "Tipos de verniz",
+                "maxPrintingArea": "Área máxima de impressão",
+                "energySavings": "Economia de energia",
+                "technology": "Tecnologia",
+                "productionOutput": "Capacidade de produção",
+                "feedingCapacity": "Capacidade de alimentação",
+                "heatingType": "Tipo de aquecimento",
+                "containerTypes": "Tipos de recipiente",
+                "canShapes": "Formatos de lata",
+                "testTypes": "Tipos de teste",
+                "application": "Aplicação",
+                "compatibility": "Compatibilidade"
+        },
+        "productsPage": {
+                "heroTitle": "Equipamentos & Sistemas Industriais",
+                "heroSub": "Maquinário de alta performance, linhas de produção completas e sistemas para fabricação de embalagens metálicas.",
+                "allBrands": "Todas as Marcas",
+                "searchPlaceholder": "Buscar sistemas...",
+                "category": "Categoria:",
+                "allCategories": "Todas as Categorias",
+                "viewDetails": "Especificações Técnicas",
+                "emptyProducts": "Nenhum sistema encontrado",
+                "allProducts": "Todos os Produtos"
         }
 }

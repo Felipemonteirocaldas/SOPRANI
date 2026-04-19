@@ -38,6 +38,9 @@ export default defineConfig({
         'class-variance-authority',
         'tailwind-merge',
         'zod',
+        'sanity',
+        'sanity/structure',
+        '@sanity/vision',
       ],
     },
   },
@@ -50,6 +53,7 @@ export default defineConfig({
 
   // Configurações de servidor para desenvolvimento local
   server: {
+    port: 3333,
     host: true,
     allowedHosts: true,
   },

@@ -1,12 +1,6 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
-import { BaseCrudService } from '@/integrations';
-import { IndustryEvents } from '@/entities';
-import { Image } from '@/components/ui/image';
-import { Calendar, MapPin, ExternalLink } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
+import { useEvents } from '@/hooks/useSanity';
+import { urlFor } from '@/lib/sanityClient';
 
 const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,23 +44,7 @@ const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string;
 
 export default function EventsPage() {
   const { t } = useTranslation();
-  const [events, setEvents] = useState<IndustryEvents[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    loadEvents();
-  }, []);
-
-  const loadEvents = async () => {
-    try {
-      const result = await BaseCrudService.getAll<IndustryEvents>('events', [], { limit: 50 });
-      setEvents(result.items);
-    } catch (error) {
-      console.error('Failed to load events:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { data: events, loading: isLoading } = useEvents();
 
   return (
     <div className="min-h-screen bg-background">
@@ -104,11 +82,11 @@ export default function EventsPage() {
                     <div className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
                       <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                         {/* Image Section */}
-                        {event.eventImage && (
+                        {event.mainImage && (
                           <div className="lg:col-span-1 aspect-video lg:aspect-auto overflow-hidden">
                             <Image
-                              src={event.eventImage}
-                              alt={event.eventName || 'Event image'}
+                              src={urlFor(event.mainImage).url()}
+                              alt={event.title || 'Event image'}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               width={400}
                             />
@@ -116,12 +94,12 @@ export default function EventsPage() {
                         )}
 
                         {/* Content Section */}
-                        <div className={`${event.eventImage ? 'lg:col-span-2' : 'lg:col-span-3'} p-8`}>
-                          {event.eventDate && (
+                        <div className={`${event.mainImage ? 'lg:col-span-2' : 'lg:col-span-3'} p-8`}>
+                          {event.date && (
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-none mb-4">
                               <Calendar size={16} />
                               <span className="text-sm font-medium">
-                                {new Date(event.eventDate).toLocaleDateString('en-US', {
+                                {new Date(event.date).toLocaleDateString('en-US', {
                                   day: 'numeric',
                                   month: 'long',
                                   year: 'numeric'
@@ -131,7 +109,7 @@ export default function EventsPage() {
                           )}
 
                           <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors">
-                            {event.eventName}
+                            {event.title}
                           </h3>
 
                           {event.location && (
@@ -154,9 +132,9 @@ export default function EventsPage() {
                             </p>
                           )}
 
-                          {event.eventUrl && (
+                          {event.registrationUrl && (
                             <a
-                              href={event.eventUrl}
+                              href={event.registrationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-none hover:bg-accent/90 hover:scale-105 transition-all duration-200"
