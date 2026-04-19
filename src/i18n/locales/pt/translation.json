@@ -590,5 +590,55 @@
                 "wFormsDesc": "Prefere uma consulta generalista ou dúvida comercial?",
                 "wFormsBtn": "Fale Conosco",
                 "reqLbl": "* Campos de preenchimento obrigatório. Seus dados estão protegidos por nossa política de privacidade."
+        },
+        "productArsenal": {
+                "title": "Arsenal Tecnológico. Engenharia em Estado Puro.",
+                "subtitle": "Explore os sistemas que definem o padrão industrial global. Soluções robustas para alta performance e precisão absoluta.",
+                "viewSpecs": "Especificações",
+                "close": "Fechar",
+                "specs": {
+                        "line3p": {
+                                "title": "Linhas 3 Peças",
+                                "capacity": "Até 1200 latas/min",
+                                "material": "Folha de Flandres / TFS",
+                                "automation": "Nível 5 - Totalmente Integrado",
+                                "features": ["Soldagem de Alta Frequência", "Paletização Automática", "Monitoramento em Tempo Real"]
+                        },
+                        "coating": {
+                                "title": "Sistemas de Envernizamento",
+                                "capacity": "Alta Velocidade (Cura UV/Gás)",
+                                "precision": "± 0.05μm de espessura",
+                                "eco": "Recuperação Térmica de Energia",
+                                "features": ["Controle de Viscosidade", "Troca Rápida de Cilindro", "Higiene Certificada"]
+                        },
+                        "aerosol": {
+                                "title": "Linhas de Aerossóis",
+                                "safety": "Certificação ATEX Zona 1",
+                                "yield": "99.8% Eficiência",
+                                "config": "Modular / Turn-Key",
+                                "features": ["Cravagem de Redução", "Teste de Banho de Água", "Válvulas de Alta Precisão"]
+                        },
+                        "pail": {
+                                "title": "Baldes & Pails",
+                                "volume": "5L a 30L",
+                                "construction": "Cônica / Cilíndrica",
+                                "welding": "Soudronic Super-Pulso",
+                                "features": ["Inserção de Alça Automática", "Expansão de Fundo", "Pintura Interna Eletrostática"]
+                        },
+                        "press": {
+                                "title": "Prensas Industriais",
+                                "force": "300 a 800 Toneladas",
+                                "strokes": "High-Speed Dynamic Balancing",
+                                "die": "Troca de Ferramental em < 15min",
+                                "features": ["Matrizes Progressivas", "Lubrificação Centralizada", "CNC Siemens / AB"]
+                        },
+                        "welder": {
+                                "title": "Sistemas de Soldagem",
+                                "technology": "Solda a Laser / Elétrica",
+                                "speed": "Evolução Linear Constante",
+                                "control": "Interface IHM de Elite",
+                                "features": ["Deteção de Gap por Sensor", "Calibração Automática", "Zero Scrap Logic"]
+                        }
+                }
         }
 }

@@ -534,5 +534,55 @@
     "wFormsDesc": "Preferisci una domanda generica o commerciale?",
     "wFormsBtn": "Contattaci",
     "reqLbl": "* Campi obbligatori. I vostri dati sono protetti dalla nostra privacy policy."
+  },
+  "productArsenal": {
+    "title": "Arsenale Tecnologico. Ingegneria allo Stato Puro.",
+    "subtitle": "Esplora i sistemi che definono lo standard industriale globale. Soluzioni robuste per alte prestazioni e precisione assoluta.",
+    "viewSpecs": "Specifiche",
+    "close": "Chiudi",
+    "specs": {
+      "line3p": {
+        "title": "Linee 3 Pezzi",
+        "capacity": "Fino a 1200 lattine/min",
+        "material": "Banda Stagnata / TFS",
+        "automation": "Livello 5 - Completamente Integrato",
+        "features": ["Saldatura ad Alta Frequenza", "Pallettizzazione Automatica", "Monitoraggio in Tempo Reale"]
+      },
+      "coating": {
+        "title": "Sistemi di Verniciatura",
+        "capacity": "Alta Velocità (Polimerizzazione UV/Gas)",
+        "precision": "± 0.05μm di spessore",
+        "eco": "Recupero Termico di Energia",
+        "features": ["Controllo della Viscosità", "Cambio Rapido del Cilindro", "Igiene Certificata"]
+      },
+      "aerosol": {
+        "title": "Linee per Aerosol",
+        "safety": "Certificazione ATEX Zona 1",
+        "yield": "99.8% Efficienza",
+        "config": "Modulare / Chiavi in mano",
+        "features": ["Bordatura di Riduzione", "Test a Bagno d'Acqua", "Valvole di Alta Precisione"]
+      },
+      "pail": {
+        "title": "Secchi & Pails",
+        "volume": "da 5L a 30L",
+        "construction": "Conica / Cilindrica",
+        "welding": "Soudronic Super-Pulso",
+        "features": ["Inserimento Manico Automatico", "Espansione del Fondo", "Verniciatura Interna Elettrostatica"]
+      },
+      "press": {
+        "title": "Presse Industriali",
+        "force": "da 300 a 800 Tonnellate",
+        "strokes": "High-Speed Dynamic Balancing",
+        "die": "Cambio Stampi in < 15min",
+        "features": ["Stampi Progressivi", "Lubrificazione Centralizzata", "CNC Siemens / AB"]
+      },
+      "welder": {
+        "title": "Sistemi di Saldatura",
+        "technology": "Saldatura Laser / Elettrica",
+        "speed": "Evoluzione Lineare Costante",
+        "control": "Interfaccia HMI di Elite",
+        "features": ["Rilevamento Gap tramite Sensore", "Calibrazione Automatica", "Zero Scrap Logic"]
+      }
+    }
   }
 }

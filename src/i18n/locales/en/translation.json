@@ -583,5 +583,55 @@
     "wFormsDesc": "Prefer a general inquiry or commercial question?",
     "wFormsBtn": "Contact Us",
     "reqLbl": "* Required fields. Your data is protected by our privacy policy."
+  },
+  "productArsenal": {
+    "title": "Technological Arsenal. Pure Engineering.",
+    "subtitle": "Explore the systems that define the global industrial standard. Robust solutions for high performance and absolute precision.",
+    "viewSpecs": "Specifications",
+    "close": "Close",
+    "specs": {
+      "line3p": {
+        "title": "3-Piece Lines",
+        "capacity": "Up to 1200 cans/min",
+        "material": "Tinplate / TFS",
+        "automation": "Level 5 - Fully Integrated",
+        "features": ["High-Frequency Welding", "Automatic Palletizing", "Real-Time Monitoring"]
+      },
+      "coating": {
+        "title": "Coating Systems",
+        "capacity": "High-Speed (UV/Gas Curing)",
+        "precision": "± 0.05μm thickness",
+        "eco": "Thermal Energy Recovery",
+        "features": ["Viscosity Control", "Quick Cylinder Change", "Certified Hygiene"]
+      },
+      "aerosol": {
+        "title": "Aerosol Lines",
+        "safety": "ATEX Zone 1 Certification",
+        "yield": "99.8% Efficiency",
+        "config": "Modular / Turn-Key",
+        "features": ["Reductive Crimping", "Water Bath Testing", "High-Precision Valves"]
+      },
+      "pail": {
+        "title": "Pails & Buckets",
+        "volume": "5L to 30L",
+        "construction": "Conical / Cylindrical",
+        "welding": "Soudronic Super-Pulse",
+        "features": ["Automatic Handle Insertion", "Bottom Expansion", "Electrostatic Inner Painting"]
+      },
+      "press": {
+        "title": "Industrial Presses",
+        "force": "300 to 800 Tons",
+        "strokes": "High-Speed Dynamic Balancing",
+        "die": "Changing Tools in < 15min",
+        "features": ["Progressive Dies", "Centralized Lubrication", "CNC Siemens / AB"]
+      },
+      "welder": {
+        "title": "Welding Systems",
+        "technology": "Laser / Electric Welding",
+        "speed": "Constant Linear Evolution",
+        "control": "Elite HMI Interface",
+        "features": ["Sensor Gap Detection", "Automatic Calibration", "Zero Scrap Logic"]
+      }
+    }
   }
 }

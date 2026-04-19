@@ -45,13 +45,6 @@ function ServiceCard({
         }}
       />
 
-      {/* Number Overlay */}
-      <div
-        className="hidden sm:block text-[5rem] font-heading font-black absolute translate-y-[-2rem] translate-x-[-1rem] pointer-events-none select-none transition-colors duration-500"
-        style={{ color: hovered ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)' }}
-      >
-        {service.number}
-      </div>
 
       {/* ✦ Icon Box — with Industrial Glow */}
       <div

@@ -27,8 +27,8 @@ import {
 
 // ⚡ Lazy-loaded sections — only Hero renders immediately
 const CorporateMarquee = lazy(() => import('@/components/CorporateMarquee'));
-const SplitLayoutSection = lazy(() => import('@/components/SplitLayoutSection'));
 const OurServicesSection = lazy(() => import('@/components/OurServicesSection'));
+const ProductArsenalSection = lazy(() => import('@/components/ProductArsenalSection'));
 const PartnersSection = lazy(() => import('@/components/PartnersSection'));
 const SellAssetCTA = lazy(() => import('@/components/SellAssetCTA'));
 
@@ -412,14 +412,14 @@ export default function HomePage() {
           <CorporateMarquee />
         </Suspense>
 
-        {/* ⚡ LAZY: SPLIT LAYOUT */}
-        <Suspense fallback={<SplitLayoutSkeleton />}>
-          <SplitLayoutSection />
-        </Suspense>
-
         {/* ⚡ LAZY: OUR SERVICES */}
         <Suspense fallback={<ServicesSkeleton />}>
           <OurServicesSection />
+        </Suspense>
+
+        {/* ⚡ LAZY: PRODUCT ARSENAL (NEW) */}
+        <Suspense fallback={<div className="h-96 bg-black" />}>
+          <ProductArsenalSection />
         </Suspense>
 
         {/* ⚡ LAZY: PARTNERS */}
