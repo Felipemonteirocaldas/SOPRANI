@@ -14,7 +14,10 @@ export function useProducts(brand?: string) {
     
     sanityClient.fetch(query, { brand })
       .then(setData)
-      .catch(setError)
+      .catch(err => {
+        console.error('Sanity fetch error (products):', err);
+        setError(err);
+      })
       .finally(() => setLoading(false));
   }, [brand]);
 
@@ -36,7 +39,10 @@ export function useNewsPosts() {
     
     sanityClient.fetch(query, { twoYearsAgo })
       .then(setData)
-      .catch(setError)
+      .catch(err => {
+        console.error('Sanity fetch error (news):', err);
+        setError(err);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,7 +64,10 @@ export function useEvents() {
     
     sanityClient.fetch(query, { sixMonthsAgo })
       .then(setData)
-      .catch(setError)
+      .catch(err => {
+        console.error('Sanity fetch error (events):', err);
+        setError(err);
+      })
       .finally(() => setLoading(false));
   }, []);
 

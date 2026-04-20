@@ -85,7 +85,7 @@ const ProductCard: React.FC<{
         {/* Product Image - with scale transition */}
         <div className="relative z-10 w-full h-64 mb-8">
           <img
-            src={urlFor(product.mainImage).url()}
+            src={product.mainImage ? urlFor(product.mainImage).url() : ''}
             alt={product.title}
             className="w-full h-full object-contain filter group-hover:drop-shadow-[0_15px_30px_rgba(0,31,95,0.12)] transition-all duration-700 ease-out group-hover:scale-110"
           />
@@ -203,7 +203,7 @@ const SpecsModal: React.FC<{
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              src={urlFor(product.mainImage).url()}
+              src={product.mainImage ? urlFor(product.mainImage).url() : ''}
               alt={product.title}
               className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
             />

@@ -562,7 +562,7 @@ export default function ProductsPage() {
               <div className="relative h-72 shrink-0 bg-slate-900 overflow-hidden">
                 {selectedProduct.mainImage && (
                   <Image
-                    src={urlFor(selectedProduct.mainImage).url()}
+                    src={selectedProduct.mainImage ? urlFor(selectedProduct.mainImage).url() : ''}
                     alt={selectedProduct.title}
                     className="object-cover w-full h-full opacity-80"
                     width={800}
