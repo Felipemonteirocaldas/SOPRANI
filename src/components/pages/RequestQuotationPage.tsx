@@ -362,8 +362,8 @@ export default function RequestQuotationPage() {
               <ContactCard
                 icon={Phone}
                 title={t('reqPage.wPhone')}
-                val="+39 051 000 000"
-                link="tel:+39051000000"
+                val="+39 348 071 2116"
+                link="tel:+393480712116"
               />
               <div className="p-8 border border-gray-100 shadow-sm bg-gray-50 text-center flex flex-col items-center">
                 <div className="w-12 h-12 bg-white rounded-none flex items-center justify-center shadow-sm border border-gray-100 mb-6 font-bold text-accent">

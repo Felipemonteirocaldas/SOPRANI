@@ -144,8 +144,8 @@ export default function ContactPage() {
                       <ContactMethod
                         icon={Phone}
                         label={t('contactPage.phone')}
-                        value="+39 051 000 0000"
-                        action="tel:+390510000000"
+                        value="+39 348 071 2116"
+                        action="tel:+393480712116"
                       />
                       <ContactMethod
                         icon={MapPin}
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   {/* WhatsApp CTA */}
                   <div className="mt-auto pt-5 sm:pt-7">
                     <a
-                      href="https://wa.me/390510000000"
+                      href="https://wa.me/393480712116"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative block overflow-hidden border border-white/10 hover:border-[#25D366]/50 transition-all duration-500"
