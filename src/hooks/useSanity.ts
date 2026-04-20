@@ -32,7 +32,7 @@ export function useNewsPosts() {
     d.setFullYear(d.getFullYear() - 2);
     const twoYearsAgo = d.toISOString();
 
-    const query = `*[_type == "newsPost" && publishedAt >= $twoYearsAgo] | order(publishedAt desc)`;
+    const query = `*[_type == "newsPost" && publishedAt >= $twoYearsAgo] | order(publishedAt desc)[0...10]`;
     
     sanityClient.fetch(query, { twoYearsAgo })
       .then(setData)
