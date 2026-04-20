@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Youtube, Linkedin } from 'lucide-react';
 import ConversionButton from '@/components/ui/ConversionButton';
 
 export default function Footer() {
@@ -8,19 +9,43 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-12 xs:py-14 sm:py-16 md:py-20">
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12 mb-8 xs:mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-10 md:gap-12 mb-12 sm:mb-12">
           {/* Company Info */}
           <div>
             <div className="mb-6">
-              <img
-                src="/images/logo.png"
-                alt="Soprani Engineering"
-                className="h-10 w-auto brightness-0 invert"
-              />
+              <Link to="/" className="inline-block hover:opacity-80 transition-opacity duration-300">
+                <img
+                  src="/images/logo.png"
+                  alt="Soprani Engineering"
+                  className="h-12 sm:h-14 w-auto brightness-0 invert"
+                />
+              </Link>
             </div>
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
               {t('footer.companyDesc')}
             </p>
+            <div className="mt-8 flex gap-4">
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group" 
+                aria-label={t('footer.youtube')}
+                id="footer-social-youtube"
+              >
+                <Youtube size={20} className="text-white group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group" 
+                aria-label={t('footer.linkedin')}
+                id="footer-social-linkedin"
+              >
+                <Linkedin size={20} className="text-white group-hover:scale-110 transition-transform duration-300" />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}

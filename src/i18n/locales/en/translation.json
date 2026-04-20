@@ -52,7 +52,10 @@
     "termsOfService": "Terms of Service",
     "aboutUs": "About Us",
     "companyInfo": "Corporate Info",
-    "getInTouch": "Get In Touch"
+    "getInTouch": "Get In Touch",
+    "followUs": "Follow Us",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube"
   },
   "infoBar": {
     "regions": "Europe · Middle East · North Africa · Asia · Americas",
@@ -600,6 +603,20 @@
       "label": "Worldwide Support",
       "title": "Global Industrial Reach",
       "desc": "Delivering turnkey manufacturing systems and specialized engineering support across key industrial hubs on all continents."
+    }
+  },
+  "search": {
+    "placeholder": "Search products, news or pages...",
+    "noResults": "No results found for \"{{query}}\"",
+    "categories": {
+      "pages": "Pages",
+      "products": "Products",
+      "news": "News"
+    },
+    "results": {
+      "p1": "Industrial Packaging Machine A1",
+      "p2": "Precision Spare Parts Kit",
+      "n1": "Soprani Engineering - Innovation in Italy"
     }
   }
 }

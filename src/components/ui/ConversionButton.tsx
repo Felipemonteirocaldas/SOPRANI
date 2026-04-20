@@ -130,17 +130,17 @@ export default function ConversionButton({
         className={`
           relative flex items-center gap-3 px-7 py-4
           font-heading font-bold text-sm uppercase tracking-[0.18em]
-          transition-all duration-300
+          transition-all duration-300 max-w-full
           ${variantClass}
           ${className}
         `}
       >
-        <span className="relative z-10">{children}</span>
+        <span className="relative z-10 truncate">{children}</span>
         {showArrow && (
           <ArrowRight
             size={16}
             strokeWidth={2.5}
-            className="relative z-10 transition-transform duration-400"
+            className="relative z-10 transition-transform duration-400 flex-shrink-0"
             style={{ transform: hovered ? 'translateX(5px)' : 'translateX(0)' }}
           />
         )}

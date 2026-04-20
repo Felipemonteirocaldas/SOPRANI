@@ -15,26 +15,26 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
 
   // 1. Rotas estáticas que você já tinha
   const routes = [
-    { title: t('header.machinery', 'Machinery'), path: '/machinery', icon: Wrench, category: 'Pages' },
-    { title: t('header.spareParts', 'Spare Parts'), path: '/spare-parts', icon: Package, category: 'Pages' },
-    { title: t('header.products', 'Products & Solutions'), path: '/products', icon: LayoutDashboard, category: 'Pages' },
-    { title: t('header.contact', 'Contact Us'), path: '/contact', icon: Phone, category: 'Pages' },
+    { title: t('header.machinery', 'Machinery'), path: '/machinery', icon: Wrench, category: 'pages' },
+    { title: t('header.spareParts', 'Spare Parts'), path: '/spare-parts', icon: Package, category: 'pages' },
+    { title: t('header.products', 'Products & Solutions'), path: '/products', icon: LayoutDashboard, category: 'pages' },
+    { title: t('header.contact', 'Contact Us'), path: '/contact', icon: Phone, category: 'pages' },
   ];
 
   // 2. Transformamos os produtos em itens de busca
   const productItems = productsData.map(p => ({
-    title: p.title,
+    title: t(`search.results.${p._id}`, p.title),
     path: `/products`, // Ou o link específico do produto se houver
     icon: Package,
-    category: 'Products'
+    category: 'products'
   }));
 
   // 3. Transformamos as notícias em itens de busca
   const newsItems = newsData.map(n => ({
-    title: n.headline,
+    title: t(`search.results.${n._id}`, n.headline),
     path: `/news`,
     icon: Newspaper,
-    category: 'News'
+    category: 'news'
   }));
 
   // Combinamos tudo
@@ -69,7 +69,7 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
             <Command.Input
               value={query}
               onValueChange={setQuery}
-              placeholder={t('search.placeholder', 'Procurar produtos, notícias ou páginas...')}
+              placeholder={t('search.placeholder', 'Search products, news or pages...')}
               className="w-full bg-transparent p-4 text-lg outline-none placeholder-gray-400 text-primary"
             />
             <button
@@ -83,13 +83,13 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
 
           <Command.List className="max-h-[60vh] overflow-y-auto p-2 scrollbar-thin">
             <Command.Empty className="py-12 text-center text-gray-500 text-sm">
-              {t('search.noResults', 'Nenhum resultado encontrado para "{{query}}"', { query })}
+              {t('search.noResults', 'No results found for "{{query}}"', { query })}
             </Command.Empty>
 
             {categories.map((category) => (
               <Command.Group
                 key={category}
-                heading={<span className="text-[10px] font-bold uppercase tracking-wider text-accent/70 px-4 py-2 block">{category}</span>}
+                heading={<span className="text-[10px] font-bold uppercase tracking-wider text-accent/70 px-4 py-2 block">{t(`search.categories.${category}`)}</span>}
               >
                 {results
                   .filter(item => item.category === category)
@@ -107,7 +107,7 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
                         </div>
                         <div className="flex flex-col ml-4">
                           <span className="font-medium text-gray-900 group-hover/item:text-accent transition-colors">{item.title}</span>
-                          <span className="text-[10px] uppercase tracking-wider text-gray-400">{item.category}</span>
+                          <span className="text-[10px] uppercase tracking-wider text-gray-400">{t(`search.categories.${item.category}`)}</span>
                         </div>
                       </Command.Item>
                     );

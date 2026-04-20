@@ -210,7 +210,7 @@ export default function Header() {
               <img
                 src="/images/logo.png"
                 alt="Soprani Engineering"
-                className="h-[68px] xs:h-[76px] sm:h-[84px] md:h-[88px] w-auto object-contain transition-all duration-500"
+                className="h-[52px] xs:h-[60px] sm:h-[84px] md:h-[88px] w-auto object-contain transition-all duration-500"
               />
             </div>
           </Link>

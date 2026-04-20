@@ -60,7 +60,10 @@
     "termsOfService": "Termini di Servizio",
     "aboutUs": "Chi Siamo",
     "companyInfo": "Info Aziendali",
-    "getInTouch": "Contattaci"
+    "getInTouch": "Contattaci",
+    "followUs": "Seguici",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube"
   },
   "infoBar": {
     "regions": "Europa · Medio Oriente · Nord Africa · Asia · Americhe",
@@ -608,6 +611,20 @@
       "label": "Supporto Globale",
       "title": "Copertura Industriale Globale",
       "desc": "Forniamo sistemi di produzione turnkey e supporto ingegneristico specializzato nei principali centri industriali di tutti i continenti."
+    }
+  },
+  "search": {
+    "placeholder": "Cerca prodotti, news o pagine...",
+    "noResults": "Nessun risultato trovato per \"{{query}}\"",
+    "categories": {
+      "pages": "Pagine",
+      "products": "Prodotti",
+      "news": "News"
+    },
+    "results": {
+      "p1": "Macchina per Imballaggio Industriale A1",
+      "p2": "Kit Ricambi di Precisione",
+      "n1": "Soprani Engineering - Innovazione in Italia"
     }
   }
 }

@@ -60,7 +60,10 @@
     "termsOfService": "Términos de Servicio",
     "aboutUs": "Sobre Nosotros",
     "companyInfo": "Información Corporativa",
-    "getInTouch": "Contáctenos"
+    "getInTouch": "Contáctenos",
+    "followUs": "Síguenos",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube"
   },
   "infoBar": {
     "regions": "Europa · Oriente Medio · África del Norte · Asia · Américas",
@@ -608,6 +611,20 @@
       "label": "Soporte Global",
       "title": "Alcance Industrial Global",
       "desc": "Entregando sistemas de fabricación llave en mano y soporte de ingeniería especializado en los principales centros industriales de todos los continentes."
+    }
+  },
+  "search": {
+    "placeholder": "Buscar productos, noticias o páginas...",
+    "noResults": "No se encontraron resultados para \"{{query}}\"",
+    "categories": {
+      "pages": "Páginas",
+      "products": "Productos",
+      "news": "Noticias"
+    },
+    "results": {
+      "p1": "Máquina de Embalaje Industrial A1",
+      "p2": "Kit de Repuestos de Precisión",
+      "n1": "Soprani Engineering - Innovación en Italia"
     }
   }
 }
