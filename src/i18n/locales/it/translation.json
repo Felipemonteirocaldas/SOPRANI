@@ -596,5 +596,18 @@
     "viewBrandProducts": "Vedi tutti i prodotti {{brand}}",
     "koenigCat": "Sistemi di Stampa e Decorazione su Metallo",
     "soudronicCat": "Sistemi Chiavi in Mano per Produzione Lattine e Saldatura"
+  },
+  "heroLegacy": {
+    "badge": "+ 40 Anni di Ingegneria",
+    "card1": {
+      "label": "Maestria della Metallurgia",
+      "title": "Leadership Tecnologica",
+      "desc": "Guidiamo l'evoluzione degli imballaggi metallici con macchinari proprietari all'avanguardia e precisione industriale ineguagliabile."
+    },
+    "card2": {
+      "label": "Supporto Globale",
+      "title": "Copertura Industriale Globale",
+      "desc": "Forniamo sistemi di produzione turnkey e supporto ingegneristico specializzato nei principali centri industriali di tutti i continenti."
+    }
   }
 }

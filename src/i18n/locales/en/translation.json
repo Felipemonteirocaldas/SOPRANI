@@ -588,5 +588,18 @@
     "viewBrandProducts": "View all {{brand}} products",
     "koenigCat": "Metal Decorating & Printing Systems",
     "soudronicCat": "Turnkey Can Making & Welding Systems"
+  },
+  "heroLegacy": {
+    "badge": "+ 40 Years of Engineering",
+    "card1": {
+      "label": "Mastering Metallurgy",
+      "title": "Technological Leadership",
+      "desc": "Driving the evolution of metal packaging with cutting-edge proprietary machinery and unmatched industrial precision."
+    },
+    "card2": {
+      "label": "Worldwide Support",
+      "title": "Global Industrial Reach",
+      "desc": "Delivering turnkey manufacturing systems and specialized engineering support across key industrial hubs on all continents."
+    }
   }
 }

@@ -27,6 +27,8 @@ import {
 } from 'framer-motion';
 
 // ⚡ Lazy-loaded sections — only Hero renders immediately
+// ⚡ Lazy-loaded sections — only Hero renders immediately
+import SopraniLegacyHero from '@/components/SopraniLegacyHero';
 const CorporateMarquee = lazy(() => import('@/components/CorporateMarquee'));
 const OurServicesSection = lazy(() => import('@/components/OurServicesSection'));
 const ProductArsenalSection = lazy(() => import('@/components/ProductArsenalSection'));
@@ -324,7 +326,9 @@ export default function HomePage() {
         {/* ══════════════════════════════════════
             HERO SECTION
         ══════════════════════════════════════ */}
-        <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-[#001F5F]">
+        <SopraniLegacyHero />
+
+        {false && <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-[#001F5F]">
           {/* Background Video — with poster for instant visual feedback */}
           <video
             autoPlay
@@ -396,7 +400,8 @@ export default function HomePage() {
               strokeWidth={1.5}
             />
           </button>
-        </section>
+        </section>}
+
 
         {/* ⚡ LAZY: CORPORATE MARQUEE */}
         <Suspense fallback={<MarqueeSkeleton />}>

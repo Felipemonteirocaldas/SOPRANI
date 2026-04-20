@@ -595,5 +595,18 @@
                 "viewBrandProducts": "Ver todos os produtos {{brand}}",
                 "koenigCat": "Sistemas de Impressão e Decoração de Metais",
                 "soudronicCat": "Sistemas Turnkey para Fabricação de Latas e Soldagem"
+        },
+        "heroLegacy": {
+                "badge": "+ 40 Anos de Engenharia",
+                "card1": {
+                        "label": "Maestria em Metalurgia",
+                        "title": "Liderança Tecnológica",
+                        "desc": "Conduzindo a evolução das embalagens metálicas com maquinário proprietário de ponta e precisão industrial inigualável."
+                },
+                "card2": {
+                        "label": "Suporte Global",
+                        "title": "Alcance Industrial Global",
+                        "desc": "Entregando sistemas de manufatura turnkey e suporte especializado de engenharia nos principais polos industriais de todos os continentes."
+                }
         }
 }

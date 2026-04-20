@@ -596,5 +596,18 @@
     "viewBrandProducts": "Ver todos los productos {{brand}}",
     "koenigCat": "Sistemas de Impresión y Decoración de Metales",
     "soudronicCat": "Sistemas Llave en Mano para Fabricación de Latas y Soldadura"
+  },
+  "heroLegacy": {
+    "badge": "+ 40 Años de Ingeniería",
+    "card1": {
+      "label": "Maestría en Metalurgia",
+      "title": "Liderazgo Tecnológico",
+      "desc": "Impulsando la evolución de los envases metálicos con maquinaria propia de vanguardia y precisión industrial inigualable."
+    },
+    "card2": {
+      "label": "Soporte Global",
+      "title": "Alcance Industrial Global",
+      "desc": "Entregando sistemas de fabricación llave en mano y soporte de ingeniería especializado en los principales centros industriales de todos los continentes."
+    }
   }
 }
