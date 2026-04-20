@@ -7,6 +7,24 @@ import { GlobalSearchModal } from '@/components/GlobalSearchModal';
 import { cn } from "@/lib/utils";
 import { useRef } from 'react';
 
+const getServicesLinks = (t: any) => [
+  { label: t('header.allServices'), href: '/services', icon: ArrowRight },
+  { label: t('header.machinery'), href: '/machinery', icon: Wrench },
+  { label: t('header.spareParts'), href: '/spare-parts', icon: Package },
+  { label: t('header.technicalAssistance'), href: '/technical-assistance', icon: Headphones },
+  { label: t('header.tradingMaterials'), href: '/trading-materials', icon: Truck },
+];
+
+const getProductsLinks = (t: any) => [
+  { label: t('header.productSolutions'), href: '/products', icon: Zap },
+  { label: t('header.industries'), href: '/industries', icon: Wrench },
+];
+
+const getResourcesLinks = (t: any) => [
+  { label: t('header.events'), href: '/news?tab=events', icon: Zap },
+  { label: t('header.news'), href: '/news', icon: Package },
+];
+
 const MenuContent = ({
   t,
   onClose
@@ -14,23 +32,9 @@ const MenuContent = ({
   t: any;
   onClose: () => void;
 }) => {
-  const servicesLinks = [
-    { label: t('header.allServices'), href: '/services', icon: ArrowRight },
-    { label: t('header.machinery'), href: '/machinery', icon: Wrench },
-    { label: t('header.spareParts'), href: '/spare-parts', icon: Package },
-    { label: t('header.technicalAssistance'), href: '/technical-assistance', icon: Headphones },
-    { label: t('header.tradingMaterials'), href: '/trading-materials', icon: Truck },
-  ];
-
-  const productsLinks = [
-    { label: t('header.productSolutions'), href: '/products', icon: Zap },
-    { label: t('header.industries'), href: '/industries', icon: Wrench },
-  ];
-
-  const resourcesLinks = [
-    { label: t('header.events'), href: '/news?tab=events', icon: Zap },
-    { label: t('header.news'), href: '/news', icon: Package },
-  ];
+  const servicesLinks = getServicesLinks(t);
+  const productsLinks = getProductsLinks(t);
+  const resourcesLinks = getResourcesLinks(t);
 
   return (
     <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
@@ -140,6 +144,7 @@ const MenuContent = ({
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const [mobileLangOpen, setMobileLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -386,8 +391,8 @@ export default function Header() {
 
         {/* Mobile Navigation Panel */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-100 bg-white max-h-[80vh] overflow-y-auto animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col space-y-2 px-4 shadow-inner">
+          <nav className="md:hidden py-0 border-t border-gray-100 bg-white max-h-[calc(100vh-80px)] overflow-y-auto animate-in slide-in-from-top-4 duration-300 shadow-xl">
+            <div className="flex flex-col space-y-2 px-4 pt-4 pb-20 shadow-inner">
               <Link to="/services" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
                 {t('header.services')}
               </Link>
@@ -403,6 +408,69 @@ export default function Header() {
               <Link to="/news" className="block py-2 text-sm font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
                 {t('header.news')}
               </Link>
+
+              {/* Mobile "More" Section */}
+              <div className="border-t border-gray-50 pt-2 mt-2">
+                <button
+                  onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                  className="flex items-center justify-between w-full py-3 text-sm font-bold text-primary"
+                >
+                  <span className="flex items-center gap-2">
+                    <ChevronDown size={14} className={cn("text-accent transition-transform duration-300", mobileMoreOpen && "rotate-180")} />
+                    {t('header.more') || 'More'}
+                  </span>
+                </button>
+
+                {mobileMoreOpen && (
+                  <div className="pl-6 space-y-4 pb-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                    {/* Sub-section: Machinery/Spare/etc */}
+                    <div className="space-y-3">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{t('header.services')}</p>
+                      {getServicesLinks(t).slice(1).map((link, idx) => (
+                        <Link
+                          key={idx}
+                          to={link.href}
+                          className="flex items-center gap-2 text-sm text-primary/70 py-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <link.icon size={14} className="text-accent/60" />
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+
+                    <div className="space-y-3">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{t('header.industries')}</p>
+                      {getProductsLinks(t).slice(1).map((link, idx) => (
+                        <Link
+                          key={idx}
+                          to={link.href}
+                          className="flex items-center gap-2 text-sm text-primary/70 py-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <link.icon size={14} className="text-accent/60" />
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+
+                    <div className="space-y-3">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">{t('header.resources')}</p>
+                      {getResourcesLinks(t).map((link, idx) => (
+                        <Link
+                          key={idx}
+                          to={link.href}
+                          className="flex items-center gap-2 text-sm text-primary/70 py-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <link.icon size={14} className="text-accent/60" />
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="pt-4 border-t border-gray-50 mt-2">
                 <Link

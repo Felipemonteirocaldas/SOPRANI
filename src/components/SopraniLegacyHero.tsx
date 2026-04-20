@@ -90,6 +90,8 @@ export default function SopraniLegacyHero() {
           muted 
           loop 
           playsInline 
+          poster="/images/hero-bg.png"
+          preload="auto"
           src="/video/videohero.mp4" 
         />
         {/* Overlays to ensure dark logo legibility without buggy blur filters */}
