@@ -5,9 +5,7 @@ import { ProductSolutions } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Filter, Search, ArrowRight, Settings, Cpu, Shield, Zap, Maximize2, X, Layers } from 'lucide-react';
-import Header from '@/components/Header';
 import Fuse from 'fuse.js';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -154,7 +152,6 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-primary">
-      <Header />
 
       {/* Premium Hero Section */}
       <section className="relative pt-24 sm:pt-28 pb-24 overflow-hidden bg-[#001F5F]">
@@ -623,8 +620,6 @@ export default function ProductsPage() {
         </AnimatePresence>,
         document.body
       )}
-
-      <Footer />
     </div>
   );
 }

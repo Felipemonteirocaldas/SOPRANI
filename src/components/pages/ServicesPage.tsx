@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import { Wrench, Package, Zap, RefreshCw, TrendingUp, Hammer, ArrowRight, Check } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
@@ -151,8 +149,6 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
-      <Header />
-
       <main>
         {/* ── HERO ─────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-[#001F5F] pt-28 pb-32">
@@ -269,8 +265,6 @@ export default function ServicesPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -3,6 +3,9 @@ import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import SEOHead from '@/components/SEOHead';
 import { lazy, Suspense } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import '../i18n/config';
 
 // Lazy loading das páginas (Mantenha como está, é ótimo para performance)
@@ -29,12 +32,17 @@ const LoadingFallback = () => (
 
 function Layout() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ScrollToTop />
+      <ScrollProgressBar />
       {/* ✦ Dynamic SEO: title, description, og tags, html[lang] */}
       <SEOHead />
-      <Outlet />
-    </>
+      <Header />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

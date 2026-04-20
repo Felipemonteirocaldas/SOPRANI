@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -149,8 +147,6 @@ export default function IndustriesPage() {
 
   return (
     <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
-      <Header />
-
       <main>
         {/* 🏔 HERO SECTION */}
         <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden bg-primary overflow-x-hidden">
@@ -317,8 +313,6 @@ export default function IndustriesPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

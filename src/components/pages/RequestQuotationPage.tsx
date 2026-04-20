@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { AlertCircle, ArrowRight, Building2, Globe, Hash, Layers, Mail, MessageSquare, Paperclip, Phone, ShieldCheck, X, Zap } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -98,8 +96,6 @@ export default function RequestQuotationPage() {
 
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white">
-      <Header />
-
       <main className="flex-grow">
         {/* Modern Hero Section */}
         <section className="relative overflow-hidden bg-[#001F5F] pt-24 sm:pt-28 pb-16 md:pb-40">
@@ -388,8 +384,6 @@ export default function RequestQuotationPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

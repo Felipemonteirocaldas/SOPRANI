@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Image } from '@/components/ui/image';
 import { Calendar, User, MapPin, ExternalLink, Newspaper, CalendarDays, ArrowRight } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { cn } from "@/lib/utils";
@@ -70,7 +68,6 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-28 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div 
@@ -304,7 +301,6 @@ export default function NewsPage() {
           </AnimatedElement>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

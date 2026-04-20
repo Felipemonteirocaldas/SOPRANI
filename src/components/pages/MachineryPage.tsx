@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
 import { useTranslation } from 'react-i18next';
 
@@ -41,7 +39,6 @@ export default function MachineryPage() {
 
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
-      <Header />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-primary text-white pt-24 sm:pt-28 pb-20 md:pb-32">
@@ -127,7 +124,6 @@ export default function MachineryPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Globe, ShieldCheck, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -72,8 +70,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
-      <Header />
-
       <main className="flex-grow">
         {/* Hero — compact no mobile, espaçoso no desktop */}
         <section className="relative pt-24 sm:pt-28 pb-28 md:pb-56 bg-[#001F5F] overflow-hidden">
@@ -410,7 +406,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

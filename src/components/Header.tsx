@@ -195,9 +195,17 @@ export default function Header() {
   const handleClose = () => setActiveMenu(undefined);
 
   return (
-    <header className="sticky top-0 z-[9999] bg-white border-b border-gray-100 shadow-md transition-all duration-300">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ease-in-out",
+      isScrolled 
+        ? "bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200/50 py-0" 
+        : "bg-white border-b border-gray-100 py-1"
+    )}>
       <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
-        <div className="flex justify-between items-center h-20 sm:h-24 md:h-24">
+        <div className={cn(
+          "flex justify-between items-center transition-all duration-500 ease-in-out",
+          isScrolled ? "h-16 md:h-20" : "h-20 sm:h-24 md:h-24"
+        )}>
           <Link
             to="/"
             className="flex items-center h-full flex-shrink-0 relative z-[10000]"
@@ -210,7 +218,12 @@ export default function Header() {
               <img
                 src="/images/logo.png"
                 alt="Soprani Engineering"
-                className="h-[52px] xs:h-[60px] sm:h-[84px] md:h-[88px] w-auto object-contain transition-all duration-500"
+                className={cn(
+                  "w-auto object-contain transition-all duration-500 ease-in-out",
+                  isScrolled 
+                    ? "h-[42px] xs:h-[48px] sm:h-[64px] md:h-[70px]" 
+                    : "h-[52px] xs:h-[60px] sm:h-[84px] md:h-[88px]"
+                )}
               />
             </div>
           </Link>

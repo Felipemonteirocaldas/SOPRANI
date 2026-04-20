@@ -3,8 +3,6 @@ import { BaseCrudService } from '@/integrations';
 
 import { Image } from '@/components/ui/image';
 import { Globe, Calendar, Building2, Crosshair, Award, Users2 } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -54,8 +52,6 @@ export default function CompanyPage() {
 
   return (
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
-      <Header />
-
       <main>
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-[#001F5F] pt-28 pb-36">
@@ -296,8 +292,6 @@ export default function CompanyPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

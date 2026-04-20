@@ -361,6 +361,16 @@ export default function ProductArsenalSection() {
             (['koenig-bauer', 'soudronic'] as const).map((brandKey) => {
               const config = BRAND_CONFIG[brandKey];
               const allBrandProducts = products.filter(p => p.brand === brandKey);
+              
+              // Force "2-Piece Cans" to the first position if it's Soudronic
+              if (brandKey === 'soudronic') {
+                allBrandProducts.sort((a, b) => {
+                  if (a.title.includes('2-Piece Cans')) return -1;
+                  if (b.title.includes('2-Piece Cans')) return 1;
+                  return 0;
+                });
+              }
+
               const brandProducts = allBrandProducts.slice(0, 3);
               
               if (allBrandProducts.length === 0) return null;

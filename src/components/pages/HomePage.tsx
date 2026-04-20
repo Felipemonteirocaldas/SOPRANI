@@ -317,10 +317,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
-      {/* ✦ SCROLL PROGRESS BAR */}
-      <ScrollProgressBar />
+      {/* Header and ScrollProgressBar are now in the global Layout */}
 
-      <Header />
       <main className="flex-grow">
 
         {/* ══════════════════════════════════════
@@ -538,7 +536,6 @@ export default function HomePage() {
           <SellAssetCTA />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 }
