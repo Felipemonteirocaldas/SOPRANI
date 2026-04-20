@@ -591,6 +591,9 @@
                 "allCategories": "Todas as Categorias",
                 "viewDetails": "Especificações Técnicas",
                 "emptyProducts": "Nenhum sistema encontrado",
-                "allProducts": "Todos os Produtos"
+                "allProducts": "Todos os Produtos",
+                "viewBrandProducts": "Ver todos os produtos {{brand}}",
+                "koenigCat": "Sistemas de Impressão e Decoração de Metais",
+                "soudronicCat": "Sistemas Turnkey para Fabricação de Latas e Soldagem"
         }
 }

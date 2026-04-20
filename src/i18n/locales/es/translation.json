@@ -592,6 +592,9 @@
     "allCategories": "Todas las Categorías",
     "viewDetails": "Especificaciones Técnicas",
     "emptyProducts": "Ningún sistema encontrado",
-    "allProducts": "Todos los Productos"
+    "allProducts": "Todos los Productos",
+    "viewBrandProducts": "Ver todos los productos {{brand}}",
+    "koenigCat": "Sistemas de Impresión y Decoración de Metales",
+    "soudronicCat": "Sistemas Llave en Mano para Fabricación de Latas y Soldadura"
   }
 }

@@ -77,7 +77,8 @@ const ServiceRow = ({ service, index, t }: { service: Service; index: number; t:
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-      className="relative group"
+      id={`service-${service.number}`}
+      className="relative group scroll-mt-24 md:scroll-mt-32"
     >
       {/* Row */}
       <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_1fr] gap-0 border-b border-slate-200 last:border-b-0 py-12 lg:py-16">
@@ -197,12 +198,18 @@ export default function ServicesPage() {
               {/* Service index pills */}
               <div className="flex flex-wrap gap-2 mt-10">
                 {services.map((s) => (
-                  <span
+                  <button
                     key={s.number}
-                    className="px-3 py-1.5 border border-white/15 text-white/60 text-[10px] font-bold uppercase tracking-widest hover:border-accent/60 hover:text-accent transition-colors duration-300 cursor-default"
+                    onClick={() => {
+                      const el = document.getElementById(`service-${s.number}`);
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="px-3 py-1.5 border border-white/15 text-white/60 text-[10px] font-bold uppercase tracking-widest hover:border-accent/60 hover:text-accent hover:bg-white/5 transition-all duration-300 active:scale-95"
                   >
                     {s.number} · {t(s.titleKey)}
-                  </span>
+                  </button>
                 ))}
               </div>
             </motion.div>

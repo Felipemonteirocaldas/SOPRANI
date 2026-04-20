@@ -31,7 +31,6 @@ export default defineType({
       name: 'location',
       title: 'Location',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
@@ -46,12 +45,27 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'registrationUrl',
       title: 'Registration URL',
       type: 'url',
+    }),
+    defineField({
+      name: 'externalUrl',
+      title: 'External URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'source',
+      title: 'Source',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Soudronic', value: 'soudronic' },
+          { title: 'Koenig Bauer', value: 'koenig-bauer' },
+        ],
+      },
     }),
   ],
 });

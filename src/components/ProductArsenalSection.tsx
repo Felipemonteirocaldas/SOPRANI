@@ -382,7 +382,7 @@ export default function ProductArsenalSection() {
                       />
                       <div>
                         <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-1">
-                          Authorized Partner
+                          {t('productArsenal.authorizedPartner') || 'Authorized Partner'}
                         </p>
                         <h3 className="text-2xl md:text-3xl font-heading font-black text-primary tracking-tight">
                           {config.label}
@@ -393,7 +393,7 @@ export default function ProductArsenalSection() {
                       className="sm:ml-auto text-[11px] font-bold uppercase tracking-widest px-4 py-2 border rounded-full shrink-0"
                       style={{ color: config.accentColor, borderColor: `${config.accentColor}40` }}
                     >
-                      {config.specialty}
+                      {brandKey === 'koenig-bauer' ? (t('productsPage.koenigCat') || config.specialty) : (t('productsPage.soudronicCat') || config.specialty)}
                     </span>
                   </motion.div>
 
@@ -420,7 +420,7 @@ export default function ProductArsenalSection() {
                       href={`/products?brand=${brandKey}`}
                       className="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-primary/40 hover:text-accent transition-colors"
                     >
-                      View all {config.label} products
+                      {t('productsPage.viewBrandProducts', { brand: config.label })}
                       <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                   </motion.div>

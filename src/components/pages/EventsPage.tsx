@@ -108,6 +108,13 @@ export default function EventsPage() {
                             </div>
                           )}
 
+                          {event.source && (
+                            <div className="mb-2">
+                              <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold uppercase tracking-wider">
+                                {event.source === 'koenig-bauer' ? 'Koenig Bauer Metalprint' : 'Soudronic'}
+                              </span>
+                            </div>
+                          )}
                           <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors">
                             {event.title}
                           </h3>
@@ -119,10 +126,10 @@ export default function EventsPage() {
                             </div>
                           )}
 
-                          {event.boothDetails && (
+                          {('boothDetails' in event && event.boothDetails) && (
                             <div className="bg-gray-50 rounded-none p-4 mb-4">
                               <p className="text-sm font-medium text-gray-700 mb-1">{t('eventsPage.boothDetails')}</p>
-                              <p className="text-gray-600">{event.boothDetails}</p>
+                              <p className="text-gray-600">{event.boothDetails as string}</p>
                             </div>
                           )}
 
@@ -132,9 +139,9 @@ export default function EventsPage() {
                             </p>
                           )}
 
-                          {event.registrationUrl && (
+                          {(event.registrationUrl || event.externalUrl) && (
                             <a
-                              href={event.registrationUrl}
+                              href={event.registrationUrl || event.externalUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-none hover:bg-accent/90 hover:scale-105 transition-all duration-200"

@@ -324,14 +324,14 @@ export default function ProductsPage() {
                       <div className="flex items-center gap-4">
                         <div className="w-1 h-10 bg-[#001F5F] rounded-full shrink-0" />
                         <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">Authorized Partner</p>
+                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">{t('productArsenal.authorizedPartner') || 'Authorized Partner'}</p>
                           <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
                             Koenig Bauer Metalprint
                           </h2>
                         </div>
                       </div>
                       <span className="sm:ml-auto text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 border border-[#001F5F]/30 rounded-full text-[#001F5F] shrink-0">
-                        Metal Decorating &amp; Printing Systems
+                        {t('productsPage.koenigCat') || 'Metal Decorating & Printing Systems'}
                       </span>
                     </div>
 
@@ -428,14 +428,14 @@ export default function ProductsPage() {
                       <div className="flex items-center gap-4">
                         <div className="w-1 h-10 bg-accent rounded-full shrink-0" />
                         <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">Authorized Distributor</p>
+                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">{t('productArsenal.authorizedPartner') || 'Authorized Partner'}</p>
                           <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
                             Soudronic
                           </h2>
                         </div>
                       </div>
                       <span className="sm:ml-auto text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 border border-accent/30 rounded-full text-accent shrink-0">
-                        Turnkey Can Making &amp; Welding Systems
+                        {t('productsPage.soudronicCat') || 'Turnkey Can Making & Welding Systems'}
                       </span>
                     </div>
 

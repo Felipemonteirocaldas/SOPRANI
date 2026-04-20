@@ -44,6 +44,27 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'externalUrl',
+      title: 'External URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'source',
+      title: 'Source',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Koenig Bauer Metalprint', value: 'koenig-bauer' },
+          { title: 'Soudronic', value: 'soudronic' }
+        ]
+      }
+    }),
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'array',
@@ -54,8 +75,7 @@ export default defineType({
         {
           type: 'image',
         },
-      ],
-      validation: (Rule) => Rule.required(),
+      ]
     }),
   ],
   preview: {

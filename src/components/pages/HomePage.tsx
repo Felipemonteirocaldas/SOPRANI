@@ -9,13 +9,14 @@ import {
   ServicesSkeleton,
   PartnersSkeleton,
   NewsSkeleton,
-  EventsSkeleton,
 } from '@/components/ui/SkeletonLoaders';
-import { IndustryEvents, NewsandUpdates, ProductSolutions } from '@/entities';
+import { NewsandUpdates, ProductSolutions } from '@/entities';
 import { MockBaseCrudService as BaseCrudService } from '@/lib/mockService';
 import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useNewsPosts } from '@/hooks/useSanity';
+import { urlFor } from '@/lib/sanityClient';
 import { useTranslation } from 'react-i18next';
 import {
   motion,
@@ -269,12 +270,10 @@ const AnimatedElement: React.FC<{
 export default function HomePage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [news, setNews] = useState<NewsandUpdates[]>([]);
-  const [events, setEvents] = useState<IndustryEvents[]>([]);
   const [products, setProducts] = useState<ProductSolutions[]>([]);
 
-  const [isLoadingNews, setIsLoadingNews] = useState(true);
-  const [isLoadingEvents, setIsLoadingEvents] = useState(true);
+  const { data: news, loading: isLoadingNews } = useNewsPosts();
+
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -291,19 +290,11 @@ export default function HomePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [newsRes, eventsRes, productsRes] = await Promise.all([
-          BaseCrudService.getAll<NewsandUpdates>('news', [], { limit: 5 }),
-          BaseCrudService.getAll<IndustryEvents>('events', [], { limit: 3 }),
-          BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 8 }),
-        ]);
-        setNews(newsRes.items || []);
-        setEvents(eventsRes.items || []);
+        const productsRes = await BaseCrudService.getAll<ProductSolutions>('productsolutions', [], { limit: 8 });
         setProducts(productsRes.items || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setIsLoadingNews(false);
-        setIsLoadingEvents(false);
         setIsLoadingProducts(false);
       }
     };
@@ -457,10 +448,10 @@ export default function HomePage() {
                       className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-light"
                     >
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
-                        {news[0].coverImage ? (
+                        {news[0].mainImage ? (
                           <Image
-                            src={news[0].coverImage}
-                            alt={news[0].headline || 'News'}
+                            src={urlFor(news[0].mainImage).url()}
+                            alt={news[0].title || 'News'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
                         ) : (
@@ -471,10 +462,10 @@ export default function HomePage() {
                       </div>
                       <div className="p-8">
                         <h3 className="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors duration-300">
-                          {news[0].headline}
+                          {news[0].title}
                         </h3>
                         <p className="text-primary/70 mb-6 line-clamp-3 text-base md:text-lg leading-relaxed font-light">
-                          {news[0].content}
+                          {news[0].excerpt}
                         </p>
                         <span className="text-accent text-sm font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
                           Read more <ArrowRight size={16} className="ml-2" />
@@ -493,10 +484,10 @@ export default function HomePage() {
                         className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-[120px] border border-border-light"
                       >
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
-                          {item.coverImage ? (
+                          {item.mainImage ? (
                             <Image
-                              src={item.coverImage}
-                              alt={item.headline || 'News'}
+                              src={urlFor(item.mainImage).url()}
+                              alt={item.title || 'News'}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             />
                           ) : (
@@ -507,7 +498,7 @@ export default function HomePage() {
                         </div>
                         <div className="w-2/3 p-4 flex flex-col justify-center">
                           <h4 className="text-sm font-bold text-primary mb-2 line-clamp-2 group-hover:text-accent transition-colors">
-                            {item.headline}
+                            {item.title}
                           </h4>
                           <span className="text-accent text-xs font-semibold mt-auto inline-flex items-center">
                             Read more
@@ -533,76 +524,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
-            EVENTS SECTION — Staggered Reveal
-        ══════════════════════════════════════ */}
-        <section className="bg-white">
-          {/* Dark Header Strip */}
-          <div className="py-8 bg-primary">
-            <div className="max-w-[100rem] mx-auto px-4 md:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white">
-                {t('eventsPage.heroTitle')}
-              </h2>
-            </div>
-          </div>
 
-          {/* Events Content */}
-          <div className="max-w-[100rem] mx-auto px-4 md:px-8 py-16 md:py-24">
-            {isLoadingEvents ? (
-              <div className="flex justify-center py-12">
-                <LoadingSpinner />
-              </div>
-            ) : events.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* ✦ STAGGERED Events List */}
-                <StaggerReveal direction="left">
-                  {events.map((event) => (
-                    <StaggerItem key={event._id} direction="left" className="border-b border-border-light pb-8 last:border-0">
-                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                        <div className="md:w-32 flex-shrink-0">
-                          <p className="text-accent font-bold text-lg">
-                            {formatDate(event.eventDate)}
-                          </p>
-                        </div>
-                        <div className="flex-grow">
-                          <h3 className="text-xl font-bold text-primary mb-2">
-                            {event.eventName}
-                          </h3>
-                          <p className="text-text-muted text-sm mb-4 flex items-center">
-                            <MapPin size={14} className="mr-2" /> {event.location}
-                          </p>
-                          <Link
-                            to="/news?tab=events"
-                            className="inline-block px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-none"
-                          >
-                            {t('eventsPage.btnLearnMore')}
-                          </Link>
-                        </div>
-                      </div>
-                    </StaggerItem>
-                  ))}
-                </StaggerReveal>
-
-                {/* Featured Event Image */}
-                <AnimatedElement direction="right" delay={200} className="h-full hidden lg:block">
-                  <div className="relative h-full min-h-[400px] rounded-none overflow-hidden shadow-2xl group border border-border-light bg-white">
-                    <Image
-                      src={
-                        events[0]?.eventImage ||
-                        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop'
-                      }
-                      alt="Featured Event"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
-                  </div>
-                </AnimatedElement>
-              </div>
-            ) : (
-              <div className="text-center py-12 text-text-muted">No upcoming events.</div>
-            )}
-          </div>
-        </section>
 
         {/* OUR SERVICES PRODUCTS SECTION */}
 

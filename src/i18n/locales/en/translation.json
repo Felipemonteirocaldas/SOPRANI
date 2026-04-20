@@ -584,6 +584,9 @@
     "allCategories": "All Categories",
     "viewDetails": "Technical Specifications",
     "emptyProducts": "No Industrial Systems Found",
-    "allProducts": "View All Products"
+    "allProducts": "View All Products",
+    "viewBrandProducts": "View all {{brand}} products",
+    "koenigCat": "Metal Decorating & Printing Systems",
+    "soudronicCat": "Turnkey Can Making & Welding Systems"
   }
 }

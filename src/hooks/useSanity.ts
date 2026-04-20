@@ -27,9 +27,14 @@ export function useNewsPosts() {
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    const query = `*[_type == "newsPost"] | order(publishedAt desc)`;
+    // Calculando a data de 2 anos atrás
+    const d = new Date();
+    d.setFullYear(d.getFullYear() - 2);
+    const twoYearsAgo = d.toISOString();
+
+    const query = `*[_type == "newsPost" && publishedAt >= $twoYearsAgo] | order(publishedAt desc)`;
     
-    sanityClient.fetch(query)
+    sanityClient.fetch(query, { twoYearsAgo })
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
@@ -44,9 +49,14 @@ export function useEvents() {
   const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    const query = `*[_type == "event"] | order(date asc)`;
+    // Retain events from the past 6 months to display (and all future ones)
+    const d = new Date();
+    d.setMonth(d.getMonth() - 6);
+    const sixMonthsAgo = d.toISOString();
+
+    const query = `*[_type == "event" && date >= $sixMonthsAgo] | order(date desc)`;
     
-    sanityClient.fetch(query)
+    sanityClient.fetch(query, { sixMonthsAgo })
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));

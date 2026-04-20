@@ -592,6 +592,9 @@
     "allCategories": "Tutte le Categorie",
     "viewDetails": "Specifiche Tecniche",
     "emptyProducts": "Nessun sistema trovato",
-    "allProducts": "Tutti i Prodotti"
+    "allProducts": "Tutti i Prodotti",
+    "viewBrandProducts": "Vedi tutti i prodotti {{brand}}",
+    "koenigCat": "Sistemi di Stampa e Decorazione su Metallo",
+    "soudronicCat": "Sistemi Chiavi in Mano per Produzione Lattine e Saldatura"
   }
 }

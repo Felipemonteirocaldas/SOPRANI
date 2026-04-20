@@ -24,7 +24,10 @@ export interface SanityNewsPost {
   publishedAt: string;
   excerpt: string;
   mainImage: any;
-  body: any[]; // Portable Text
+  body?: any[]; // Portable Text optional 
+  externalUrl?: string;
+  source?: string;
+  category?: string;
 }
 
 export interface SanityEvent {
@@ -38,4 +41,6 @@ export interface SanityEvent {
   description: string;
   mainImage: any;
   registrationUrl?: string;
+  externalUrl?: string;
+  source?: string;
 }
