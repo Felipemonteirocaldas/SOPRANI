@@ -216,7 +216,7 @@ export default function Header() {
             "pointer-events-auto bg-white/95 backdrop-blur-xl border border-gray-100 flex items-center relative shadow-2xl",
             isCompact
               ? "rounded-full px-2 py-2 w-auto"
-              : "rounded-full px-3 xs:px-4 sm:px-6 md:px-8 max-w-[100rem] w-full h-16 md:h-20"
+              : "rounded-full px-3 xs:px-4 sm:px-5 lg:px-6 xl:px-8 max-w-[95vw] lg:max-w-[100rem] w-full h-16 md:h-20"
           )}
         >
           <AnimatePresence>
@@ -246,15 +246,15 @@ export default function Header() {
                         className={cn(
                           "w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105",
                           isScrolled
-                            ? "h-[38px] xs:h-[42px] sm:h-[54px] md:h-[58px]"
-                            : "h-[54px] xs:h-[64px] sm:h-[82px] md:h-[90px]"
+                            ? "h-[28px] xs:h-[32px] sm:h-[36px] md:h-[40px] lg:h-[42px] xl:h-[58px]"
+                            : "h-[38px] xs:h-[44px] sm:h-[52px] md:h-[58px] lg:h-[62px] xl:h-[90px]"
                         )}
                       />
                     </div>
                   </Link>
                 </motion.div>
 
-                <motion.div layout className="hidden lg:flex items-center space-x-1 xl:space-x-4">
+                <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-4">
                   <Link to="/services" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.services')}
                   </Link>
@@ -289,7 +289,7 @@ export default function Header() {
                 </motion.div>
 
                 {/* Action Buttons */}
-                <motion.div layout className="flex items-center space-x-2 md:space-x-4">
+                <motion.div layout className="flex items-center space-x-1 xs:space-x-2 xl:space-x-4">
                   <div
                     className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group"
                     onMouseEnter={() => setLangMenuOpen(true)}
@@ -350,7 +350,7 @@ export default function Header() {
 
                   <Link
                     to="/request-quotation"
-                    className="hidden sm:flex items-center bg-accent hover:bg-red-700 text-white px-4 md:px-7 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 shadow-lg shadow-accent/20 active:scale-95 group"
+                    className="hidden xl:flex items-center bg-accent hover:bg-red-700 text-white px-4 md:px-7 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 shadow-lg shadow-accent/20 active:scale-95 group"
                   >
                     {t('header.requestQuotation')}
                     <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -358,7 +358,7 @@ export default function Header() {
 
                   <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="lg:hidden p-2 text-primary hover:text-accent transition-colors"
+                    className="xl:hidden p-2 text-primary hover:text-accent transition-colors"
                     aria-label="Toggle menu"
                   >
                     {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -417,7 +417,7 @@ export default function Header() {
                   isCompact ? "bottom-full mb-4" : "top-full pt-2"
                 )}
               >
-                <nav className="md:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">
+                <nav className="xl:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">
                   <div className="flex flex-col space-y-2 px-6 pt-6 pb-20 shadow-inner">
                     <Link to="/services" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.services')}

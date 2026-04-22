@@ -317,10 +317,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col">
+    <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white flex flex-col overflow-x-hidden">
       {/* Header and ScrollProgressBar are now in the global Layout */}
 
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
 
         {/* ══════════════════════════════════════
             HERO SECTION

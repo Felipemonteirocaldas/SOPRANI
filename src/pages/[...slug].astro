@@ -17,7 +17,7 @@ const BASE_URL   = "https://www.sopraniengineering.com";
   lang é corrigido no cliente via useSEO hook (document.documentElement.setAttribute).
   Usamos "en" como padrão seguro para crawlers, evitando o "it" fixo incorreto.
 -->
-<html lang="en" class="w-full h-full">
+<html lang="en" class="w-full min-h-screen overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,8 +89,8 @@ const BASE_URL   = "https://www.sopraniengineering.com";
       }
     })} />
   </head>
-  <body class="w-full h-full bg-background text-primary">
-    <div id="root" class="w-full h-full">
+  <body class="w-full min-h-screen bg-background text-primary overflow-x-hidden">
+    <div id="root" class="w-full min-h-screen overflow-x-hidden">
       <AppRouter client:only="react" />
     </div>
   </body>

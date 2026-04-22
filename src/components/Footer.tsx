@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-white">
-      <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-12 xs:py-14 sm:py-16 md:py-20">
+      <div className="max-w-[95vw] lg:max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-12 xs:py-14 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-10 md:gap-12 mb-12 sm:mb-12">
           {/* Company Info */}
           <div>
@@ -119,18 +119,20 @@ export default function Footer() {
             </ul>
 
             {/* ✦ Conversion CTA in footer */}
-            <div className="mt-6 pt-6">
-              <ConversionButton
-                to="/request-quotation"
-                variant="primary"
-                shimmer={true}
-                magnetic={true}
-                id="footer-cta-request-quotation"
-                aria-label="Request a Technical Quotation"
-                className="text-[11px] px-5 py-3"
-              >
-                {t('header.requestQuotation')}
-              </ConversionButton>
+            <div className="mt-6 pt-6 flex">
+              <div className="max-w-full overflow-hidden">
+                <ConversionButton
+                  to="/request-quotation"
+                  variant="primary"
+                  shimmer={true}
+                  magnetic={true}
+                  id="footer-cta-request-quotation"
+                  aria-label="Request a Technical Quotation"
+                  className="text-[10px] sm:text-[11px] px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap"
+                >
+                  {t('header.requestQuotation')}
+                </ConversionButton>
+              </div>
             </div>
           </div>
         </div>
