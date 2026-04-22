@@ -310,7 +310,8 @@ export default function HomePage() {
   const formatDate = (dateString?: string | Date) => {
     if (!dateString) return '';
     const date = new Date(dateString);
-    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : i18n.language === 'it' ? 'it-IT' : 'en-GB';
+    const baseLang = i18n.language?.split('-')[0];
+    const locale = baseLang === 'pt' ? 'pt-BR' : baseLang === 'es' ? 'es-ES' : baseLang === 'it' ? 'it-IT' : 'en-GB';
     return date
       .toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' })
       .replace(/\//g, '.');

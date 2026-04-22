@@ -303,7 +303,7 @@ export default function Header() {
                       className="flex items-center text-sm font-bold text-primary hover:text-accent transition-colors py-2 px-2"
                     >
                       <Globe size={16} className="mr-1.5 opacity-60" />
-                      <span className="hidden xs:inline">{i18n.language?.toUpperCase() || 'EN'}</span>
+                      <span className="hidden xs:inline">{(i18n.language?.split('-')[0] || 'EN').toUpperCase()}</span>
                     </button>
 
                     {/* Lang Dropdown */}
@@ -330,7 +330,7 @@ export default function Header() {
                                   }}
                                   className={cn(
                                     "w-full px-4 py-2 text-xs font-bold text-left transition-colors",
-                                    i18n.language === lang.code ? "bg-accent text-white" : "text-primary hover:bg-slate-50"
+                                    i18n.language?.startsWith(lang.code) ? "bg-accent text-white" : "text-primary hover:bg-slate-50"
                                   )}
                                 >
                                   {lang.label}

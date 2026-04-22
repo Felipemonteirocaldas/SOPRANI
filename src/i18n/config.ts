@@ -20,6 +20,9 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
+    supportedLngs: ['en', 'pt', 'it', 'es'],
+    nonExplicitSupportedLngs: true,
+    load: 'languageOnly',
     detection: {
       order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
       caches: ['localStorage', 'cookie']
