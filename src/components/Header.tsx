@@ -239,15 +239,15 @@ export default function Header() {
                       handleClose();
                     }}
                   >
-                    <div className="flex items-center justify-center h-full">
+                    <div className="flex items-center justify-center h-full overflow-visible">
                       <img
                         src="/images/logo.png"
                         alt="Soprani Engineering"
                         className={cn(
-                          "w-auto object-contain transition-all duration-500 ease-in-out",
+                          "w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105",
                           isScrolled
-                            ? "h-[32px] xs:h-[36px] sm:h-[48px] md:h-[50px]"
-                            : "h-[42px] xs:h-[50px] sm:h-[64px] md:h-[68px]"
+                            ? "h-[38px] xs:h-[42px] sm:h-[54px] md:h-[58px]"
+                            : "h-[54px] xs:h-[64px] sm:h-[82px] md:h-[90px]"
                         )}
                       />
                     </div>
