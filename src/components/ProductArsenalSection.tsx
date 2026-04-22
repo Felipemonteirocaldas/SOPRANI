@@ -116,11 +116,11 @@ function getLocalizedValue(t: any, value?: string) {
   // Handle common unit replacements
   let translatedValue = rawValue;
   const unitMap: Record<string, string> = {
-    'sheets/min': 'folhas/min',
-    'sheets/hour': 'folhas/hora',
-    'cans/min': 'latas/min',
-    'blanks/min': 'blanks/min',
-    'm/min': 'm/min'
+    'sheets/min': t('units.sheetsMin'),
+    'sheets/hour': t('units.sheetsHour'),
+    'cans/min': t('units.cansMin'),
+    'blanks/min': t('units.blanksMin'),
+    'm/min': t('units.mMin')
   };
   
   Object.entries(unitMap).forEach(([en, pt]) => {
@@ -128,7 +128,8 @@ function getLocalizedValue(t: any, value?: string) {
   });
 
   // Handle generic prefixes
-  translatedValue = translatedValue.replace(/Up to /gi, 'Até ');
+  const upToPrefix = t('units.upTo') || 'Up to ';
+  translatedValue = translatedValue.replace(/Up to /gi, upToPrefix);
 
   return translatedValue;
 }

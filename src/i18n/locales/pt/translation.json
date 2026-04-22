@@ -698,5 +698,13 @@
                 "readMore": "Ler mais",
                 "noNews": "Nenhuma notícia disponível no momento.",
                 "industrialSolution": "Solução Industrial Soprani"
+        },
+        "units": {
+                "sheetsMin": "folhas/min",
+                "sheetsHour": "folhas/hora",
+                "cansMin": "latas/min",
+                "blanksMin": "blanks/min",
+                "mMin": "m/min",
+                "upTo": "Até "
         }
 }
