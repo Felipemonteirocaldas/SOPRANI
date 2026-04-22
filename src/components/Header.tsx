@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown, Headphones, Menu, Package, Truck, Wrench, X, Zap, Search, Globe, Home as HomeIcon } from 'lucide-react';
+import { ArrowRight, ChevronDown, Headphones, Menu, Package, Truck, Wrench, X, Zap, Search, Globe, Home as HomeIcon, LayoutGrid } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const getServicesLinks = (t: any) => [
-  { label: t('header.allServices'), href: '/services', icon: ArrowRight },
+  { label: t('header.allServices'), href: '/services', icon: LayoutGrid },
   { label: t('header.machinery'), href: '/machinery', icon: Wrench },
   { label: t('header.spareParts'), href: '/spare-parts', icon: Package },
   { label: t('header.technicalAssistance'), href: '/technical-assistance', icon: Headphones },
@@ -37,22 +37,24 @@ const MenuContent = ({
   const resourcesLinks = getResourcesLinks(t);
 
   return (
-    <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-6 sm:py-8 lg:py-9">
+    <div className="max-w-[100rem] mx-auto px-6 sm:px-10 md:px-16 lg:px-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-10 py-12 lg:py-16">
         {/* COLUMN 1: SERVIÇOS */}
-        <div className="space-y-0">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+        <div className="space-y-4">
+          <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-accent/80 mb-6">
             {t('header.services')}
           </h3>
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-1">
             {servicesLinks.map((link, idx) => (
               <Link
                 key={idx}
                 to={link.href}
-                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+                className="flex items-center gap-3 text-sm font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                </div>
                 <span>{link.label}</span>
               </Link>
             ))}
@@ -60,19 +62,21 @@ const MenuContent = ({
         </div>
 
         {/* COLUMN 2: PRODUTOS */}
-        <div className="space-y-0">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+        <div className="space-y-4">
+          <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-accent/80 mb-6">
             {t('header.products')}
           </h3>
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-1">
             {productsLinks.map((link, idx) => (
               <Link
                 key={idx}
                 to={link.href}
-                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+                className="flex items-center gap-3 text-sm font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                </div>
                 <span>{link.label}</span>
               </Link>
             ))}
@@ -80,19 +84,21 @@ const MenuContent = ({
         </div>
 
         {/* COLUMN 3: RECURSOS */}
-        <div className="space-y-0">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+        <div className="space-y-4">
+          <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-accent/80 mb-6">
             {t('header.resources')}
           </h3>
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-1">
             {resourcesLinks.map((link, idx) => (
               <Link
                 key={idx}
                 to={link.href}
-                className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+                className="flex items-center gap-3 text-sm font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <link.icon size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                </div>
                 <span>{link.label}</span>
               </Link>
             ))}
@@ -100,17 +106,17 @@ const MenuContent = ({
         </div>
 
         {/* COLUMN 4: OPORTUNIDADES */}
-        <div className="space-y-0">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#666] pb-2.5 border-b border-gray-100 mb-2.5">
+        <div className="space-y-4">
+          <h3 className="text-[10px] font-black uppercase tracking-[0.25em] text-accent/80 mb-6">
             {t('header.opportunities')}
           </h3>
           <div className="flex flex-col space-y-4">
             <Link
               to="/request-quotation"
-              className="flex items-center gap-2 text-sm font-normal text-primary/70 py-1.75 border-b border-gray-100 transition-colors duration-150 hover:text-primary group/item"
+              className="flex items-center gap-3 text-sm font-bold text-white bg-accent p-4 rounded-2xl shadow-lg shadow-accent/20 hover:bg-red-700 hover:shadow-accent/30 transition-all duration-300 group/item"
               onClick={onClose}
             >
-              <Zap size={14} className="text-accent opacity-60 flex-shrink-0 transition-opacity duration-150 group-hover/item:opacity-100" />
+              <Zap size={18} className="text-white transition-colors" />
               <span>{t('header.requestQuotation')}</span>
             </Link>
 
@@ -119,18 +125,18 @@ const MenuContent = ({
               className="group/card block transition-all duration-300"
               onClick={onClose}
             >
-              <div className="mt-3.5 p-4 bg-primary/5 border-l-4 border-accent transition-all duration-300 group-hover/card:bg-primary/10 group-hover/card:translate-x-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-1.5 block">
+              <div className="p-5 bg-slate-50 border-l-4 border-l-accent border-y border-r border-slate-100 rounded-2xl transition-all duration-300 group-hover/card:bg-white group-hover/card:shadow-xl group-hover/card:border-transparent">
+                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-accent mb-2 block">
                   {t('header.sellMachinery')}
                 </span>
-                <h4 className="text-sm font-bold text-primary mb-1">
+                <h4 className="text-sm font-bold text-primary mb-1.5">
                   {t('header.sellMachineryCardTitle')}
                 </h4>
-                <p className="text-xs font-light text-slate-600 leading-relaxed">
+                <p className="text-[11px] font-normal text-slate-500 leading-relaxed">
                   {t('header.sellMachineryCardDesc')}
                 </p>
-                <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-primary uppercase tracking-wider opacity-0 -translate-x-2 transition-all duration-300 group-hover/card:opacity-100 group-hover/card:translate-x-0">
-                  {t('header.more')} →
+                <div className="mt-3 flex items-center gap-1.5 text-[10px] font-black text-primary uppercase tracking-widest opacity-0 -translate-x-2 transition-all duration-300 group-hover/card:opacity-100 group-hover/card:translate-x-0">
+                  {t('header.more')}
                 </div>
               </div>
             </Link>
@@ -279,11 +285,11 @@ export default function Header() {
                     {/* Mega Menu Dropdown */}
                     <div
                       className={cn(
-                        "fixed left-0 right-0 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-300 ease-out",
+                        "fixed left-4 right-4 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-full lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
                         isScrolled
-                          ? "top-[72px] sm:top-[80px] md:top-[88px] lg:top-[104px]"
-                          : "top-[104px] sm:top-[120px] md:top-[136px] lg:top-[152px] xl:top-[168px]",
-                        activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                          ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
+                          : "top-[96px] sm:top-[104px] md:top-[128px]",
+                        activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
                       )}
                     >
                       <MenuContent t={t} onClose={handleClose} />
