@@ -204,7 +204,7 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
               </Command.List>
 
               {/* Footer / Shortcuts */}
-              <div className="border-t border-slate-100 bg-slate-50/50 px-4 py-3 flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+              <div className="border-t border-slate-100 bg-slate-50/50 px-4 py-3 hidden md:flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                 <div className="flex items-center gap-6">
                   <span className="flex items-center gap-1.5">
                     <span className="px-1.5 py-0.5 bg-white border border-slate-200 rounded shadow-sm text-slate-600 flex items-center gap-0.5">
