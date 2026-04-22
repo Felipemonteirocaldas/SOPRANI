@@ -120,6 +120,58 @@ export default function CompanyPage() {
           <div className="absolute -bottom-px left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
         </section>
 
+        {/* ── LEGACY & VISION ──────────────────────────────────────────────── */}
+        <section className="bg-slate-50 py-24 md:py-32 overflow-hidden border-b border-slate-100">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-px bg-accent" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
+                    The Foundation
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
+                  {t('companyPage.legacyTitle')}
+                </h2>
+                <div className="w-20 h-1.5 bg-accent mb-8" />
+                <p className="text-lg md:text-2xl text-slate-700 leading-relaxed font-light italic border-l-4 border-slate-200 pl-6">
+                  {t('companyPage.legacyText')}
+                </p>
+              </div>
+
+              <div className="order-1 lg:order-2 relative py-10">
+                {/* Decorative background element */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+
+                <div className="relative flex items-center justify-center">
+                  {/* Senior Sergio - Legacy (Main focus) */}
+                  <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-30 transition-all duration-500 group">
+                    <Image
+                      src="/images/sergio-soprani-senior.png"
+                      alt="Sergio Soprani - Founder"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                      <p className="text-white text-lg font-black tracking-widest uppercase">Sergio Soprani</p>
+                      <p className="text-white/70 text-[10px] tracking-widest uppercase">Founder & Visionary</p>
+                    </div>
+                  </div>
+
+                  {/* Young Sergio - Foundation (Legacy look) */}
+                  <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-30 transition-all duration-500 group cursor-pointer">
+                    <Image
+                      src="/images/sergio-soprani-young.png"
+                      alt="Sergio Soprani - The Early Years"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── ABOUT / HISTORY ──────────────────────────────────────────────── */}
         <section className="bg-white py-24 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
@@ -152,17 +204,21 @@ export default function CompanyPage() {
                   <span className="text-7xl md:text-8xl font-heading font-black text-white/10 leading-none block mb-4 select-none">
                     1984
                   </span>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">Founded</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">
+                    {t('companyPage.cardFounded')}
+                  </p>
                   <p className="text-white text-sm font-paragraph leading-relaxed">
                     Eng. Sergio Soprani · Milan, Italy
                   </p>
                 </div>
                 {/* Today card */}
                 <div className="bg-slate-50 border border-slate-100 p-8 flex-1">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">Today</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">
+                    {t('companyPage.cardToday')}
+                  </p>
                   <p className="text-[#001F5F] font-heading font-black text-lg mb-1">Matteo Soprani</p>
                   <p className="text-slate-700 text-sm font-paragraph leading-relaxed">
-                    Leading international expansion with 40+ years of accumulated technical expertise.
+                    {t('companyPage.cardMatteoDesc')}
                   </p>
                 </div>
               </div>

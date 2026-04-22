@@ -193,7 +193,9 @@
                 "ex5D": "Specialized trading of tinplate and aluminum sheet.",
                 "ex6T": "Sector History",
                 "ex6D": "Decades of experience focused on the packaging sector.",
-                "reachTitle": "Global Connectivity"
+                "reachTitle": "Global Connectivity",
+                "legacyTitle": "Legacy & Vision",
+                "legacyText": "Sergio Soprani founded Soprani Engineering with a clear vision: to transform the metal packaging industry through technical precision and trusted global partnerships. With over 40 years of leadership, his journey is the foundation of our industrial mastery and the commitment we renew with every project delivered worldwide."
         },
         "servicesPage": {
                 "heroSub": "Integral solutions to maximize manufacturing performance in the metalworking sector.",
@@ -249,6 +251,11 @@
                 "ach3A": "Global Reference",
                 "ach4V": "Full Tech",
                 "ach4A": "Solutions Ecosystem",
+                "legacyTitle": "Legacy & Vision",
+                "legacyText": "Sergio Soprani was the architect of a vision that modernized the metal packaging industry worldwide. His pioneering spirit in integrating Italian technical precision with trusted global partnerships set the standards of excellence that define Soprani Engineering to this day. His legacy remains the compass of our industrial mastery and the commitment we honor in every project.",
+                "cardFounded": "Founded",
+                "cardToday": "Today",
+                "cardMatteoDesc": "Leading international expansion with 40+ years of accumulated technical expertise.",
                 "subTitle": "Corporate Structure",
                 "subDesc": "Our network of technical and strategic collaboration",
                 "subEmpty": "Information updating.",

@@ -192,7 +192,9 @@
                 "ex5D": "Trading especializado de folha de flandres e alumínio.",
                 "ex6T": "Histórico Setorial",
                 "ex6D": "Décadas de experiência focada no setor de embalagens.",
-                "reachTitle": "Conectividade Global"
+                "reachTitle": "Conectividade Global",
+                "legacyTitle": "Legado e Visão",
+                "legacyText": "Sergio Soprani foi o arquiteto de uma visão que modernizou o setor de embalagens metálicas ao redor do mundo. Seu pioneirismo na integração de precisão técnica italiana com parcerias globais de confiança estabeleceu os padrões de excelência que definem a Soprani Engineering até hoje. Seu legado permanece como a bússola de nossa maestria industrial e o compromisso que honramos em cada projeto."
         },
         "servicesPage": {
                 "heroSub": "Soluções integrais para maximizar a performance fabril no setor metalúrgico.",
@@ -248,6 +250,11 @@
                 "ach3A": "Referência Global",
                 "ach4V": "Full Tech",
                 "ach4A": "Ecossistema de Soluções",
+                "legacyTitle": "Legado e Visão",
+                "legacyText": "Sergio Soprani foi o arquiteto de uma visão que modernizou o setor de embalagens metálicas ao redor do mundo. Seu pioneirismo na integração de precisão técnica italiana com parcerias globais de confiança estabeleceu os padrões de excelência que definem a Soprani Engineering até hoje. Seu legado permanece como a bússola de nossa maestria industrial e o compromisso que honramos em cada projeto.",
+                "cardFounded": "Fundação",
+                "cardToday": "Hoje",
+                "cardMatteoDesc": "Liderando a expansão internacional com mais de 40 anos de expertise técnica acumulada.",
                 "subTitle": "Estrutura Corporativa",
                 "subDesc": "Nossa rede de colaboração técnica e estratégica",
                 "subEmpty": "Informações em atualização.",
