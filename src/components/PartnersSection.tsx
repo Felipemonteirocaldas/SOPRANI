@@ -47,7 +47,7 @@ export default function PartnersSection() {
     <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,#C41230_0%,transparent_40%)]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,#003B8F_0%,transparent_40%)]" />
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,#002355_0%,transparent_40%)]" />
       </div>
 
@@ -95,7 +95,7 @@ export default function PartnersSection() {
 
                 {/* Logo Area — fixed height so both cards align */}
                 <div
-                  className="flex items-center justify-center px-6 sm:px-10 h-32 sm:h-36 flex-shrink-0"
+                  className="flex items-center justify-center px-6 sm:px-10 h-20 sm:h-24 flex-shrink-0"
                   style={{ backgroundColor: partner.logoBg }}
                 >
                   <img
@@ -125,7 +125,7 @@ export default function PartnersSection() {
                   </p>
 
                   {/* Specialty tag */}
-                  <div className="inline-block px-3 py-1 border border-accent/30 bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
+                  <div className="inline-block px-3 py-1 border border-accent bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
                     {t(partner.specialtyKey)}
                   </div>
 

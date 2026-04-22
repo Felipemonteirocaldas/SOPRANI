@@ -65,7 +65,7 @@ export default function SellAssetCTA() {
             className="lg:col-span-7"
           >
             <div className="mb-10">
-              <span className="inline-block px-3 py-1.5 bg-white/10 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.4em]">
+              <span className="tag-shimmer inline-block px-3 py-1.5 bg-white/10 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.4em]">
                 {t('header.opportunities')}
               </span>
             </div>

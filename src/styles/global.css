@@ -197,6 +197,44 @@
     animation: shimmer 2.8s ease-in-out infinite;
     pointer-events: none;
   }
+
+  /* ✦ Metallic Tag Shimmer — subtle reflection for specialty labels */
+  @keyframes metallic-shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    35% {
+      transform: translateX(100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .tag-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tag-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 45%,
+        rgba(255, 255, 255, 0.18) 50%,
+        rgba(255, 255, 255, 0.08) 55%,
+        transparent 100%);
+    transform: translateX(-100%);
+    animation: metallic-shimmer 5s infinite ease-in-out;
+    pointer-events: none;
+  }
 }
 
 /* end @layer components */

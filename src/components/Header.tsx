@@ -279,7 +279,10 @@ export default function Header() {
                     {/* Mega Menu Dropdown */}
                     <div
                       className={cn(
-                        "fixed left-0 right-0 top-[96px] sm:top-[104px] md:top-[128px] bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out",
+                        "fixed left-0 right-0 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-300 ease-out",
+                        isScrolled
+                          ? "top-[72px] sm:top-[80px] md:top-[88px] lg:top-[104px]"
+                          : "top-[104px] sm:top-[120px] md:top-[136px] lg:top-[152px] xl:top-[168px]",
                         activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
                       )}
                     >
