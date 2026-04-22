@@ -173,13 +173,14 @@ export default function Header() {
     const handleScrollClose = () => {
       if (mobileMenuOpen) setMobileMenuOpen(false);
       if (langMenuOpen) setLangMenuOpen(false);
+      if (activeMenu) setActiveMenu(undefined);
     };
 
-    if (mobileMenuOpen || langMenuOpen) {
+    if (mobileMenuOpen || langMenuOpen || activeMenu) {
       window.addEventListener('scroll', handleScrollClose, { passive: true });
     }
     return () => window.removeEventListener('scroll', handleScrollClose);
-  }, [mobileMenuOpen, langMenuOpen]);
+  }, [mobileMenuOpen, langMenuOpen, activeMenu]);
 
   const isCompact = isScrolled && !mobileMenuOpen;
 
@@ -285,11 +286,11 @@ export default function Header() {
                     {/* Mega Menu Dropdown */}
                     <div
                       className={cn(
-                        "fixed left-4 right-4 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-full lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
+                        "fixed left-1/2 -translate-x-1/2 w-[95vw] lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
                         isScrolled
                           ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
                           : "top-[96px] sm:top-[104px] md:top-[128px]",
-                        activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+                        activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8 pointer-events-none"
                       )}
                     >
                       <MenuContent t={t} onClose={handleClose} />
