@@ -263,7 +263,7 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            placeholder="corporate@company.com"
+                            placeholder="your@email.com"
                             icon={Mail}
                           />
                         </div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            placeholder="Italy / Global"
+                            placeholder="Select your country"
                             icon={Globe}
                           />
                         </div>
@@ -337,7 +337,7 @@ export default function ContactPage() {
                             onChange={handleChange}
                             required
                             rows={4}
-                            className="w-full p-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all resize-none"
+                            className="w-full p-4 bg-gray-50 border-b-2 border-transparent focus:border-accent text-sm font-medium focus:outline-none transition-all resize-none min-h-[150px]"
                             placeholder={t('contactPage.formPlaceP')}
                           />
                         </div>

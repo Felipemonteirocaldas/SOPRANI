@@ -44,7 +44,13 @@ export default function ProductsPage() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<SanityProduct | null>(null);
+  const [activeTab, setActiveTab] = useState<'photo' | 'video'>('photo');
   const [isMounted, setIsMounted] = useState(false);
+
+  // Reset tab when product changes
+  useEffect(() => {
+    setActiveTab('photo');
+  }, [selectedProduct]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -622,12 +628,11 @@ export default function ProductsPage() {
 
               {/* Panel/Drawer */}
               <motion.div
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: '100%', opacity: 0 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed right-0 top-0 h-[100vh] w-[100vw] md:w-[480px] bg-white shadow-2xl z-[10000] overflow-y-auto flex flex-col"
-                style={{ position: 'fixed', right: 0, top: 0 }}
+                className="fixed inset-x-4 md:inset-x-auto md:right-0 top-[5vh] md:top-0 h-auto max-h-[90vh] md:h-full w-auto md:w-[480px] bg-white shadow-2xl z-[10000] overflow-y-auto flex flex-col rounded-2xl md:rounded-none"
               >
                 <button
                   onClick={() => setSelectedProduct(null)}
@@ -636,17 +641,66 @@ export default function ProductsPage() {
                   <X size={20} />
                 </button>
 
-                <div className="relative h-72 shrink-0 bg-slate-900 overflow-hidden">
-                  {selectedProduct.mainImage && (
-                    <Image
-                      src={selectedProduct.mainImage ? urlFor(selectedProduct.mainImage).url() : ''}
-                      alt={selectedProduct.title}
-                      className="object-cover w-full h-full opacity-80"
-                      width={800}
-                    />
+                <div className="relative h-[280px] md:h-80 shrink-0 bg-slate-900 overflow-hidden flex flex-col">
+                  {/* ✧ Gallery Tabs */}
+                  {selectedProduct.title.includes('MetalStar 4') && (
+                    <div className="absolute top-10 left-6 z-20 flex gap-6">
+                      <button
+                        onClick={() => setActiveTab('photo')}
+                        className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'photo' ? 'text-white border-accent' : 'text-white/40 border-transparent'
+                          }`}
+                      >
+                        📷 Photo
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('video')}
+                        className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'video' ? 'text-white border-accent' : 'text-white/40 border-transparent'
+                          }`}
+                      >
+                        ▶ Video
+                      </button>
+                    </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                  <div className="absolute bottom-6 left-8 right-8">
+
+                  <AnimatePresence mode="wait">
+                    {activeTab === 'photo' ? (
+                      <motion.div
+                        key="photo"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="w-full h-full"
+                      >
+                        {selectedProduct.mainImage && (
+                          <Image
+                            src={selectedProduct.mainImage ? urlFor(selectedProduct.mainImage).url() : ''}
+                            alt={selectedProduct.title}
+                            className="object-cover w-full h-full opacity-80"
+                            width={800}
+                          />
+                        )}
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="video"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="w-full h-full bg-black flex items-center justify-center"
+                      >
+                        <video
+                          autoPlay
+                          controls
+                          className="w-full h-full object-contain"
+                        >
+                          <source src="/video/metalstar4.mp4" type="video/mp4" />
+                        </video>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-8 right-8 pointer-events-none">
                     <Badge className="mb-4 bg-accent">System</Badge>
                     <h2 className="text-3xl font-bold text-white font-heading leading-tight">{getLocalizedTitle(selectedProduct)}</h2>
                   </div>

@@ -113,7 +113,7 @@ export default function RequestQuotationPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <span className="inline-block px-3 py-1 bg-accent text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none mb-6 border border-accent/60">
+                  <span className="inline-block border-l-2 border-accent pl-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-6">
                     B2B Technical Solutions
                   </span>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">
@@ -185,7 +185,7 @@ export default function RequestQuotationPage() {
                               <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="..." />
+                                placeholder="Your company name" />
                             </div>
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">
@@ -203,7 +203,7 @@ export default function RequestQuotationPage() {
                               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="email" name="email" value={formData.email} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="..." />
+                                placeholder="your@email.com" />
                             </div>
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">
@@ -222,9 +222,28 @@ export default function RequestQuotationPage() {
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coCountry')}</label>
                             <div className="relative">
                               <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
-                              <input type="text" name="country" value={formData.country} onChange={handleChange} required
-                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="..." />
+                              <select name="country" value={formData.country} onChange={handleChange} required
+                                className="w-full h-[41px] pl-10 pr-4 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-xs font-medium bg-white appearance-none">
+                                <option value="">Select your country</option>
+                                <optgroup label="Main Countries">
+                                  <option value="Italy">Italy</option>
+                                  <option value="Germany">Germany</option>
+                                  <option value="United States">United States</option>
+                                  <option value="Brazil">Brazil</option>
+                                  <option value="Spain">Spain</option>
+                                  <option value="Mexico">Mexico</option>
+                                  <option value="China">China</option>
+                                  <option value="India">India</option>
+                                </optgroup>
+                                <optgroup label="All Regions">
+                                  <option value="Europe">Europe</option>
+                                  <option value="North America">North America</option>
+                                  <option value="South America">South America</option>
+                                  <option value="Asia">Asia</option>
+                                  <option value="Africa">Africa</option>
+                                  <option value="Oceania">Oceania</option>
+                                </optgroup>
+                              </select>
                             </div>
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">

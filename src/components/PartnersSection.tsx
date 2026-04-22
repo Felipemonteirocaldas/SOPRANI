@@ -125,7 +125,7 @@ export default function PartnersSection() {
                   </p>
 
                   {/* Specialty tag */}
-                  <div className="inline-block px-3 py-1 border border-accent bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
+                  <div className="w-fit px-3 py-1 border border-accent bg-accent/5 text-accent text-[10px] font-bold uppercase tracking-wider mb-5">
                     {t(partner.specialtyKey)}
                   </div>
 

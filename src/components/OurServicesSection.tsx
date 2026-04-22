@@ -62,7 +62,7 @@ function ServiceCard({
         <IconComponent
           className="w-7 h-7 transition-colors duration-500"
           style={{ color: hovered ? '#C41230' : '#001F5F' }}
-          strokeWidth={1}
+          strokeWidth={1.5}
         />
       </div>
 
@@ -156,14 +156,12 @@ export default function OurServicesSection() {
                 {t('servicesSection.whatWeDo')}
               </span>
             </div>
-            <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary">
-                {t('servicesSection.ourServices')}
-              </h2>
-              <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-text-muted">
-                {t('servicesSection.sixAreas')}
-              </p>
-            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary">
+              {t('servicesSection.ourServices')}
+            </h2>
+            <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium text-slate-500 mt-2">
+              {t('servicesSection.sixAreas')}
+            </p>
           </div>
 
           {/* ✦ View All Services — ConversionButton with shimmer */}

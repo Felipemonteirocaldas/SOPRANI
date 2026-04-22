@@ -225,6 +225,12 @@ function SpecsModal({ product, onClose }: {
 }) {
   const { t } = useTranslation();
   const [isMounted, setIsMounted] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState<'photo' | 'video'>('photo');
+
+  // Reset tab when product changes
+  React.useEffect(() => {
+    setActiveTab('photo');
+  }, [product]);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -250,10 +256,7 @@ function SpecsModal({ product, onClose }: {
           />
 
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 20, opacity: 0 }}
-            className="relative w-full max-w-5xl bg-white border border-slate-200 overflow-hidden shadow-[0_20px_50px_rgba(0,31,95,0.15)] flex flex-col md:block"
+            className="relative w-full max-w-5xl mx-auto max-h-[90vh] overflow-y-auto bg-white border border-slate-200 shadow-[0_20px_50px_rgba(0,31,95,0.15)] flex flex-col md:block"
           >
             {/* Close Button */}
             <button
@@ -265,19 +268,63 @@ function SpecsModal({ product, onClose }: {
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
               {/* ✧ Visual Section */}
-              <div className="relative p-8 lg:p-16 flex items-center justify-center bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 overflow-hidden">
+              <div className="relative p-12 lg:p-16 min-h-[280px] flex flex-col items-center justify-center bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 overflow-hidden">
                 {/* Background Texture */}
                 <div className="absolute inset-0 grid-pattern-light opacity-20 pointer-events-none" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
-                <motion.img
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  src={product.mainImage ? urlFor(product.mainImage).url() : ''}
-                  alt={product.title}
-                  className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
-                />
+                {/* ✧ Gallery Tabs */}
+                {product.title.includes('MetalStar 4') && (
+                  <div className="absolute top-10 left-6 z-20 flex gap-6">
+                    <button
+                      onClick={() => setActiveTab('photo')}
+                      className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'photo' ? 'text-accent border-accent' : 'text-slate-400 border-transparent'
+                        }`}
+                    >
+                      📷 Photo
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('video')}
+                      className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'video' ? 'text-accent border-accent' : 'text-slate-400 border-transparent'
+                        }`}
+                    >
+                      ▶ Video
+                    </button>
+                  </div>
+                )}
+
+                <AnimatePresence mode="wait">
+                  {activeTab === 'photo' ? (
+                    <motion.img
+                      key="photo"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      src={product.mainImage ? urlFor(product.mainImage).url() : ''}
+                      alt={product.title}
+                      className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
+                    />
+                  ) : (
+                    <motion.div
+                      key="video"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative z-10 w-full aspect-video bg-black flex items-center justify-center shadow-2xl"
+                    >
+                      <video
+                        autoPlay
+                        controls
+                        className="w-full h-full object-contain"
+                      >
+                        <source src="/video/metalstar4.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
                   <div className="flex items-center gap-2 text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
