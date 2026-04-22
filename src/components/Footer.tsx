@@ -116,20 +116,10 @@ export default function Footer() {
                   {t('header.requestQuotation')}
                 </Link>
               </li>
-              <li>
-                <a href="#" className="text-xs xs:text-sm text-gray-300 hover:text-accent transition-colors duration-200">
-                  {t('footer.privacyPolicy')}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-xs xs:text-sm text-slate-200 hover:text-accent transition-colors duration-200">
-                  {t('footer.termsOfService')}
-                </a>
-              </li>
             </ul>
 
             {/* ✦ Conversion CTA in footer */}
-            <div className="mt-6 pt-6 border-t border-white/10">
+            <div className="mt-6 pt-6">
               <ConversionButton
                 to="/request-quotation"
                 variant="primary"
@@ -148,11 +138,19 @@ export default function Footer() {
 
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-6 xs:pt-8">
-          <div className="flex justify-center items-center">
-            <p className="text-xs text-gray-400 text-center">
+        <div className="pt-8 pb-24 sm:pb-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-[11px] text-slate-400 font-medium tracking-wide">
               © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
             </p>
+            <div className="flex gap-8">
+              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+                {t('footer.privacyPolicy')}
+              </a>
+              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+                {t('footer.termsOfService')}
+              </a>
+            </div>
           </div>
         </div>
       </div>

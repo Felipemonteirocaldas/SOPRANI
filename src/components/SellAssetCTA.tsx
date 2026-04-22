@@ -14,7 +14,7 @@ export default function SellAssetCTA() {
     offset: ["start end", "end start"]
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   const features = [
@@ -43,13 +43,13 @@ export default function SellAssetCTA() {
       {/* Immersive Background */}
       <motion.div
         style={{ y: backgroundY }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-x-0 top-[-10%] h-[120%] z-0"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/40 z-10" />
         <img
           src="/images/asset-acquisition-bg.png"
           alt="Industrial Sourcing"
-          className="w-full h-full object-cover opacity-50 scale-105 filter greyscale brightness-50 contrast-125"
+          className="w-full h-full object-cover opacity-40 scale-110 filter grayscale brightness-[0.4] contrast-125"
         />
       </motion.div>
 
@@ -64,9 +64,8 @@ export default function SellAssetCTA() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-0.5 bg-accent" />
-              <span className="text-xs font-heading font-semibold text-accent uppercase tracking-[0.3em]">
+            <div className="mb-10">
+              <span className="inline-block px-3 py-1.5 bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.4em]">
                 {t('header.opportunities')}
               </span>
             </div>
@@ -113,12 +112,12 @@ export default function SellAssetCTA() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
                 viewport={{ once: true }}
-                whileHover={{ x: 10 }}
-                className="group p-10 bg-white/[0.02] border border-white/[0.08] hover:bg-white/[0.04] hover:border-accent/40 transition-all duration-500 cursor-default"
+                whileHover={{ x: 15 }}
+                className="group p-10 bg-white/[0.03] backdrop-blur-md border border-white/[0.08] hover:bg-white/[0.06] hover:border-accent/40 transition-all duration-500 cursor-default"
               >
                 <div className="flex items-start gap-8">
-                  <div className="w-14 h-14 bg-white/[0.03] border border-white/[0.1] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500">
-                    <feature.icon size={26} strokeWidth={1} />
+                  <div className="w-14 h-14 bg-white/[0.03] border border-white/[0.1] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 rounded-none">
+                    <feature.icon size={26} strokeWidth={1.5} />
                   </div>
                   <div className="flex-1">
                     <h4 className="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">
