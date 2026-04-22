@@ -146,12 +146,12 @@ export default function Footer() {
               © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
             </p>
             <div className="flex gap-8">
-              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+              <Link to="/privacy" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
                 {t('footer.privacyPolicy')}
-              </a>
-              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+              </Link>
+              <Link to="/terms" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
                 {t('footer.termsOfService')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

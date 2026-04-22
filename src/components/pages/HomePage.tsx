@@ -270,7 +270,7 @@ const AnimatedElement: React.FC<{
 // 🏠 MAIN PAGE COMPONENT
 // ─────────────────────────────────────────────
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [products, setProducts] = useState<ProductSolutions[]>([]);
 
@@ -425,14 +425,14 @@ export default function HomePage() {
         {/* ══════════════════════════════════════
             LATEST NEWS SECTION — Staggered Reveal
         ══════════════════════════════════════ */}
-        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-background-alt">
+        <section className="py-12 xs:py-16 sm:py-20 md:py-32 bg-[#f8f9fa]">
           <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
             <AnimatedElement>
               <div className="text-center mb-10 xs:mb-12 sm:mb-16">
                 <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3 xs:mb-4">
                   {t('newsPage.heroTitle')}
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
+                <p className="text-sm xs:text-base sm:text-lg text-slate-500 max-w-2xl mx-auto font-medium">
                   {t('newsPage.heroSub')}
                 </p>
               </div>
@@ -443,14 +443,21 @@ export default function HomePage() {
                 <LoadingSpinner />
               </div>
             ) : news.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 {/* Featured News */}
                 <div className="lg:col-span-7">
                   <AnimatedElement direction="up" delay={100} className="h-full">
                     <Link
                       to="/news"
-                      className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-light"
+                      className="group block h-full bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border-t-4 border-accent border-x border-b border-border-light relative"
                     >
+                      {/* Category Tag */}
+                      <div className="absolute top-6 left-6 z-10">
+                        <span className="bg-accent text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest shadow-lg">
+                          {news[0].category || 'INSIGHT'}
+                        </span>
+                      </div>
+
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                         {news[0].mainImage ? (
                           <Image
@@ -464,28 +471,34 @@ export default function HomePage() {
                           </div>
                         )}
                       </div>
-                      <div className="p-8">
-                        <h3 className="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors duration-300">
+                      <div className="p-8 md:p-10">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                            {formatDate(news[0].publishedAt)}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors duration-300">
                           {news[0].title}
                         </h3>
-                        <p className="text-primary/70 mb-6 line-clamp-3 text-base md:text-lg leading-relaxed font-light">
+                        <p className="text-slate-600 mb-8 line-clamp-3 text-base md:text-lg leading-relaxed font-normal">
                           {news[0].excerpt}
                         </p>
-                        <span className="text-accent text-sm font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                          {t('news.readMore')} <ArrowRight size={16} className="ml-2" />
-                        </span>
+
+                        <div className="inline-flex items-center px-6 py-3 bg-accent text-white text-xs font-bold uppercase tracking-widest group-hover:bg-accent-dark transition-all duration-300">
+                          {t('news.readMore')} <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </AnimatedElement>
                 </div>
 
                 {/* ✦ STAGGERED News List (Right) */}
-                <StaggerReveal className="lg:col-span-5 flex flex-col gap-4">
+                <StaggerReveal className="lg:col-span-5 flex flex-col gap-6">
                   {news.slice(1, 5).map((item) => (
-                    <StaggerItem key={item._id}>
+                    <StaggerItem key={item._id} className="h-full">
                       <Link
                         to="/news"
-                        className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-[120px] border border-border-light"
+                        className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full min-h-[140px] border-l-4 border-l-accent border-y border-r border-border-light"
                       >
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.mainImage ? (
@@ -500,13 +513,21 @@ export default function HomePage() {
                             </div>
                           )}
                         </div>
-                        <div className="w-2/3 p-4 flex flex-col justify-center">
-                          <h4 className="text-sm font-bold text-primary mb-2 line-clamp-2 group-hover:text-accent transition-colors">
+                        <div className="w-2/3 p-5 flex flex-col">
+                          <div className="flex justify-between items-start mb-2">
+                            <span className="text-[9px] font-black text-accent uppercase tracking-widest">
+                              {item.category || 'NEWS'}
+                            </span>
+                            <span className="text-[10px] font-bold text-slate-400">
+                              {formatDate(item.publishedAt)}
+                            </span>
+                          </div>
+                          <h4 className="text-base font-bold text-primary mb-2 line-clamp-2 leading-tight group-hover:text-accent transition-colors">
                             {item.title}
                           </h4>
-                          <span className="text-accent text-xs font-semibold mt-auto inline-flex items-center">
-                            {t('news.readMore')}
-                          </span>
+                          <div className="mt-auto flex justify-end">
+                            <ArrowRight size={18} className="text-accent transform group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
                       </Link>
                     </StaggerItem>
@@ -516,15 +537,6 @@ export default function HomePage() {
             ) : (
               <div className="text-center py-12 text-text-muted">{t('news.noNews')}</div>
             )}
-
-            <AnimatedElement delay={400} className="mt-12 flex justify-center">
-              <button
-                onClick={() => navigate('/news')}
-                className="px-8 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-semibold uppercase tracking-wider rounded-none"
-              >
-                {t('newsPage.readMore')}
-              </button>
-            </AnimatedElement>
           </div>
         </section>
 

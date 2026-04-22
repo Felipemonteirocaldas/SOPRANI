@@ -12,7 +12,12 @@ export const ScrollProgressBar: React.FC = () => {
   return (
     <motion.div
       style={{ scaleX, transformOrigin: 'left' }}
-      className="fixed top-0 left-0 right-0 z-[10001] h-[3px] bg-accent"
+      className="fixed top-0 left-0 right-0 z-[10001] h-[4px]"
+      style={{
+        scaleX,
+        transformOrigin: 'left',
+        background: 'linear-gradient(to right, #008C45, #F4F5F0, #CD212A)'
+      }}
       aria-hidden="true"
     />
   );

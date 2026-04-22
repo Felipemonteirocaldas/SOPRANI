@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-rou
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import SEOHead from '@/components/SEOHead';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
@@ -23,6 +23,8 @@ const ProductsPage = lazy(() => import('@/components/pages/ProductsPage'));
 const CompanyPage = lazy(() => import('@/components/pages/CompanyPage'));
 const EventsPage = lazy(() => import('@/components/pages/EventsPage'));
 const NewsPage = lazy(() => import('@/components/pages/NewsPage'));
+const PrivacyPage = lazy(() => import('@/components/pages/PrivacyPage'));
+const TermsPage = lazy(() => import('@/components/pages/TermsPage'));
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-background text-primary">
@@ -31,6 +33,20 @@ const LoadingFallback = () => (
 );
 
 function Layout() {
+  // ✦ Detection for scroll animation (scrollbar colors)
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      document.documentElement.classList.add('is-scrolling');
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        document.documentElement.classList.remove('is-scrolling');
+      }, 1000);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
       <ScrollToTop />
@@ -74,6 +90,8 @@ const router = createBrowserRouter([
       { path: "company", element: <Suspense fallback={<LoadingFallback />}><CompanyPage /></Suspense> },
       { path: "events", element: <Navigate to="/news?tab=events" replace /> },
       { path: "news", element: <Suspense fallback={<LoadingFallback />}><NewsPage /></Suspense> },
+      { path: "privacy", element: <Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense> },
+      { path: "terms", element: <Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense> },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },
