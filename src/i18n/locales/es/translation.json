@@ -646,10 +646,10 @@
                 "soudronic-welder": "Máquinas de soldar que ofrecen máxima velocidad, eficiencia y flexibilidad, fiabilidad y facilidad de uso. El núcleo de cada línea de producción de latas de tres piezas, dando forma y soldando cuerpos de latas con precisión.",
                 "thermal-drying-ovens": "Soluciones fiables de secado térmico para recubrimientos y tintas a base de solventes en líneas de producción de decoración de metales. Disponibles en varias configuraciones para adaptarse a los requisitos de la línea.",
                 "tnv": "Sistema de purificación de aire de escape térmico para el tratamiento fiable del aire cargado de solventes de los hornos de secado en las líneas de decoración de metales. Garantiza el cumplimiento de las normativas medioambientales.",
-                "spn-soudronic-slitter": "Slitters guilhotina de alta precisão ou slitters rotativos com cabeçotes de corte totalmente automatizados que permitem mudanças rápidas de formato. Fabricados sob medida pela Ocsam Cepak e Switzerland Can Man AG — extremamente robustos com ajuste simples e rápido para diferentes formatos de blanks.",
-                "tester": "Testadores de queda de pressão e luz para todos os tamanhos e formatos — redondos, quadrados, irregulares, latas, tambores, baldes. Unidades de teste carrossel ou lineares ajustam-se facilmente ao tamanho e formato do recipiente metálico.",
-                "mailander-283": "Combina a comprovada e robusta tecnologia Mailänder com as unidades de impressão de alta performance da MetalStar 4. Perfeita para imprimir chapas desafiadoras para a indústria de embalagens metálicas com máxima flexibilidade através de design modular.",
-                "metalcoat-481": "Linha de envernizamento avançada com sistemas de controle automatizados, permitindo alta cadência produtiva e trocas rápidas de formato."
+                "spn-soudronic-slitter": "Cortadoras de guillotina de alta precisión o cortadoras rotativas con cabezales de corte totalmente automatizados que permiten cambios rápidos de formato. Fabricadas a medida por Ocsam Cepak e Switzerland Can Man AG — extremadamente robustas con un ajuste sencillo y rápido para diferentes formatos de blanks.",
+                "tester": "Probadores de caída de presión y luz para todos los tamaños y formas — redondos, cuadrados, irregulares, latas, bidones, cubos. Las unidades de prueba de carrusel o lineales se ajustan fácilmente al tamaño y la forma del contenedor metálico.",
+                "mailander-283": "Combina la probada y robusta tecnología Mailänder con las unidades de impresión de alto rendimiento de la MetalStar 4. Perfecto para la impresión de chapas exigentes para la industria del envase metálico con la máxima flexibilidad mediante un diseño modular.",
+                "metalcoat-481": "Línea de barnizado avanzada con sistemas de control automatizados, que permite una alta cadencia produtiva y rápidos cambios de formato."
         },
         "units": {
                 "sheetsMin": "hojas/min",
@@ -687,7 +687,7 @@
                 "thermal-drying-ovens": "Hornos de Secado Térmico",
                 "tnv": "Sistema TNV",
                 "spn-soudronic-slitter": "Cortadora Slitter",
-                "tester": "Testadora Industrial",
+                "tester": "Probador Industrial",
                 "mailander-283": "Mailänder 283",
                 "metalcoat-481": "MetalCoat 481"
         },

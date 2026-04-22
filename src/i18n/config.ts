@@ -19,11 +19,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    // Do not force a language, let LanguageDetector do its job
-    // lng: 'en',
     fallbackLng: 'en',
+    detection: {
+      order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
+      caches: ['localStorage', 'cookie']
+    },
     interpolation: {
-      escapeValue: false // React already safes from XSS
+      escapeValue: false
     }
   });
 

@@ -60,12 +60,12 @@ const pt = JSON.parse(fs.readFileSync('src/i18n/locales/pt/translation.json', 'u
 langs.forEach(lang => {
   const path = `src/i18n/locales/${lang}/translation.json`;
   const data = JSON.parse(fs.readFileSync(path, 'utf8'));
-  
+
   // Apply specific UI fixes
   Object.entries(missingUI[lang]).forEach(([k, v]) => {
     setDeep(data, k, v);
   });
-  
+
   // Sync productTitles/Descriptions/Values from PT if missing
   ['productTitles', 'productDescriptions', 'productValues'].forEach(section => {
     if (!data[section]) data[section] = {};
@@ -73,11 +73,11 @@ langs.forEach(lang => {
       if (!data[section][k]) {
         // For EN, we might want to keep it as is (which will fallback to Sanity) or put English version
         // For IT/ES, we put the PT version as a placeholder if we don't have it, but here we likely want to translate
-        data[section][k] = v; 
+        data[section][k] = v;
       }
     });
   });
-  
+
   fs.writeFileSync(path, JSON.stringify(data, null, 8), 'utf8');
   console.log(`Deep sync completed for ${lang}`);
 });

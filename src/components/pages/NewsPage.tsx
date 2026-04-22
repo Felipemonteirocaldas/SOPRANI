@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 import { useNewsPosts, useEvents } from '@/hooks/useSanity';
 import { urlFor } from '@/lib/sanityClient';
 
-const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; delay?: number}> = ({ children, className, delay = 0 }) => {
+const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -26,14 +26,14 @@ const AnimatedElement: React.FC<{children: React.ReactNode; className?: string; 
       },
       { threshold: 0.1 }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [delay]);
-  
+
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${className || ''} opacity-0 translate-y-8 transition-all duration-700 ease-out`}
       style={{
         transitionProperty: 'opacity, transform',
@@ -51,7 +51,7 @@ export default function NewsPage() {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get('tab') === 'events' ? 'events' : 'news';
-  
+
   const { data: news, loading: newsLoading } = useNewsPosts();
   const { data: events, loading: eventsLoading } = useEvents();
   const isLoading = newsLoading || eventsLoading;
@@ -70,7 +70,7 @@ export default function NewsPage() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 sm:pt-40 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)',
@@ -97,8 +97,8 @@ export default function NewsPage() {
               onClick={() => setTab('news')}
               className={cn(
                 "flex items-center gap-2 py-6 px-4 text-xs font-black uppercase tracking-[0.2em] transition-all border-b-2",
-                activeTab === 'news' 
-                  ? "border-accent text-accent" 
+                activeTab === 'news'
+                  ? "border-accent text-accent"
                   : "border-transparent text-gray-400 hover:text-primary hover:border-gray-200"
               )}
             >
@@ -109,8 +109,8 @@ export default function NewsPage() {
               onClick={() => setTab('events')}
               className={cn(
                 "flex items-center gap-2 py-6 px-4 text-xs font-black uppercase tracking-[0.2em] transition-all border-b-2",
-                activeTab === 'events' 
-                  ? "border-accent text-accent" 
+                activeTab === 'events'
+                  ? "border-accent text-accent"
                   : "border-transparent text-gray-400 hover:text-primary hover:border-gray-200"
               )}
             >
@@ -135,42 +135,42 @@ export default function NewsPage() {
                     <article className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full border border-gray-100">
                       {item.mainImage && (
                         <div className="aspect-video overflow-hidden">
-                          <Image 
-                            src={urlFor(item.mainImage).url()} 
+                          <Image
+                            src={urlFor(item.mainImage).url()}
                             alt={item.title || 'News image'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             width={600}
                           />
                         </div>
                       )}
-                      
+
                       <div className="p-8 flex flex-col flex-grow">
                         <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
                           {item.publishedAt && (
                             <div className="flex items-center gap-1.5">
                               <Calendar size={12} className="text-accent" />
                               <span>
-                                {new Date(item.publishedAt).toLocaleDateString('en-US', { 
-                                  year: 'numeric', 
-                                  month: 'short', 
-                                  day: 'numeric' 
+                                {new Date(item.publishedAt).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric'
                                 })}
                               </span>
                             </div>
                           )}
                           {/* Author removal since it's not in the basic schema but can be added back if needed */}
                         </div>
-                        
+
                         <h3 className="text-xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors flex-grow">
                           {item.title}
                         </h3>
-                        
+
                         {item.excerpt && (
                           <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
                             {item.excerpt}
                           </p>
                         )}
-                        
+
                         <button className="inline-flex items-center text-accent text-[11px] font-black uppercase tracking-widest hover:text-primary transition-all duration-300 group/btn">
                           {t('newsPage.readMore')}
                           <ArrowRight size={14} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -196,15 +196,15 @@ export default function NewsPage() {
                       {/* Image Section */}
                       {event.mainImage && (
                         <div className="md:w-1/3 aspect-video md:aspect-auto overflow-hidden bg-gray-100">
-                          <Image 
-                            src={urlFor(event.mainImage).url()} 
+                          <Image
+                            src={urlFor(event.mainImage).url()}
                             alt={event.title || 'Event image'}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                             width={500}
                           />
                         </div>
                       )}
-                      
+
                       {/* Content Section */}
                       <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
                         <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -212,7 +212,7 @@ export default function NewsPage() {
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-white text-[10px] font-black uppercase tracking-widest">
                               <Calendar size={12} />
                               <span>
-                                {new Date(event.date).toLocaleDateString('en-US', { 
+                                {new Date(event.date).toLocaleDateString('en-US', {
                                   day: 'numeric',
                                   month: 'long',
                                   year: 'numeric'
@@ -227,19 +227,19 @@ export default function NewsPage() {
                             </div>
                           )}
                         </div>
-                        
+
                         <h3 className="text-2xl md:text-3xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors">
                           {event.title}
                         </h3>
-                        
+
                         {/* Booth Details removed as it's not in the basic schema but can be added back if needed */}
-                        
+
                         {event.description && (
                           <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 font-light line-clamp-3">
                             {event.description}
                           </p>
                         )}
-                        
+
                         {event.registrationUrl && (
                           <a
                             href={event.registrationUrl}
@@ -277,7 +277,7 @@ export default function NewsPage() {
               <p className="text-lg text-gray-600 mb-8">
                 {t('newsPage.ctaDesc')}
               </p>
-              <form 
+              <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   alert('Newsletter subscription feature coming soon!');

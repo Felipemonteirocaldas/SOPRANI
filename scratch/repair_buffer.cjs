@@ -16,17 +16,17 @@ let buffer = fs.readFileSync(path);
 function repair(buf) {
     let result = [];
     for (let i = 0; i < buf.length; i++) {
-        if (buf[i] === 0xC3 && buf[i+1] === 0x83 && buf[i+2] === 0xC2) {
+        if (buf[i] === 0xC3 && buf[i + 1] === 0x83 && buf[i + 2] === 0xC2) {
             // Pattern: C3 83 C2 XX -> C3 XX
             result.push(0xC3);
-            result.push(buf[i+3]);
+            result.push(buf[i + 3]);
             i += 3;
-        } else if (buf[i] === 0xC3 && buf[i+1] === 0xAD && buf[i+2] === 0xC2) {
+        } else if (buf[i] === 0xC3 && buf[i + 1] === 0xAD && buf[i + 2] === 0xC2) {
             // Pattern: C3 AD C2 XX -> C3 XX ? (Wait, c3 ad is í, maybe it was a different shift)
             // Let's check: Á is c3 81. 
             // If I have c3 ad c2 81, it's definitely broken.
             result.push(0xC3);
-            result.push(buf[i+3]);
+            result.push(buf[i + 3]);
             i += 3;
         } else {
             result.push(buf[i]);

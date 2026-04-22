@@ -32,7 +32,7 @@ export default function SopraniLegacyHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=250%", 
+          end: "+=250%",
           pin: true,
           scrub: 1, // Smooth scrubbing linking to scrollbar
         }
@@ -44,25 +44,25 @@ export default function SopraniLegacyHero() {
         duration: 1,
         ease: "power2.inOut"
       })
-      // Clip-path shifts the video to the right, showing the dark background underneath
-      .to(videoWrapperRef.current, {
-        clipPath: "inset(15% 5% 15% 55% round 16px)", 
-        duration: 2,
-        ease: "power2.inOut"
-      }, "<") // Start at the same time as the previous animation
-      // Parallax stagger entrance for product cards on the left
-      .to(cardsRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        stagger: 0.3,
-        ease: "power3.out"
-      }, "<0.6"); // Start slightly after the video starts shifting
+        // Clip-path shifts the video to the right, showing the dark background underneath
+        .to(videoWrapperRef.current, {
+          clipPath: "inset(15% 5% 15% 55% round 16px)",
+          duration: 2,
+          ease: "power2.inOut"
+        }, "<") // Start at the same time as the previous animation
+        // Parallax stagger entrance for product cards on the left
+        .to(cardsRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          stagger: 0.3,
+          ease: "power3.out"
+        }, "<0.6"); // Start slightly after the video starts shifting
 
     }, containerRef); // Scope GSAP selection to containerRef
 
     // Cleanup: revert all animations triggered in this context when component unmounts
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
 
   const addToCardsRef = (el: HTMLDivElement | null) => {
@@ -72,27 +72,27 @@ export default function SopraniLegacyHero() {
   };
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className="relative w-full h-screen bg-slate-50 overflow-hidden font-paragraph flex items-center justify-center z-10"
     >
       {/* 
         Background Video Wrapper 
       */}
-      <div 
-        ref={videoWrapperRef} 
+      <div
+        ref={videoWrapperRef}
         className="absolute inset-0 z-0 origin-center will-change-[clip-path]"
         style={{ clipPath: 'inset(0% 0% 0% 0% round 0px)' }}
       >
-        <video 
-          className="w-full h-full object-cover" 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
           poster="/images/hero-bg.png"
           preload="auto"
-          src="/video/videohero.mp4" 
+          src="/video/videohero.mp4"
         />
         {/* Overlays to ensure dark logo legibility without buggy blur filters */}
         <div className="absolute inset-0 bg-black/20" />
@@ -100,16 +100,16 @@ export default function SopraniLegacyHero() {
       </div>
 
       {/* Center Hero Content (Title & Badge) */}
-      <div 
-        ref={heroContentRef} 
+      <div
+        ref={heroContentRef}
         className="relative z-10 flex flex-col items-center justify-center pointer-events-none text-center pt-12 md:pt-20"
       >
-        <img 
-          src="/images/logo.png" 
-          alt="Soprani" 
-          className="w-[80vw] max-w-[450px] mb-8 object-contain drop-shadow-2xl" 
+        <img
+          src="/images/logo.png"
+          alt="Soprani"
+          className="w-[80vw] max-w-[450px] mb-8 object-contain drop-shadow-2xl"
         />
-        
+
         {/* Responsive Badge */}
         <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-full px-8 py-3 md:px-10 md:py-4 flex items-center shadow-xl">
           <span className="text-lg md:text-xl font-bold font-heading text-[#001F5F] tracking-[0.2em] uppercase">
@@ -120,10 +120,10 @@ export default function SopraniLegacyHero() {
 
       {/* Left Product Cards (Revealed on Scroll) */}
       <div className="absolute left-0 top-0 bottom-0 w-full md:w-[45%] lg:w-[40%] p-6 md:p-12 xl:p-16 flex flex-col justify-center gap-6 md:gap-10 z-10 pointer-events-none">
-        
+
         {/* Card 1 */}
-        <div 
-          ref={addToCardsRef} 
+        <div
+          ref={addToCardsRef}
           className="product-card opacity-0 translate-y-32 pointer-events-auto flex flex-col gap-4 bg-white/90 backdrop-blur-xl border border-slate-200/60 shadow-[0_8px_30px_rgba(0,0,0,0.06)] p-6 md:p-8 rounded-xl hover:border-slate-300 transition-colors"
         >
           <div>
@@ -138,12 +138,12 @@ export default function SopraniLegacyHero() {
         </div>
 
         {/* Card 2 */}
-        <div 
-          ref={addToCardsRef} 
+        <div
+          ref={addToCardsRef}
           className="product-card opacity-0 translate-y-32 pointer-events-auto flex flex-col gap-4 bg-white/90 backdrop-blur-xl border border-slate-200/60 shadow-[0_8px_30px_rgba(0,0,0,0.06)] p-6 md:p-8 rounded-xl hover:border-slate-300 transition-colors"
         >
           <div>
-             <span className="text-[#C41230] text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-3 block">
+            <span className="text-[#C41230] text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-3 block">
               {t('heroLegacy.card2.label')}
             </span>
             <h3 className="text-3xl md:text-4xl font-heading font-black text-[#001F5F] tracking-tight mb-4">{t('heroLegacy.card2.title')}</h3>
@@ -152,7 +152,7 @@ export default function SopraniLegacyHero() {
             </p>
           </div>
         </div>
-        
+
       </div>
     </section>
   );

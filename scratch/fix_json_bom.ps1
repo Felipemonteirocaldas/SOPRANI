@@ -3,7 +3,7 @@ $path = 'c:\SITE SOPRANI\SOPRANI\src\i18n\locales\pt\translation.json'
 $bytes = [System.IO.File]::ReadAllBytes($path)
 # Check for BOM (EF BB BF)
 if ($bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
-    $bytes = $bytes[3..($bytes.Length-1)]
+    $bytes = $bytes[3..($bytes.Length - 1)]
 }
 $content = [System.Text.Encoding]::UTF8.GetString($bytes)
 

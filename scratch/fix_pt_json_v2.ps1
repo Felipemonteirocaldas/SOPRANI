@@ -18,20 +18,20 @@ $slitterDesc = "Slitters guilhotina de alta precisão ou slitters rotativos com 
 $startToken = '"productDescriptions": {'
 $startIndex = $content.IndexOf($startToken)
 if ($startIndex -ge 0) {
-    $endIndex = $content.IndexOf('}', $startIndex)
-    $newDescPart = @"
+	$endIndex = $content.IndexOf('}', $startIndex)
+	$newDescPart = @"
 "productDescriptions": {
 		"spn-soudronic-slitter": "$slitterDesc",
 		"tester": "$testerDesc"
 	}
 "@
-    $content = $content.Substring(0, $startIndex) + $newDescPart + $content.Substring($endIndex + 1)
+	$content = $content.Substring(0, $startIndex) + $newDescPart + $content.Substring($endIndex + 1)
 }
 
 # Add productValues if not present
 if ($content.IndexOf('"productValues":') -lt 0) {
-    $lastBraceIndex = $content.LastIndexOf('}')
-    $productValues = @"
+	$lastBraceIndex = $content.LastIndexOf('}')
+	$productValues = @"
 
 	,
 	"productValues": {
@@ -40,7 +40,7 @@ if ($content.IndexOf('"productValues":') -lt 0) {
 		"Carousel or linear": "Carrossel ou linear"
 	}
 "@
-    $content = $content.Substring(0, $lastBraceIndex) + $productValues + "`n}"
+	$content = $content.Substring(0, $lastBraceIndex) + $productValues + "`n}"
 }
 
 # Write as UTF-8 WITHOUT BOM (or with BOM, standard for i18n usually)

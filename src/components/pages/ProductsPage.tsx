@@ -123,12 +123,12 @@ export default function ProductsPage() {
   const getLocalizedValue = (value?: string) => {
     if (!value) return '';
     const rawValue = value.trim();
-    
+
     // Try direct match first
     const directKey = `productValues.${rawValue}`;
     const directTranslated = t(directKey);
     if (directTranslated && directTranslated !== directKey) return directTranslated;
-    
+
     // Handle common unit replacements
     let translatedValue = rawValue;
     const unitMap: Record<string, string> = {
@@ -138,7 +138,7 @@ export default function ProductsPage() {
       'blanks/min': t('units.blanksMin'),
       'm/min': t('units.mMin')
     };
-    
+
     Object.entries(unitMap).forEach(([en, pt]) => {
       translatedValue = translatedValue.replace(new RegExp(en.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'), pt);
     });
@@ -266,10 +266,10 @@ export default function ProductsPage() {
       {/* Brand Switcher Tabs + Category chips */}
       <div className="sticky top-[64px] z-30 bg-white border-b border-slate-200 shadow-sm py-3 md:py-2">
         <div className="container px-4 mx-auto flex flex-col gap-3">
-          
+
           {/* Row 1: Search & Brand Filters */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-            
+
             {/* Desktop Brand Pills */}
             <div className="hidden md:flex items-center gap-1">
               {([
@@ -281,12 +281,12 @@ export default function ProductsPage() {
                   key={tab.id}
                   onClick={() => setSelectedBrand(tab.id)}
                   className={`whitespace-nowrap px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedBrand === tab.id
-                      ? tab.id === 'koenig-bauer'
-                        ? 'bg-[#001F5F] text-white shadow-md shadow-[#001F5F]/20'
-                        : tab.id === 'soudronic'
-                          ? 'bg-accent text-white shadow-md shadow-accent/20'
-                          : 'bg-primary text-white shadow-md shadow-primary/20'
-                      : 'text-slate-600 hover:bg-slate-100'
+                    ? tab.id === 'koenig-bauer'
+                      ? 'bg-[#001F5F] text-white shadow-md shadow-[#001F5F]/20'
+                      : tab.id === 'soudronic'
+                        ? 'bg-accent text-white shadow-md shadow-accent/20'
+                        : 'bg-primary text-white shadow-md shadow-primary/20'
+                    : 'text-slate-600 hover:bg-slate-100'
                     }`}
                 >
                   {tab.label}
@@ -306,7 +306,7 @@ export default function ProductsPage() {
                 <option value="soudronic">Soudronic</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
-                 <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
               </div>
             </div>
 
@@ -329,7 +329,7 @@ export default function ProductsPage() {
               <span className="text-[10px] hidden md:inline-block font-black uppercase tracking-[0.3em] text-slate-400 shrink-0 mr-1">
                 {t('productsPage.category') || 'Category:'}
               </span>
-              
+
               {/* Desktop Category Chips */}
               <div className="hidden md:flex items-center gap-2">
                 {categoriesForBrand.map(cat => (
@@ -337,8 +337,8 @@ export default function ProductsPage() {
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
                     className={`whitespace-nowrap px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 border ${selectedCategory === cat
-                        ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
-                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700'
+                      ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
+                      : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-slate-700'
                       }`}
                   >
                     {cat === 'all' ? (t('productsPage.allCategories') || 'All Categories') : cat}
@@ -360,7 +360,7 @@ export default function ProductsPage() {
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
-                   <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                  <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
                 </div>
               </div>
             </div>
@@ -601,91 +601,91 @@ export default function ProductsPage() {
         <AnimatePresence>
           {selectedProduct && (
             <div className="fixed inset-0 z-[9999] overflow-y-auto w-[100vw] h-[100vh]">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProduct(null)}
-              className="fixed inset-0 bg-primary/60 backdrop-blur-sm"
-              style={{ position: 'fixed', top: 0, left: 0 }}
-            />
-            
-            {/* Panel/Drawer */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 h-[100vh] w-[100vw] md:w-[480px] bg-white shadow-2xl z-[10000] overflow-y-auto flex flex-col"
-              style={{ position: 'fixed', right: 0, top: 0 }}
-            >
-              <button
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 onClick={() => setSelectedProduct(null)}
-                className="absolute shadow-lg z-20 top-6 right-6 flex items-center justify-center w-10 h-10 bg-white hover:bg-slate-100 text-slate-700 rounded-full transition-colors"
+                className="fixed inset-0 bg-primary/60 backdrop-blur-sm"
+                style={{ position: 'fixed', top: 0, left: 0 }}
+              />
+
+              {/* Panel/Drawer */}
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="fixed right-0 top-0 h-[100vh] w-[100vw] md:w-[480px] bg-white shadow-2xl z-[10000] overflow-y-auto flex flex-col"
+                style={{ position: 'fixed', right: 0, top: 0 }}
               >
-                <X size={20} />
-              </button>
+                <button
+                  onClick={() => setSelectedProduct(null)}
+                  className="absolute shadow-lg z-20 top-6 right-6 flex items-center justify-center w-10 h-10 bg-white hover:bg-slate-100 text-slate-700 rounded-full transition-colors"
+                >
+                  <X size={20} />
+                </button>
 
-              <div className="relative h-72 shrink-0 bg-slate-900 overflow-hidden">
-                {selectedProduct.mainImage && (
-                  <Image
-                    src={selectedProduct.mainImage ? urlFor(selectedProduct.mainImage).url() : ''}
-                    alt={selectedProduct.title}
-                    className="object-cover w-full h-full opacity-80"
-                    width={800}
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                <div className="absolute bottom-6 left-8 right-8">
-                  <Badge className="mb-4 bg-accent">System</Badge>
-                  <h2 className="text-3xl font-bold text-white font-heading leading-tight">{getLocalizedTitle(selectedProduct)}</h2>
+                <div className="relative h-72 shrink-0 bg-slate-900 overflow-hidden">
+                  {selectedProduct.mainImage && (
+                    <Image
+                      src={selectedProduct.mainImage ? urlFor(selectedProduct.mainImage).url() : ''}
+                      alt={selectedProduct.title}
+                      className="object-cover w-full h-full opacity-80"
+                      width={800}
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                  <div className="absolute bottom-6 left-8 right-8">
+                    <Badge className="mb-4 bg-accent">System</Badge>
+                    <h2 className="text-3xl font-bold text-white font-heading leading-tight">{getLocalizedTitle(selectedProduct)}</h2>
+                  </div>
                 </div>
-              </div>
 
-              <div className="p-8 flex-1 flex flex-col bg-white">
-                <div className="mb-6">
-                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{getLocalizedValue(selectedProduct.category)}</span>
-                </div>
-
-                <div className="space-y-8 flex-1">
-                  <div>
-                    <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.viewSpecs') || 'Overview'}</h4>
-                    <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{getLocalizedDescription(selectedProduct)}</p>
+                <div className="p-8 flex-1 flex flex-col bg-white">
+                  <div className="mb-6">
+                    <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{getLocalizedValue(selectedProduct.category)}</span>
                   </div>
 
-                  <div className="flex flex-col gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100">
-                    {selectedProduct.specs?.map((spec, idx) => (
-                      <div key={idx} className="flex items-center gap-4 border-b border-slate-200/60 pb-5 last:border-0 last:pb-0">
+                  <div className="space-y-8 flex-1">
+                    <div>
+                      <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.viewSpecs') || 'Overview'}</h4>
+                      <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{getLocalizedDescription(selectedProduct)}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                      {selectedProduct.specs?.map((spec, idx) => (
+                        <div key={idx} className="flex items-center gap-4 border-b border-slate-200/60 pb-5 last:border-0 last:pb-0">
+                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
+                            {idx % 3 === 0 ? <Zap size={18} className="text-accent" /> : idx % 3 === 1 ? <Cpu size={18} className="text-accent" /> : <Shield size={18} className="text-accent" />}
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{getLocalizedSpecKey(spec.key)}</p>
+                            <p className="text-sm font-semibold text-primary">{getLocalizedValue(spec.value)}</p>
+                          </div>
+                        </div>
+                      ))}
+
+                      <div className="flex items-center gap-4 pt-5 border-t border-slate-200/60">
                         <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
-                          {idx % 3 === 0 ? <Zap size={18} className="text-accent" /> : idx % 3 === 1 ? <Cpu size={18} className="text-accent" /> : <Shield size={18} className="text-accent" />}
+                          <Layers size={18} className="text-accent" />
                         </div>
                         <div>
-                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{getLocalizedSpecKey(spec.key)}</p>
-                          <p className="text-sm font-semibold text-primary">{getLocalizedValue(spec.value)}</p>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.industryApplication') || 'Industry Application'}</p>
+                          <p className="text-sm font-semibold text-primary">{t('productArsenal.industrialPackaging') || 'Industrial Packaging'}</p>
                         </div>
-                      </div>
-                    ))}
-                    
-                    <div className="flex items-center gap-4 pt-5 border-t border-slate-200/60">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
-                        <Layers size={18} className="text-accent" />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.industryApplication') || 'Industry Application'}</p>
-                        <p className="text-sm font-semibold text-primary">{t('productArsenal.industrialPackaging') || 'Industrial Packaging'}</p>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <a href={`/request-quotation?product=${encodeURIComponent(selectedProduct.title)}`} className="w-full block mt-10">
-                  <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white shrink-0">
-                    {t('productArsenal.requestInfo') || 'Request Information'}
-                  </Button>
-                </a>
-              </div>
-            </motion.div>
+                  <a href={`/request-quotation?product=${encodeURIComponent(selectedProduct.title)}`} className="w-full block mt-10">
+                    <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white shrink-0">
+                      {t('productArsenal.requestInfo') || 'Request Information'}
+                    </Button>
+                  </a>
+                </div>
+              </motion.div>
             </div>
           )}
         </AnimatePresence>,

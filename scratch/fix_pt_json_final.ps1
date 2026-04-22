@@ -5,22 +5,23 @@ $content = [System.IO.File]::ReadAllText($path, [System.Text.Encoding]::UTF8)
 $token = '"productDescriptions": {'
 $index = $content.IndexOf($token)
 if ($index -ge 0) {
-    $content = $content.Substring(0, $index)
-} else {
-    # If not found, find the last search results and truncate there
-    $index = $content.IndexOf('"search": {')
-    if ($index -ge 0) {
-        $searchEnd = $content.IndexOf('}', $index)
-        $searchEnd = $content.IndexOf('}', $searchEnd + 1) # Nested braces
-        # This is getting complex, I'll just find the last "n1": "..." line
-        $index = $content.IndexOf('"n1": "Soprani Engineering - Inovação na Itália"')
-        if ($index -ge 0) {
-            $content = $content.Substring(0, $index + 50) # Keep some buffer
-            $content = $content.Substring(0, $content.LastIndexOf('}'))
-            $content = $content.Substring(0, $content.LastIndexOf('}'))
-            $content = $content.Substring(0, $content.LastIndexOf('}'))
-        }
-    }
+	$content = $content.Substring(0, $index)
+}
+else {
+	# If not found, find the last search results and truncate there
+	$index = $content.IndexOf('"search": {')
+	if ($index -ge 0) {
+		$searchEnd = $content.IndexOf('}', $index)
+		$searchEnd = $content.IndexOf('}', $searchEnd + 1) # Nested braces
+		# This is getting complex, I'll just find the last "n1": "..." line
+		$index = $content.IndexOf('"n1": "Soprani Engineering - Inovação na Itália"')
+		if ($index -ge 0) {
+			$content = $content.Substring(0, $index + 50) # Keep some buffer
+			$content = $content.Substring(0, $content.LastIndexOf('}'))
+			$content = $content.Substring(0, $content.LastIndexOf('}'))
+			$content = $content.Substring(0, $content.LastIndexOf('}'))
+		}
+	}
 }
 
 # Rebuild the final parts

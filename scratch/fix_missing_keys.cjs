@@ -54,19 +54,19 @@ Object.keys(updates).forEach(lang => {
   const path = `src/i18n/locales/${lang}/translation.json`;
   if (fs.existsSync(path)) {
     const data = JSON.parse(fs.readFileSync(path, 'utf8'));
-    
+
     // Merge productArsenal
     if (!data.productArsenal) data.productArsenal = {};
     Object.assign(data.productArsenal, updates[lang].productArsenal);
-    
+
     // Merge partners
     if (!data.partners) data.partners = {};
     Object.assign(data.partners, updates[lang].partners);
-    
+
     // Merge news
     if (!data.news) data.news = {};
     Object.assign(data.news, updates[lang].news);
-    
+
     fs.writeFileSync(path, JSON.stringify(data, null, 8), 'utf8');
     console.log(`Updated ${lang}/translation.json with missing keys`);
   }

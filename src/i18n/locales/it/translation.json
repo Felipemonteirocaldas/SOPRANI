@@ -646,10 +646,10 @@
                 "soudronic-welder": "Saldatrici che offrono massima velocità, efficienza e flessibilità, affidabilità e facilità d'uso. Il cuore di ogni linea di produzione di lattine in tre pezzi, che modella e salda i corpi delle lattine con precisione.",
                 "thermal-drying-ovens": "Soluzioni affidabili di essiccazione termica per vernici e inchiostri a base solvente nelle linee di produzione di decorazione del metallo. Disponibili in varie configurazioni per soddisfare i requisiti della linea.",
                 "tnv": "Sistema di purificazione dell'aria di scarico termico per il trattamento affidabile dell'aria carica di solventi proveniente dai forni di essiccazione nelle linee di decorazione del metallo. Garantisce la conformità alle normative ambientali.",
-                "spn-soudronic-slitter": "Slitters guilhotina de alta precisão ou slitters rotativos com cabeçotes de corte totalmente automatizados que permitem mudanças rápidas de formato. Fabricados sob medida pela Ocsam Cepak e Switzerland Can Man AG — extremamente robustos com ajuste simples e rápido para diferentes formatos de blanks.",
-                "tester": "Testadores de queda de pressão e luz para todos os tamanhos e formatos — redondos, quadrados, irregulares, latas, tambores, baldes. Unidades de teste carrossel ou lineares ajustam-se facilmente ao tamanho e formato do recipiente metálico.",
-                "mailander-283": "Combina a comprovada e robusta tecnologia Mailänder com as unidades de impressão de alta performance da MetalStar 4. Perfeita para imprimir chapas desafiadoras para a indústria de embalagens metálicas com máxima flexibilidade através de design modular.",
-                "metalcoat-481": "Linha de envernizamento avançada com sistemas de controle automatizados, permitindo alta cadência produtiva e trocas rápidas de formato."
+                "spn-soudronic-slitter": "Cesoie a ghigliottina ad alta precisione o cesoie rotative con teste di taglio completamente automatizzate che consentono rapidi cambi di formato. Realizzate su misura da Ocsam Cepak e Switzerland Can Man AG — estremamente robuste con regolazione semplice e rapida per diversi formati di blank.",
+                "tester": "Tester di caduta di pressione e luce per tutte le dimensioni e forme — tonde, quadrate, irregolari, lattine, fusti, secchi. Le unità di test rotative o lineari si adattano facilmente alle dimensioni e alla forma del contenitore metallico.",
+                "mailander-283": "Combina la comprovata e robusta tecnologia Mailänder con le unità di stampa ad alte prestazioni della MetalStar 4. Perfetto per la stampa di fogli impegnativi per l'industria degli imballaggi metallici con la massima flessibilità tramite un design modulare.",
+                "metalcoat-481": "Linea di verniciatura avanzata con sistemi di controllo automatizzati, che consente un'elevata cadenza produttiva e rapidi cambi di formato."
         },
         "units": {
                 "sheetsMin": "fogli/min",
@@ -686,8 +686,8 @@
                 "soudronic-welder": "Saldatrice per Corpi Lattina",
                 "thermal-drying-ovens": "Forni di Essiccazione Termica",
                 "tnv": "Sistema TNV",
-                "spn-soudronic-slitter": "Cortadora Slitter",
-                "tester": "Testadora Industrial",
+                "spn-soudronic-slitter": "Cesoia Slitter",
+                "tester": "Tester Industriale",
                 "mailander-283": "Mailänder 283",
                 "metalcoat-481": "MetalCoat 481"
         },
@@ -697,19 +697,19 @@
                 "industrialSolution": "Soluzione Industriale Soprani"
         },
         "productValues": {
-                "Pressure decay and light testing": "Teste de queda de pressão e luz",
-                "Round, square, irregular, cans, drums, pails": "Redondos, quadrados, irregulares, latas, tambores, baldes",
-                "Carousel or linear": "Carrossel ou linear",
-                "Industrial Packaging": "Embalagens Industriais",
-                "Metal Decorating & Printing": "Decoração & Impressão de Metais",
-                "Can Making & Welding": "Fabricação de Latas & Soldagem",
+                "Pressure decay and light testing": "Test di caduta di pressione e luce",
+                "Round, square, irregular, cans, drums, pails": "Tondi, quadrati, irregolari, lattine, fusti, secchi",
+                "Carousel or linear": "Rotativo o lineare",
+                "Industrial Packaging": "Imballaggi Industriali",
+                "Metal Decorating & Printing": "Decorazione e Stampa di Metalli",
+                "Can Making & Welding": "Produzione e Saldatura di Lattine",
                 "Online": "Online",
-                "Authorized Partner": "Parceiro Autorizado",
-                "OFFSET METAL PRINTING MACHINES": "Máquinas Offset para Metal",
-                "COATING MACHINES": "Máquinas de Envernizamento",
-                "DIGITAL METAL PRINTING MACHINES": "Máquinas de Impressão Digital",
-                "SLITTER": "Slitters",
-                "TESTER": "Testadores",
-                "All system layouts and configurations": "Todos os layouts e configurações de sistema"
+                "Authorized Partner": "Partner Autorizzato",
+                "OFFSET METAL PRINTING MACHINES": "MACCHINE DA STAMPA OFFSET PER METALLO",
+                "COATING MACHINES": "VERNICIATRICI",
+                "DIGITAL METAL PRINTING MACHINES": "MACCHINE DA STAMPA DIGITALE PER METALLO",
+                "SLITTER": "SLITTER",
+                "TESTER": "TESTER",
+                "All system layouts and configurations": "Tutti i layout e le configurazioni del sistema"
         }
 }

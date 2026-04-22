@@ -107,12 +107,12 @@ function getLocalizedDescription(t: any, product: SanityProduct) {
 function getLocalizedValue(t: any, value?: string) {
   if (!value) return '';
   const rawValue = value.trim();
-  
+
   // Try direct match first
   const directKey = `productValues.${rawValue}`;
   const directTranslated = t(directKey);
   if (directTranslated && directTranslated !== directKey) return directTranslated;
-  
+
   // Handle common unit replacements
   let translatedValue = rawValue;
   const unitMap: Record<string, string> = {
@@ -122,7 +122,7 @@ function getLocalizedValue(t: any, value?: string) {
     'blanks/min': t('units.blanksMin'),
     'm/min': t('units.mMin')
   };
-  
+
   Object.entries(unitMap).forEach(([en, pt]) => {
     translatedValue = translatedValue.replace(new RegExp(en.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'), pt);
   });
@@ -243,91 +243,91 @@ function SpecsModal({ product, onClose }: {
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8"
         >
-      {/* Backdrop - Slightly lighter for light theme */}
-      <div
-        className="absolute inset-0 bg-primary/40 backdrop-blur-md"
-        onClick={onClose}
-      />
+          {/* Backdrop - Slightly lighter for light theme */}
+          <div
+            className="absolute inset-0 bg-primary/40 backdrop-blur-md"
+            onClick={onClose}
+          />
 
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        className="relative w-full max-w-5xl bg-white border border-slate-200 overflow-hidden shadow-[0_20px_50px_rgba(0,31,95,0.15)] flex flex-col md:block"
-      >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 z-20 p-2 text-primary/40 hover:text-primary hover:bg-slate-100 transition-colors"
-        >
-          <X size={24} />
-        </button>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            className="relative w-full max-w-5xl bg-white border border-slate-200 overflow-hidden shadow-[0_20px_50px_rgba(0,31,95,0.15)] flex flex-col md:block"
+          >
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-6 right-6 z-20 p-2 text-primary/40 hover:text-primary hover:bg-slate-100 transition-colors"
+            >
+              <X size={24} />
+            </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
-          {/* ✧ Visual Section */}
-          <div className="relative p-8 lg:p-16 flex items-center justify-center bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 overflow-hidden">
-            {/* Background Texture */}
-            <div className="absolute inset-0 grid-pattern-light opacity-20 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
+              {/* ✧ Visual Section */}
+              <div className="relative p-8 lg:p-16 flex items-center justify-center bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 overflow-hidden">
+                {/* Background Texture */}
+                <div className="absolute inset-0 grid-pattern-light opacity-20 pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <motion.img
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              src={product.mainImage ? urlFor(product.mainImage).url() : ''}
-              alt={product.title}
-              className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
-            />
+                <motion.img
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  src={product.mainImage ? urlFor(product.mainImage).url() : ''}
+                  alt={product.title}
+                  className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-[0_15px_30px_rgba(0,31,95,0.1)]"
+                />
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
-              <div className="flex items-center gap-2 text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
-                <Activity size={12} className="text-accent animate-pulse" /> {t('productArsenal.status') || 'Status'}: {t('productArsenal.online') || 'Online'}
-              </div>
-              <div className="w-1 h-1 rounded-full bg-slate-200" />
-              <div className="text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
-                SPN-{product.slug.current.toUpperCase()}
-              </div>
-            </div>
-          </div>
-
-          {/* ✧ Data Section */}
-          <div className="p-8 lg:p-12 flex flex-col justify-between max-h-[80vh] bg-white overflow-y-auto">
-            <div>
-              <span className="text-xs font-heading font-black text-accent uppercase tracking-[0.4em] mb-4 block">
-                {t('productArsenal.technicalMastery') || 'Technical Mastery'}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-heading font-black text-primary mb-8">
-                {getLocalizedTitle(t, product)}
-              </h2>
-
-              {/* Description */}
-              <p className="text-slate-600 text-sm leading-relaxed mb-10 font-paragraph">
-                {getLocalizedDescription(t, product)}
-              </p>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 gap-6 mb-12">
-                {features.map((spec, idx) => (
-                  <div key={idx} className="border-l-2 border-slate-200 pl-6 py-1 hover:border-accent transition-colors group">
-                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-accent/60 transition-colors">
-                      {getLocalizedSpecKey(t, spec.key)}
-                    </p>
-                    <p className="text-primary text-xl font-heading font-bold">{getLocalizedValue(t, spec.value)}</p>
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
+                    <Activity size={12} className="text-accent animate-pulse" /> {t('productArsenal.status') || 'Status'}: {t('productArsenal.online') || 'Online'}
                   </div>
-                ))}
+                  <div className="w-1 h-1 rounded-full bg-slate-200" />
+                  <div className="text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
+                    SPN-{product.slug.current.toUpperCase()}
+                  </div>
+                </div>
               </div>
 
+              {/* ✧ Data Section */}
+              <div className="p-8 lg:p-12 flex flex-col justify-between max-h-[80vh] bg-white overflow-y-auto">
+                <div>
+                  <span className="text-xs font-heading font-black text-accent uppercase tracking-[0.4em] mb-4 block">
+                    {t('productArsenal.technicalMastery') || 'Technical Mastery'}
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-heading font-black text-primary mb-8">
+                    {getLocalizedTitle(t, product)}
+                  </h2>
 
-            </div>
+                  {/* Description */}
+                  <p className="text-slate-600 text-sm leading-relaxed mb-10 font-paragraph">
+                    {getLocalizedDescription(t, product)}
+                  </p>
 
-            <div className="mt-12 flex flex-col gap-4">
-              <a href={`/request-quotation?product=${encodeURIComponent(product.title)}`} className="w-full py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary/10">
-                {t('productArsenal.requestInfo') || 'Request Information'} <ChevronRight size={14} />
-              </a>
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-1 gap-6 mb-12">
+                    {features.map((spec, idx) => (
+                      <div key={idx} className="border-l-2 border-slate-200 pl-6 py-1 hover:border-accent transition-colors group">
+                        <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-accent/60 transition-colors">
+                          {getLocalizedSpecKey(t, spec.key)}
+                        </p>
+                        <p className="text-primary text-xl font-heading font-bold">{getLocalizedValue(t, spec.value)}</p>
+                      </div>
+                    ))}
+                  </div>
+
+
+                </div>
+
+                <div className="mt-12 flex flex-col gap-4">
+                  <a href={`/request-quotation?product=${encodeURIComponent(product.title)}`} className="w-full py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-accent transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary/10">
+                    {t('productArsenal.requestInfo') || 'Request Information'} <ChevronRight size={14} />
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        </motion.div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>,
@@ -432,7 +432,7 @@ export default function ProductArsenalSection() {
             (['koenig-bauer', 'soudronic'] as const).map((brandKey) => {
               const config = BRAND_CONFIG[brandKey];
               const allBrandProducts = products.filter(p => p.brand === brandKey);
-              
+
               // Force "2-Piece Cans" to the first position if it's Soudronic
               if (brandKey === 'soudronic') {
                 allBrandProducts.sort((a, b) => {
@@ -443,7 +443,7 @@ export default function ProductArsenalSection() {
               }
 
               const brandProducts = allBrandProducts.slice(0, 3);
-              
+
               if (allBrandProducts.length === 0) return null;
 
               return (
@@ -525,12 +525,12 @@ export default function ProductArsenalSection() {
           >
             {/* Gloss effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            
+
             <span className="relative z-10 text-sm font-black uppercase tracking-[0.3em]">
               {t('productsPage.allProducts') || 'View All Products'}
             </span>
             <ChevronRight size={18} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300 text-accent" />
-            
+
             {/* Border outline animation */}
             <div className="absolute bottom-0 left-0 w-full h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
           </a>
