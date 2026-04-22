@@ -1,6 +1,12 @@
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useEvents } from '@/hooks/useSanity';
 import { urlFor } from '@/lib/sanityClient';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Image } from '@/components/ui/image';
 
 const AnimatedElement: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +57,7 @@ export default function EventsPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-24 sm:pt-28 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
+      <section className="relative pt-36 sm:pt-44 md:pt-52 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div
           className="absolute inset-0 opacity-10"
           style={{

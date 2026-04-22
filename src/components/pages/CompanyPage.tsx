@@ -54,7 +54,7 @@ export default function CompanyPage() {
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
       <main>
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-32 sm:pt-40 pb-36">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-36 sm:pt-44 md:pt-52 pb-36">
           {/* Background layers */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_60%,rgba(196,18,48,0.12),transparent_50%)]" />

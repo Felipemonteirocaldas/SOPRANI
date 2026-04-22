@@ -149,7 +149,7 @@ export default function IndustriesPage() {
     <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
       <main>
         {/* 🏔 HERO SECTION */}
-        <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden bg-primary overflow-x-hidden">
+        <section className="relative pt-36 sm:pt-44 md:pt-52 pb-24 md:pb-40 overflow-hidden bg-primary overflow-x-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0 z-0 opacity-20">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />

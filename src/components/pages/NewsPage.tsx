@@ -69,7 +69,7 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
+      <section className="relative pt-36 sm:pt-44 md:pt-52 pb-24 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
         <div
           className="absolute inset-0 opacity-10"
           style={{

@@ -102,7 +102,7 @@ export default function SopraniLegacyHero() {
       {/* Center Hero Content (Title & Badge) */}
       <div
         ref={heroContentRef}
-        className="relative z-10 flex flex-col items-center justify-center pointer-events-none text-center pt-12 md:pt-20"
+        className="relative z-10 flex flex-col items-center justify-center pointer-events-none text-center pt-36 sm:pt-44 md:pt-52"
       >
         <img
           src="/images/logo.png"

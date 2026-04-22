@@ -225,7 +225,7 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-[#F8FAFC] text-primary">
 
       {/* Premium Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-24 overflow-hidden bg-[#001F5F]">
+      <section className="relative pt-36 sm:pt-44 md:pt-52 pb-24 overflow-hidden bg-[#001F5F]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]" />

@@ -25,21 +25,21 @@ export default function Footer() {
               {t('footer.companyDesc')}
             </p>
             <div className="mt-8 flex gap-4">
-              <a 
-                href="#" 
-                target="_blank" 
+              <a
+                href="#"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group" 
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group"
                 aria-label={t('footer.youtube')}
                 id="footer-social-youtube"
               >
                 <Youtube size={20} className="text-white group-hover:scale-110 transition-transform duration-300" />
               </a>
-              <a 
-                href="#" 
-                target="_blank" 
+              <a
+                href="#"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group" 
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group"
                 aria-label={t('footer.linkedin')}
                 id="footer-social-linkedin"
               >
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="hidden sm:block">
             <h4 className="text-base xs:text-lg font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.services')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="hidden sm:block">
             <h4 className="text-base xs:text-lg font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.company')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>

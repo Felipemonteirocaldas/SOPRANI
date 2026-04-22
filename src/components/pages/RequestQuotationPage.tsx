@@ -98,7 +98,7 @@ export default function RequestQuotationPage() {
     <div className="min-h-screen bg-background font-paragraph text-primary selection:bg-accent selection:text-white">
       <main className="flex-grow">
         {/* Modern Hero Section */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-24 sm:pt-28 pb-16 md:pb-40">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-36 sm:pt-44 md:pt-52 pb-16 md:pb-40">
           {/* Subtle Background Elements */}
           <div className="absolute inset-0 z-0 opacity-10 text-left">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#C41230_0%,transparent_50%)]" />
