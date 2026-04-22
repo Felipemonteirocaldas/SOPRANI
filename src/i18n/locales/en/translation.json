@@ -554,6 +554,7 @@
     "offline": "Mastery Temporarily Offline",
     "notFound": "No Industrial Systems Found",
     "technicalMastery": "Technical Mastery",
+    "industrialSolution": "Industrial Solution",
     "requestInfo": "Request Information",
     "status": "Status",
     "online": "Online",
@@ -618,5 +619,8 @@
       "p2": "Precision Spare Parts Kit",
       "n1": "Soprani Engineering - Innovation in Italy"
     }
+  },
+  "productDescriptions": {
+    "spn-soudronic-slitter": "High precision guillotine slitters or rotary slitters with fully automated cutting heads that allow fast format changes. Custom-made by Ocsam Cepak and Switzerland Can Man AG — extremely robust with simple, swift adjustment to different blank formats."
   }
 }

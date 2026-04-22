@@ -310,8 +310,9 @@ export default function HomePage() {
   const formatDate = (dateString?: string | Date) => {
     if (!dateString) return '';
     const date = new Date(dateString);
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : i18n.language === 'it' ? 'it-IT' : 'en-GB';
     return date
-      .toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      .toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' })
       .replace(/\//g, '.');
   };
 
@@ -471,7 +472,7 @@ export default function HomePage() {
                           {news[0].excerpt}
                         </p>
                         <span className="text-accent text-sm font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                          Read more <ArrowRight size={16} className="ml-2" />
+                          {t('news.readMore')} <ArrowRight size={16} className="ml-2" />
                         </span>
                       </div>
                     </Link>
@@ -495,7 +496,7 @@ export default function HomePage() {
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs text-center font-bold px-4">
-                              SOPRANI INDUSTRIAL SOLUTION
+                              {t('news.industrialSolution')}
                             </div>
                           )}
                         </div>
@@ -504,7 +505,7 @@ export default function HomePage() {
                             {item.title}
                           </h4>
                           <span className="text-accent text-xs font-semibold mt-auto inline-flex items-center">
-                            Read more
+                            {t('news.readMore')}
                           </span>
                         </div>
                       </Link>
@@ -513,7 +514,7 @@ export default function HomePage() {
                 </StaggerReveal>
               </div>
             ) : (
-              <div className="text-center py-12 text-text-muted">No news available.</div>
+              <div className="text-center py-12 text-text-muted">{t('news.noNews')}</div>
             )}
 
             <AnimatedElement delay={400} className="mt-12 flex justify-center">

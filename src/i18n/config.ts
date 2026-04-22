@@ -19,8 +19,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    // Explicitly set English as default
-    lng: 'en',
+    // Do not force a language, let LanguageDetector do its job
+    // lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false // React already safes from XSS

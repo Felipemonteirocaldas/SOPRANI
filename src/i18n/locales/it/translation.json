@@ -561,7 +561,8 @@
     "loading": "Caricamento Arsenale...",
     "offline": "Maestria Temporaneamente Offline",
     "notFound": "Nessun Sistema Industriale Trovato",
-    "technicalMastery": "Maestria Tecnica",
+    "technicalMastery": "Technical Mastery",
+    "industrialSolution": "Soluzione Industriale",
     "requestInfo": "Richiedi Informazioni",
     "status": "Stato",
     "online": "Online",
@@ -626,5 +627,8 @@
       "p2": "Kit Ricambi di Precisione",
       "n1": "Soprani Engineering - Innovazione in Italia"
     }
+  },
+  "productDescriptions": {
+    "spn-soudronic-slitter": "Slitter a ghigliottina ad alta precisione o slitter rotativi con teste di taglio completamente automatizzate que consentono rapidi cambi di formato. Prodotti su misura da Ocsam Cepak e Switzerland Can Man AG — estremamente robusti con regolazione semplice e rapida per diversi formati di blank."
   }
 }

@@ -151,7 +151,7 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
       <main>
         {/* ── HERO ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-28 pb-32">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-32 sm:pt-40 pb-32">
           {/* Background decorations */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_60%,rgba(196,18,48,0.12),transparent_55%)]" />

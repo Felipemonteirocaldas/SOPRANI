@@ -19,7 +19,7 @@ const partners: Partner[] = [
   {
     id: 'koenig-bauer',
     name: 'Koenig & Bauer Metal Print',
-    tagline: 'Global Leader in Metal Decorating',
+    tagline: 'partners.kbTagline',
     descKey: 'partners.kbDesc',
     logo: '/logos/koenig-bauer-metalprint.svg',
     logoBg: '#ffffff',
@@ -30,7 +30,7 @@ const partners: Partner[] = [
   {
     id: 'soudronic',
     name: 'Soudronic',
-    tagline: 'Turnkey Can Making Systems',
+    tagline: 'partners.soudronicTagline',
     descKey: 'partners.soudronicDesc',
     logo: '/logos/soudronic-dark.svg',
     logoBg: '#ffffff',
@@ -121,7 +121,7 @@ export default function PartnersSection() {
                     {partner.name}
                   </h3>
                   <p className="text-xs text-slate-400 uppercase tracking-wider font-heading font-semibold mb-5">
-                    {partner.tagline}
+                    {t(partner.tagline)}
                   </p>
 
                   {/* Specialty tag */}

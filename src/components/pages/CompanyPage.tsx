@@ -54,7 +54,7 @@ export default function CompanyPage() {
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
       <main>
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-28 pb-36">
+        <section className="relative overflow-hidden bg-[#001F5F] pt-32 sm:pt-40 pb-36">
           {/* Background layers */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_60%,rgba(196,18,48,0.12),transparent_50%)]" />
@@ -283,7 +283,7 @@ export default function CompanyPage() {
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-4 border border-[#001F5F] text-[#001F5F] font-bold uppercase tracking-widest text-sm hover:bg-[#001F5F] hover:text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
+                  className="px-8 py-4 border border-[#001F5F] text-[#001F5F] font-bold uppercase tracking-widest text-sm hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
                 >
                   {t('servicesPage.btnQuote')}
                 </Link>

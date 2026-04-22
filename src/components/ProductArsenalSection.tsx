@@ -50,17 +50,115 @@ const BRAND_CONFIG: Record<'koenig-bauer' | 'soudronic', { label: string; specia
     accentColor: '#DC2626',
   },
 };
+// ─────────────────────────────────────────────
+// 🌐 LOCALIZATION HELPERS
+// ─────────────────────────────────────────────
+function getLocalizedSpecKey(t: any, key?: string) {
+  if (!key) return '';
+  const rawKey = key.toLowerCase().trim();
+  const paramMap: Record<string, string> = {
+    'maximum sheet size': 'maxSheetSize',
+    'minimum sheet size': 'minSheetSize',
+    'sheet thickness': 'sheetThickness',
+    'production speed': 'productionSpeed',
+    'production output': 'productionOutput',
+    'coating speed': 'coatingSpeed',
+    'coating types': 'coatingTypes',
+    'size of printing plate': 'maxPrintingArea',
+    'maximum printing area': 'maxPrintingArea',
+    'energy savings': 'energySavings',
+    'technology': 'technology',
+    'feeding capacity': 'feedingCapacity',
+    'heating type': 'heatingType',
+    'container types': 'containerTypes',
+    'can shapes': 'canShapes',
+    'test types': 'testTypes',
+    'application': 'application',
+    'compatibility': 'compatibility',
+    'gripper margin': 'gripperMargin',
+    'printing colors': 'printingColors',
+    'sheet width': 'sheetWidth',
+    'sheet length': 'sheetLength',
+    'strips': 'strips',
+    'output': 'output'
+  };
+  const mappedKey = paramMap[rawKey];
+  if (mappedKey) return t(`productSpecs.${mappedKey}`);
+  return key;
+}
 
+function getLocalizedDescription(t: any, product: SanityProduct) {
+  const slug = product.slug?.current || '';
+  const baseSlug = slug.toLowerCase();
+  const keys = [
+    `productDescriptions.${slug}`,
+    `productDescriptions.${baseSlug}`,
+    `productDescriptions.spn-${baseSlug}`,
+    `productDescriptions.${baseSlug.replace('spn-', '')}`,
+    `productDescriptions.${baseSlug.replace(/\s+/g, '-').toLowerCase()}`
+  ];
+  for (const key of keys) {
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+  }
+  return product.description || '';
+}
+
+function getLocalizedValue(t: any, value?: string) {
+  if (!value) return '';
+  const rawValue = value.trim();
+  
+  // Try direct match first
+  const directKey = `productValues.${rawValue}`;
+  const directTranslated = t(directKey);
+  if (directTranslated && directTranslated !== directKey) return directTranslated;
+  
+  // Handle common unit replacements
+  let translatedValue = rawValue;
+  const unitMap: Record<string, string> = {
+    'sheets/min': 'folhas/min',
+    'sheets/hour': 'folhas/hora',
+    'cans/min': 'latas/min',
+    'blanks/min': 'blanks/min',
+    'm/min': 'm/min'
+  };
+  
+  Object.entries(unitMap).forEach(([en, pt]) => {
+    translatedValue = translatedValue.replace(new RegExp(en.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'), pt);
+  });
+
+  // Handle generic prefixes
+  translatedValue = translatedValue.replace(/Up to /gi, 'Até ');
+
+  return translatedValue;
+}
+
+
+function getLocalizedTitle(t: any, product: SanityProduct) {
+  const slug = product.slug?.current || '';
+  const baseSlug = slug.toLowerCase();
+  const keys = [
+    `productTitles.${slug}`,
+    `productTitles.${baseSlug}`,
+    `productTitles.spn-${baseSlug}`,
+    `productTitles.${baseSlug.replace('spn-', '')}`
+  ];
+  for (const key of keys) {
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+  }
+  return product.title;
+}
 
 
 // ─────────────────────────────────────────────
 // 🃏 PRODUCT CARD COMPONENT
 // ─────────────────────────────────────────────
-const ProductCard: React.FC<{
+function ProductCard({ product, onOpenSpecs, index }: {
   product: SanityProduct;
   onOpenSpecs: (product: SanityProduct) => void;
   index: number;
-}> = ({ product, onOpenSpecs, index }) => {
+}) {
   const { t } = useTranslation();
 
   return (
@@ -94,10 +192,10 @@ const ProductCard: React.FC<{
         {/* Content */}
         <div className="relative z-10 w-full text-center">
           <span className="text-xs font-heading font-black text-accent uppercase tracking-[0.3em] mb-3 block">
-            Industrial Solution
+            {t('productArsenal.industrialSolution') || 'Industrial Solution'}
           </span>
           <h3 className="text-2xl font-heading font-bold text-primary mb-6 tracking-tight">
-            {product.title}
+            {getLocalizedTitle(t, product)}
           </h3>
 
           <div className="flex justify-center">
@@ -120,10 +218,10 @@ const ProductCard: React.FC<{
 // ─────────────────────────────────────────────
 // 🔬 SPECS MODAL COMPONENT
 // ─────────────────────────────────────────────
-const SpecsModal: React.FC<{
+function SpecsModal({ product, onClose }: {
   product: SanityProduct | null;
   onClose: () => void;
-}> = ({ product, onClose }) => {
+}) {
   const { t } = useTranslation();
   const [isMounted, setIsMounted] = React.useState(false);
 
@@ -132,34 +230,6 @@ const SpecsModal: React.FC<{
   }, []);
 
   const features = product?.specs || [];
-
-  const getLocalizedSpecKey = (key?: string) => {
-    if (!key) return '';
-    const rawKey = key.toLowerCase().trim();
-    const paramMap: Record<string, string> = {
-      'maximum sheet size': 'maxSheetSize',
-      'minimum sheet size': 'minSheetSize',
-      'sheet thickness': 'sheetThickness',
-      'production speed': 'productionSpeed',
-      'production output': 'productionOutput',
-      'coating speed': 'coatingSpeed',
-      'coating types': 'coatingTypes',
-      'size of printing plate': 'maxPrintingArea',
-      'maximum printing area': 'maxPrintingArea',
-      'energy savings': 'energySavings',
-      'technology': 'technology',
-      'feeding capacity': 'feedingCapacity',
-      'heating type': 'heatingType',
-      'container types': 'containerTypes',
-      'can shapes': 'canShapes',
-      'test types': 'testTypes',
-      'application': 'application',
-      'compatibility': 'compatibility'
-    };
-    const mappedKey = paramMap[rawKey];
-    if (mappedKey) return t(`productSpecs.${mappedKey}`);
-    return key;
-  };
 
   if (!isMounted) return null;
 
@@ -210,7 +280,7 @@ const SpecsModal: React.FC<{
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
               <div className="flex items-center gap-2 text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
-                <Activity size={12} className="text-accent animate-pulse" /> Status: Online
+                <Activity size={12} className="text-accent animate-pulse" /> {t('productArsenal.status') || 'Status'}: {t('productArsenal.online') || 'Online'}
               </div>
               <div className="w-1 h-1 rounded-full bg-slate-200" />
               <div className="text-slate-400 text-[10px] tracking-[0.2em] font-bold uppercase">
@@ -223,15 +293,15 @@ const SpecsModal: React.FC<{
           <div className="p-8 lg:p-12 flex flex-col justify-between max-h-[80vh] bg-white overflow-y-auto">
             <div>
               <span className="text-xs font-heading font-black text-accent uppercase tracking-[0.4em] mb-4 block">
-                Technical Mastery
+                {t('productArsenal.technicalMastery') || 'Technical Mastery'}
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-black text-primary mb-8">
-                {product.title}
+                {getLocalizedTitle(t, product)}
               </h2>
 
               {/* Description */}
               <p className="text-slate-600 text-sm leading-relaxed mb-10 font-paragraph">
-                {product.description}
+                {getLocalizedDescription(t, product)}
               </p>
 
               {/* Stats Grid */}
@@ -239,9 +309,9 @@ const SpecsModal: React.FC<{
                 {features.map((spec, idx) => (
                   <div key={idx} className="border-l-2 border-slate-200 pl-6 py-1 hover:border-accent transition-colors group">
                     <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-accent/60 transition-colors">
-                      {getLocalizedSpecKey(spec.key)}
+                      {getLocalizedSpecKey(t, spec.key)}
                     </p>
-                    <p className="text-primary text-xl font-heading font-bold">{spec.value}</p>
+                    <p className="text-primary text-xl font-heading font-bold">{getLocalizedValue(t, spec.value)}</p>
                   </div>
                 ))}
               </div>
@@ -392,7 +462,7 @@ export default function ProductArsenalSection() {
                       />
                       <div>
                         <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-1">
-                          {t('productArsenal.authorizedPartner') || 'Authorized Partner'}
+                          {getLocalizedValue(t, 'Authorized Partner')}
                         </p>
                         <h3 className="text-2xl md:text-3xl font-heading font-black text-primary tracking-tight">
                           {config.label}

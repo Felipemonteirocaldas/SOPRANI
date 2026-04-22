@@ -124,7 +124,7 @@ export default function OurServicesSection() {
     },
     {
       number: '05',
-      title: t('header.tradingMaterials') + ' — Tinplate',
+      title: t('servicesSection.tradingTitle'),
       description: t('servicesSection.tradingDesc'),
       icon: ShoppingCart,
     },

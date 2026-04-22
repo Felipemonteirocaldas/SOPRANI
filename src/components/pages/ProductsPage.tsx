@@ -72,11 +72,81 @@ export default function ProductsPage() {
       'can shapes': 'canShapes',
       'test types': 'testTypes',
       'application': 'application',
-      'compatibility': 'compatibility'
+      'compatibility': 'compatibility',
+      'gripper margin': 'gripperMargin',
+      'printing colors': 'printingColors',
+      'sheet width': 'sheetWidth',
+      'sheet length': 'sheetLength',
+      'strips': 'strips',
+      'output': 'output'
     };
     const mappedKey = paramMap[rawKey];
     if (mappedKey) return t(`productSpecs.${mappedKey}`);
     return key;
+  };
+
+  // Helper for localized descriptions (Sanity data is often EN only)
+  const getLocalizedDescription = (product: SanityProduct) => {
+    const slug = product.slug?.current || '';
+    const baseSlug = slug.toLowerCase();
+    const keys = [
+      `productDescriptions.${slug}`,
+      `productDescriptions.${baseSlug}`,
+      `productDescriptions.spn-${baseSlug}`,
+      `productDescriptions.${baseSlug.replace('spn-', '')}`,
+      `productDescriptions.${baseSlug.replace(/\s+/g, '-').toLowerCase()}`
+    ];
+    for (const key of keys) {
+      const translated = t(key);
+      if (translated && translated !== key) return translated;
+    }
+    return product.description || '';
+  };
+
+  const getLocalizedTitle = (product: SanityProduct) => {
+    const slug = product.slug?.current || '';
+    const baseSlug = slug.toLowerCase();
+    const keys = [
+      `productTitles.${slug}`,
+      `productTitles.${baseSlug}`,
+      `productTitles.spn-${baseSlug}`,
+      `productTitles.${baseSlug.replace('spn-', '')}`
+    ];
+    for (const key of keys) {
+      const translated = t(key);
+      if (translated && translated !== key) return translated;
+    }
+    return product.title;
+  };
+
+  // Helper for localized spec values
+  const getLocalizedValue = (value?: string) => {
+    if (!value) return '';
+    const rawValue = value.trim();
+    
+    // Try direct match first
+    const directKey = `productValues.${rawValue}`;
+    const directTranslated = t(directKey);
+    if (directTranslated && directTranslated !== directKey) return directTranslated;
+    
+    // Handle common unit replacements
+    let translatedValue = rawValue;
+    const unitMap: Record<string, string> = {
+      'sheets/min': 'folhas/min',
+      'sheets/hour': 'folhas/hora',
+      'cans/min': 'latas/min',
+      'blanks/min': 'blanks/min',
+      'm/min': 'm/min'
+    };
+    
+    Object.entries(unitMap).forEach(([en, pt]) => {
+      translatedValue = translatedValue.replace(new RegExp(en.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'), pt);
+    });
+
+    // Handle generic prefixes
+    translatedValue = translatedValue.replace(/Up to /gi, 'Até ');
+
+    return translatedValue;
   };
 
   // Body scroll lock
@@ -154,7 +224,7 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-[#F8FAFC] text-primary">
 
       {/* Premium Hero Section */}
-      <section className="relative pt-24 sm:pt-28 pb-24 overflow-hidden bg-[#001F5F]">
+      <section className="relative pt-32 sm:pt-40 pb-24 overflow-hidden bg-[#001F5F]">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]" />
@@ -372,15 +442,15 @@ export default function ProductsPage() {
                             </div>
                             <CardContent className="p-8">
                               <div className="flex items-center gap-2 mb-4">
-                                <span className="text-xs font-bold tracking-widest uppercase text-[#001F5F]">{product.category}</span>
+                                <span className="text-xs font-bold tracking-widest uppercase text-[#001F5F]">{getLocalizedValue(product.category)}</span>
                                 <div className="w-1 h-1 rounded-full bg-slate-300" />
-                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Industrial Packaging</span>
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedValue('Industrial Packaging')}</span>
                               </div>
                               <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-[#001F5F] transition-colors font-heading leading-tight">
-                                {product.title}
+                                {getLocalizedTitle(product)}
                               </h3>
                               <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
-                                {product.description}
+                                {getLocalizedDescription(product)}
                               </p>
                               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                                 {product.specs?.slice(0, 2).map((spec, sIdx) => (
@@ -388,7 +458,7 @@ export default function ProductsPage() {
                                     {sIdx === 0 ? <Zap size={16} className="mt-1 text-[#001F5F] shrink-0" /> : <Cpu size={16} className="mt-1 text-[#001F5F] shrink-0" />}
                                     <div>
                                       <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedSpecKey(spec.key)}</p>
-                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{spec.value}</p>
+                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{getLocalizedValue(spec.value)}</p>
                                     </div>
                                   </div>
                                 ))}
@@ -425,7 +495,7 @@ export default function ProductsPage() {
                       <div className="flex items-center gap-4">
                         <div className="w-1 h-10 bg-accent rounded-full shrink-0" />
                         <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">{t('productArsenal.authorizedPartner') || 'Authorized Partner'}</p>
+                          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">{getLocalizedValue('Authorized Partner')}</p>
                           <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
                             Soudronic
                           </h2>
@@ -568,19 +638,19 @@ export default function ProductsPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
                 <div className="absolute bottom-6 left-8 right-8">
                   <Badge className="mb-4 bg-accent">System</Badge>
-                  <h2 className="text-3xl font-bold text-white font-heading leading-tight">{selectedProduct.title}</h2>
+                  <h2 className="text-3xl font-bold text-white font-heading leading-tight">{getLocalizedTitle(selectedProduct)}</h2>
                 </div>
               </div>
 
               <div className="p-8 flex-1 flex flex-col bg-white">
                 <div className="mb-6">
-                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{selectedProduct.category}</span>
+                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">{getLocalizedValue(selectedProduct.category)}</span>
                 </div>
 
                 <div className="space-y-8 flex-1">
                   <div>
                     <h4 className="mb-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.viewSpecs') || 'Overview'}</h4>
-                    <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{selectedProduct.description}</p>
+                    <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{getLocalizedDescription(selectedProduct)}</p>
                   </div>
 
                   <div className="flex flex-col gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100">
@@ -591,7 +661,7 @@ export default function ProductsPage() {
                         </div>
                         <div>
                           <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{getLocalizedSpecKey(spec.key)}</p>
-                          <p className="text-sm font-semibold text-primary">{spec.value}</p>
+                          <p className="text-sm font-semibold text-primary">{getLocalizedValue(spec.value)}</p>
                         </div>
                       </div>
                     ))}
@@ -601,8 +671,8 @@ export default function ProductsPage() {
                         <Layers size={18} className="text-accent" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Industry Application</p>
-                        <p className="text-sm font-semibold text-primary">Industrial Packaging</p>
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('productArsenal.industryApplication') || 'Industry Application'}</p>
+                        <p className="text-sm font-semibold text-primary">{t('productArsenal.industrialPackaging') || 'Industrial Packaging'}</p>
                       </div>
                     </div>
                   </div>

@@ -561,7 +561,8 @@
     "loading": "Cargando Arsenal...",
     "offline": "Maestría Temporalmente Fuera de Línea",
     "notFound": "No se Encontraron Sistemas Industriales",
-    "technicalMastery": "Maestría Técnica",
+    "technicalMastery": "Technical Mastery",
+    "industrialSolution": "Solución Industrial",
     "requestInfo": "Solicitar Información",
     "status": "Estado",
     "online": "En Línea",
@@ -626,5 +627,8 @@
       "p2": "Kit de Repuestos de Precisión",
       "n1": "Soprani Engineering - Innovación en Italia"
     }
+  },
+  "productDescriptions": {
+    "spn-soudronic-slitter": "Slitters de guillotina de alta precisión o slitters rotativos con cabezales de corte totalmente automatizados que permiten cambios rápidos de formato. Fabricados a medida por Ocsam Cepak y Switzerland Can Man AG — extremadamente robustos com ajuste sencillo y rápido para diferentes formatos de blanks."
   }
 }

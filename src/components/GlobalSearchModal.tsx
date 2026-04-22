@@ -56,13 +56,26 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
 
   return (
     <div
-      className="fixed inset-0 z-[10001] flex items-start justify-center pt-[15vh] bg-black/60 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[10001] flex items-start justify-center pt-[15vh] bg-black/60 backdrop-blur-sm px-4 pointer-events-auto"
       onClick={() => onOpenChange(false)}
     >
       <div
-        className="w-full max-w-2xl bg-white rounded-none shadow-2xl border border-gray-200 overflow-hidden animate-in fade-in zoom-in duration-200"
+        className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden animate-in fade-in zoom-in duration-200 relative"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Absolute Close Button - Ensures it's always clickable */}
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onOpenChange(false);
+          }}
+          className="absolute top-4 right-4 z-[10005] p-2 text-gray-400 hover:text-accent hover:bg-slate-50 transition-colors rounded-full cursor-pointer"
+          aria-label="Close search"
+        >
+          <X size={20} />
+        </button>
+
         <Command label="Global Search" className="flex flex-col w-full bg-transparent">
           <div className="flex items-center border-b border-gray-100 px-4">
             <Search className="w-5 h-5 text-gray-400 mr-2" />
@@ -70,15 +83,8 @@ export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpe
               value={query}
               onValueChange={setQuery}
               placeholder={t('search.placeholder', 'Search products, news or pages...')}
-              className="w-full bg-transparent p-4 text-lg outline-none placeholder-gray-400 text-primary"
+              className="w-full bg-transparent p-4 text-lg outline-none placeholder-gray-400 text-primary pr-12"
             />
-            <button
-              onClick={() => onOpenChange(false)}
-              className="p-2 ml-2 text-gray-400 hover:text-accent hover:bg-slate-50 transition-colors"
-              aria-label="Close search"
-            >
-              <X size={20} />
-            </button>
           </div>
 
           <Command.List className="max-h-[60vh] overflow-y-auto p-2 scrollbar-thin">
