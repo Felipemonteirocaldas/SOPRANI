@@ -216,7 +216,7 @@ export default function Header() {
             "pointer-events-auto bg-white/95 backdrop-blur-xl border border-gray-100 flex items-center relative shadow-2xl",
             isCompact
               ? "rounded-full px-2 py-2 w-auto"
-              : "rounded-full px-3 xs:px-4 sm:px-5 lg:px-6 xl:px-8 max-w-[95vw] lg:max-w-[100rem] w-full h-16 md:h-20"
+              : "rounded-full px-3 xs:px-4 sm:px-5 lg:px-6 xl:px-8 max-w-[95vw] lg:max-w-[100rem] w-full h-[72px] sm:h-20 md:h-24"
           )}
         >
           <AnimatePresence>
@@ -246,8 +246,8 @@ export default function Header() {
                         className={cn(
                           "w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105",
                           isScrolled
-                            ? "h-[28px] xs:h-[32px] sm:h-[36px] md:h-[40px] lg:h-[42px] xl:h-[58px]"
-                            : "h-[38px] xs:h-[44px] sm:h-[52px] md:h-[58px] lg:h-[62px] xl:h-[90px]"
+                            ? "h-[28px] xs:h-[32px] sm:h-[38px] md:h-[44px] lg:h-[48px] xl:h-[52px]"
+                            : "h-[40px] xs:h-[48px] sm:h-[58px] md:h-[66px] lg:h-[72px] xl:h-[84px]"
                         )}
                       />
                     </div>
@@ -279,7 +279,7 @@ export default function Header() {
                     {/* Mega Menu Dropdown */}
                     <div
                       className={cn(
-                        "fixed left-0 right-0 top-20 sm:top-24 md:top-24 bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out",
+                        "fixed left-0 right-0 top-[96px] sm:top-[104px] md:top-[128px] bg-white border-t-4 border-accent shadow-lg z-40 transition-all duration-200 ease-out",
                         activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
                       )}
                     >
@@ -377,7 +377,7 @@ export default function Header() {
               >
                 <Link
                   to="/"
-                  className="p-2 text-primary/70 hover:text-accent hover:bg-accent/5 rounded-full transition-all duration-300 flex items-center justify-center"
+                  className="p-2 text-primary/70 hover:text-accent hover:bg-primary/5 rounded-full transition-all duration-300 flex items-center justify-center"
                   aria-label="Go to homepage"
                 >
                   <HomeIcon size={20} strokeWidth={2.5} />
@@ -385,7 +385,7 @@ export default function Header() {
                 <div className="w-[1px] h-4 bg-gray-200"></div>
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="p-2 text-primary/70 hover:text-accent hover:bg-accent/5 rounded-full transition-all duration-300 flex items-center justify-center"
+                  className="p-2 text-primary/70 hover:text-accent hover:bg-primary/5 rounded-full transition-all duration-300 flex items-center justify-center"
                   aria-label="Open search"
                 >
                   <Search size={20} strokeWidth={2.5} />

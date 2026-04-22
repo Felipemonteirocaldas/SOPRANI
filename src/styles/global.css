@@ -51,7 +51,7 @@
   }
 
   ::selection {
-    @apply bg-accent/20 text-primary;
+    @apply bg-primary text-white;
   }
 
   /* Custom Premium Scrollbar */

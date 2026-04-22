@@ -1,128 +1,234 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Command } from 'cmdk';
-import { Search, FileText, Wrench, Package, Briefcase, Phone, Presentation, LayoutDashboard, Layers, Newspaper, X } from 'lucide-react';
+import {
+  Search,
+  Settings,
+  Puzzle,
+  LayoutGrid,
+  Phone,
+  Box,
+  Newspaper,
+  X,
+  ChevronRight,
+  Command as CommandIcon,
+  CornerDownLeft,
+  ArrowUp,
+  ArrowDown
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom'; // Melhor que window.location.href
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Importamos seus dados locais
+// Mock data integration (as in current file)
 import productsData from '../data/productsolutions.json';
 import newsData from '../data/news.json';
 
 export function GlobalSearchModal({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
   const { t } = useTranslation();
   const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // 1. Rotas estáticas que você já tinha
+  // Keyboard shortcut listener for ESC
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        onOpenChange(!open);
+      }
+    };
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, [open, onOpenChange]);
+
+  // Handle loading simulation
+  useEffect(() => {
+    if (query.length > 0) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 300);
+      return () => clearTimeout(timer);
+    } else {
+      setIsLoading(false);
+    }
+  }, [query]);
+
+  // Data Preparation
   const routes = [
-    { title: t('header.machinery', 'Machinery'), path: '/machinery', icon: Wrench, category: 'pages' },
-    { title: t('header.spareParts', 'Spare Parts'), path: '/spare-parts', icon: Package, category: 'pages' },
-    { title: t('header.products', 'Products & Solutions'), path: '/products', icon: LayoutDashboard, category: 'pages' },
-    { title: t('header.contact', 'Contact Us'), path: '/contact', icon: Phone, category: 'pages' },
+    { title: t('header.machinery', 'Machinery'), path: '/machinery', icon: Settings, category: 'PAGES' },
+    { title: t('header.spareParts', 'Spare Parts'), path: '/spare-parts', icon: Puzzle, category: 'PAGES' },
+    { title: t('header.products', 'Products & Solutions'), path: '/products', icon: LayoutGrid, category: 'PAGES' },
+    { title: t('header.contact', 'Contact Us'), path: '/contact', icon: Phone, category: 'PAGES' },
   ];
 
-  // 2. Transformamos os produtos em itens de busca
   const productItems = productsData.map(p => ({
     title: t(`search.results.${p._id}`, p.title),
-    path: `/products`, // Ou o link específico do produto se houver
-    icon: Package,
-    category: 'products'
+    path: `/products`,
+    icon: Box,
+    category: 'PRODUCTS'
   }));
 
-  // 3. Transformamos as notícias em itens de busca
   const newsItems = newsData.map(n => ({
     title: t(`search.results.${n._id}`, n.headline),
     path: `/news`,
     icon: Newspaper,
-    category: 'news'
+    category: 'NEWS'
   }));
 
-  // Combinamos tudo
   const allItems = [...routes, ...productItems, ...newsItems];
 
-  const results = allItems.filter(item =>
+  const filteredItems = allItems.filter(item =>
     item.title.toLowerCase().includes(query.toLowerCase())
   );
 
-  // Agrupar por categoria para os "setores"
-  const categories = Array.from(new Set(results.map(item => item.category)));
+  const categories = ['PAGES', 'PRODUCTS', 'NEWS'];
 
   const handleSelect = (path: string) => {
     onOpenChange(false);
     navigate(path);
   };
 
-  if (!open) return null;
-
   return (
-    <div
-      className="fixed inset-0 z-[10001] flex items-start justify-center pt-[15vh] bg-black/60 backdrop-blur-sm px-4 pointer-events-auto"
-      onClick={() => onOpenChange(false)}
-    >
-      <div
-        className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden animate-in fade-in zoom-in duration-200 relative"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Absolute Close Button - Ensures it's always clickable */}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onOpenChange(false);
-          }}
-          className="absolute top-4 right-4 z-[10005] p-2 text-gray-400 hover:text-accent hover:bg-slate-50 transition-colors rounded-full cursor-pointer"
-          aria-label="Close search"
-        >
-          <X size={20} />
-        </button>
+    <AnimatePresence>
+      {open && (
+        <div className="fixed inset-0 z-[10001] flex items-start justify-center pt-[12vh] px-4">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-[#001F5F]/40 backdrop-blur-md"
+            onClick={() => onOpenChange(false)}
+          />
 
-        <Command label="Global Search" className="flex flex-col w-full bg-transparent">
-          <div className="flex items-center border-b border-gray-100 px-4">
-            <Search className="w-5 h-5 text-gray-400 mr-2" />
-            <Command.Input
-              value={query}
-              onValueChange={setQuery}
-              placeholder={t('search.placeholder', 'Search products, news or pages...')}
-              className="w-full bg-transparent p-4 text-lg outline-none placeholder-gray-400 text-primary pr-12"
-            />
-          </div>
+          {/* Modal Container */}
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-2xl bg-white rounded-xl shadow-[0_32px_64px_-16px_rgba(0,31,95,0.3)] border border-slate-200 overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Command label="Global Search" className="flex flex-col w-full h-full">
+              {/* Header / Input Area */}
+              <div className="relative flex items-center border-b border-slate-100 px-6 py-5">
+                <Search className="w-5 h-5 text-slate-400" />
+                <Command.Input
+                  ref={inputRef}
+                  value={query}
+                  onValueChange={setQuery}
+                  autoFocus
+                  placeholder="Search products, news or pages..."
+                  className="flex-1 bg-transparent ml-4 text-lg outline-none placeholder-slate-400 text-[#001F5F] font-medium"
+                />
+                <button
+                  onClick={() => onOpenChange(false)}
+                  className="p-1.5 hover:bg-slate-100 rounded-md transition-colors text-slate-400 hover:text-accent"
+                >
+                  <X size={18} />
+                </button>
+              </div>
 
-          <Command.List className="max-h-[60vh] overflow-y-auto p-2 scrollbar-thin">
-            <Command.Empty className="py-12 text-center text-gray-500 text-sm">
-              {t('search.noResults', 'No results found for "{{query}}"', { query })}
-            </Command.Empty>
-
-            {categories.map((category) => (
-              <Command.Group
-                key={category}
-                heading={<span className="text-[10px] font-bold uppercase tracking-wider text-accent/70 px-4 py-2 block">{t(`search.categories.${category}`)}</span>}
-              >
-                {results
-                  .filter(item => item.category === category)
-                  .map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <Command.Item
-                        key={`${item.path}-${idx}`}
-                        onSelect={() => handleSelect(item.path)}
-                        value={`${item.category}-${item.title}`}
-                        className="flex items-center px-4 py-3 rounded-none cursor-pointer hover:bg-accent/5 aria-selected:bg-accent/5 transition-colors group/item"
-                      >
-                        <div className="bg-gray-100 p-2 text-accent group-hover/item:bg-accent group-hover/item:text-white transition-colors">
-                          <Icon className="w-4 h-4" />
+              {/* Results List */}
+              <Command.List className="max-h-[65vh] overflow-y-auto p-3 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+                {isLoading ? (
+                  <div className="p-4 space-y-4">
+                    {[1, 2, 3].map(i => (
+                      <div key={i} className="flex items-center gap-4 animate-pulse">
+                        <div className="w-10 h-10 bg-slate-100 rounded-lg" />
+                        <div className="flex-1 space-y-2">
+                          <div className="h-4 bg-slate-100 rounded w-1/3" />
+                          <div className="h-3 bg-slate-50 rounded w-1/4" />
                         </div>
-                        <div className="flex flex-col ml-4">
-                          <span className="font-medium text-gray-900 group-hover/item:text-accent transition-colors">{item.title}</span>
-                          <span className="text-[10px] uppercase tracking-wider text-gray-400">{t(`search.categories.${item.category}`)}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <Command.Empty className="py-16 flex flex-col items-center justify-center text-slate-400">
+                      <Search className="w-12 h-12 mb-4 opacity-10" />
+                      <p className="text-sm font-medium">No results found for <span className="text-[#001F5F]">"{query}"</span></p>
+                      <p className="text-xs mt-1">Try checking for typos or use more general terms.</p>
+                    </Command.Empty>
+
+                    {categories.map((category) => {
+                      const itemsInCategory = filteredItems.filter(item => item.category === category);
+                      if (itemsInCategory.length === 0) return null;
+
+                      return (
+                        <div key={category} className="mb-4 last:mb-0">
+                          <div className="flex items-center justify-between px-4 py-2 mb-1">
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                              {category}
+                            </span>
+                            <span className="px-2 py-0.5 rounded-full bg-slate-100 text-[10px] font-bold text-slate-500 border border-slate-200">
+                              {itemsInCategory.length}
+                            </span>
+                          </div>
+
+                          {itemsInCategory.map((item, idx) => {
+                            const Icon = item.icon;
+                            return (
+                              <Command.Item
+                                key={`${item.path}-${idx}`}
+                                onSelect={() => handleSelect(item.path)}
+                                value={`${item.category}-${item.title}`}
+                                className="flex items-center px-4 py-3.5 rounded-lg cursor-pointer aria-selected:bg-[#001F5F]/5 transition-all group relative border border-transparent aria-selected:border-[#001F5F]/10 outline-none"
+                              >
+                                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-50 text-slate-400 group-hover:bg-white group-hover:shadow-sm border border-slate-100 transition-all group-aria-selected:text-[#001F5F] group-aria-selected:bg-white group-aria-selected:shadow-sm">
+                                  <Icon size={18} />
+                                </div>
+                                <div className="flex flex-col ml-4 flex-1">
+                                  <span className="font-bold text-[#001F5F] text-sm tracking-tight group-aria-selected:text-accent transition-colors">
+                                    {item.title}
+                                  </span>
+                                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mt-0.5">
+                                    {item.category}
+                                  </span>
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-slate-200 opacity-0 group-aria-selected:opacity-100 transition-opacity" />
+                              </Command.Item>
+                            );
+                          })}
+
+                          {/* Separator line except for last category */}
+                          {category !== categories[categories.length - 1] && (
+                            <div className="h-px bg-slate-50 mx-4 mt-4 mb-2" />
+                          )}
                         </div>
-                      </Command.Item>
-                    );
-                  })}
-              </Command.Group>
-            ))}
-          </Command.List>
-        </Command>
-      </div>
-    </div>
+                      );
+                    })}
+                  </>
+                )}
+              </Command.List>
+
+              {/* Footer / Shortcuts */}
+              <div className="border-t border-slate-100 bg-slate-50/50 px-4 py-3 flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <div className="flex items-center gap-6">
+                  <span className="flex items-center gap-1.5">
+                    <span className="px-1.5 py-0.5 bg-white border border-slate-200 rounded shadow-sm text-slate-600 flex items-center gap-0.5">
+                      <CornerDownLeft size={8} /> Enter
+                    </span>
+                    to select
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="flex gap-0.5">
+                      <span className="px-1.5 py-0.5 bg-white border border-slate-200 rounded shadow-sm text-slate-600"><ArrowUp size={8} /></span>
+                      <span className="px-1.5 py-0.5 bg-white border border-slate-200 rounded shadow-sm text-slate-600"><ArrowDown size={8} /></span>
+                    </span>
+                    to navigate
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="px-1.5 py-0.5 bg-white border border-slate-200 rounded shadow-sm text-slate-600 font-sans">ESC</span>
+                  to close
+                </div>
+              </div>
+            </Command>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }

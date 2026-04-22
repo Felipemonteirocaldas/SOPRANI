@@ -235,7 +235,7 @@ export default function ProductsPage() {
               scale: [1, 1.1, 1]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full"
+            className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full"
           />
           <div
             className="absolute inset-0 opacity-[0.03]"

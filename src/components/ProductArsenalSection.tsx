@@ -372,7 +372,7 @@ export default function ProductArsenalSection() {
         />
         <motion.div
           style={{ y: y2 }}
-          className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-accent/[0.03] rounded-full blur-[150px]"
+          className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[150px]"
         />
       </div>
 
