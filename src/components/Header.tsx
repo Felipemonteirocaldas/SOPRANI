@@ -290,28 +290,28 @@ export default function Header() {
 
                 {/* Action Buttons */}
                 <motion.div layout className="flex items-center space-x-2 md:space-x-4">
-                  <div 
+                  <div
                     className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group"
                     onMouseEnter={() => setLangMenuOpen(true)}
                     onMouseLeave={() => setLangMenuOpen(false)}
                   >
-                    <button 
+                    <button
                       onClick={() => setLangMenuOpen(!langMenuOpen)}
                       className="flex items-center text-sm font-bold text-primary hover:text-accent transition-colors py-2 px-2"
                     >
                       <Globe size={16} className="mr-1.5 opacity-60" />
                       <span className="hidden xs:inline">{i18n.language?.toUpperCase() || 'EN'}</span>
                     </button>
-                    
+
                     {/* Lang Dropdown */}
                     <AnimatePresence>
                       {langMenuOpen && (
                         <>
-                          <div 
-                            className="fixed inset-0 z-40 cursor-default" 
-                            onClick={() => setLangMenuOpen(false)} 
+                          <div
+                            className="fixed inset-0 z-40 cursor-default"
+                            onClick={() => setLangMenuOpen(false)}
                           />
-                          <motion.div 
+                          <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
@@ -409,64 +409,64 @@ export default function Header() {
                 style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
               />
               <motion.div
-              initial={{ opacity: 0, y: isCompact ? 10 : -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: isCompact ? 10 : -10 }}
-              className={cn(
-                "absolute left-0 right-0 px-4 pointer-events-auto z-[9998]",
-                isCompact ? "bottom-full mb-4" : "top-full pt-2"
-              )}
-            >
-              <nav className="md:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">
-                <div className="flex flex-col space-y-2 px-6 pt-6 pb-20 shadow-inner">
-                  <Link to="/services" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
-                    {t('header.services')}
-                  </Link>
-                  <Link to="/products" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
-                    {t('header.products')}
-                  </Link>
-                  <Link to="/company" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
-                    {t('header.company')}
-                  </Link>
-                  <Link to="/news" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
-                    {t('header.news')}
-                  </Link>
-                  <Link to="/contact" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
-                    {t('header.contact')}
-                  </Link>
+                initial={{ opacity: 0, y: isCompact ? 10 : -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: isCompact ? 10 : -10 }}
+                className={cn(
+                  "absolute left-0 right-0 px-4 pointer-events-auto z-[9998]",
+                  isCompact ? "bottom-full mb-4" : "top-full pt-2"
+                )}
+              >
+                <nav className="md:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">
+                  <div className="flex flex-col space-y-2 px-6 pt-6 pb-20 shadow-inner">
+                    <Link to="/services" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                      {t('header.services')}
+                    </Link>
+                    <Link to="/products" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                      {t('header.products')}
+                    </Link>
+                    <Link to="/company" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                      {t('header.company')}
+                    </Link>
+                    <Link to="/news" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                      {t('header.news')}
+                    </Link>
+                    <Link to="/contact" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                      {t('header.contact')}
+                    </Link>
 
-                  <div className="border-t border-gray-50 pt-4 mt-2">
-                    <button
-                      onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                      className="flex items-center justify-between w-full py-2 text-base font-bold text-primary"
-                    >
-                      <span className="flex items-center gap-2 text-accent">
-                        {t('header.more') || 'More'}
-                      </span>
-                      <ChevronDown size={20} className={cn("text-accent transition-transform duration-300", mobileMoreOpen && "rotate-180")} />
-                    </button>
+                    <div className="border-t border-gray-50 pt-4 mt-2">
+                      <button
+                        onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                        className="flex items-center justify-between w-full py-2 text-base font-bold text-primary"
+                      >
+                        <span className="flex items-center gap-2 text-accent">
+                          {t('header.more') || 'More'}
+                        </span>
+                        <ChevronDown size={20} className={cn("text-accent transition-transform duration-300", mobileMoreOpen && "rotate-180")} />
+                      </button>
 
-                    {mobileMoreOpen && (
-                      <div className="pl-4 space-y-4 pt-4 pb-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                        <div className="space-y-4">
-                          <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">{t('header.services')}</p>
-                          {getServicesLinks(t).slice(1).map((link, idx) => (
-                            <Link key={idx} to={link.href} className="flex items-center gap-3 text-sm font-medium text-primary/70 py-1" onClick={() => setMobileMenuOpen(false)}>
-                              <link.icon size={18} className="text-accent/60" />
-                              {link.label}
-                            </Link>
-                          ))}
+                      {mobileMoreOpen && (
+                        <div className="pl-4 space-y-4 pt-4 pb-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                          <div className="space-y-4">
+                            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">{t('header.services')}</p>
+                            {getServicesLinks(t).slice(1).map((link, idx) => (
+                              <Link key={idx} to={link.href} className="flex items-center gap-3 text-sm font-medium text-primary/70 py-1" onClick={() => setMobileMenuOpen(false)}>
+                                <link.icon size={18} className="text-accent/60" />
+                                {link.label}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
 
-                </div>
-              </nav>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                  </div>
+                </nav>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
       </header>
       <GlobalSearchModal open={searchOpen} onOpenChange={setSearchOpen} />

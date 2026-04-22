@@ -397,10 +397,10 @@ export default function ContactPage() {
                 to="/about"
               />
               <RapidLink
-                title="Service Centers"
-                desc="Locate our registered technical centers."
-                btn="View Map"
-                to="/services"
+                title={t('contactPage.latestNews')}
+                desc={t('contactPage.latestNewsSub')}
+                btn={t('contactPage.latestNewsBtn')}
+                to="/news"
               />
             </div>
           </div>

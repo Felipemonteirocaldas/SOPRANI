@@ -312,7 +312,10 @@
                 "aboutUs": "Sobre a Soprani",
                 "aboutSub": "Liderança e história na indústria metalúrgica global.",
                 "aboutBtn": "Saiba Mais",
-                "whatsappTitle": "WhatsApp Prioritário"
+                "whatsappTitle": "WhatsApp Prioritário",
+                "latestNews": "Últimas Notícias",
+                "latestNewsSub": "Fique atualizado com nossas últimas atividades industriais e eventos.",
+                "latestNewsBtn": "Explorar Notícias"
         },
         "eventsPage": {
                 "heroTitle": "Eventos Industriais",

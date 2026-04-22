@@ -313,7 +313,10 @@
                 "aboutUs": "About Soprani",
                 "aboutSub": "Leadership and history in the global metalworking industry.",
                 "aboutBtn": "Learn More",
-                "whatsappTitle": "Priority WhatsApp"
+                "whatsappTitle": "Priority WhatsApp",
+                "latestNews": "Latest News",
+                "latestNewsSub": "Stay updated with our latest industrial activities and events.",
+                "latestNewsBtn": "Explore News"
         },
         "eventsPage": {
                 "heroTitle": "Industrial Events",
@@ -611,7 +614,7 @@
                 },
                 "results": {
                         "p1": "Industrial Packaging Machine A1",
-                "p2": "Precision Spare Parts Kit",
+                        "p2": "Precision Spare Parts Kit",
                         "n1": "Soprani Engineering - Innovation in Italy"
                 }
         },

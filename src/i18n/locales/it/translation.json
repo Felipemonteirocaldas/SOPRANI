@@ -317,7 +317,10 @@
                 "aboutUs": "Chi Siamo",
                 "aboutSub": "Leadership e storia nell'industria metallurgica globale.",
                 "aboutBtn": "Scopri di Più",
-                "whatsappTitle": "WhatsApp Prioritario"
+                "whatsappTitle": "WhatsApp Prioritario",
+                "latestNews": "Ultime Notizie",
+                "latestNewsSub": "Rimani aggiornato sulle nostre ultime attività industriali ed eventi.",
+                "latestNewsBtn": "Esplora Notizie"
         },
         "eventsPage": {
                 "heroTitle": "Eventi di Settore",
