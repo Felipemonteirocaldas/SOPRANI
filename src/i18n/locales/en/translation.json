@@ -593,15 +593,17 @@
         },
         "heroLegacy": {
                 "badge": "+ 40 Years of Engineering",
+                "headline": "Your Plant, Elevated by Elite Engineering.",
+                "subheadline": "Over 40 years of global leadership in machinery solutions and technical support for the metal packaging industry. Where tradition meets industrial performance.",
                 "card1": {
-                        "label": "Mastering Metallurgy",
-                        "title": "Technological Leadership",
-                        "desc": "Driving the evolution of metal packaging with cutting-edge proprietary machinery and unmatched industrial precision."
+                        "label": "EQUIPMENT EXPERTISE",
+                        "title": "Packaging Technology",
+                        "desc": "Specialized sourcing and revamping projects that transform production lines. From elite machinery to high-performance automation."
                 },
                 "card2": {
-                        "label": "Worldwide Support",
-                        "title": "Global Industrial Reach",
-                        "desc": "Delivering turnkey manufacturing systems and specialized engineering support across key industrial hubs on all continents."
+                        "label": "GLOBAL SUPPORT & TRADING",
+                        "title": "Efficiency without Borders",
+                        "desc": "International presence across 4 continents, ensuring critical parts supply and strategic industrial metal trading."
                 }
         },
         "search": {

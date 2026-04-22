@@ -597,15 +597,17 @@
         },
         "heroLegacy": {
                 "badge": "+ 40 Anni di Ingegneria",
+                "headline": "La tua fabbrica, elevata dall'ingegneria d'élite.",
+                "subheadline": "Oltre 40 anni di leadership globale in soluzioni meccaniche e supporto tecnico per l'industria degli imballaggi metallici. Dove la tradizione incontra le prestazioni industriali.",
                 "card1": {
-                        "label": "Maestria della Metallurgia",
-                        "title": "Leadership Tecnologica",
-                        "desc": "Guidiamo l'evoluzione degli imballaggi metallici con macchinari proprietari all'avanguardia e precisione industriale ineguagliabile."
+                        "label": "ESPERTI IN ATTREZZATURE",
+                        "title": "Tecnologia per Imballaggi",
+                        "desc": "Sourcing specializzato e progetti di revamping che trasformano le linee di produzione. Dai macchinari d'élite all'automazione ad alte prestazioni."
                 },
                 "card2": {
-                        "label": "Supporto Globale",
-                        "title": "Copertura Industriale Globale",
-                        "desc": "Forniamo sistemi di produzione turnkey e supporto ingegneristico specializzato nei principali centri industriali di tutti i continenti."
+                        "label": "SUPPORTO E TRADING GLOBALE",
+                        "title": "Efficienza senza Confini",
+                        "desc": "Presenza internazionale in 4 continenti, garantendo la fornitura di parti critiche e il trading strategico di metalli industriali."
                 }
         },
         "search": {

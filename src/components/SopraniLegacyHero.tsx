@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,27 +96,50 @@ export default function SopraniLegacyHero() {
           src="/video/videohero.mp4"
         />
         {/* Overlays to ensure dark logo legibility without buggy blur filters */}
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-white/90 via-white/50 to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Center Hero Content (Title & Badge) */}
+      {/* Center Hero Content (Headline & Subheadline) */}
       <div
         ref={heroContentRef}
-        className="relative z-10 flex flex-col items-center justify-center pointer-events-none text-center pt-36 sm:pt-44 md:pt-52"
+        className="relative z-20 flex flex-col items-center justify-center pointer-events-none text-center px-4 max-w-6xl mx-auto pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-52"
       >
-        <img
-          src="/images/logo.png"
-          alt="Soprani"
-          className="w-[80vw] max-w-[450px] mb-8 object-contain drop-shadow-2xl"
-        />
+        {/* Animated Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[0.9] tracking-tighter mb-8 drop-shadow-xl uppercase"
+        >
+          {t('heroLegacy.headline').split(',').map((part, i) => (
+            <span key={i} className="block">
+              {part}{i === 0 ? ',' : ''}
+            </span>
+          ))}
+        </motion.h1>
 
-        {/* Responsive Badge */}
-        <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-full px-8 py-3 md:px-10 md:py-4 flex items-center shadow-xl">
-          <span className="text-lg md:text-xl font-bold font-heading text-[#001F5F] tracking-[0.2em] uppercase">
-            + <span ref={countRef}>0</span>{t('heroLegacy.badge').split('40')[1]}
-          </span>
-        </div>
+        {/* Animated Subheadline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          className="max-w-3xl mx-auto"
+        >
+          <p className="text-lg sm:text-xl md:text-2xl font-light text-white/90 leading-relaxed tracking-tight drop-shadow-md">
+            {t('heroLegacy.subheadline')}
+          </p>
+
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 1.5, delay: 1, ease: "circOut" }}
+            className="flex h-1.5 w-32 mx-auto mt-10 rounded-full overflow-hidden shadow-sm"
+          >
+            <div className="flex-1 bg-[#008C45]" />
+            <div className="flex-1 bg-white" />
+            <div className="flex-1 bg-[#CD212A]" />
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Left Product Cards (Revealed on Scroll) */}

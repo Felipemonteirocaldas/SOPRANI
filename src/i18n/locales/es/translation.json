@@ -597,15 +597,17 @@
         },
         "heroLegacy": {
                 "badge": "+ 40 Años de Ingeniería",
+                "headline": "Su Fábrica, Elevada por la Ingeniería de Elite.",
+                "subheadline": "Más de 40 años de liderazgo global en soluciones de maquinaria y soporte técnico para la industria de envases metálicos. Donde la tradición se encuentra con el rendimiento industrial.",
                 "card1": {
-                        "label": "Maestría en Metalurgia",
-                        "title": "Liderazgo Tecnológico",
-                        "desc": "Impulsando la evolución de los envases metálicos con maquinaria propia de vanguardia y precisión industrial inigualable."
+                        "label": "EXPERTISE EN EQUIPOS",
+                        "title": "Tecnología para Envases",
+                        "desc": "Sourcing especializado y proyectos de revamping que transforman las líneas de producción. Desde maquinaria de élite hasta automatización de alto rendimiento."
                 },
                 "card2": {
-                        "label": "Soporte Global",
-                        "title": "Alcance Industrial Global",
-                        "desc": "Entregando sistemas de fabricación llave en mano y soporte de ingeniería especializado en los principales centros industriales de todos los continentes."
+                        "label": "SOPORTE Y TRADING GLOBAL",
+                        "title": "Eficiencia sin Fronteras",
+                        "desc": "Presencia internacional en 4 continentes, garantizando el suministro de piezas críticas y el trading estratégico de metales industriales."
                 }
         },
         "search": {

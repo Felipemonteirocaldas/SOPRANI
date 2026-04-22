@@ -592,15 +592,17 @@
         },
         "heroLegacy": {
                 "badge": "+ 40 Anos de Engenharia",
+                "headline": "Sua Fábrica, Elevada pela Engenharia de Elite.",
+                "subheadline": "Mais de 40 anos de liderança global em soluções de maquinário e suporte técnico para a indústria de embalagens metálicas. Onde a tradição encontra a performance industrial.",
                 "card1": {
-                        "label": "Maestria em Metalurgia",
-                        "title": "Liderança Tecnológica",
-                        "desc": "Conduzindo a evolução das embalagens metálicas com maquinário proprietário de ponta e precisão industrial inigualável."
+                        "label": "EXPERTISE EM EQUIPAMENTOS",
+                        "title": "Tecnologia para Embalagens",
+                        "desc": "Sourcing especializado e projetos de revamping que transformam linhas de produção. Do maquinário de elite à automação de alta performance."
                 },
                 "card2": {
-                        "label": "Suporte Global",
-                        "title": "Alcance Industrial Global",
-                        "desc": "Entregando sistemas de manufatura turnkey e suporte especializado de engenharia nos principais polos industriais de todos os continentes."
+                        "label": "SUPORTE E TRADING GLOBAL",
+                        "title": "Eficiência sem Fronteiras",
+                        "desc": "Presença internacional em 4 continentes, garantindo fornecimento crítico de peças e trading estratégico de metais industriais."
                 }
         },
         "search": {
