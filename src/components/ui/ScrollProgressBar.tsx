@@ -11,7 +11,6 @@ export const ScrollProgressBar: React.FC = () => {
 
   return (
     <motion.div
-      style={{ scaleX, transformOrigin: 'left' }}
       className="fixed top-0 left-0 right-0 z-[10001] h-[4px]"
       style={{
         scaleX,

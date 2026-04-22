@@ -76,24 +76,36 @@ export default function ContactPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 opacity-5 blur-[120px] rounded-full" />
+
+            {/* Subtle grid */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
           </div>
 
           <div className="container mx-auto px-4 md:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto text-center lg:text-left lg:mx-0">
+            <div className="max-w-4xl text-left">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="flex justify-center lg:justify-start">
-                  <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-5 sm:mb-8 border border-accent/20">
+                {/* Industrial Tag */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-px bg-accent" />
+                  <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
                     Global Interaction Hub
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-4 sm:mb-6 tracking-tighter leading-[0.95]">
+
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 tracking-tighter leading-[0.95]">
                   {t('contactPage.heroTitle')}
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed mb-0 mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed font-bold">
                   {t('contactPage.heroSub')}
                 </p>
               </motion.div>

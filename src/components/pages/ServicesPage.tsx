@@ -187,7 +187,7 @@ export default function ServicesPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-medium">
+              <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-bold">
                 {t('servicesPage.heroSub')}
               </p>
 

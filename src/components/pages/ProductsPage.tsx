@@ -237,26 +237,35 @@ export default function ProductsPage() {
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full"
           />
+          {/* Subtle grid */}
           <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
           />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto">
+        <div className="container relative z-10 px-4 md:px-8 mx-auto">
           <motion.div
             initial="initial"
             animate="animate"
             variants={fadeUp}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-3xl text-left"
           >
-            <Badge className="box-content px-4 py-1 mb-6 font-semibold uppercase tracking-widest bg-accent text-white border-transparent">
-              PRECISION INDUSTRIAL ENGINEERING
-            </Badge>
-            <h1 className="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl font-heading">
+            {/* Industrial Tag */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-px bg-accent" />
+              <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
+                PRECISION INDUSTRIAL ENGINEERING
+              </span>
+            </div>
+
+            <h1 className="mb-8 text-5xl font-black tracking-tight text-white md:text-7xl font-heading leading-[1.0]">
               {t('productsPage.heroTitle')}
             </h1>
-            <p className="max-w-2xl mx-auto text-lg leading-relaxed md:text-xl text-slate-200">
+            <p className="text-lg leading-relaxed md:text-xl text-slate-200 font-bold max-w-xl">
               {t('productsPage.heroSub')}
             </p>
           </motion.div>

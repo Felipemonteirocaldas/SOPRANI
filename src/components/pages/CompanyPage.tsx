@@ -60,7 +60,7 @@ export default function CompanyPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_60%,rgba(196,18,48,0.12),transparent_50%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_25%,rgba(255,255,255,0.03),transparent_45%)]" />
             <div
-              className="absolute inset-0 opacity-[0.035]"
+              className="absolute inset-0 opacity-[0.04]"
               style={{
                 backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
                 backgroundSize: '60px 60px',
@@ -85,7 +85,7 @@ export default function CompanyPage() {
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] tracking-tight mb-8">
                   {t('companyPage.heroTitle')}
                 </h1>
-                <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-medium mb-6">
+                <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-bold mb-6">
                   {t('companyPage.p1')}
                 </p>
                 <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-xl font-paragraph font-normal">
