@@ -34,7 +34,7 @@ const StatBox = ({ value, label, delay = 0 }: { value: string; label: string; de
 
 // ── Value pillar card ─────────────────────────────────────────────────────────
 const ValuePillar = ({ icon: Icon, title, desc, delay = 0, border = '' }: { icon: any; title: string; desc: string; delay?: number; border?: string }) => (
-  <FadeUp delay={delay} className={`p-10 md:p-14 group hover:bg-white/5 transition-all duration-500 ${border}`}>
+  <FadeUp delay={delay} className={`p-6 md:p-14 group hover:bg-white/5 transition-all duration-500 ${border}`}>
     <div className="w-12 h-12 bg-white/10 border border-white/15 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:border-accent transition-all duration-500">
       <Icon size={20} className="text-white" />
     </div>
@@ -116,12 +116,12 @@ export default function CompanyPage() {
             </div>
           </div>
 
-          {/* Angled cut to white */}
-          <div className="absolute -bottom-px left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
+          {/* Angled cut to slate-50 */}
+          <div className="absolute -bottom-1 left-0 right-0 h-20 bg-slate-50 origin-bottom scale-y-110" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
         </section>
 
         {/* ── LEGACY & VISION ──────────────────────────────────────────────── */}
-        <section className="bg-slate-50 py-24 md:py-32 overflow-hidden border-b border-slate-100">
+        <section className="relative z-10 -mt-px bg-slate-50 py-24 md:py-32 overflow-hidden border-b border-slate-100">
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
               <div className="order-2 lg:order-1">
@@ -146,7 +146,7 @@ export default function CompanyPage() {
 
                 <div className="relative flex items-center justify-center">
                   {/* Senior Sergio - Legacy (Main focus) */}
-                  <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-30 transition-all duration-500 group">
+                  <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-50 focus-within:z-50 transition-all duration-500 group">
                     <Image
                       src="/images/sergio-soprani-senior.png"
                       alt="Sergio Soprani - Founder"
@@ -159,7 +159,7 @@ export default function CompanyPage() {
                   </div>
 
                   {/* Young Sergio - Foundation (Legacy look) */}
-                  <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-30 transition-all duration-500 group cursor-pointer">
+                  <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-50 active:z-50 focus:z-50 transition-all duration-500 group cursor-pointer" tabIndex={0}>
                     <Image
                       src="/images/sergio-soprani-young.png"
                       alt="Sergio Soprani - The Early Years"
@@ -294,11 +294,11 @@ export default function CompanyPage() {
         </section>
 
         {/* ── VALUES / COMMITMENTS ─────────────────────────────────────────── */}
-        <section className="relative bg-[#001F5F] py-24 md:py-32 overflow-hidden">
+        <section className="relative bg-[#001F5F] py-16 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(196,18,48,0.08),transparent_60%)]" />
           <div className="relative z-10 container mx-auto px-4 md:px-8">
             {/* Heading */}
-            <FadeUp className="max-w-2xl mb-20 md:mb-24">
+            <FadeUp className="max-w-2xl mb-12 md:mb-24">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px bg-accent" />
                 <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/70">Our Foundation</span>
