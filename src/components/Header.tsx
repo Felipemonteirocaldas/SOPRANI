@@ -154,10 +154,9 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState<string | undefined>(undefined);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -172,15 +171,14 @@ export default function Header() {
   useEffect(() => {
     const handleScrollClose = () => {
       if (mobileMenuOpen) setMobileMenuOpen(false);
-      if (langMenuOpen) setLangMenuOpen(false);
       if (activeMenu) setActiveMenu(undefined);
     };
 
-    if (mobileMenuOpen || langMenuOpen || activeMenu) {
+    if (mobileMenuOpen || activeMenu) {
       window.addEventListener('scroll', handleScrollClose, { passive: true });
     }
     return () => window.removeEventListener('scroll', handleScrollClose);
-  }, [mobileMenuOpen, langMenuOpen, activeMenu]);
+  }, [mobileMenuOpen, activeMenu]);
 
   const isCompact = isScrolled && !mobileMenuOpen;
 
@@ -195,16 +193,7 @@ export default function Header() {
 
   const handleClose = () => setActiveMenu(undefined);
 
-  const handleMouseEnter = (menuId: string) => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    setActiveMenu(menuId);
-  };
 
-  const handleMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setActiveMenu(undefined);
-    }, 300);
-  };
 
   return (
     <>
@@ -274,39 +263,44 @@ export default function Header() {
                   <Link to="/contact" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.contact')}
                   </Link>
-                  <div
-                    className="relative group"
-                    onMouseEnter={() => handleMouseEnter('more')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <button className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3">
+                  <div className="relative group">
+                    <button
+                      onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
+                      className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3"
+                    >
                       {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
                     </button>
 
                     {/* Mega Menu Dropdown */}
-                    <div
-                      className={cn(
-                        "fixed left-1/2 -translate-x-1/2 w-[95vw] lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
-                        isScrolled
-                          ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
-                          : "top-[96px] sm:top-[104px] md:top-[128px]",
-                        activeMenu === 'more' ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8 pointer-events-none"
+                    <AnimatePresence>
+                      {activeMenu === 'more' && (
+                        <>
+                          <div
+                            className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
+                            onClick={() => setActiveMenu(undefined)}
+                            style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
+                          />
+                          <div
+                            className={cn(
+                              "fixed left-1/2 -translate-x-1/2 w-[95vw] lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-[10020] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
+                              isScrolled
+                                ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
+                                : "top-[96px] sm:top-[104px] md:top-[128px]"
+                            )}
+                          >
+                            <MenuContent t={t} onClose={handleClose} />
+                          </div>
+                        </>
                       )}
-                    >
-                      <MenuContent t={t} onClose={handleClose} />
-                    </div>
+                    </AnimatePresence>
                   </div>
                 </motion.div>
 
                 {/* Action Buttons */}
                 <motion.div layout className="flex items-center space-x-1 xs:space-x-2 xl:space-x-4">
-                  <div
-                    className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group"
-                    onMouseEnter={() => setLangMenuOpen(true)}
-                    onMouseLeave={() => setLangMenuOpen(false)}
-                  >
+                  <div className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group">
                     <button
-                      onClick={() => setLangMenuOpen(!langMenuOpen)}
+                      onClick={() => setActiveMenu(activeMenu === 'lang' ? undefined : 'lang')}
                       className="flex items-center text-sm font-bold text-primary hover:text-accent transition-colors py-2 px-2"
                     >
                       <Globe size={16} className="mr-1.5 opacity-60" />
@@ -315,17 +309,18 @@ export default function Header() {
 
                     {/* Lang Dropdown */}
                     <AnimatePresence>
-                      {langMenuOpen && (
+                      {activeMenu === 'lang' && (
                         <>
                           <div
-                            className="fixed inset-0 z-40 cursor-default"
-                            onClick={() => setLangMenuOpen(false)}
+                            className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
+                            onClick={() => setActiveMenu(undefined)}
+                            style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
                           />
                           <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
-                            className="absolute right-0 top-full pt-2 w-20 z-50"
+                            className="absolute right-0 top-full pt-2 w-24 z-[10020]"
                           >
                             <div className="bg-white border border-gray-100 shadow-xl overflow-hidden rounded-xl">
                               {languages.map((lang) => (
@@ -333,7 +328,7 @@ export default function Header() {
                                   key={lang.code}
                                   onClick={() => {
                                     i18n.changeLanguage(lang.code);
-                                    setLangMenuOpen(false);
+                                    setActiveMenu(undefined);
                                   }}
                                   className={cn(
                                     "w-full px-4 py-2 text-xs font-bold text-left transition-colors",
