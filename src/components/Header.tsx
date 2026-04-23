@@ -249,31 +249,31 @@ export default function Header() {
                         className={cn(
                           "w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105",
                           isScrolled
-                            ? "h-[28px] xs:h-[32px] sm:h-[38px] md:h-[44px] lg:h-[48px] xl:h-[52px]"
-                            : "h-[40px] xs:h-[48px] sm:h-[58px] md:h-[66px] lg:h-[72px] xl:h-[84px]"
+                            ? "h-[32px] xs:h-[36px] sm:h-[42px] md:h-[48px] lg:h-[54px] xl:h-[60px]"
+                            : "h-[50px] xs:h-[60px] sm:h-[75px] md:h-[85px] lg:h-[95px] xl:h-[110px]"
                         )}
                       />
                     </div>
                   </Link>
                 </motion.div>
 
-                <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-4">
-                  <Link to="/services" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-3">
+                  <Link to="/services" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
                     {t('header.services')}
                   </Link>
-                  <Link to="/products" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/products" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
                     {t('header.products')}
                   </Link>
-                  <Link to="/company" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/company" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
                     {t('header.company')}
                   </Link>
-                  <Link to="/contact" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/contact" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
                     {t('header.contact')}
                   </Link>
                   <div className="relative group">
                     <button
                       onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
-                      className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3"
+                      className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3 whitespace-nowrap"
                     >
                       {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
                     </button>
