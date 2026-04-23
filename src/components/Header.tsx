@@ -168,6 +168,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menus on route change
+  useEffect(() => {
+    setActiveMenu(undefined);
+    setMobileMenuOpen(false);
+    setMobileMoreOpen(false);
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleScrollClose = () => {
       if (mobileMenuOpen) setMobileMenuOpen(false);
@@ -251,22 +258,22 @@ export default function Header() {
                 </motion.div>
 
                 <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-4">
-                  <Link to="/services" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/services" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.services')}
                   </Link>
-                  <Link to="/products" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/products" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.products')}
                   </Link>
-                  <Link to="/company" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/company" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.company')}
                   </Link>
-                  <Link to="/contact" className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
+                  <Link to="/contact" className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3">
                     {t('header.contact')}
                   </Link>
                   <div className="relative group">
                     <button
                       onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
-                      className="text-sm xl:text-base font-bold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3"
+                      className="text-base font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3"
                     >
                       {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
                     </button>
@@ -424,26 +431,26 @@ export default function Header() {
               >
                 <nav className="xl:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">
                   <div className="flex flex-col space-y-2 px-6 pt-6 pb-20 shadow-inner">
-                    <Link to="/services" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/services" className="block py-2 text-base font-heading font-semibold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.services')}
                     </Link>
-                    <Link to="/products" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/products" className="block py-2 text-base font-heading font-semibold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.products')}
                     </Link>
-                    <Link to="/company" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/company" className="block py-2 text-base font-heading font-semibold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.company')}
                     </Link>
-                    <Link to="/news" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/news" className="block py-2 text-base font-heading font-semibold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.news')}
                     </Link>
-                    <Link to="/contact" className="block py-2 text-base font-bold text-primary" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/contact" className="block py-2 text-base font-heading font-semibold text-primary" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.contact')}
                     </Link>
 
                     <div className="border-t border-gray-50 pt-4 mt-2">
                       <button
                         onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                        className="flex items-center justify-between w-full py-2 text-base font-bold text-primary"
+                        className="flex items-center justify-between w-full py-2 text-base font-heading font-semibold text-primary"
                       >
                         <span className="flex items-center gap-2 text-accent">
                           {t('header.more') || 'More'}
