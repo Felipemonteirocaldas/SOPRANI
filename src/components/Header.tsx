@@ -52,8 +52,8 @@ const MenuContent = ({
                 className="flex items-center gap-3 text-base font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
-                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100/80 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={18} className="text-[#0a1f5c]/80 group-hover/item:text-accent transition-colors" />
                 </div>
                 <span>{link.label}</span>
               </Link>
@@ -74,8 +74,8 @@ const MenuContent = ({
                 className="flex items-center gap-3 text-base font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
-                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100/80 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={18} className="text-[#0a1f5c]/80 group-hover/item:text-accent transition-colors" />
                 </div>
                 <span>{link.label}</span>
               </Link>
@@ -96,8 +96,8 @@ const MenuContent = ({
                 className="flex items-center gap-3 text-base font-bold text-slate-700 px-3 py-2.5 -mx-3 rounded-xl transition-all duration-300 hover:text-accent hover:bg-[#f5f5f5] group/item"
                 onClick={onClose}
               >
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 group-hover/item:bg-accent/10 transition-colors">
-                  <link.icon size={16} className="text-primary group-hover/item:text-accent transition-colors" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100/80 group-hover/item:bg-accent/10 transition-colors">
+                  <link.icon size={18} className="text-[#0a1f5c]/80 group-hover/item:text-accent transition-colors" />
                 </div>
                 <span>{link.label}</span>
               </Link>
@@ -273,7 +273,7 @@ export default function Header() {
                   <div className="relative group">
                     <button
                       onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
-                      className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3 whitespace-nowrap"
+                      className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3 whitespace-nowrap outline-none focus:outline-none focus:ring-0 border-none"
                     >
                       {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
                     </button>

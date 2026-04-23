@@ -12,38 +12,38 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-10 md:gap-12 mb-12 sm:mb-12">
           {/* Company Info */}
           <div>
-            <div className="mb-6">
+            <div className="mb-8">
               <Link to="/" className="inline-block hover:opacity-80 transition-opacity duration-300">
                 <img
                   src="/images/logo.png"
                   alt="Soprani Engineering"
-                  className="h-12 sm:h-14 w-auto brightness-0 invert"
+                  className="w-[280px] sm:w-[320px] h-auto brightness-0 invert"
                 />
               </Link>
             </div>
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
-              {t('footer.companyDesc')}
+              40+ years of engineering excellence for the global metal packaging industry.
             </p>
             <div className="mt-8 flex gap-4">
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
                 aria-label={t('footer.youtube')}
                 id="footer-social-youtube"
               >
-                <Youtube size={20} className="text-white group-hover:scale-110 transition-transform duration-300" />
+                <Youtube size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 hover:bg-accent hover:border-accent transition-all duration-300 group"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
                 aria-label={t('footer.linkedin')}
                 id="footer-social-linkedin"
               >
-                <Linkedin size={20} className="text-white group-hover:scale-110 transition-transform duration-300" />
+                <Linkedin size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
               </a>
             </div>
           </div>
@@ -53,22 +53,22 @@ export default function Footer() {
             <h4 className="text-base xs:text-lg font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.services')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
-                <Link to="/machinery" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/machinery" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.machinery')}
                 </Link>
               </li>
               <li>
-                <Link to="/spare-parts" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/spare-parts" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.spareParts')}
                 </Link>
               </li>
               <li>
-                <Link to="/technical-assistance" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/technical-assistance" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.technicalAssistance')}
                 </Link>
               </li>
               <li>
-                <Link to="/trading-materials" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/trading-materials" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.tradingMaterials')}
                 </Link>
               </li>
@@ -80,22 +80,22 @@ export default function Footer() {
             <h4 className="text-base xs:text-lg font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.company')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
-                <Link to="/about" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/about" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('footer.aboutUs')}
                 </Link>
               </li>
               <li>
-                <Link to="/company" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/company" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('footer.companyInfo')}
                 </Link>
               </li>
               <li>
-                <Link to="/news?tab=events" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/news?tab=events" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.events')}
                 </Link>
               </li>
               <li>
-                <Link to="/news" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/news" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.news')}
                 </Link>
               </li>
@@ -107,12 +107,12 @@ export default function Footer() {
             <h4 className="text-base xs:text-lg font-heading font-bold mb-4 xs:mb-6 uppercase tracking-wider text-white">{t('header.contact')}</h4>
             <ul className="space-y-2 xs:space-y-3">
               <li>
-                <Link to="/contact" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/contact" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('footer.getInTouch')}
                 </Link>
               </li>
               <li>
-                <Link to="/request-quotation" className="text-sm xs:text-base text-slate-200 hover:text-accent transition-colors duration-200">
+                <Link to="/request-quotation" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
                   {t('header.requestQuotation')}
                 </Link>
               </li>
@@ -139,8 +139,11 @@ export default function Footer() {
 
 
 
+        {/* Separator */}
+        <div className="border-t border-white/15 my-12" />
+
         {/* Bottom Bar */}
-        <div className="pt-8 pb-24 sm:pb-0">
+        <div className="pt-0 pb-24 sm:pb-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[11px] text-slate-400 font-medium tracking-wide">
               © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
