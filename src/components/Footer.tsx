@@ -24,27 +24,32 @@ export default function Footer() {
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
               40+ years of engineering excellence for the global metal packaging industry.
             </p>
-            <div className="mt-8 flex gap-4">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
-                aria-label={t('footer.youtube')}
-                id="footer-social-youtube"
-              >
-                <Youtube size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
-                aria-label={t('footer.linkedin')}
-                id="footer-social-linkedin"
-              >
-                <Linkedin size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
-              </a>
+            <div className="mt-10">
+              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/50 block mb-4">
+                Follow us
+              </span>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
+                  aria-label={t('footer.youtube')}
+                  id="footer-social-youtube"
+                >
+                  <Youtube size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
+                  aria-label={t('footer.linkedin')}
+                  id="footer-social-linkedin"
+                >
+                  <Linkedin size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
+                </a>
+              </div>
             </div>
           </div>
 
