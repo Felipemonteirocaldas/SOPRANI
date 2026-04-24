@@ -79,7 +79,7 @@ export default function CompanyPage() {
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-10 h-px bg-accent" />
                   <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
-                    Corporate Legacy
+                    {t('companyPage.heroEyebrow')}
                   </span>
                 </div>
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] tracking-tight mb-8">
@@ -128,7 +128,7 @@ export default function CompanyPage() {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-8 h-px bg-accent" />
                   <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
-                    The Foundation
+                    {t('companyPage.legacyEyebrow')}
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
@@ -154,7 +154,7 @@ export default function CompanyPage() {
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                       <p className="text-white text-lg font-black tracking-widest uppercase">Sergio Soprani</p>
-                      <p className="text-white/70 text-[10px] tracking-widest uppercase">Founder & Visionary</p>
+                      <p className="text-white/70 text-[10px] tracking-widest uppercase">{t('companyPage.founderTitle')}</p>
                     </div>
                   </div>
 
@@ -229,7 +229,7 @@ export default function CompanyPage() {
               {/* Global operations */}
               <FadeUp className="bg-white p-8 md:p-12" delay={0}>
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-5">
-                  Global Operations
+                  {t('companyPage.globalOpsTitle')}
                 </p>
                 <h3 className="text-2xl md:text-3xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-6">
                   {t('companyPage.aboutGlobalTitle')}
@@ -241,7 +241,7 @@ export default function CompanyPage() {
                 <div className="flex flex-wrap gap-2 mt-8">
                   {['Europe', 'Middle East', 'North Africa', 'Asia', 'Americas'].map(r => (
                     <span key={r} className="px-3 py-1.5 border border-slate-300 text-[10px] font-bold uppercase tracking-widest text-slate-700 bg-white">
-                      {r}
+                      {t(`regions.${r.toLowerCase().replace(' ', '')}`)}
                     </span>
                   ))}
                 </div>
@@ -250,7 +250,7 @@ export default function CompanyPage() {
               {/* Infrastructure */}
               <FadeUp className="bg-slate-50 p-8 md:p-12" delay={100}>
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-5">
-                  Infrastructure
+                  {t('companyPage.infraTitle')}
                 </p>
                 <h3 className="text-2xl md:text-3xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-8">
                   {t('companyPage.aboutInfraTitle')}
@@ -301,7 +301,7 @@ export default function CompanyPage() {
             <FadeUp className="max-w-2xl mb-12 md:mb-24">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px bg-accent" />
-                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/70">Our Foundation</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/70">{t('companyPage.comEyebrow')}</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-none">
                 {t('companyPage.comTitle')}
@@ -324,7 +324,7 @@ export default function CompanyPage() {
               <div>
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-8 h-px bg-accent" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">Get In Touch</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">{t('companyPage.ctaEyebrow')}</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight max-w-md">
                   {t('servicesPage.ctaTitle')}

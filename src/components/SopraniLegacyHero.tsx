@@ -102,14 +102,14 @@ export default function SopraniLegacyHero() {
       {/* Center Hero Content (Headline & Subheadline) */}
       <div
         ref={heroContentRef}
-        className="relative z-20 flex flex-col items-center justify-center pointer-events-none text-center px-4 max-w-6xl mx-auto pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-52"
+        className="relative z-20 flex flex-col items-center justify-center pointer-events-none text-center px-4 max-w-6xl mx-auto pt-16 sm:pt-32 md:pt-40 lg:pt-44 xl:pt-52"
       >
         {/* Animated Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[0.9] tracking-tighter mb-8 drop-shadow-xl uppercase"
+          className="text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black text-white leading-[0.9] tracking-tighter mb-6 sm:mb-8 drop-shadow-xl uppercase"
         >
           {t('heroLegacy.headline').split(',').map((part, i) => (
             <span key={i} className="block">
@@ -125,7 +125,7 @@ export default function SopraniLegacyHero() {
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
           className="max-w-3xl mx-auto"
         >
-          <p className="text-lg sm:text-xl md:text-2xl font-light text-white/90 leading-relaxed tracking-tight drop-shadow-md">
+          <p className="text-base sm:text-xl md:text-2xl font-light text-white/90 leading-snug sm:leading-relaxed tracking-tight drop-shadow-md">
             {t('heroLegacy.subheadline')}
           </p>
 
@@ -133,7 +133,7 @@ export default function SopraniLegacyHero() {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 1.5, delay: 1, ease: "circOut" }}
-            className="flex h-[3px] w-32 mx-auto mt-10 rounded-full overflow-hidden shadow-sm"
+            className="flex h-[3px] w-32 mx-auto mt-6 sm:mt-10 rounded-full overflow-hidden shadow-sm"
           >
             <div className="flex-1 bg-[#008C45]" />
             <div className="flex-1 bg-white" />

@@ -72,6 +72,13 @@
                 "trading": "Fornitura di Banda Stagnata & Componenti Verniciati",
                 "partners": "Scelti da Trader e Investitori Industriali"
         },
+        "regions": {
+                "europe": "Europa",
+                "middleeast": "Medio Oriente",
+                "northafrica": "Nord Africa",
+                "asia": "Asia",
+                "americas": "Americhe"
+        },
         "servicesSection": {
                 "whatWeDo": "Specialità",
                 "ourServices": "Servizi Tecnici",
@@ -255,6 +262,18 @@
                 "ach3A": "Riferimento Globale",
                 "ach4V": "Full Tech",
                 "ach4A": "Ecosistema di Soluzioni",
+                "heroEyebrow": "Eredità Aziendale",
+                "legacyEyebrow": "La Fondazione",
+                "founderTitle": "Fondatore e Visionario",
+                "globalOpsTitle": "Operazioni Globali",
+                "infraTitle": "Infrastruttura",
+                "comEyebrow": "Il Nostro Impegno",
+                "ctaEyebrow": "Contattaci",
+                "legacyTitle": "Eredità e Visione",
+                "legacyText": "Sergio Soprani ha fondato la Soprani Engineering con una visione chiara: trasformare l'industria degli imballaggi metallici attraverso la precisione tecnica e partnership globali di fiducia. Con oltre 40 anni di leadership, il suo percorso è la base della nostra maestria industriale e l'impegno que rinnoviamo con ogni progetto consegnato in tutto il mondo.",
+                "cardFounded": "Fondazione",
+                "cardToday": "Oggi",
+                "cardMatteoDesc": "Leader nell'espansione internazionale con oltre 40 anni di competenza tecnica accumulata.",
                 "subTitle": "Struttura Aziendale",
                 "subDesc": "La nostra rete di collaborazione tecnica e strategica",
                 "subEmpty": "Informazioni in aggiornamento.",
@@ -599,7 +618,7 @@
         },
         "heroLegacy": {
                 "badge": "+ 40 Anni di Ingegneria",
-                "headline": "La tua fabbrica, elevata dall'ingegneria d'élite.",
+                "headline": "La tua fabbrica, Ingegneria d'Élite.",
                 "subheadline": "Oltre 40 anni di leadership globale in soluzioni meccaniche e supporto tecnico per l'industria degli imballaggi metallici. Dove la tradizione incontra le prestazioni industriali.",
                 "card1": {
                         "label": "ESPERTI IN ATTREZZATURE",

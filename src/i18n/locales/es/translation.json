@@ -72,6 +72,13 @@
                 "trading": "Suministro de Hojalata & Componentes Barnizados",
                 "partners": "De Confianza para Traders e Inversores Industriales"
         },
+        "regions": {
+                "europe": "Europa",
+                "middleeast": "Oriente Medio",
+                "northafrica": "África del Norte",
+                "asia": "Asia",
+                "americas": "Américas"
+        },
         "servicesSection": {
                 "whatWeDo": "Especialidades",
                 "ourServices": "Servicios Técnicos",
@@ -255,6 +262,18 @@
                 "ach3A": "Referencia Global",
                 "ach4V": "Full Tech",
                 "ach4A": "Ecosistema de Soluciones",
+                "heroEyebrow": "Legado Corporativo",
+                "legacyEyebrow": "La Fundación",
+                "founderTitle": "Fundador y Visionario",
+                "globalOpsTitle": "Operaciones Globales",
+                "infraTitle": "Infraestructura",
+                "comEyebrow": "Nuestra Fundación",
+                "ctaEyebrow": "Contáctanos",
+                "legacyTitle": "Legado y Visión",
+                "legacyText": "Sergio Soprani fundó Soprani Engineering con una visión clara: transformar la industria de envases metálicos a través de la precisión técnica y alianzas globales de confianza. Con más de 40 años de liderazgo, su trayectoria es la base de nuestra maestría industrial y el compromiso que renovamos con cada proyecto entregado en todo el mundo.",
+                "cardFounded": "Fundación",
+                "cardToday": "Hoy",
+                "cardMatteoDesc": "Liderando la expansión internacional con más de 40 años de experiencia técnica acumulada.",
                 "subTitle": "Estructura Corporativa",
                 "subDesc": "Nuestra red de colaboración técnica y estratégica",
                 "subEmpty": "Información en actualización.",

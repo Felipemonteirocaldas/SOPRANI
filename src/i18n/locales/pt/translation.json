@@ -67,6 +67,13 @@
                 "trading": "Fornecimento de Folha de Flandres & Componentes Envernizados",
                 "partners": "Referenciádos por Traders e Investidores Industriais"
         },
+        "regions": {
+                "europe": "Europa",
+                "middleeast": "Oriente Médio",
+                "northafrica": "Norte da África",
+                "asia": "Ásia",
+                "americas": "Américas"
+        },
         "servicesSection": {
                 "whatWeDo": "Especialidades",
                 "ourServices": "Serviços Técnicos",
@@ -250,6 +257,14 @@
                 "ach3A": "Referência Global",
                 "ach4V": "Full Tech",
                 "ach4A": "Ecossistema de Soluções",
+                "heroEyebrow": "Legado Corporativo",
+                "legacyEyebrow": "A Fundação",
+                "founderTitle": "Fundador e Visionário",
+                "globalOpsTitle": "Operações Globais",
+                "infraTitle": "Infraestrutura",
+                "comEyebrow": "Nossa Fundação",
+                "ctaEyebrow": "Fale Conosco",
+
                 "legacyTitle": "Legado e Visão",
                 "legacyText": "Sergio Soprani foi o arquiteto de uma visão que modernizou o setor de embalagens metálicas ao redor do mundo. Seu pioneirismo na integração de precisão técnica italiana com parcerias globais de confiança estabeleceu os padrões de excelência que definem a Soprani Engineering até hoje. Seu legado permanece como a bússola de nossa maestria industrial e o compromisso que honramos em cada projeto.",
                 "cardFounded": "Fundação",

@@ -68,6 +68,13 @@
                 "trading": "Tinplate & Varnished Components Trading",
                 "partners": "Trusted by Machinery Traders & Industrial Investors"
         },
+        "regions": {
+                "europe": "Europe",
+                "middleeast": "Middle East",
+                "northafrica": "North Africa",
+                "asia": "Asia",
+                "americas": "Americas"
+        },
         "servicesSection": {
                 "whatWeDo": "Specialties",
                 "ourServices": "Technical Services",
@@ -251,6 +258,13 @@
                 "ach3A": "Global Reference",
                 "ach4V": "Full Tech",
                 "ach4A": "Solutions Ecosystem",
+                "heroEyebrow": "Corporate Legacy",
+                "legacyEyebrow": "The Foundation",
+                "founderTitle": "Founder & Visionary",
+                "globalOpsTitle": "Global Operations",
+                "infraTitle": "Infrastructure",
+                "comEyebrow": "Our Foundation",
+                "ctaEyebrow": "Get In Touch",
                 "legacyTitle": "Legacy & Vision",
                 "legacyText": "Sergio Soprani was the architect of a vision that modernized the metal packaging industry worldwide. His pioneering spirit in integrating Italian technical precision with trusted global partnerships set the standards of excellence that define Soprani Engineering to this day. His legacy remains the compass of our industrial mastery and the commitment we honor in every project.",
                 "cardFounded": "Founded",
