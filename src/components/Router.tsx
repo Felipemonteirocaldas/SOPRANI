@@ -48,7 +48,7 @@ function Layout() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden">
+    <div className="flex flex-col min-h-screen">
       <ScrollToTop />
       <ScrollProgressBar />
       {/* ✦ Dynamic SEO: title, description, og tags, html[lang] */}

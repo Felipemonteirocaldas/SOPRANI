@@ -1,6 +1,7 @@
 import { Briefcase, Wrench, Clipboard, RotateCw, ShoppingCart, Hammer, type LucideIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ConversionButton from '@/components/ui/ConversionButton';
 
 // ─────────────────────────────────────────────
@@ -19,7 +20,8 @@ function ServiceCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <Link
+      to="/services"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`
@@ -87,7 +89,7 @@ function ServiceCard({
         className="absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-500"
         style={{ width: hovered ? '100%' : '0%' }}
       />
-    </div>
+    </Link>
   );
 }
 

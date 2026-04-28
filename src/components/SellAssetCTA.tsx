@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, BarChart3, Globe, ShieldCheck } from 'lucide-react';
 import ConversionButton from '@/components/ui/ConversionButton';
+import ThreeProductionLine from '@/components/ThreeProductionLine';
 
 export default function SellAssetCTA() {
   const { t, i18n } = useTranslation();
@@ -53,8 +54,8 @@ export default function SellAssetCTA() {
         />
       </motion.div>
 
-      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 md:px-8 py-24 relative z-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 md:px-8 py-16 md:py-24 relative z-20 w-full">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-10 md:gap-16 items-center">
 
           {/* Main Content Area */}
           <motion.div
@@ -103,33 +104,9 @@ export default function SellAssetCTA() {
             </div>
           </motion.div>
 
-          {/* Feature Cards Area */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-4">
-            {features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ x: 15 }}
-                className="group p-10 bg-white/[0.03] backdrop-blur-md border border-white/[0.08] hover:bg-white/[0.06] hover:border-accent/40 transition-all duration-500 cursor-default"
-              >
-                <div className="flex items-start gap-8">
-                  <div className="w-14 h-14 bg-white/[0.03] border border-white/[0.1] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 rounded-none">
-                    <feature.icon size={26} strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">
-                      {feature.title}
-                    </h4>
-                    <p className="text-base text-slate-400 font-paragraph font-light leading-relaxed">
-                      {feature.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          {/* 3D Production Line Area */}
+          <div className="lg:col-span-5 w-full h-[400px] lg:h-[600px]">
+            <ThreeProductionLine />
           </div>
 
         </div>

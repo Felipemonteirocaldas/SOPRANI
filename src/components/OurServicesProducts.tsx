@@ -44,14 +44,17 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
   return (
     <div
       ref={ref}
-      className="group"
+      className="group w-[85vw] md:w-auto shrink-0 snap-center md:snap-align-none"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.98)',
         transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
       }}
     >
-      <div className="bg-white rounded-2xl overflow-hidden h-full flex flex-col hover:shadow-2xl border border-primary/5 transition-all duration-300">
+      <Link
+        to="/products"
+        className="bg-white rounded-2xl overflow-hidden h-full flex flex-col hover:shadow-2xl border border-primary/5 transition-all duration-300 cursor-pointer"
+      >
         <div className="relative w-full h-64 bg-primary/5 overflow-hidden">
           <Image
             src={product.image}
@@ -73,12 +76,12 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
           <p className="text-base text-primary/60 leading-relaxed mb-6 flex-1 line-clamp-3 font-light">
             {product.description}
           </p>
-          <Link to="/products" className="flex items-center text-accent font-bold text-xs uppercase tracking-widest group-hover:gap-2 transition-all duration-300">
+          <div className="flex items-center text-accent font-bold text-xs uppercase tracking-widest group-hover:gap-2 transition-all duration-300">
             <span>{product.learnMoreKey}</span>
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
@@ -209,8 +212,8 @@ export default function OurServicesProducts() {
           </motion.div>
         </motion.div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Products Carousel (Mobile) / Grid (Desktop) */}
+        <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 hide-scrollbar scroll-smooth">
           {!isLoading && products.length > 0 ? (
             products.slice(0, 6).map((product, index) => (
               <AnimatedProductCard

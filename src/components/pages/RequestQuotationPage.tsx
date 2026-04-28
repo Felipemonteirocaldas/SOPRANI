@@ -384,21 +384,20 @@ export default function RequestQuotationPage() {
                 val="+39 348 071 2116"
                 link="tel:+393480712116"
               />
-              <div className="p-8 border border-gray-100 shadow-sm bg-gray-50 text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-none flex items-center justify-center shadow-sm border border-gray-100 mb-6 font-bold text-accent">
-                  <MessageSquare className="w-6 h-6 text-accent" />
+              <Link to="/contact" className="p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-500 bg-gray-50 group text-center flex flex-col items-center">
+                <div className="w-12 h-12 bg-white rounded-none flex items-center justify-center shadow-sm border border-gray-100 mb-6 group-hover:bg-accent group-hover:border-accent transition-colors duration-500 font-bold text-accent flex-shrink-0">
+                  <MessageSquare className="w-6 h-6 text-accent group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-4">{t('reqPage.wForms')}</h3>
-                <p className="text-xs text-gray-500 mb-6 leading-relaxed">
+                <p className="text-xs text-gray-500 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors">
                   {t('reqPage.wFormsDesc')}
                 </p>
-                <Link
-                  to="/contact"
-                  className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 text-[10px] font-black uppercase tracking-[0.2em]"
+                <span
+                  className="px-6 py-2 border-2 border-accent text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 text-[10px] font-black uppercase tracking-[0.2em]"
                 >
                   {t('reqPage.wFormsBtn')}
-                </Link>
-              </div>
+                </span>
+              </Link>
             </div>
           </div>
         </section>
@@ -408,15 +407,15 @@ export default function RequestQuotationPage() {
 }
 
 const ContactCard = ({ icon: Icon, title, val, link }: { icon: any, title: string, val: string, link: string }) => (
-  <div className="p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-500 bg-white group text-center flex flex-col items-center">
+  <a href={link} className="p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-500 bg-white group text-center flex flex-col items-center cursor-pointer">
     <div className="w-12 h-12 bg-gray-50 rounded-none flex items-center justify-center shadow-inner border border-gray-100 mb-6 group-hover:bg-accent group-hover:border-accent transition-colors duration-500 flex-shrink-0">
       <Icon className="w-6 h-6 text-accent group-hover:text-white transition-colors duration-500" />
     </div>
     <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-4">{title}</h3>
-    <a href={link} className="text-sm font-bold text-gray-500 hover:text-accent transition-colors">
+    <span className="text-sm font-bold text-gray-500 group-hover:text-accent transition-colors">
       {val}
-    </a>
-  </div>
+    </span>
+  </a>
 );
 
 

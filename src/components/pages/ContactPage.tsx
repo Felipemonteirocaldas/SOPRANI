@@ -422,25 +422,31 @@ export default function ContactPage() {
   );
 }
 
-const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label: string, value: string, action?: string }) => (
-  <div className="flex items-center gap-4 group text-left">
-    <div className="w-10 h-10 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
-      <Icon size={16} />
-    </div>
-    <div className="flex flex-col min-w-0">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-0.5">{label}</span>
-      {action ? (
-        <a href={action} className="text-xs font-black text-white hover:text-accent transition-colors tracking-wider uppercase truncate">
-          {value}
-        </a>
-      ) : (
-        <span className="text-xs font-black text-white tracking-wider uppercase">
+const ContactMethod = ({ icon: Icon, label, value, action }: { icon: any, label: string, value: string, action?: string }) => {
+  const content = (
+    <>
+      <div className="w-10 h-10 rounded-none border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500 flex-shrink-0">
+        <Icon size={16} />
+      </div>
+      <div className="flex flex-col min-w-0">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-0.5">{label}</span>
+        <span className="text-xs font-black text-white group-hover:text-accent transition-colors tracking-wider uppercase truncate">
           {value}
         </span>
-      )}
+      </div>
+    </>
+  );
+
+  return action ? (
+    <a href={action} className="flex items-center gap-4 group text-left cursor-pointer">
+      {content}
+    </a>
+  ) : (
+    <div className="flex items-center gap-4 group text-left">
+      {content}
     </div>
-  </div>
-);
+  );
+};
 
 const CustomInput = ({ label, icon: Icon, ...props }: any) => (
   <div className="space-y-1.5 text-left">
@@ -458,17 +464,16 @@ const CustomInput = ({ label, icon: Icon, ...props }: any) => (
 );
 
 const RapidLink = ({ title, desc, btn, to }: { title: string, desc: string, btn: string, to: string }) => (
-  <div className="flex flex-col items-center group">
-    <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3">{title}</h3>
-    <p className="text-xs text-gray-500 mb-6 sm:mb-8 max-w-xs">{desc}</p>
-    <Link
-      to={to}
-      className="inline-flex items-center gap-2 group text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent hover:border-accent transition-all"
+  <Link to={to} className="flex flex-col items-center group cursor-pointer">
+    <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-3 group-hover:text-accent transition-colors">{title}</h3>
+    <p className="text-xs text-gray-500 mb-6 sm:mb-8 max-w-xs group-hover:text-gray-700 transition-colors">{desc}</p>
+    <div
+      className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent pb-1 border-b-2 border-transparent group-hover:border-accent transition-all"
     >
       {btn}
       <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-    </Link>
-  </div>
+    </div>
+  </Link>
 );
 
 function ChevronDown({ size }: { size: number }) {

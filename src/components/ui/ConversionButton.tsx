@@ -71,14 +71,14 @@ export default function ConversionButton({
   // ── Variant styles ──
   const styles: Record<ConversionButtonVariant, React.CSSProperties & { className: string }> = {
     primary: {
-      className: 'bg-accent text-white border-2 border-accent hover:bg-[#A10F27]',
+      className: 'bg-accent text-white border border-accent hover:bg-[#A10F27] shadow-lg shadow-accent/20',
       borderColor: '#C41230',
     },
     outline: {
-      className: 'bg-transparent text-accent border-2 border-accent hover:bg-accent hover:text-white',
+      className: 'bg-transparent text-accent border border-accent hover:bg-accent hover:text-white',
     },
     'ghost-dark': {
-      className: 'bg-white/0 text-white border-2 border-white/50 hover:bg-white hover:text-primary hover:border-white',
+      className: 'bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-md shadow-lg shadow-black/10',
     },
   };
 
@@ -109,7 +109,7 @@ export default function ConversionButton({
       {/* ❷ Shimmer sweep layer */}
       {shimmer && (
         <span
-          className="absolute inset-0 pointer-events-none overflow-hidden"
+          className="absolute inset-0 pointer-events-none overflow-hidden z-10"
           aria-hidden="true"
         >
           <span
@@ -128,9 +128,9 @@ export default function ConversionButton({
       {/* ❸ Button body */}
       <span
         className={`
-          relative flex items-center gap-3 px-7 py-4
-          font-heading font-bold text-sm uppercase tracking-[0.18em]
-          transition-all duration-300 max-w-full
+          relative flex items-center gap-3 px-8 py-4
+          font-heading font-bold text-sm uppercase tracking-[0.15em]
+          transition-all duration-300 max-w-full rounded-none
           ${variantClass}
           ${className}
         `}

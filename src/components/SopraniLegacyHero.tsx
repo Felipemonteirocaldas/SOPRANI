@@ -75,7 +75,7 @@ export default function SopraniLegacyHero() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen bg-slate-50 overflow-hidden font-paragraph flex items-center justify-center z-10"
+      className="relative w-full h-screen bg-slate-200 overflow-hidden font-paragraph flex items-center justify-center z-10"
     >
       {/* 
         Background Video Wrapper 

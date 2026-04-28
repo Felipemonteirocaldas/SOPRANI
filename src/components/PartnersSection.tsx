@@ -44,7 +44,7 @@ export default function PartnersSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
+    <section className="relative bg-primary py-16 md:py-28 overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,#003B8F_0%,transparent_40%)]" />
@@ -78,8 +78,8 @@ export default function PartnersSection() {
           </motion.div>
         </div>
 
-        {/* Partner Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        {/* Partner Cards - Carousel on Mobile */}
+        <div className="flex overflow-x-auto md:grid md:grid-cols-2 gap-6 md:gap-8 snap-x snap-mandatory md:snap-none hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth pb-4 md:pb-0">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -87,9 +87,14 @@ export default function PartnersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative h-full"
+              className="group relative h-full w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none"
             >
-              <div className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden h-full flex flex-col">
+              <a
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden h-full flex flex-col cursor-pointer"
+              >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-700" />
 
@@ -142,18 +147,15 @@ export default function PartnersSection() {
                         {t('partners.officialPartner')}
                       </span>
                     </div>
-                    <a
-                      href={partner.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <div
                       className="flex items-center gap-2 text-[10px] font-heading font-bold text-blue-300 hover:text-white uppercase tracking-wider transition-colors duration-300 group/link"
                     >
                       {t('partners.visitWebsite')}
                       <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
-                    </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>

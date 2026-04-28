@@ -155,17 +155,26 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
 
   useEffect(() => {
     setIsMounted(true);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1280);
+    };
+
+    handleResize();
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
+    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Close menus on route change
@@ -187,7 +196,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScrollClose);
   }, [mobileMenuOpen, activeMenu]);
 
-  const isCompact = isScrolled && !mobileMenuOpen;
+  // isCompact removed, using isScrolled directly for style adjustments
 
   const languages = [
     { code: 'en', label: 'EN' },
@@ -204,10 +213,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={cn(
-        "fixed left-0 right-0 z-[9999] transition-all duration-700 ease-in-out pointer-events-none flex justify-center px-4",
-        isCompact ? "bottom-10" : "top-0 pt-4 md:pt-6"
-      )}>
+      <header className="fixed left-0 right-0 top-0 z-[9999] transition-all duration-700 ease-in-out pointer-events-none flex justify-center">
         <motion.div
           layout
           initial={false}
@@ -216,194 +222,160 @@ export default function Header() {
             opacity: { duration: 0.2 }
           }}
           className={cn(
-            "pointer-events-auto bg-white/95 backdrop-blur-xl border border-gray-100 flex items-center relative shadow-2xl",
-            isCompact
-              ? "rounded-full px-2 py-2 w-auto"
-              : "rounded-full px-3 xs:px-4 sm:px-5 lg:px-6 xl:px-8 max-w-[95vw] lg:max-w-[100rem] w-full h-[72px] sm:h-20 md:h-24"
+            "pointer-events-auto backdrop-blur-xl border-b border-gray-100/50 flex items-center relative transition-all duration-500 w-full",
+            isScrolled ? "bg-white/80 shadow-md h-[64px] sm:h-16 md:h-20" : "bg-white h-[72px] sm:h-20 md:h-24 shadow-sm",
+            "px-4 xs:px-6 sm:px-8 xl:px-8"
           )}
         >
           <AnimatePresence>
-            {!isCompact ? (
-              <motion.div
-                key="full-header"
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex justify-between items-center w-full"
-              >
-                <motion.div layout>
-                  <Link
-                    to="/"
-                    className="flex items-center h-full flex-shrink-0 relative z-[10000]"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      handleClose();
-                    }}
-                  >
-                    <div className="flex items-center justify-center h-full overflow-visible">
-                      <img
-                        src="/images/logo.png"
-                        alt="Soprani Engineering"
-                        className={cn(
-                          "w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105",
-                          isScrolled
-                            ? "h-[32px] xs:h-[36px] sm:h-[42px] md:h-[48px] lg:h-[54px] xl:h-[60px]"
-                            : "h-[50px] xs:h-[60px] sm:h-[75px] md:h-[85px] lg:h-[95px] xl:h-[110px]"
-                        )}
-                      />
-                    </div>
-                  </Link>
-                </motion.div>
-
-                <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-3">
-                  <Link to="/services" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
-                    {t('header.services')}
-                  </Link>
-                  <Link to="/products" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
-                    {t('header.products')}
-                  </Link>
-                  <Link to="/company" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
-                    {t('header.company')}
-                  </Link>
-                  <Link to="/contact" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
-                    {t('header.contact')}
-                  </Link>
-                  <div className="relative group">
-                    <button
-                      onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
-                      className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3 whitespace-nowrap outline-none focus:outline-none focus:ring-0 border-none"
-                    >
-                      {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
-                    </button>
-
-                    {/* Mega Menu Dropdown */}
-                    <AnimatePresence>
-                      {activeMenu === 'more' && (
-                        <>
-                          <div
-                            className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
-                            onClick={() => setActiveMenu(undefined)}
-                            style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
-                          />
-                          <div
-                            className={cn(
-                              "fixed left-1/2 -translate-x-1/2 w-[95vw] lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-[10020] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
-                              isScrolled
-                                ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
-                                : "top-[96px] sm:top-[104px] md:top-[128px]"
-                            )}
-                          >
-                            <MenuContent t={t} onClose={handleClose} />
-                          </div>
-                        </>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-
-                {/* Action Buttons */}
-                <motion.div layout className="flex items-center space-x-1 xs:space-x-2 xl:space-x-4">
-                  <div className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group">
-                    <button
-                      onClick={() => setActiveMenu(activeMenu === 'lang' ? undefined : 'lang')}
-                      className="flex items-center text-sm font-bold text-primary hover:text-accent transition-colors py-2 px-2"
-                    >
-                      <Globe size={16} className="mr-1.5 opacity-60" />
-                      <span className="hidden xs:inline">{(i18n.language?.split('-')[0] || 'EN').toUpperCase()}</span>
-                    </button>
-
-                    {/* Lang Dropdown */}
-                    <AnimatePresence>
-                      {activeMenu === 'lang' && (
-                        <>
-                          <div
-                            className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
-                            onClick={() => setActiveMenu(undefined)}
-                            style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
-                          />
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className="absolute right-0 top-full pt-2 w-24 z-[10020]"
-                          >
-                            <div className="bg-white border border-gray-100 shadow-xl overflow-hidden rounded-xl">
-                              {languages.map((lang) => (
-                                <button
-                                  key={lang.code}
-                                  onClick={() => {
-                                    i18n.changeLanguage(lang.code);
-                                    setActiveMenu(undefined);
-                                  }}
-                                  className={cn(
-                                    "w-full px-4 py-2 text-xs font-bold text-left transition-colors",
-                                    i18n.language?.startsWith(lang.code) ? "bg-accent text-white" : "text-primary hover:bg-slate-50"
-                                  )}
-                                >
-                                  {lang.label}
-                                </button>
-                              ))}
-                            </div>
-                          </motion.div>
-                        </>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <button
-                    onClick={() => setSearchOpen(true)}
-                    className="p-2 text-primary hover:text-accent transition-colors"
-                    aria-label="Search"
-                  >
-                    <Search size={22} />
-                  </button>
-
-                  <Link
-                    to="/request-quotation"
-                    className="hidden xl:flex items-center bg-accent hover:bg-red-700 text-white px-4 md:px-7 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 shadow-lg shadow-accent/20 active:scale-95 group"
-                  >
-                    {t('header.requestQuotation')}
-                    <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-
-                  <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="xl:hidden p-2 text-primary hover:text-accent transition-colors"
-                    aria-label="Toggle menu"
-                  >
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                  </button>
-                </motion.div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="compact-pill"
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center gap-4 px-4 py-1"
-              >
+            <motion.div
+              key="full-header"
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex justify-between items-center w-full max-w-[100rem] mx-auto"
+            >
+              <motion.div layout>
                 <Link
                   to="/"
-                  className="p-2 text-primary/70 hover:text-accent hover:bg-primary/5 rounded-full transition-all duration-300 flex items-center justify-center"
-                  aria-label="Go to homepage"
+                  className="flex items-center h-full flex-shrink-0 relative z-[10000]"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleClose();
+                  }}
                 >
-                  <HomeIcon size={20} strokeWidth={2.5} />
+                  <div className="flex items-center justify-center h-full overflow-visible">
+                    <img
+                      src="/images/logo.png"
+                      alt="Soprani Engineering"
+                      className="w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-sm hover:scale-105 h-[50px] xs:h-[60px] sm:h-[75px] md:h-[85px] lg:h-[95px] xl:h-[110px]"
+                    />
+                  </div>
                 </Link>
-                <div className="w-[1px] h-4 bg-gray-200"></div>
+              </motion.div>
+
+              <motion.div layout className="hidden xl:flex items-center space-x-1 2xl:space-x-3">
+                <Link to="/services" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
+                  {t('header.services')}
+                </Link>
+                <Link to="/products" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
+                  {t('header.products')}
+                </Link>
+                <Link to="/company" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
+                  {t('header.company')}
+                </Link>
+                <Link to="/contact" className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors py-2 px-2 xl:px-3 whitespace-nowrap">
+                  {t('header.contact')}
+                </Link>
+                <div className="relative group">
+                  <button
+                    onClick={() => setActiveMenu(activeMenu === 'more' ? undefined : 'more')}
+                    className="text-[18px] font-heading font-semibold text-primary hover:text-accent transition-colors flex items-center py-2 px-2 xl:px-3 whitespace-nowrap outline-none focus:outline-none focus:ring-0 border-none"
+                  >
+                    {t('header.more')} <ChevronDown size={14} className={cn("ml-1 transition-transform", activeMenu === 'more' && "rotate-180")} />
+                  </button>
+
+                  {/* Mega Menu Dropdown */}
+                  <AnimatePresence>
+                    {activeMenu === 'more' && (
+                      <>
+                        <div
+                          className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
+                          onClick={() => setActiveMenu(undefined)}
+                          style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
+                        />
+                        <div
+                          className={cn(
+                            "fixed left-1/2 -translate-x-1/2 w-[95vw] lg:max-w-[98rem] bg-white border border-gray-100 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.25)] z-[10020] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[2rem] lg:rounded-[3rem] overflow-hidden",
+                            isScrolled
+                              ? "top-[80px] sm:top-[88px] md:top-[96px] lg:top-[112px]"
+                              : "top-[96px] sm:top-[104px] md:top-[128px]"
+                          )}
+                        >
+                          <MenuContent t={t} onClose={handleClose} />
+                        </div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div layout className="flex items-center space-x-1 xs:space-x-2 xl:space-x-4">
+                <div className="flex items-center border-l border-gray-100 pl-2 md:pl-3 mx-1 md:mx-2 relative group">
+                  <button
+                    onClick={() => setActiveMenu(activeMenu === 'lang' ? undefined : 'lang')}
+                    className="flex items-center text-sm font-bold text-primary hover:text-accent transition-colors py-2 px-2"
+                  >
+                    <Globe size={16} className="mr-1.5 opacity-60" />
+                    <span className="hidden xs:inline">{(i18n.language?.split('-')[0] || 'EN').toUpperCase()}</span>
+                  </button>
+
+                  {/* Lang Dropdown */}
+                  <AnimatePresence>
+                    {activeMenu === 'lang' && (
+                      <>
+                        <div
+                          className="fixed inset-0 z-[-1] bg-transparent pointer-events-auto"
+                          onClick={() => setActiveMenu(undefined)}
+                          style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
+                        />
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute right-0 top-full pt-2 w-24 z-[10020]"
+                        >
+                          <div className="bg-white border border-gray-100 shadow-xl overflow-hidden rounded-xl">
+                            {languages.map((lang) => (
+                              <button
+                                key={lang.code}
+                                onClick={() => {
+                                  i18n.changeLanguage(lang.code);
+                                  setActiveMenu(undefined);
+                                }}
+                                className={cn(
+                                  "w-full px-4 py-2 text-xs font-bold text-left transition-colors",
+                                  i18n.language?.startsWith(lang.code) ? "bg-accent text-white" : "text-primary hover:bg-slate-50"
+                                )}
+                              >
+                                {lang.label}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="p-2 text-primary/70 hover:text-accent hover:bg-primary/5 rounded-full transition-all duration-300 flex items-center justify-center"
-                  aria-label="Open search"
+                  className="p-2 text-primary hover:text-accent transition-colors"
+                  aria-label="Search"
                 >
-                  <Search size={20} strokeWidth={2.5} />
+                  <Search size={22} />
+                </button>
+
+                <Link
+                  to="/request-quotation"
+                  className="hidden xl:flex items-center bg-accent hover:bg-red-700 text-white px-4 md:px-7 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase transition-all duration-300 shadow-lg shadow-accent/20 active:scale-95 group"
+                >
+                  {t('header.requestQuotation')}
+                  <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="xl:hidden p-2 text-primary hover:text-accent transition-colors"
+                  aria-label="Toggle menu"
+                >
+                  {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </motion.div>
-            )}
+            </motion.div>
           </AnimatePresence>
         </motion.div>
 
@@ -421,12 +393,12 @@ export default function Header() {
                 style={{ height: '200vh', width: '200vw', left: '-50vw', top: '-50vh' }}
               />
               <motion.div
-                initial={{ opacity: 0, y: isCompact ? 10 : -10 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: isCompact ? 10 : -10 }}
+                exit={{ opacity: 0, y: -10 }}
                 className={cn(
                   "absolute left-0 right-0 px-4 pointer-events-auto z-[9998]",
-                  isCompact ? "bottom-full mb-4" : "top-full pt-2"
+                  "top-full pt-2"
                 )}
               >
                 <nav className="xl:hidden border border-gray-100 bg-white max-h-[calc(100vh-160px)] overflow-y-auto rounded-3xl shadow-2xl">

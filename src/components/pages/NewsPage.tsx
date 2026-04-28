@@ -192,7 +192,13 @@ export default function NewsPage() {
               <div className="max-w-5xl mx-auto space-y-8">
                 {events.map((event, index) => (
                   <AnimatedElement key={event._id} delay={index * 100}>
-                    <div className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col md:flex-row h-full">
+                    <a
+                      href={event.registrationUrl || '#'}
+                      target={event.registrationUrl ? "_blank" : undefined}
+                      rel={event.registrationUrl ? "noopener noreferrer" : undefined}
+                      onClick={(e) => { if (!event.registrationUrl) e.preventDefault(); }}
+                      className={`group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col md:flex-row h-full ${event.registrationUrl ? 'cursor-pointer' : ''}`}
+                    >
                       {/* Image Section */}
                       {event.mainImage && (
                         <div className="md:w-1/3 aspect-video md:aspect-auto overflow-hidden bg-gray-100">
@@ -241,18 +247,15 @@ export default function NewsPage() {
                         )}
 
                         {event.registrationUrl && (
-                          <a
-                            href={event.registrationUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-accent text-[11px] font-black uppercase tracking-widest hover:text-primary transition-all duration-300 self-start group/btn"
+                          <div
+                            className="inline-flex items-center gap-2 text-accent text-[11px] font-black uppercase tracking-widest hover:text-primary transition-all duration-300 self-start group/btn mt-auto"
                           >
                             {t('eventsPage.btnLearnMore')}
                             <ExternalLink size={14} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
-                          </a>
+                          </div>
                         )}
                       </div>
-                    </div>
+                    </a>
                   </AnimatedElement>
                 ))}
               </div>

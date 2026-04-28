@@ -169,7 +169,7 @@ function ProductCard({ product, onOpenSpecs, index }: {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -10 }}
-      className="relative group min-h-[500px] w-full cursor-pointer"
+      className="relative group min-h-[500px] w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none cursor-pointer"
       onClick={() => onOpenSpecs(product)}
     >
       {/* ✧ Background Glow - Softer for light theme */}
@@ -403,7 +403,7 @@ export default function ProductArsenalSection() {
   return (
     <section
       ref={containerRef}
-      className="py-24 md:py-40 relative overflow-hidden"
+      className="py-16 md:py-32 relative overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #F8F9FA 0%, #EEF2F7 100%)',
       }}
@@ -525,8 +525,8 @@ export default function ProductArsenalSection() {
                     </span>
                   </motion.div>
 
-                  {/* Products Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                  {/* Products Grid / Carousel (Mobile) */}
+                  <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-8 md:pb-0 snap-x snap-mandatory md:snap-none hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth">
                     {brandProducts.map((product, index) => (
                       <ProductCard
                         key={product._id}

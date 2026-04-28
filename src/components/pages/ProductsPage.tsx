@@ -429,7 +429,10 @@ export default function ProductsPage() {
                           whileHover={{ y: -8 }}
                           className="group"
                         >
-                          <Card className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl">
+                          <Card
+                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl cursor-pointer"
+                            onClick={() => setSelectedProduct(product)}
+                          >
                             <div className="relative h-64 overflow-hidden bg-slate-100">
                               {product.mainImage ? (
                                 <Image
@@ -450,7 +453,6 @@ export default function ProductsPage() {
                                 </Badge>
                               </div>
                               <button
-                                onClick={() => setSelectedProduct(product)}
                                 className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
                               >
                                 <Maximize2 size={20} />
@@ -479,13 +481,11 @@ export default function ProductsPage() {
                                   </div>
                                 ))}
                               </div>
-                              <Button
-                                variant="ghost"
-                                onClick={() => setSelectedProduct(product)}
-                                className="w-full mt-8 font-bold border rounded-xl hover:bg-[#001F5F] hover:text-white border-slate-100 group/btn"
+                              <div
+                                className="w-full mt-8 font-bold border rounded-xl hover:bg-[#001F5F] hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
                               >
                                 {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
-                              </Button>
+                              </div>
                             </CardContent>
                           </Card>
                         </motion.div>
@@ -533,7 +533,10 @@ export default function ProductsPage() {
                           whileHover={{ y: -8 }}
                           className="group"
                         >
-                          <Card className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl">
+                          <Card
+                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl cursor-pointer"
+                            onClick={() => setSelectedProduct(product)}
+                          >
                             <div className="relative h-64 overflow-hidden bg-slate-100">
                               {product.mainImage ? (
                                 <Image
@@ -554,7 +557,6 @@ export default function ProductsPage() {
                                 </Badge>
                               </div>
                               <button
-                                onClick={() => setSelectedProduct(product)}
                                 className="absolute flex items-center justify-center transition-all bg-white rounded-full opacity-0 bottom-4 right-4 w-12 h-12 text-primary hover:bg-accent hover:text-white group-hover:opacity-100"
                               >
                                 <Maximize2 size={20} />
@@ -583,13 +585,11 @@ export default function ProductsPage() {
                                   </div>
                                 ))}
                               </div>
-                              <Button
-                                variant="ghost"
-                                onClick={() => setSelectedProduct(product)}
-                                className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn"
+                              <div
+                                className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
                               >
                                 {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
-                              </Button>
+                              </div>
                             </CardContent>
                           </Card>
                         </motion.div>
