@@ -38,6 +38,17 @@ const partners: Partner[] = [
     badgeKey: 'partners.certifiedPartner',
     specialtyKey: 'partners.soudronicSpecialty',
   },
+  {
+    id: 'lanico',
+    name: 'Lanico',
+    tagline: 'partners.lanicoTagline',
+    descKey: 'partners.lanicoDesc',
+    logo: '/logos/Lanico_logo.png',
+    logoBg: '#ffffff',
+    website: 'https://www.lanico.de/',
+    badgeKey: 'partners.certifiedPartner',
+    specialtyKey: 'partners.lanicoSpecialty',
+  },
 ];
 
 export default function PartnersSection() {
@@ -79,7 +90,7 @@ export default function PartnersSection() {
         </div>
 
         {/* Partner Cards - Carousel on Mobile */}
-        <div className="flex overflow-x-auto md:grid md:grid-cols-2 gap-6 md:gap-8 snap-x snap-mandatory md:snap-none hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth pb-4 md:pb-0">
+        <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 snap-x snap-mandatory md:snap-none hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth pb-4 md:pb-0 items-stretch">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -87,13 +98,13 @@ export default function PartnersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative h-full w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none"
+              className="group relative h-full w-[85vw] md:w-full shrink-0 snap-center md:snap-align-none flex"
             >
               <a
                 href={partner.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden h-full flex flex-col cursor-pointer"
+                className="relative bg-white/5 border border-white/10 hover:border-accent/40 transition-all duration-500 hover:bg-white/8 overflow-hidden flex-1 w-full min-h-[580px] md:min-h-[620px] flex flex-col cursor-pointer"
               >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-700" />

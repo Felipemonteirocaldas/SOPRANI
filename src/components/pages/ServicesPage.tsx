@@ -19,134 +19,6 @@ interface Service {
   descKey: string; bullets: string[]; tag: string;
 }
 
-// 💎💎 SCROLLYTELLING PANEL (mobile < md) 💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎
-const ServiceScrollyPanel = ({ services, t }: { services: Service[]; t: (k: string) => string }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const scrollStart = window.scrollY + rect.top;
-      const scrollTotal = rect.height - window.innerHeight;
-      const currentProgress = (window.scrollY - scrollStart) / scrollTotal;
-      const progress = Math.max(0, Math.min(1, currentProgress));
-      const idx = Math.min(Math.floor(progress * services.length), services.length - 1);
-      if (idx !== active) {
-        setDirection(idx > active ? 1 : -1);
-        setActive(idx);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [active, services.length]);
-
-  const goTo = (idx: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const scrollStart = window.scrollY + rect.top;
-    const scrollTotal = rect.height - window.innerHeight;
-    const targetScroll = scrollStart + (idx / services.length) * scrollTotal + 10;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-  };
-
-  const handleDragEnd = (_: any, info: PanInfo) => {
-    const threshold = 50;
-    if (info.offset.x < -threshold && active < services.length - 1) goTo(active + 1);
-    else if (info.offset.x > threshold && active > 0) goTo(active - 1);
-  };
-
-  const service = services[active];
-  const Icon = service.icon;
-  const scrollHeight = `${services.length * 100}vh`;
-
-  return (
-    <div ref={containerRef} style={{ height: scrollHeight }} className="relative bg-[#f8f9fb]">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        <div className="flex gap-2 overflow-x-auto hide-scrollbar px-4 md:px-10 pb-6 shrink-0">
-          {services.map((s, i) => {
-            const SIcon = s.icon;
-            const isActive = i === active;
-            return (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 shrink-0 border-2 ${isActive ? 'bg-[#001F5F] text-white border-[#001F5F] shadow-lg scale-105' : 'bg-white text-slate-400 border-slate-100'
-                  }`}
-              >
-                <SIcon size={12} />
-                {s.tag}
-              </button>
-            );
-          })}
-        </div>
-        <div className="px-4 md:px-10 flex flex-col items-center">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={active}
-              custom={direction}
-              initial={{ opacity: 0, x: direction * 50, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -direction * 50, scale: 0.95 }}
-              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={handleDragEnd}
-              className="w-full max-w-lg bg-white rounded-[2rem] shadow-[0_20px_80px_rgba(0,31,95,0.12)] overflow-hidden flex flex-col cursor-grab active:cursor-grabbing touch-pan-y"
-              style={{ minHeight: '460px' }}
-            >
-              <div className="px-8 pt-8 pb-6 flex items-center justify-between border-b border-slate-50">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: '#001F5F' }}>
-                    <Icon size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent block mb-1">{service.tag}</span>
-                    <h2 className="text-2xl font-heading font-black text-[#001F5F] leading-tight tracking-tight">{t(service.titleKey)}</h2>
-                  </div>
-                </div>
-                <span className="text-6xl font-heading font-black opacity-[0.05]" style={{ color: '#001F5F' }}>{service.number}</span>
-              </div>
-              <div className="px-8 py-7 flex-1">
-                <p className="text-slate-500 text-sm leading-relaxed font-paragraph mb-8">{t(service.descKey)}</p>
-                <div className="space-y-4">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">Core Capabilities</p>
-                  <div className="grid gap-3">
-                    {service.bullets.map((bKey, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <Check size={10} className="text-accent mt-1 shrink-0" strokeWidth={4} />
-                        <span className="text-sm text-slate-600 leading-snug font-paragraph font-medium">{t(bKey)}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="px-8 py-6 bg-slate-50/50 flex items-center justify-between">
-                <Link to="/request-quotation" className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-accent hover:gap-3 transition-all duration-300">
-                  Request Quote <ArrowRight size={14} />
-                </Link>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold text-slate-400">{service.number}</span>
-                  <div className="w-8 h-px bg-slate-200" />
-                  <span className="text-[10px] font-bold text-slate-400">{services.length}</span>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <div className="px-6 md:px-10 mt-10 w-full max-w-lg mx-auto">
-          <div className="flex justify-center gap-3 mb-4">
-            {services.map((_, i) => (
-              <div key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i === active ? 'w-8 bg-[#001F5F]' : 'w-2 bg-slate-200'}`} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // 💎💎 TABLET CARD (md to xl) 💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎
 const ServiceTabletCard = ({ service, t }: { service: Service; t: (k: string) => string }) => {
@@ -160,7 +32,7 @@ const ServiceTabletCard = ({ service, t }: { service: Service; t: (k: string) =>
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-3xl p-8 shadow-[0_10px_40px_rgba(0,31,95,0.06)] border border-slate-100 flex flex-col"
+      className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_10px_40px_rgba(0,31,95,0.06)] border border-slate-100 flex flex-col"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: '#001F5F' }}>
@@ -270,16 +142,20 @@ export default function ServicesPage() {
               </p>
             </motion.div>
           </div>
-          <div className="absolute -bottom-px left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%,100% 100%,100% 0)' }} />
+          <div className="absolute -bottom-px left-0 right-0 h-16 bg-[#f8f9fb] xl:bg-white" style={{ clipPath: 'polygon(0 100%,100% 100%,100% 0)' }} />
         </section>
 
-        {/* MOBILE: Scrollytelling (< md) */}
-        <section className="md:hidden bg-[#f8f9fb]">
-          <ServiceScrollyPanel services={services} t={t} />
+        {/* MOBILE: Vertical Cards (< md) */}
+        <section className="md:hidden bg-[#f8f9fb] py-12 -mt-px relative z-10">
+          <div className="px-3 sm:px-6 space-y-6">
+            {services.map((service, i) => (
+              <ServiceTabletCard key={i} service={service} t={t} />
+            ))}
+          </div>
         </section>
 
         {/* TABLET: Grid (md to xl) */}
-        <section className="hidden md:block xl:hidden bg-[#f8f9fb] py-20">
+        <section className="hidden md:block xl:hidden bg-[#f8f9fb] py-20 -mt-px relative z-10">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 gap-6">
               {services.map((service, i) => (
@@ -290,7 +166,7 @@ export default function ServicesPage() {
         </section>
 
         {/* DESKTOP: Row list */}
-        <section className="hidden xl:block bg-white">
+        <section className="hidden xl:block bg-white -mt-px relative z-10">
           <div className="container mx-auto px-8">
             {services.map((service, i) => (
               <ServiceDesktopRow key={i} service={service} t={t} />

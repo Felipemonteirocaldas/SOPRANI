@@ -15,7 +15,11 @@ import {
   FlaskConical,
   ShieldCheck,
   ChevronRight,
+  CheckCircle2,
+  Globe2,
+  Settings2
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // ─────────────────────────────────────────────
 // 🧩 TYPES
@@ -40,51 +44,41 @@ const IndustryCard = ({ industry, index }: { industry: Industry; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`group relative p-8 bg-white border border-slate-200 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2 flex flex-col h-full`}
+      className="group relative p-10 bg-white rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,31,95,0.1)] hover:-translate-y-2 flex flex-col h-full overflow-hidden"
     >
-      {/* Accent Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Decorative Background Icon */}
+      <IconComponent className="absolute -right-10 -bottom-10 w-48 h-48 text-slate-50 group-hover:text-slate-100 transition-colors duration-500 rotate-12" />
 
-      {/* Top Banner for Highlighted Items */}
-      {industry.highlight && (
-        <div className="absolute top-0 right-0 p-3">
-          <span className="px-2 py-1 text-[10px] font-bold uppercase tracking-widest bg-accent text-white">
-            Premium Solution
-          </span>
-        </div>
-      )}
-
-      {/* Icon */}
-      <div className="relative z-10 w-14 h-14 rounded-xl flex items-center justify-center bg-slate-50 border border-slate-100 mb-6 group-hover:bg-primary group-hover:border-primary transition-colors duration-500">
-        <IconComponent
-          className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-500"
-          strokeWidth={1.5}
-        />
-      </div>
-
-      {/* Content */}
       <div className="relative z-10 flex-grow">
+        {/* Icon */}
+        <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#001F5F] mb-8 group-hover:scale-110 group-hover:bg-accent transition-all duration-500 shadow-lg shadow-[#001F5F]/20 group-hover:shadow-accent/30">
+          <IconComponent
+            className="w-8 h-8 text-white transition-transform duration-500 group-hover:rotate-12"
+            strokeWidth={1.5}
+          />
+        </div>
+
         {industry.tag && (
-          <span className="text-[10px] font-extrabold text-accent uppercase tracking-widest mb-2 block">
-            {industry.tag}
-          </span>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-6 h-px bg-accent" />
+            <span className="text-[10px] font-black text-accent uppercase tracking-[0.3em]">
+              {industry.tag}
+            </span>
+          </div>
         )}
-        <h3 className="text-xl font-heading font-bold text-primary mb-3 leading-tight">
+
+        <h3 className="text-2xl font-heading font-black text-[#001F5F] mb-4 tracking-tight group-hover:text-accent transition-colors">
           {industry.title}
         </h3>
-        <p className="text-sm font-paragraph text-slate-500 leading-relaxed">
+        <p className="text-slate-500 leading-relaxed font-medium">
           {industry.description}
         </p>
       </div>
 
       {/* Footer / Interaction */}
-      <div className="relative z-10 mt-6 pt-6 border-t border-slate-50 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span className="text-xs font-bold text-primary uppercase tracking-wider">Explore Details</span>
-        <ArrowRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+      <div className="relative z-10 mt-10 pt-8 border-t border-slate-100 flex items-center justify-between">
+        <span className="text-[10px] font-black text-[#001F5F]/40 uppercase tracking-widest group-hover:text-accent transition-colors">{t('industriesPage.cardSector')}</span>
       </div>
-
-      {/* Decorative Bottom Bar */}
-      <div className="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-500 group-hover:w-full" />
     </motion.div>
   );
 };
@@ -93,100 +87,99 @@ const IndustryCard = ({ industry, index }: { industry: Industry; index: number }
 // 🏭 INDUSTRIES PAGE
 // ─────────────────────────────────────────────
 export default function IndustriesPage() {
+  const { t } = useTranslation();
+
   const industries: Industry[] = [
     {
-      title: 'Food Packaging',
-      description: 'Comprehensive machinery and materials for various food products. From tomato paste to fruit preserves — we supply the core technology for global giants.',
+      title: t('industriesPage.sector1Title'),
+      description: t('industriesPage.sector1Desc'),
       icon: Package,
-      tag: 'Core Market',
+      tag: t('industriesPage.sector1Tag'),
       highlight: true,
     },
     {
-      title: 'Tomato Cans',
-      description: 'Specialized high-speed machinery and materials specifically optimized for tomato paste and related derivatives at industrial scale.',
+      title: t('industriesPage.sector2Title'),
+      description: t('industriesPage.sector2Desc'),
       icon: Droplets,
     },
     {
-      title: 'Tuna & Seafood',
-      description: 'Hermetic sealing and specialized coating solutions for seafood packaging, ensuring maximum shelf life and product safety.',
+      title: t('industriesPage.sector3Title'),
+      description: t('industriesPage.sector3Desc'),
       icon: Fish,
     },
     {
-      title: 'Beverage Cans',
-      description: 'Integrated production lines for beverage cans, supporting both aluminum and tinplate technologies for global distribution.',
+      title: t('industriesPage.sector4Title'),
+      description: t('industriesPage.sector4Desc'),
       icon: Zap,
-      tag: 'High Velocity',
+      tag: t('industriesPage.sector4Tag'),
     },
     {
-      title: 'Powdered Milk',
-      description: 'Advanced containers and assembly machinery providing moisture-resistant solutions for sensitive dairy product exports.',
+      title: t('industriesPage.sector5Title'),
+      description: t('industriesPage.sector5Desc'),
       icon: Milk,
     },
     {
-      title: 'Industrial Chemicals',
-      description: 'Robust, impact-resistant metal packaging designed specifically for industrial materials, chemicals, and hazardous goods.',
+      title: t('industriesPage.sector6Title'),
+      description: t('industriesPage.sector6Desc'),
       icon: Factory,
     },
     {
-      title: 'Closures & Lids',
-      description: 'High-precision production of easy-open ends, twist-off caps, and traditional metal closures with custom lithography options.',
+      title: t('industriesPage.sector7Title'),
+      description: t('industriesPage.sector7Desc'),
       icon: Disc,
     },
     {
-      title: 'Decorated Metal',
-      description: 'Premium branding via high-definition metal printing and specialized lithography for luxury and branded consumer segments.',
+      title: t('industriesPage.sector8Title'),
+      description: t('industriesPage.sector8Desc'),
       icon: Palette,
-      tag: 'Marketing Focus',
+      tag: t('industriesPage.sector8Tag'),
     },
     {
-      title: 'Chemical Products',
-      description: 'Specialized chemical-resistant linings and robust external finishes for transport containers and retail chemical packaging.',
+      title: t('industriesPage.sector9Title'),
+      description: t('industriesPage.sector9Desc'),
       icon: FlaskConical,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background font-paragraph selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-white font-paragraph selection:bg-accent/20 selection:text-[#001F5F]">
       <main>
         {/* 🏔 HERO SECTION */}
-        <section className="relative pt-36 sm:pt-44 md:pt-52 pb-24 md:pb-40 overflow-hidden bg-primary overflow-x-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 z-0 opacity-20">
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4" />
+        <section className="relative min-h-[70vh] flex items-center bg-[#001F5F] overflow-hidden pt-32 pb-20">
+          {/* Industrial Background Pattern */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
           </div>
 
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center gap-4 mb-8"
+                transition={{ duration: 0.8 }}
+                className="flex items-center gap-3 mb-6"
               >
-                <div className="w-12 h-[2px] bg-accent" />
-                <span className="text-white/60 uppercase tracking-[0.3em] text-xs font-bold font-heading">
-                  Global Markets
-                </span>
+                <div className="w-10 h-[2px] bg-accent" />
+                <span className="text-accent text-[10px] font-black uppercase tracking-[0.4em]">{t('industriesPage.heroEyebrow')}</span>
               </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-8 leading-[1.1]"
+                className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white mb-8 leading-[0.9] tracking-tighter"
               >
-                Industries We<br />
-                <span className="text-accent underline decoration-white/10 decoration-8 underline-offset-8 italic">Revolutionize</span>
+                {t('industriesPage.heroTitle')}<br />
+                <span className="text-accent italic">{t('industriesPage.heroTitleAccent')}</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl text-white/70 max-w-2xl font-paragraph leading-relaxed mb-10"
+                className="text-lg md:text-2xl text-slate-300 max-w-2xl font-medium leading-relaxed mb-12"
               >
-                At Soprani Engineering, we deliver tailored industrial solutions across the entire spectrum of metal packaging, powering the world's most demanding production lines.
+                {t('industriesPage.heroSub')}
               </motion.p>
 
               <motion.div
@@ -195,39 +188,46 @@ export default function IndustriesPage() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-wrap gap-4"
               >
-                <Link
-                  to="/contact"
-                  className="px-8 py-4 bg-accent text-white text-sm font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  Discuss Your Needs
+                <Link to="/contact" className="px-10 py-5 bg-accent text-white font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-accent-dark hover:shadow-[0_10px_30px_rgba(196,18,48,0.3)] hover:-translate-y-1">
+                  {t('industriesPage.heroBtn1')}
                 </Link>
-                <a
-                  href="#grid"
-                  className="px-8 py-4 border border-white/20 text-white text-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all duration-300"
-                >
-                  View All Sectors
+                <a href="#grid" className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:bg-white hover:text-[#001F5F]">
+                  {t('industriesPage.heroBtn2')}
                 </a>
               </motion.div>
             </div>
           </div>
+
+          {/* Diagonal Transition */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }} />
         </section>
 
         {/* 📊 GRID SECTION */}
-        <section id="grid" className="py-24 md:py-32 bg-slate-50">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <section id="grid" className="py-24 md:py-40 bg-white relative z-10 -mt-px">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
               <div className="max-w-2xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-px bg-accent" />
-                  <span className="text-accent text-[10px] font-bold uppercase tracking-[0.2em]">Our Reach</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-heading font-black text-primary leading-tight">
-                  Tailored Solutions for<br />Every Market Segment
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 mb-6"
+                >
+                  <div className="w-10 h-[2px] bg-accent" />
+                  <span className="text-accent text-[10px] font-black uppercase tracking-[0.4em]">{t('industriesPage.gridEyebrow')}</span>
+                </motion.div>
+                <h2 className="text-4xl md:text-6xl font-heading font-black text-[#001F5F] leading-tight tracking-tighter">
+                  {t('industriesPage.gridTitle')}<br />{t('industriesPage.gridTitleAccent')}
                 </h2>
               </div>
-              <p className="max-w-xs text-slate-500 text-sm font-paragraph">
-                Our legacy is built on identifying specific challenges in diverse industries and providing precise engineering to solve them.
-              </p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-md text-slate-500 text-lg font-medium leading-relaxed pt-4"
+              >
+                {t('industriesPage.gridDesc')}
+              </motion.p>
             </div>
 
             {/* THE RESPONSIVE GRID */}
@@ -240,76 +240,109 @@ export default function IndustriesPage() {
         </section>
 
         {/* 🎓 CORPORATE EXPERTISE */}
-        <section className="py-24 md:py-32 overflow-hidden">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
-              <div className="w-full lg:w-1/2">
-                <div className="relative">
+        <section className="py-24 md:py-40 bg-[#f8f9fb] relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row gap-20 items-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="w-full lg:w-1/2 relative group"
+              >
+                <div className="absolute -inset-4 bg-accent/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                <div className="relative rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,31,95,0.15)]">
                   <Image
                     src="https://static.wixstatic.com/media/9bbed2_f08f2dc238c742ea8773ab0f4e5fd930~mv2.png"
                     alt="Industrial Excellence"
-                    className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 border-l-[12px] border-b-[12px] border-primary"
+                    className="w-full h-auto transition-transform duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent opacity-20 -z-10" />
-                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary opacity-20 -z-10" />
-                </div>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <h3 className="text-3xl md:text-4xl font-heading font-black text-primary mb-8 underline decoration-accent/20 decoration-4 underline-offset-8">
-                  Engineering Precision Across Borders
-                </h3>
-                <p className="text-lg text-slate-600 mb-10 leading-relaxed italic">
-                  "We don't just provide machines; we provide the competitive edge required to dominate in today's global metal packaging landscape."
-                </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#001F5F]/60 via-transparent to-transparent opacity-60" />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  {[
-                    { label: 'Strategic Sourcing', desc: 'Direct access to global machinery networks.' },
-                    { label: 'Technical Audits', desc: 'In-depth analysis of existing production lines.' },
-                    { label: 'Rapid Prototype', desc: 'Quick turnaround on custom metal components.' },
-                    { label: 'Quality Assurance', desc: 'Strict adherence to ISO industrial standards.' },
-                  ].map((feat, i) => (
-                    <div key={i} className="flex gap-4">
-                      <ShieldCheck className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                      <div>
-                        <h4 className="font-bold text-primary mb-1">{feat.label}</h4>
-                        <p className="text-xs text-slate-400">{feat.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+                  {/* Floating Stat */}
+                  <div className="absolute bottom-10 left-10 p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
+                    <div className="text-white text-3xl font-black font-heading mb-1">40+</div>
+                    <div className="text-white/70 text-[10px] font-black uppercase tracking-widest leading-none">{t('stats.sublabel2')}</div>
+                  </div>
                 </div>
+              </motion.div>
+
+              <div className="w-full lg:w-1/2">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-6 block">{t('industriesPage.expertiseEyebrow')}</span>
+                  <h3 className="text-4xl md:text-5xl font-heading font-black text-[#001F5F] mb-8 tracking-tighter leading-tight">
+                    {t('industriesPage.expertiseTitle')}
+                  </h3>
+                  <p className="text-xl text-slate-500 mb-12 leading-relaxed font-medium italic border-l-4 border-accent pl-8">
+                    {t('industriesPage.expertiseQuote')}
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    {[
+                      { label: t('industriesPage.feat1Title'), desc: t('industriesPage.feat1Desc'), icon: Globe2 },
+                      { label: t('industriesPage.feat2Title'), desc: t('industriesPage.feat2Desc'), icon: Settings2 },
+                      { label: t('industriesPage.feat3Title'), desc: t('industriesPage.feat3Desc'), icon: Zap },
+                      { label: t('industriesPage.feat4Title'), desc: t('industriesPage.feat4Desc'), icon: ShieldCheck },
+                    ].map((feat, i) => {
+                      const Icon = feat.icon;
+                      return (
+                        <div key={i} className="flex gap-5 group/feat">
+                          <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center flex-shrink-0 group-hover/feat:bg-accent group-hover/feat:border-accent transition-all duration-500">
+                            <Icon className="w-5 h-5 text-accent group-hover/feat:text-white transition-colors" />
+                          </div>
+                          <div>
+                            <h4 className="font-black text-[#001F5F] mb-1 uppercase tracking-wider text-xs">{feat.label}</h4>
+                            <p className="text-sm text-slate-400 font-medium">{feat.desc}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </section>
 
         {/* 📣 CTA SECTION */}
-        <section className="bg-primary py-24 md:py-32 relative group overflow-hidden">
-          {/* Animated Background Pulse */}
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(196,18,48,0.1),transparent)] group-hover:bg-[radial-gradient(circle_at_center,rgba(196,18,48,0.2),transparent)] transition-all duration-1000" />
-
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-8">
-              Ready to Optimize Your Industry Capacity?
-            </h2>
-            <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto font-paragraph italic">
-              Connect with our senior consultants for a confidential analysis of your production requirements.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link
-                to="/request-quotation"
-                className="group flex items-center justify-center gap-3 px-10 py-5 bg-white text-primary font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-500 hover:shadow-2xl"
-              >
-                Request Quotation
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/contact"
-                className="px-10 py-5 border-2 border-white/20 text-white font-bold uppercase tracking-widest hover:border-accent hover:bg-accent/10 transition-all duration-500"
-              >
-                Contact Sales
-              </Link>
-            </div>
+        <section className="relative bg-[#001F5F] py-24 md:py-40 overflow-hidden -mt-px">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(196,18,48,0.1),transparent_60%)]" />
+          <div className="relative z-10 container mx-auto px-4 md:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-px bg-accent" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">{t('industriesPage.ctaEyebrow')}</span>
+                <div className="w-8 h-px bg-accent" />
+              </div>
+              <h2 className="text-4xl md:text-6xl font-heading font-black text-white mb-8 leading-tight tracking-tighter max-w-3xl mx-auto">
+                {t('industriesPage.ctaTitle')}
+              </h2>
+              <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
+                {t('industriesPage.ctaDesc')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Link
+                  to="/request-quotation"
+                  className="group flex items-center justify-center gap-3 px-12 py-5 bg-accent text-white font-black uppercase tracking-widest text-[11px] transition-all duration-500 hover:bg-accent-dark hover:shadow-[0_20px_40px_rgba(196,18,48,0.3)] hover:-translate-y-1"
+                >
+                  {t('industriesPage.ctaBtn1')}
+                </Link>
+                <Link
+                  to="/contact"
+                  className="px-12 py-5 border-2 border-white/20 text-white font-black uppercase tracking-widest text-[11px] transition-all duration-500 hover:bg-white hover:text-[#001F5F] hover:-translate-y-1"
+                >
+                  {t('industriesPage.ctaBtn2')}
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>

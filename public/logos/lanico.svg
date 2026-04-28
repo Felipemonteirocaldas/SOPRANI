@@ -1,0 +1,17 @@
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Original Lanico Logo Vectorized -->
+  <style>
+    .lanico-text {
+      font-family: "Arial Black", "Arial", sans-serif;
+      font-weight: 900;
+      font-size: 82px;
+      fill: #004A99; /* Original Lanico Blue */
+      letter-spacing: -3px;
+    }
+    .lanico-bar {
+      fill: #E30613; /* Original Lanico Red */
+    }
+  </style>
+  <text x="10" y="85" class="lanico-text">LANICO</text>
+  <rect x="0" y="95" width="390" height="15" class="lanico-bar"/>
+</svg>
