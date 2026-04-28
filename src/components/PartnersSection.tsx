@@ -40,7 +40,7 @@ const partners: Partner[] = [
   },
   {
     id: 'lanico',
-    name: 'Lanico',
+    name: 'Lanico Maschinenbau',
     tagline: 'partners.lanicoTagline',
     descKey: 'partners.lanicoDesc',
     logo: '/logos/Lanico_logo.png',
