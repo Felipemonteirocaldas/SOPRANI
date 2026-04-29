@@ -19,10 +19,8 @@ import subsidiariesData from '../../src/data/subsidiaries.json';
 // ---------------------------------------------------------------------------
 // Types (mirror the real service so consumers don't need changes)
 // ---------------------------------------------------------------------------
-export interface WixDataItem {
-  _id: string;
-  [key: string]: any;
-}
+import { WixDataItem } from './types';
+
 
 export interface PaginationOptions {
   limit?: number;
@@ -68,7 +66,7 @@ function getCollection(collectionId: string): any[] {
 export class BaseCrudService {
   static async getAll<T extends WixDataItem>(
     collectionId: string,
-    includeRefs?: { singleRef?: string[]; multiRef?: string[] } | string[],
+    _includeRefs?: { singleRef?: string[]; multiRef?: string[] } | string[],
     pagination?: PaginationOptions
   ): Promise<PaginatedResult<T>> {
     const allItems = getCollection(collectionId) as T[];
@@ -97,7 +95,7 @@ export class BaseCrudService {
   }
 
   static async create<T extends WixDataItem>(
-    collectionId: string,
+    _collectionId: string,
     itemData: Partial<T> | Record<string, unknown>,
     _multiReferences?: Record<string, any>
   ): Promise<T> {
@@ -106,7 +104,7 @@ export class BaseCrudService {
   }
 
   static async update<T extends WixDataItem>(
-    collectionId: string,
+    _collectionId: string,
     itemData: T
   ): Promise<T> {
     console.warn('[MockBaseCrudService] update() is a no-op in mock mode.');
@@ -114,7 +112,7 @@ export class BaseCrudService {
   }
 
   static async delete<T extends WixDataItem>(
-    collectionId: string,
+    _collectionId: string,
     itemId: string
   ): Promise<T> {
     console.warn('[MockBaseCrudService] delete() is a no-op in mock mode.');

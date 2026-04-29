@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { Member } from '..';
+import { Member } from '../types';
 
 // Types for member state
 export interface MemberState {

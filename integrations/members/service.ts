@@ -1,5 +1,5 @@
 import { members } from "@wix/members";
-import { Member } from ".";
+import { Member } from './types';
 
 export const getCurrentMember = async (): Promise<Member | null> => {
   try {

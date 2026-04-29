@@ -1,7 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { BaseCrudService } from '@/integrations';
-import { ProductSolutions } from '@/entities';
 import { Image } from '@/components/ui/image';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Filter, Search, ArrowRight, Settings, Cpu, Shield, Zap, Maximize2, X, Layers } from 'lucide-react';
@@ -390,6 +388,23 @@ export default function ProductsPage() {
             <div className="flex items-center justify-center min-h-[400px]">
               <LoadingSpinner className="w-12 h-12 text-accent" />
             </div>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center min-h-[400px] text-center space-y-4">
+              <div className="p-4 rounded-full bg-red-50 text-accent">
+                <X className="w-10 h-10" />
+              </div>
+              <h2 className="text-xl font-bold text-primary">Failed to load products</h2>
+              <p className="text-slate-500 max-w-md mx-auto">
+                There was an error connecting to our product database. Please try again later.
+              </p>
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.reload()}
+                className="mt-4"
+              >
+                Retry Connection
+              </Button>
+            </div>
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
@@ -422,7 +437,7 @@ export default function ProductsPage() {
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                       {visibleKoenig.map((product, idx) => (
                         <motion.div
-                          key={product.id}
+                          key={product._id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: idx * 0.05 }}
@@ -526,7 +541,7 @@ export default function ProductsPage() {
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                       {visibleSoudronic.map((product, idx) => (
                         <motion.div
-                          key={product.id}
+                          key={product._id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: idx * 0.05 }}
