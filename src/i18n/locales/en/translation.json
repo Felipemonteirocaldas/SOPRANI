@@ -583,8 +583,8 @@
                 "waysTitle": "Other Contact Channels",
                 "wEmail": "Direct E-mail",
                 "wPhone": "Telephone Support",
-                "wForms": "General Form",
-                "wFormsDesc": "Prefer a general inquiry or commercial question?",
+                "wForms": "General Contact",
+                "wFormsDesc": "For general inquiries, commercial questions or other requests.",
                 "wFormsBtn": "Contact Us",
                 "reqLbl": "* Required fields. Your data is protected by our privacy policy."
         },

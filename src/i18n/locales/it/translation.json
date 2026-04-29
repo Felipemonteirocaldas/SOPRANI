@@ -587,8 +587,8 @@
                 "waysTitle": "Altri Modi per Contattarci",
                 "wEmail": "Email Diretta",
                 "wPhone": "Supporto Telefonico",
-                "wForms": "Modulo Contatti",
-                "wFormsDesc": "Preferisci una domanda generica o commerciale?",
+                "wForms": "Contatto Generale",
+                "wFormsDesc": "Per richieste generali, domande commerciali o altre sollecitazioni.",
                 "wFormsBtn": "Contattaci",
                 "reqLbl": "* Campi obbligatori. I vostri dati sono protetti dalla nostra privacy policy."
         },

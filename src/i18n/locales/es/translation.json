@@ -587,8 +587,8 @@
                 "waysTitle": "Otros Canales de Contacto",
                 "wEmail": "Correo Directo",
                 "wPhone": "Atención Telefónica",
-                "wForms": "Formulario General",
-                "wFormsDesc": "¿Prefiere una consulta general o duda comercial?",
+                "wForms": "Contacto General",
+                "wFormsDesc": "Para consultas generales, dudas comerciales u otras solicitudes.",
                 "wFormsBtn": "Contáctenos",
                 "reqLbl": "* Campos de cumplimentación obligatoria. Sus datos están protegidos por nuestra política de privacidad."
         },
