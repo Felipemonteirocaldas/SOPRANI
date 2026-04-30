@@ -172,57 +172,138 @@ export default function CompanyPage() {
           </div>
         </section>
 
-        {/* ── ABOUT / HISTORY ──────────────────────────────────────────────── */}
+        {/* ── INTERACTIVE TIMELINE ────────────────────────────────────────── */}
+        <section className="bg-white py-24 md:py-40 relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="flex flex-col items-center text-center mb-24">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-px bg-accent" />
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-accent">Our Journey</span>
+                <div className="w-10 h-px bg-accent" />
+              </div>
+              <h2 className="text-4xl md:text-6xl font-heading font-black text-[#001F5F] tracking-tighter uppercase mb-6">
+                The Soprani <span className="text-accent">Evolution</span>
+              </h2>
+              <p className="text-slate-500 text-lg max-w-2xl font-paragraph font-light">
+                Tracing over four decades of engineering precision and industrial transformation.
+              </p>
+            </div>
+
+            <div className="relative max-w-5xl mx-auto">
+              {/* Vertical Line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-slate-100 md:-translate-x-1/2 z-0">
+                <motion.div 
+                  initial={{ height: 0 }}
+                  whileInView={{ height: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="w-full bg-accent"
+                />
+              </div>
+
+              {/* Milestones */}
+              <div className="space-y-32 relative z-10">
+                {/* 1984 */}
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
+                  <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
+                    <FadeUp delay={100}>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1984</h3>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">The Foundation</h4>
+                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
+                        Sergio Soprani establishes the company, initially focusing on specialized engineering for the <span className="text-[#001F5F] font-bold">automotive sector</span> in Milan, Italy.
+                      </p>
+                    </FadeUp>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white border-4 border-accent z-20 flex items-center justify-center shrink-0 absolute left-3 md:relative md:left-auto order-1 md:order-2 top-0 md:top-auto">
+                    <div className="w-2 h-2 rounded-full bg-accent" />
+                  </div>
+                  <div className="flex-1 md:pl-20 order-3">
+                    <FadeUp delay={300}>
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
+                        <Image 
+                          src="/images/timeline-1984.png"
+                          alt="1984 Foundation"
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        />
+                      </div>
+                    </FadeUp>
+                  </div>
+                </div>
+
+                {/* 1989 */}
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
+                  <div className="flex-1 md:pr-20 order-3 md:order-1">
+                    <FadeUp delay={300}>
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
+                        <Image 
+                          src="/images/timeline-1989.png"
+                          alt="1989 Transition"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                        />
+                      </div>
+                    </FadeUp>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white border-4 border-accent z-20 flex items-center justify-center shrink-0 absolute left-3 md:relative md:left-auto order-1 md:order-2 top-0 md:top-auto">
+                    <div className="w-2 h-2 rounded-full bg-accent" />
+                  </div>
+                  <div className="flex-1 md:pl-20 order-2 md:order-3">
+                    <FadeUp delay={100}>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1989</h3>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">Industrial Pivot</h4>
+                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
+                        Matteo Soprani joins the vision, leading the strategic shift towards the <span className="text-[#001F5F] font-bold">metallic packaging industry</span>, setting the stage for global leadership.
+                      </p>
+                    </FadeUp>
+                  </div>
+                </div>
+
+                {/* 2026 */}
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
+                  <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
+                    <FadeUp delay={100}>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">2026</h3>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">Global Excellence</h4>
+                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
+                        Under the leadership of Matteo Soprani, the company continues to provide world-class technical support and high-end machinery across <span className="text-[#001F5F] font-bold">five continents</span>.
+                      </p>
+                    </FadeUp>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white border-4 border-accent z-20 flex items-center justify-center shrink-0 absolute left-3 md:relative md:left-auto order-1 md:order-2 top-0 md:top-auto">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  </div>
+                  <div className="flex-1 md:pl-20 order-3">
+                    <FadeUp delay={300}>
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
+                        <Image 
+                          src="/images/timeline-2026.png"
+                          alt="2026 Present"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                        />
+                      </div>
+                    </FadeUp>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── GLOBAL PRESENCE & INFRASTRUCTURE ────────────────────────────── */}
         <section className="bg-white py-24 md:py-32">
           <div className="container mx-auto px-4 md:px-8">
-
-            {/* — Block 1: Company history — */}
-            <FadeUp className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-20 md:mb-28">
-              {/* Left */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-px bg-accent" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
-                    {t('companyPage.aboutEyebrow')}
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-8">
-                  {t('companyPage.aboutTitle')}
-                </h2>
-                <p className="text-slate-800 text-base md:text-lg leading-relaxed mb-6 font-paragraph font-medium">
-                  {t('companyPage.aboutP1')}
-                </p>
-                <p className="text-slate-700 text-base leading-relaxed font-paragraph">
-                  {t('companyPage.aboutP2')}
-                </p>
+            <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px bg-accent" />
+                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
+                  Operational Excellence
+                </span>
+                <div className="w-8 h-px bg-accent" />
               </div>
+              <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight">
+                Global Network & High-End Infrastructure
+              </h2>
+            </div>
 
-              {/* Right — founding callout */}
-              <div className="flex flex-col gap-4">
-                {/* Year card */}
-                <div className="bg-[#001F5F] p-8 md:p-10 flex-1">
-                  <span className="text-7xl md:text-8xl font-heading font-black text-white/10 leading-none block mb-4 select-none">
-                    1984
-                  </span>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">
-                    {t('companyPage.cardFounded')}
-                  </p>
-                  <p className="text-white text-sm font-paragraph leading-relaxed">
-                    Eng. Sergio Soprani · Milan, Italy
-                  </p>
-                </div>
-                {/* Today card */}
-                <div className="bg-slate-50 border border-slate-100 p-8 flex-1">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-2">
-                    {t('companyPage.cardToday')}
-                  </p>
-                  <p className="text-[#001F5F] font-heading font-black text-lg mb-1">Matteo Soprani</p>
-                  <p className="text-slate-700 text-sm font-paragraph leading-relaxed">
-                    {t('companyPage.cardMatteoDesc')}
-                  </p>
-                </div>
-              </div>
-            </FadeUp>
 
             {/* — Block 2: Global + Infrastructure — */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-slate-100">

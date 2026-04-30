@@ -120,65 +120,129 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
-      {/* News Grid */}
-      <section className="py-20 min-h-[600px]">
-        <div className="container mx-auto px-4">
+      {/* News Grid - Bento Box Layout */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Deep Parallax Background Layers */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <motion.div 
+            initial={{ y: 0 }}
+            animate={{ y: -100 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+            className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" 
+          />
+          <motion.div 
+            initial={{ y: 0 }}
+            animate={{ y: 100 }}
+            transition={{ duration: 15, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+            className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" 
+          />
+          {/* Engineering Schematics Parallax */}
+          <div className="absolute inset-0 opacity-[0.03] flex items-center justify-center">
+            <svg width="100%" height="100%" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full scale-150">
+              <circle cx="400" cy="400" r="300" stroke="currentColor" strokeWidth="0.5" strokeDasharray="10 10" />
+              <path d="M100 400H700M400 100V700" stroke="currentColor" strokeWidth="0.5" />
+              <rect x="250" y="250" width="300" height="300" stroke="currentColor" strokeWidth="0.5" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           {isLoading ? (
             <div className="flex justify-center py-20">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
             </div>
           ) : activeTab === 'news' ? (
             news.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {news.map((item, index) => (
-                  <AnimatedElement key={item._id} delay={index * 50}>
-                    <article className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full border border-gray-100">
-                      {item.mainImage && (
-                        <div className="aspect-video overflow-hidden">
-                          <Image
-                            src={urlFor(item.mainImage).url()}
-                            alt={item.title || 'News image'}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            width={600}
-                          />
-                        </div>
+              <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-6 auto-rows-[300px] md:auto-rows-[350px]">
+                {news.map((item, index) => {
+                  // Bento Grid Logic
+                  const isLarge = index === 0;
+                  const isWide = index === 3;
+                  const isTall = index === 1;
+                  
+                  return (
+                    <AnimatedElement 
+                      key={item._id} 
+                      delay={index * 50}
+                      className={cn(
+                        "h-full",
+                        isLarge ? "md:col-span-2 md:row-span-2" : 
+                        isWide ? "md:col-span-2 md:row-span-1" : 
+                        isTall ? "md:col-span-1 md:row-span-2" : 
+                        "md:col-span-1 md:row-span-1"
                       )}
-
-                      <div className="p-8 flex flex-col flex-grow">
-                        <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
-                          {item.publishedAt && (
-                            <div className="flex items-center gap-1.5">
-                              <Calendar size={12} className="text-accent" />
-                              <span>
-                                {new Date(item.publishedAt).toLocaleDateString('en-US', {
-                                  year: 'numeric',
-                                  month: 'short',
-                                  day: 'numeric'
-                                })}
-                              </span>
-                            </div>
-                          )}
-                          {/* Author removal since it's not in the basic schema but can be added back if needed */}
-                        </div>
-
-                        <h3 className="text-xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors flex-grow">
-                          {item.title}
-                        </h3>
-
-                        {item.excerpt && (
-                          <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
-                            {item.excerpt}
-                          </p>
+                    >
+                      <article className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full border border-gray-100">
+                        {item.mainImage && (
+                          <div className={cn(
+                            "relative overflow-hidden",
+                            isLarge || isTall ? "h-full" : "h-48"
+                          )}>
+                            <Image
+                              src={urlFor(item.mainImage).url()}
+                              alt={item.title || 'News image'}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                              width={isLarge ? 1200 : 600}
+                            />
+                            {/* Gradient Overlay for integrated text */}
+                            {(isLarge || isTall) && (
+                              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
+                            )}
+                          </div>
                         )}
 
-                        <button className="inline-flex items-center text-accent text-[11px] font-black uppercase tracking-widest hover:text-primary transition-all duration-300 group/btn">
-                          {t('newsPage.readMore')}
-                          <ArrowRight size={14} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                        </button>
-                      </div>
-                    </article>
-                  </AnimatedElement>
-                ))}
+                        <div className={cn(
+                          "flex flex-col p-6 md:p-8",
+                          (isLarge || isTall) ? "absolute bottom-0 left-0 right-0" : "flex-grow"
+                        )}>
+                          <div className={cn(
+                            "flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] mb-3",
+                            (isLarge || isTall) ? "text-accent/90" : "text-gray-400"
+                          )}>
+                            {item.publishedAt && (
+                              <div className="flex items-center gap-1.5">
+                                <Calendar size={10} />
+                                <span>
+                                  {new Date(item.publishedAt).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric'
+                                  })}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+
+                          <h3 className={cn(
+                            "font-heading font-black leading-tight transition-colors mb-3",
+                            isLarge ? "text-2xl md:text-3xl lg:text-4xl text-white" : 
+                            isTall ? "text-xl text-white" : 
+                            "text-lg text-primary group-hover:text-accent"
+                          )}>
+                            {item.title}
+                          </h3>
+
+                          {(isLarge || isWide) && item.excerpt && (
+                            <p className={cn(
+                              "text-sm leading-relaxed line-clamp-2 mb-6 font-light",
+                              isLarge ? "text-white/80 max-w-xl" : "text-gray-500"
+                            )}>
+                              {item.excerpt}
+                            </p>
+                          )}
+
+                          <button className={cn(
+                            "inline-flex items-center text-[10px] font-black uppercase tracking-widest transition-all duration-300 group/btn mt-auto",
+                            (isLarge || isTall) ? "text-accent hover:text-white" : "text-accent hover:text-primary"
+                          )}>
+                            {t('newsPage.readMore')}
+                            <ArrowRight size={12} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                          </button>
+                        </div>
+                      </article>
+                    </AnimatedElement>
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-20 bg-gray-50/50 border border-dashed border-gray-200">

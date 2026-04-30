@@ -126,7 +126,7 @@ export default function PartnersSection() {
                 </div>
 
                 {/* Card Body */}
-                <div className="px-8 pb-10 flex flex-col flex-1">
+                  <div className="px-6 md:px-8 pb-8 md:pb-10 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-6">
                     <div className="p-1.5 rounded-md bg-accent/10 border border-accent/20">
                       <ShieldCheck className="w-3 h-3 text-accent" />

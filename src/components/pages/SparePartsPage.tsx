@@ -33,30 +33,99 @@ export default function SparePartsPage() {
   return (
     <div className="min-h-screen bg-background font-paragraph text-primary">
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[#001F5F] pt-36 sm:pt-44 md:pt-52 pb-32">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 z-0 opacity-10"
-            style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}
-          />
+        {/* Hero Section with Semantic Search and Parallax */}
+        <section className="relative overflow-hidden bg-[#001F5F] pt-36 sm:pt-44 md:pt-52 pb-40">
+          {/* Deep Parallax Background Layers */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <motion.div 
+              style={{ y: '10%' }}
+              animate={{ y: '-10%', rotate: 5 }}
+              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+              className="absolute top-0 -left-20 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px]" 
+            />
+            <div 
+              className="absolute inset-0 opacity-[0.05]"
+              style={{ 
+                backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', 
+                backgroundSize: '40px 40px' 
+              }}
+            />
+            {/* Technical Schematic Overlay */}
+            <div className="absolute inset-0 opacity-[0.03] flex items-center justify-center">
+              <svg width="100%" height="100%" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full scale-125">
+                <path d="M0 500H1000M500 0V1000" stroke="white" strokeWidth="0.5" />
+                <circle cx="500" cy="500" r="200" stroke="white" strokeWidth="0.5" />
+                <circle cx="500" cy="500" r="400" stroke="white" strokeWidth="0.5" strokeDasharray="10 10" />
+                <rect x="300" y="300" width="400" height="400" stroke="white" strokeWidth="0.5" />
+              </svg>
+            </div>
+          </div>
 
           <div className="container mx-auto px-4 md:px-8 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-accent" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Technical Components</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-8 leading-tight tracking-tight max-w-4xl">
-                {t('sparePartsPage.heroTitle')}
-              </h1>
-              <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-bold">
-                {t('sparePartsPage.heroSub')}
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-px bg-accent" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Precision Inventory</span>
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-8 leading-tight tracking-tight">
+                  {t('sparePartsPage.heroTitle')}
+                </h1>
+                <p className="text-slate-200 text-lg md:text-xl leading-relaxed max-w-xl font-paragraph font-bold mb-10">
+                  {t('sparePartsPage.heroSub')}
+                </p>
+
+                {/* Semantic Search UI */}
+                <div className="relative max-w-lg group">
+                  <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+                    <Search className="w-5 h-5 text-accent" />
+                  </div>
+                  <input 
+                    type="text" 
+                    placeholder="Search by part number, machine type or technical term..."
+                    className="w-full pl-14 pr-6 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/20 transition-all duration-300 rounded-2xl"
+                  />
+                  {/* Mock Suggestions */}
+                  <div className="absolute top-full left-0 right-0 mt-4 p-4 bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 translate-y-4 pointer-events-none group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto transition-all duration-300 z-50">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-2">Instant Suggestions</p>
+                    <div className="space-y-1">
+                      {['Seamer Rollers', 'Lid Feeders', 'Vacuum Pumps', 'Conveyor Belts'].map((term) => (
+                        <button key={term} className="w-full text-left px-4 py-3 text-sm text-primary hover:bg-slate-50 rounded-xl transition-colors flex items-center justify-between group/item">
+                          <span>{term}</span>
+                          <ArrowRight size={14} className="text-accent opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Parallax Machine Component */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="hidden lg:block relative"
+              >
+                <div className="relative z-10 w-full aspect-square bg-gradient-to-br from-white/10 to-transparent rounded-[4rem] backdrop-blur-sm border border-white/10 flex items-center justify-center p-12 overflow-hidden">
+                  <Image 
+                    src="https://static.wixstatic.com/media/9bbed2_5deb68287d3f44a58ef9ec0320d1a8ed~mv2.png?originWidth=896&originHeight=640"
+                    alt="Technical Spare Parts"
+                    className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125"
+                  />
+                </div>
+                {/* Floating Elements */}
+                <motion.div 
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-2xl" 
+                />
+              </motion.div>
+            </div>
           </div>
 
           {/* Diagonal Transition */}
