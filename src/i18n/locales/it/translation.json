@@ -303,7 +303,19 @@
                 "aboutInfra3T": "Partnership d'Élite",
                 "aboutInfra3D": "Come distributori autorizzati del gruppo Soudronic per il nord Italia e partner di Koenig & Bauer Metal Print e Lanico, garantiamo ai nostri clienti l'accesso diretto a ricambi originali e al supporto tecnico di più alto livello del settore.",
                 "aboutCommitTitle": "Il Nostro Impegno",
-                "aboutCommitP": "Il nostro obiettivo va oltre la fornitura di macchinari — cerchiamo di costruire partnership a lungo termine basate sulla competenza tecnica e sulla capacità di offrire soluzioni su misura per ogni sfida della produzione industriale. Che si tratti di produrre lattine per alimenti e bevande, aerosol o contenitori industriali, Soprani Engineering è il collegamento che unisce la vostra fabbrica alla tecnologia d'avanguardia."
+                "aboutCommitP": "Il nostro obiettivo va oltre la fornitura di macchinari — cerchiamo di costruire partnership a lungo termine basate sulla competenza tecnica e sulla capacità di offrire soluzioni su misura per ogni sfida della produzione industriale. Che si tratti di produrre lattine per alimenti e bevande, aerosol o contenitori industriali, Soprani Engineering è il collegamento che unisce la vostra fabbrica alla tecnologia d'avanguardia.",
+                "journeyEyebrow": "Il Nostro Percorso",
+                "journeyTitle": "L'Evoluzione",
+                "journeyTitleHighlight": "Soprani",
+                "journeyDesc": "Ripercorrendo oltre quattro decenni di precisione ingegneristica e trasformazione industriale.",
+                "timeline1984Title": "La Fondazione",
+                "timeline1984Desc": "Sergio Soprani fonda l'azienda, inizialmente concentrandosi sull'ingegneria specializzata per il <span class=\"text-[#001F5F] font-bold\">settore automobilistico</span> a Milano, Italia.",
+                "timeline1989Title": "Svolta Industriale",
+                "timeline1989Desc": "Matteo Soprani si unisce alla visione, guidando il passaggio strategico verso l'<span class=\"text-[#001F5F] font-bold\">industria degli imballaggi metallici</span>, ponendo le basi per la leadership globale.",
+                "timeline2026Title": "Eccellenza Globale",
+                "timeline2026Desc": "Sotto la guida di Matteo Soprani, l'azienda continua a fornire supporto tecnico di livello mondiale e macchinari di alta gamma in <span class=\"text-[#001F5F] font-bold\">cinque continenti</span>.",
+                "infraEyebrow": "Eccellenza Operativa",
+                "infraTitleMain": "Rete Globale e Infrastruttura di Alto Livello"
         },
         "contactPage": {
                 "heroTitle": "Connettività Globale",

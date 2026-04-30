@@ -214,14 +214,14 @@ export default function CompanyPage() {
             <div className="flex flex-col items-center text-center mb-24">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-px bg-accent" />
-                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-accent">Our Journey</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-accent">{t('companyPage.journeyEyebrow')}</span>
                 <div className="w-10 h-px bg-accent" />
               </div>
               <h2 className="text-4xl md:text-6xl font-heading font-black text-[#001F5F] tracking-tighter uppercase mb-6">
-                The Soprani <span className="text-accent">Evolution</span>
+                {t('companyPage.journeyTitle')} <span className="text-accent">{t('companyPage.journeyTitleHighlight')}</span>
               </h2>
               <p className="text-slate-500 text-lg max-w-2xl font-paragraph font-light">
-                Tracing over four decades of engineering precision and industrial transformation.
+                {t('companyPage.journeyDesc')}
               </p>
             </div>
 
@@ -244,10 +244,11 @@ export default function CompanyPage() {
                   <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
                     <FadeUp delay={100}>
                       <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1984</h3>
-                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">The Foundation</h4>
-                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
-                        Sergio Soprani establishes the company, initially focusing on specialized engineering for the <span className="text-[#001F5F] font-bold">automotive sector</span> in Milan, Italy.
-                      </p>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline1984Title')}</h4>
+                      <p 
+                        className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
+                        dangerouslySetInnerHTML={{ __html: t('companyPage.timeline1984Desc') }}
+                      />
                     </FadeUp>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-white border-4 border-accent z-20 flex items-center justify-center shrink-0 absolute left-3 md:relative md:left-auto order-1 md:order-2 top-0 md:top-auto">
@@ -279,10 +280,11 @@ export default function CompanyPage() {
                   <div className="flex-1 md:pl-20 order-2 md:order-3">
                     <FadeUp delay={100}>
                       <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1989</h3>
-                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">Industrial Pivot</h4>
-                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
-                        Matteo Soprani joins the vision, leading the strategic shift towards the <span className="text-[#001F5F] font-bold">metallic packaging industry</span>, setting the stage for global leadership.
-                      </p>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline1989Title')}</h4>
+                      <p 
+                        className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
+                        dangerouslySetInnerHTML={{ __html: t('companyPage.timeline1989Desc') }}
+                      />
                     </FadeUp>
                   </div>
                 </div>
@@ -292,10 +294,11 @@ export default function CompanyPage() {
                   <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
                     <FadeUp delay={100}>
                       <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">2026</h3>
-                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">Global Excellence</h4>
-                      <p className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base">
-                        Under the leadership of Matteo Soprani, the company continues to provide world-class technical support and high-end machinery across <span className="text-[#001F5F] font-bold">five continents</span>.
-                      </p>
+                      <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline2026Title')}</h4>
+                      <p 
+                        className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
+                        dangerouslySetInnerHTML={{ __html: t('companyPage.timeline2026Desc') }}
+                      />
                     </FadeUp>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-white border-4 border-accent z-20 flex items-center justify-center shrink-0 absolute left-3 md:relative md:left-auto order-1 md:order-2 top-0 md:top-auto">
@@ -322,12 +325,12 @@ export default function CompanyPage() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px bg-accent" />
                 <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
-                  Operational Excellence
+                  {t('companyPage.infraEyebrow')}
                 </span>
                 <div className="w-8 h-px bg-accent" />
               </div>
               <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight">
-                Global Network & High-End Infrastructure
+                {t('companyPage.infraTitleMain')}
               </h2>
             </div>
 
@@ -349,7 +352,7 @@ export default function CompanyPage() {
                 <div className="flex flex-wrap gap-2 mt-8">
                   {['Europe', 'Middle East', 'North Africa', 'Asia', 'Americas'].map(r => (
                     <span key={r} className="px-3 py-1.5 border border-slate-300 text-[10px] font-bold uppercase tracking-widest text-slate-700 bg-white">
-                      {t(`regions.${r.toLowerCase().replace(' ', '')}`)}
+                      {t(`regions.${r.toLowerCase().replace(/\s+/g, '')}`)}
                     </span>
                   ))}
                 </div>

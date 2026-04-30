@@ -298,7 +298,19 @@
                 "aboutInfra3T": "Parcerias de Elite",
                 "aboutInfra3D": "Como distribuidores autorizados do grupo Soudronic para o norte da Itália e parceiros da Koenig & Bauer Metal Print e Lanico, garantimos aos nossos clientes acesso direto a peças originais e ao suporte técnico de mais alto nível do setor.",
                 "aboutCommitTitle": "Nosso Compromisso",
-                "aboutCommitP": "Nosso objetivo é ir além do fornecimento de máquinas — buscamos construir parcerias de longo prazo baseadas na competência técnica e na capacidade de oferecer soluções sob medida para cada desafio da produção industrial. Seja na produção de latas para alimentos e bebidas, aerossóis ou recipientes industriais, a Soprani Engineering é o elo que conecta sua fábrica à tecnologia de ponta."
+                "aboutCommitP": "Nosso objetivo é ir além do fornecimento de máquinas — buscamos construir parcerias de longo prazo baseadas na competência técnica e na capacidade de oferecer soluções sob medida para cada desafio da produção industrial. Seja na produção de latas para alimentos e bebidas, aerossóis ou recipientes industriais, a Soprani Engineering é o elo que conecta sua fábrica à tecnologia de ponta.",
+                "journeyEyebrow": "Nossa Jornada",
+                "journeyTitle": "A Evolução",
+                "journeyTitleHighlight": "Soprani",
+                "journeyDesc": "Rastreando mais de quatro décadas de precisão em engenharia e transformação industrial.",
+                "timeline1984Title": "A Fundação",
+                "timeline1984Desc": "Sergio Soprani estabelece a empresa, inicialmente focando em engenharia especializada para o <span class=\"text-[#001F5F] font-bold\">setor automotivo</span> em Milão, Itália.",
+                "timeline1989Title": "Pivô Industrial",
+                "timeline1989Desc": "Matteo Soprani junta-se à visão, liderando a mudança estratégica para a <span class=\"text-[#001F5F] font-bold\">indústria de embalagens metálicas</span>, preparando o terreno para a liderança global.",
+                "timeline2026Title": "Excelência Global",
+                "timeline2026Desc": "Sob a liderança de Matteo Soprani, a empresa continua a fornecer suporte técnico de classe mundial e maquinário de alta gama em <span class=\"text-[#001F5F] font-bold\">cinco continentes</span>.",
+                "infraEyebrow": "Excelência Operacional",
+                "infraTitleMain": "Rede Global e Infraestrutura de Alta Gama"
         },
         "contactPage": {
                 "heroTitle": "Conectividade Global",
