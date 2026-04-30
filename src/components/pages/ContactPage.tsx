@@ -31,7 +31,8 @@ export default function ContactPage() {
     email: '',
     phone: '',
     subject: '',
-    message: ''
+    message: '',
+    privacyAccepted: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -59,13 +60,17 @@ export default function ContactPage() {
     await new Promise(resolve => setTimeout(resolve, 1500));
     setSubmitted(true);
     setFormData({
-      name: '', company: '', country: '', email: '', phone: '', subject: '', message: ''
+      name: '', company: '', country: '', email: '', phone: '', subject: '', message: '', privacyAccepted: false
     });
     setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target as any;
+    setFormData({ 
+      ...formData, 
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value 
+    });
   };
 
   return (
@@ -342,10 +347,33 @@ export default function ContactPage() {
                           />
                         </div>
 
+                        {/* Privacy Consent Checkbox */}
+                        <div className="flex items-start gap-3 py-2">
+                          <div className="flex items-center h-5">
+                            <input
+                              id="privacyAccepted"
+                              name="privacyAccepted"
+                              type="checkbox"
+                              checked={formData.privacyAccepted}
+                              onChange={handleChange}
+                              required
+                              className="w-4 h-4 text-accent border-gray-300 rounded-none focus:ring-accent accent-accent cursor-pointer"
+                            />
+                          </div>
+                          <div className="text-xs">
+                            <label htmlFor="privacyAccepted" className="font-medium text-gray-700 cursor-pointer select-none">
+                              {t('privacyPage.consentCheckbox')}{' '}
+                              <Link to="/privacy" className="text-accent hover:underline font-bold">
+                                {t('termsPage.privacyPolicy')}
+                              </Link>
+                            </label>
+                          </div>
+                        </div>
+
                         {/* Botão de envio */}
                         <button
                           type="submit"
-                          disabled={isSubmitting}
+                          disabled={isSubmitting || !formData.privacyAccepted}
                           className="w-full py-4 sm:py-5 bg-accent text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-opacity-95 transition-all duration-300 disabled:opacity-30 group flex items-center justify-center gap-3 mt-1"
                         >
                           {isSubmitting ? t('contactPage.formSending') : (

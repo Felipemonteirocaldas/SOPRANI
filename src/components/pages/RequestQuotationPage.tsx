@@ -29,7 +29,8 @@ export default function RequestQuotationPage() {
     sparePartReference: '',
     quantity: '',
     urgency: 'normal',
-    message: ''
+    message: '',
+    privacyAccepted: false
   });
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -51,10 +52,10 @@ export default function RequestQuotationPage() {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target as any;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }));
   };
 
@@ -88,7 +89,8 @@ export default function RequestQuotationPage() {
         sparePartReference: '',
         quantity: '',
         urgency: 'normal',
-        message: ''
+        message: '',
+        privacyAccepted: false
       });
       setSelectedFiles([]);
     }, 1500);
@@ -335,10 +337,33 @@ export default function RequestQuotationPage() {
                           </div>
                         </div>
 
+                        {/* Privacy Consent Checkbox */}
+                        <div className="flex items-start gap-3 py-2">
+                          <div className="flex items-center h-5">
+                            <input
+                              id="privacyAccepted"
+                              name="privacyAccepted"
+                              type="checkbox"
+                              checked={formData.privacyAccepted}
+                              onChange={handleChange}
+                              required
+                              className="w-4 h-4 text-accent border-gray-300 rounded-none focus:ring-accent accent-accent cursor-pointer"
+                            />
+                          </div>
+                          <div className="text-[10px]">
+                            <label htmlFor="privacyAccepted" className="font-medium text-gray-500 cursor-pointer select-none leading-relaxed">
+                              {t('privacyPage.consentCheckbox')}{' '}
+                              <Link to="/privacy" className="text-accent hover:underline font-bold">
+                                {t('termsPage.privacyPolicy')}
+                              </Link>
+                            </label>
+                          </div>
+                        </div>
+
                         {/* Submit Row */}
                         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                          <button type="submit" disabled={isLoading}
-                            className="flex-1 bg-accent hover:bg-opacity-95 text-white py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 disabled:bg-gray-400 flex items-center justify-center gap-2 group">
+                          <button type="submit" disabled={isLoading || !formData.privacyAccepted}
+                            className="flex-1 bg-accent hover:bg-opacity-95 text-white py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300 disabled:bg-gray-300 disabled:opacity-50 flex items-center justify-center gap-2 group">
                             {isLoading ? t('reqPage.subBtnL') : (
                               <>
                                 {t('reqPage.subBtn')}

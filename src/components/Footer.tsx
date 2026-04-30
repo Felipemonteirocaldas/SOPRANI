@@ -153,13 +153,18 @@ export default function Footer() {
             <p className="text-[11px] text-slate-400 font-medium tracking-wide">
               © 2026 Soprani Engineering. {t('footer.allRightsReserved')}
             </p>
-            <div className="flex gap-8">
-              <Link to="/privacy" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
-                {t('footer.privacyPolicy')}
-              </Link>
-              <Link to="/terms" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
-                {t('footer.termsOfService')}
-              </Link>
+            <div className="flex flex-col items-center md:items-end gap-2">
+              <p className="text-[9px] text-slate-500 font-medium tracking-wide text-center md:text-right max-w-md">
+                SOPRANI ENGINEERING SAS DI MATTEO SOPRANI E C. | P.IVA/CF: 07196970151 | REA: MI-1144273 | Via Melchiorre Gioia 194, 20125 Milano (MI), Italy
+              </p>
+              <div className="flex gap-8 mt-2">
+                <Link to="/privacy" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+                  {t('footer.privacyPolicy')}
+                </Link>
+                <Link to="/terms" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+                  {t('footer.termsOfService')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

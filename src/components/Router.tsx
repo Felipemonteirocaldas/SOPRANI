@@ -6,6 +6,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
+import { CookieBanner } from '@/components/CookieBanner';
 
 import '../i18n/config';
 
@@ -60,6 +61,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }

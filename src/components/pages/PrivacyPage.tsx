@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, FileText } from 'lucide-react';
+import { Shield, Lock, Eye, FileText, ChevronRight } from 'lucide-react';
 
 export default function PrivacyPage() {
   const { t } = useTranslation();
@@ -9,25 +9,30 @@ export default function PrivacyPage() {
   const sections = [
     {
       icon: Shield,
-      title: "Data Protection",
-      content: "We take the security of your industrial data seriously. All information transmitted through our platforms is encrypted using industry-standard protocols."
+      title: t('privacyPage.controllerTitle'),
+      content: t('privacyPage.controllerText')
     },
     {
       icon: Lock,
-      title: "Secure Access",
-      content: "Access to sensitive machinery specifications and quotation data is restricted to authorized Soprani Engineering personnel only."
+      title: t('privacyPage.legalBasisTitle'),
+      content: t('privacyPage.legalBasisText')
     },
     {
       icon: Eye,
-      title: "Transparency",
-      content: "We are committed to being clear about what data we collect and how it helps us provide better technical assistance and spare parts delivery."
+      title: t('privacyPage.rightsTitle'),
+      content: t('privacyPage.rightsText')
+    },
+    {
+      icon: FileText,
+      title: t('privacyPage.retentionTitle'),
+      content: t('privacyPage.retentionText')
     }
   ];
 
   return (
     <div className="pt-32 pb-24 bg-white min-h-screen">
       {/* Header Section */}
-      <section className="relative py-20 bg-primary overflow-hidden">
+      <section className="relative py-24 bg-[#001F5F] overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,#C41230_0%,transparent_50%)]" />
         </div>
@@ -38,14 +43,14 @@ export default function PrivacyPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="inline-block px-3 py-1 bg-accent text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-              Legal & Compliance
+            <span className="inline-block px-3 py-1 bg-[#C41230] text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+              {t('privacyPage.heroEyebrow')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-tight">
-              Privacy <span className="text-accent">Policy</span>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-tight leading-tight">
+              {t('privacyPage.heroTitle').split(' ')[0]} <span className="text-[#C41230]">{t('privacyPage.heroTitle').split(' ').slice(1).join(' ')}</span>
             </h1>
-            <p className="text-xl text-slate-300 font-paragraph leading-relaxed">
-              At Soprani Engineering, we value the trust you place in us when sharing your business and technical information.
+            <p className="text-base sm:text-xl text-slate-300 font-paragraph leading-relaxed">
+              {t('privacyPage.heroSub')}
             </p>
           </motion.div>
         </div>
@@ -57,46 +62,91 @@ export default function PrivacyPage() {
           {/* Main Prose */}
           <div className="lg:col-span-8">
             <div className="prose prose-slate prose-lg max-w-none font-paragraph text-slate-600 leading-relaxed">
-              <h2 className="text-3xl font-heading font-bold text-primary mb-8 uppercase tracking-tight border-l-4 border-accent pl-6">
-                Introduction
+              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-[#001F5F] mb-8 uppercase tracking-tight border-l-4 border-[#C41230] pl-6 leading-tight">
+                {t('privacyPage.introTitle')}
               </h2>
-              <p className="mb-8">
-                This Privacy Policy describes how Soprani Engineering S.r.l. ("we", "us", or "our") collects, uses, and shares your personal information when you visit our website, use our services, or interact with us regarding industrial machinery and technical assistance.
+              <p className="mb-12">
+                {t('privacyPage.introText')}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-16">
                 {sections.map((item, idx) => (
-                  <div key={idx} className="p-8 bg-slate-50 border border-slate-100 hover:border-accent/20 transition-colors group">
-                    <item.icon className="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl font-heading font-black text-primary mb-4 uppercase tracking-wide">
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="p-8 bg-slate-50 border border-slate-100 hover:border-[#C41230]/20 transition-all group"
+                  >
+                    <item.icon className="w-8 h-8 text-[#C41230] mb-6 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-lg font-heading font-black text-[#001F5F] mb-4 uppercase tracking-wide">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed text-slate-500">
                       {item.content}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
-              <h2 className="text-2xl font-heading font-bold text-primary mt-16 mb-6">Information We Collect</h2>
-              <p>
-                We collect information that you provide directly to us when requesting a quotation, purchasing spare parts, or contacting our technical support team. This may include:
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-[#001F5F] mt-16 mb-6">
+                {t('privacyPage.collectionTitle')}
+              </h2>
+              <p className="text-sm sm:text-base">
+                {t('privacyPage.collectionText')}
               </p>
-              <ul className="list-disc pl-6 space-y-3 mt-4">
-                <li>Contact information (Name, Email, Phone number, Company)</li>
-                <li>Machinery serial numbers and specifications</li>
-                <li>Production site details for technical assistance</li>
-                <li>Billing and shipping information</li>
-              </ul>
 
-              <div className="mt-20 p-10 bg-primary text-white border-l-8 border-accent">
-                <h4 className="text-xl font-heading font-bold mb-4 uppercase tracking-wider">Need more details?</h4>
-                <p className="text-slate-300 mb-6">
-                  Our legal team is available to discuss specific data handling requirements for large-scale industrial projects.
-                </p>
-                <a href="/contact" className="text-accent font-bold hover:underline inline-flex items-center gap-2">
-                  Contact Legal Department <FileText size={16} />
-                </a>
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-[#001F5F] mt-12 mb-6">
+                {t('privacyPage.purposeTitle')}
+              </h2>
+              <p className="text-sm sm:text-base">
+                {t('privacyPage.purposeText')}
+              </p>
+
+              {/* Premium Legal Notice Card */}
+              <div className="mt-20 p-8 sm:p-12 bg-[#001F5F] text-white relative overflow-hidden border-l-4 border-[#C41230] shadow-2xl">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#C41230] opacity-5 -mr-32 -mt-32 rotate-45"></div>
+                
+                <h4 className="text-sm font-black uppercase tracking-[0.3em] text-[#C41230] mb-10">
+                  {t('legalNotice.title')}
+                </h4>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-sm font-paragraph">
+                  <div className="md:col-span-2 text-slate-300 text-xs mb-4">
+                    {t('legalNotice.content')}
+                  </div>
+
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.companyName')}</p>
+                    <p className="text-lg font-heading font-bold text-white">SOPRANI ENGINEERING SAS DI MATTEO SOPRANI E C.</p>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.registeredAddress')}</p>
+                    <p className="text-slate-200">Via Melchiorre Gioia 194, 20125 Milano (MI), Italy</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-8 md:contents">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.taxId')}</p>
+                      <p className="font-bold text-white">IT07196970151</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.reaNumber')}</p>
+                      <p className="font-bold text-white">MI-1144273</p>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2 pt-6 border-t border-white/10 mt-4">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">Legal Inquiry</p>
+                      <a href="mailto:info@sopraniengineering.com" className="text-lg font-bold text-white hover:text-[#C41230] transition-all flex items-center gap-2">
+                        info@sopraniengineering.com <FileText size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -105,20 +155,20 @@ export default function PrivacyPage() {
           <div className="lg:col-span-4">
             <div className="sticky top-40 space-y-8">
               <div className="p-8 border border-slate-100 bg-slate-50/50">
-                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Quick Links</h4>
+                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Resources</h4>
                 <nav className="flex flex-col space-y-4">
-                  <a href="/terms" className="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center justify-between group">
+                  <a href="/terms" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
                     Terms of Service <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="/contact" className="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center justify-between group">
-                    Contact Us <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <a href="/contact" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
+                    Contact Engineering <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>
                 </nav>
               </div>
 
-              <div className="p-8 bg-accent text-white">
-                <h4 className="text-lg font-heading font-bold mb-2">Effective Date</h4>
-                <p className="text-white/70 text-sm">Last updated: April 22, 2026</p>
+              <div className="p-8 bg-[#C41230] text-white">
+                <h4 className="text-lg font-heading font-bold mb-2 uppercase tracking-tight">{t('privacyPage.lastUpdated').split(':')[0]}</h4>
+                <p className="text-white/70 text-sm font-medium">{t('privacyPage.lastUpdated').split(':')[1]}</p>
               </div>
             </div>
           </div>
@@ -127,19 +177,3 @@ export default function PrivacyPage() {
     </div>
   );
 }
-
-const ChevronRight = ({ size, className }: { size: number, className: string }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="m9 18 6-6-6-6" />
-  </svg>
-);

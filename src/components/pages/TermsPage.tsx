@@ -1,33 +1,63 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FileText, Gavel, Scale, AlertCircle } from 'lucide-react';
+import { Gavel, Scale, AlertCircle, ShieldCheck, Truck, FileCode, CreditCard, ChevronRight } from 'lucide-react';
 
 export default function TermsPage() {
   const { t } = useTranslation();
 
-  const rules = [
+  const sections = [
     {
       icon: Gavel,
-      title: "Jurisdiction",
-      content: "All commercial transactions and disputes are governed by Italian law, specifically under the jurisdiction of the Court of Milan."
+      title: t('termsPage.agreementTitle'),
+      content: t('termsPage.agreementText')
     },
     {
-      icon: Scale,
-      title: "Liability",
-      content: "Soprani Engineering provides expert technical assistance but is not liable for indirect damages resulting from machinery downtime or improper maintenance by third parties."
+      icon: ShieldCheck,
+      title: t('termsPage.servicesTitle'),
+      content: t('termsPage.servicesText')
     },
     {
       icon: AlertCircle,
-      title: "Quotations",
-      content: "Prices and delivery times provided in quotations are valid for 30 days unless otherwise specified in the official proposal."
+      title: t('termsPage.quotationsTitle'),
+      content: t('termsPage.quotationsText')
+    },
+    {
+      icon: CreditCard,
+      title: t('termsPage.paymentTitle'),
+      content: t('termsPage.paymentText')
+    },
+    {
+      icon: Truck,
+      title: t('termsPage.deliveryTitle'),
+      content: t('termsPage.deliveryText')
+    },
+    {
+      icon: FileCode,
+      title: t('termsPage.intellectualTitle'),
+      content: t('termsPage.intellectualText')
+    },
+    {
+      icon: Scale,
+      title: t('termsPage.liabilityTitle'),
+      content: t('termsPage.liabilityText')
+    },
+    {
+      icon: Gavel,
+      title: t('termsPage.governingTitle'),
+      content: t('termsPage.governingText')
+    },
+    {
+      icon: ShieldCheck,
+      title: t('termsPage.partnersTitle'),
+      content: t('termsPage.partnersText')
     }
   ];
 
   return (
     <div className="pt-32 pb-24 bg-white min-h-screen">
       {/* Header Section */}
-      <section className="relative py-20 bg-primary overflow-hidden">
+      <section className="relative py-24 bg-[#001F5F] overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_50%,#C41230_0%,transparent_50%)]" />
         </div>
@@ -38,14 +68,14 @@ export default function TermsPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="inline-block px-3 py-1 bg-accent text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-              Legal & Compliance
+            <span className="inline-block px-3 py-1 bg-[#C41230] text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+              {t('termsPage.heroEyebrow')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-tight">
-              Terms of <span className="text-accent">Service</span>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-white mb-6 uppercase tracking-tight leading-tight">
+              {t('termsPage.heroTitle').split(' ')[0]} <span className="text-[#C41230]">{t('termsPage.heroTitle').split(' ').slice(1).join(' ')}</span>
             </h1>
-            <p className="text-xl text-slate-300 font-paragraph leading-relaxed">
-              Establishing clear expectations for industrial excellence and professional technical partnership.
+            <p className="text-base sm:text-xl text-slate-300 font-paragraph leading-relaxed">
+              {t('termsPage.heroSub')}
             </p>
           </motion.div>
         </div>
@@ -54,77 +84,111 @@ export default function TermsPage() {
       {/* Content Section */}
       <section className="py-24 max-w-[100rem] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          {/* Main Prose */}
+          {/* Main Content */}
           <div className="lg:col-span-8">
-            <div className="prose prose-slate prose-lg max-w-none font-paragraph text-slate-600 leading-relaxed">
-              <h2 className="text-3xl font-heading font-bold text-primary mb-8 uppercase tracking-tight border-l-4 border-accent pl-6">
-                Agreement to Terms
-              </h2>
-              <p className="mb-8 font-bold text-primary">
-                By accessing this website and engaging with Soprani Engineering for machinery, spare parts, or assistance, you agree to be bound by these Terms of Service.
-              </p>
-
-              <div className="space-y-6 my-16">
-                {rules.map((item, idx) => (
-                  <div key={idx} className="flex gap-8 p-8 border border-slate-100 bg-slate-50/30 hover:bg-white hover:shadow-xl hover:border-accent/10 transition-all duration-300">
-                    <div className="w-12 h-12 bg-primary text-white flex items-center justify-center flex-shrink-0">
-                      <item.icon size={20} />
+            <div className="space-y-12">
+              {sections.map((section, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group"
+                >
+                  <div className="flex gap-4 sm:gap-8 items-start">
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 bg-slate-50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#001F5F] group-hover:text-white transition-all duration-300">
+                      <section.icon size={18} className="text-[#001F5F] group-hover:text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-heading font-black text-primary mb-2 uppercase tracking-wide">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-slate-500 leading-relaxed">
-                        {item.content}
+                      <h2 className="text-lg sm:text-2xl font-heading font-black text-[#001F5F] mb-3 sm:mb-4 uppercase tracking-wider leading-tight">
+                        {section.title}
+                      </h2>
+                      <p className="font-paragraph text-slate-600 leading-relaxed text-sm sm:text-lg">
+                        {section.content}
                       </p>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <h2 className="text-2xl font-heading font-bold text-primary mt-16 mb-6">Commercial Conditions</h2>
-              <p>
-                Engaging in business with Soprani Engineering involves specific industrial standards:
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-                <div className="p-6 border border-slate-100 rounded-sm">
-                  <h4 className="font-bold text-primary mb-2">Delivery</h4>
-                  <p className="text-xs">Ex-works or according to specific Incoterms defined in the contract.</p>
-                </div>
-                <div className="p-6 border border-slate-100 rounded-sm">
-                  <h4 className="font-bold text-primary mb-2">Payments</h4>
-                  <p className="text-xs">Standard industrial terms (LC, TT) as per individual negotiation.</p>
-                </div>
-              </div>
-
-              <div className="mt-20 p-10 bg-slate-900 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent opacity-20 -mr-16 -mt-16 rotate-45"></div>
-                <h4 className="text-xl font-heading font-bold mb-4 uppercase tracking-wider">Intellectual Property</h4>
-                <p className="text-slate-400 mb-0 relative z-10">
-                  All technical drawings, modifications, and engineering solutions developed by Soprani Engineering remain our exclusive intellectual property unless otherwise agreed in writing.
-                </p>
-              </div>
+                </motion.div>
+              ))}
             </div>
+
+            {/* Legal Footer Info Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-24 p-8 sm:p-12 bg-[#001F5F] text-white relative overflow-hidden border-l-4 border-[#C41230] shadow-2xl"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#C41230] opacity-5 -mr-32 -mt-32 rotate-45"></div>
+              
+              <h4 className="text-sm font-black uppercase tracking-[0.3em] text-[#C41230] mb-10">
+                {t('termsPage.legalEntityTitle')}
+              </h4>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-sm font-paragraph">
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.companyName')}</p>
+                  <p className="text-lg font-heading font-bold text-white">SOPRANI ENGINEERING SAS DI MATTEO SOPRANI E C.</p>
+                </div>
+                
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.registeredAddress')}</p>
+                  <p className="text-slate-200">Via Melchiorre Gioia 194, 20125 Milano (MI), Italy</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 md:contents">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.taxId')}</p>
+                    <p className="font-bold text-white">07196970151</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.codiceFiscale')}</p>
+                    <p className="font-bold text-white">07196970151</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 md:contents">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.europeanVat')}</p>
+                    <p className="font-bold text-white">IT07196970151</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.reaNumber')}</p>
+                    <p className="font-bold text-white">MI-1144273</p>
+                  </div>
+                </div>
+
+                <div className="md:col-span-2 pt-6 border-t border-white/10 mt-4">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#C41230]/70">{t('termsPage.legalEmail')}</p>
+                    <a href="mailto:info@sopraniengineering.com" className="text-lg font-bold text-white hover:text-[#C41230] transition-all flex items-center gap-2">
+                      info@sopraniengineering.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-4">
             <div className="sticky top-40 space-y-8">
               <div className="p-8 border border-slate-100 bg-slate-50/50">
-                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Related Documents</h4>
+                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">{t('termsPage.navigationTitle')}</h4>
                 <nav className="flex flex-col space-y-4">
-                  <a href="/privacy" className="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center justify-between group">
-                    Privacy Policy <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <a href="/privacy" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
+                    {t('termsPage.privacyPolicy')} <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="/request-quotation" className="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center justify-between group">
-                    Request a Quote <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <a href="/contact" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
+                    {t('termsPage.supportCenter')} <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>
                 </nav>
               </div>
 
-              <div className="border border-slate-100 p-8">
-                <p className="text-[10px] text-slate-400 leading-relaxed italic">
-                  Soprani Engineering S.r.l. reserves the right to update these terms at any time to reflect changes in industrial regulations and international trade laws.
+              <div className="p-8 bg-slate-50 border border-slate-100">
+                <p className="text-[11px] text-slate-500 leading-relaxed italic">
+                  {t('termsPage.updateNotice')}
                 </p>
               </div>
             </div>
@@ -134,19 +198,3 @@ export default function TermsPage() {
     </div>
   );
 }
-
-const ChevronRight = ({ size, className }: { size: number, className: string }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="m9 18 6-6-6-6" />
-  </svg>
-);
