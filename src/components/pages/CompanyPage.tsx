@@ -32,6 +32,42 @@ const StatBox = ({ value, label, delay = 0 }: { value: string; label: string; de
   </FadeUp>
 );
 
+// ── Timeline Video component ──────────────────────────────────────────────────
+const TimelineVideo = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Fallback for browsers that block immediate autoplay
+        const playOnInteraction = () => {
+          videoRef.current?.play();
+          window.removeEventListener('scroll', playOnInteraction);
+          window.removeEventListener('touchstart', playOnInteraction);
+        };
+        window.addEventListener('scroll', playOnInteraction);
+        window.addEventListener('touchstart', playOnInteraction);
+      });
+    }
+  }, [src]);
+
+  return (
+    <div className={`relative w-full h-full bg-slate-900 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        onLoadedData={() => setIsLoaded(true)}
+        className="w-full h-full object-cover saturate-[1.3] contrast-[1.1]"
+      />
+    </div>
+  );
+};
+
 // ── Value pillar card ─────────────────────────────────────────────────────────
 const ValuePillar = ({ icon: Icon, title, desc, delay = 0, border = '' }: { icon: any; title: string; desc: string; delay?: number; border?: string }) => (
   <FadeUp delay={delay} className={`p-6 md:p-14 group hover:bg-white/5 transition-all duration-500 ${border}`}>
@@ -219,12 +255,9 @@ export default function CompanyPage() {
                   </div>
                   <div className="flex-1 md:pl-20 order-3">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
-                        <Image 
-                          src="/images/timeline-1984.png"
-                          alt="1984 Foundation"
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        />
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                        <TimelineVideo src="/video/MILAO.mp4" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>
                     </FadeUp>
                   </div>
@@ -234,12 +267,9 @@ export default function CompanyPage() {
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
                   <div className="flex-1 md:pr-20 order-3 md:order-1">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
-                        <Image 
-                          src="/images/timeline-1989.png"
-                          alt="1989 Transition"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
-                        />
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                        <TimelineVideo src="/video/EVOLUCAO.mp4" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>
                     </FadeUp>
                   </div>
@@ -273,12 +303,9 @@ export default function CompanyPage() {
                   </div>
                   <div className="flex-1 md:pl-20 order-3">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-slate-100 group">
-                        <Image 
-                          src="/images/timeline-2026.png"
-                          alt="2026 Present"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                        />
+                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                        <TimelineVideo src="/video/ExpansionMap.mp4" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>
                     </FadeUp>
                   </div>

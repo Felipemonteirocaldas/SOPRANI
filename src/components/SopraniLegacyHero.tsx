@@ -45,6 +45,8 @@ export default function SopraniLegacyHero() {
     },
   };
 
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+
   return (
     <section
       className="relative w-full h-[100svh] bg-[#001F5F] overflow-hidden flex items-center justify-center z-10"
@@ -52,15 +54,15 @@ export default function SopraniLegacyHero() {
       {/* 
         Video Background Overlay 
       */}
-      <div className="absolute inset-0 z-0 opacity-60">
+      <div className={`absolute inset-0 z-0 transition-opacity duration-1500 ${isVideoLoaded ? 'opacity-70' : 'opacity-0'}`}>
         <video
           className="w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          poster="/images/hero-bg.png"
           preload="auto"
+          onLoadedData={() => setIsVideoLoaded(true)}
           src="/video/videohero.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-transparent to-primary/90" />
