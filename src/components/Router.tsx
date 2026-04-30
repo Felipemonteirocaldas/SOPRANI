@@ -6,6 +6,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
+
 import '../i18n/config';
 
 // Lazy loading das páginas (Mantenha como está, é ótimo para performance)
@@ -51,6 +52,7 @@ function Layout() {
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
       <ScrollProgressBar />
+
       {/* ✦ Dynamic SEO: title, description, og tags, html[lang] */}
       <SEOHead />
       <Header />

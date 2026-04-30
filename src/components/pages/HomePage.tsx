@@ -36,25 +36,7 @@ const PartnersSection = lazy(() => import('@/components/PartnersSection'));
 const SellAssetCTA = lazy(() => import('@/components/SellAssetCTA'));
 
 
-// ─────────────────────────────────────────────
-// 🔴 SCROLL PROGRESS BAR
-// ─────────────────────────────────────────────
-const ScrollProgressBar: React.FC = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 200,
-    damping: 40,
-    restDelta: 0.001,
-  });
 
-  return (
-    <motion.div
-      style={{ scaleX, transformOrigin: 'left' }}
-      className="fixed top-0 left-0 right-0 z-[9999] h-[3px] bg-accent"
-      aria-hidden="true"
-    />
-  );
-};
 
 // ─────────────────────────────────────────────
 // 🧲 MAGNETIC BUTTON
@@ -328,79 +310,7 @@ export default function HomePage() {
         ══════════════════════════════════════ */}
         <SopraniLegacyHero />
 
-        {false && <section className="relative w-full overflow-hidden flex items-center min-h-screen pt-24 sm:pt-28 bg-[#001F5F]">
-          {/* Background Video — with poster for instant visual feedback */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/images/hero-bg.png"
-            preload="none"
-            className="absolute inset-0 w-full h-full object-cover z-0"
-          >
-            <source src="/video/videohero.mp4" type="video/mp4" />
-          </video>
 
-          {/* Overlays */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[#001F5F]/50" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#001F5F]/40 via-transparent to-[#001F5F]/40" />
-            <div className="absolute inset-0 grid-pattern opacity-10 z-0" />
-          </div>
-
-          {/* Hero Content */}
-          <div className="max-w-[100rem] mx-auto px-3 xs:px-4 sm:px-6 md:px-8 relative z-10 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-              <AnimatedElement direction="left" className="max-w-2xl">
-                <div>
-                  <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-5xl font-heading font-black text-white mb-6 leading-tight tracking-tight">
-                    {t('hero.title')}
-                  </h1>
-                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-slate-200 mb-8 xs:mb-10 sm:mb-12 leading-relaxed max-w-2xl font-light">
-                    {t('hero.subtitle')}
-                  </p>
-
-                  {/* ✦ MAGNETIC CTA BUTTONS */}
-                  <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                    <MagneticButton strength={10}>
-                      <Link
-                        to="/request-quotation"
-                        className="block w-full sm:w-auto px-8 py-4 bg-accent text-white font-bold uppercase tracking-widest hover:bg-accent-dark transition-all duration-300 hover:shadow-2xl hover:shadow-accent/40 hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base btn-shimmer"
-                      >
-                        {t('hero.requestQuotation')}
-                      </Link>
-                    </MagneticButton>
-                    <MagneticButton strength={10}>
-                      <Link
-                        to="/contact"
-                        className="block w-full sm:w-auto px-8 py-4 border-2 border-white bg-white/10 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 active:scale-95 text-center text-sm sm:text-base"
-                      >
-                        {t('hero.contactUs')}
-                      </Link>
-                    </MagneticButton>
-                  </div>
-                </div>
-              </AnimatedElement>
-
-              {/* Hero Right Column (reserved) */}
-              <AnimatedElement direction="right" delay={200} className="hidden lg:block" children={''} />
-            </div>
-          </div>
-
-          {/* Scroll Down Indicator */}
-          <button
-            onClick={scrollToContent}
-            className="absolute bottom-6 xs:bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors duration-300 z-20 group"
-            aria-label="Scroll to content"
-          >
-            <ChevronDown
-              size={32}
-              className="xs:size-[40px] animate-bounce group-hover:scale-110 transition-transform"
-              strokeWidth={1.5}
-            />
-          </button>
-        </section>}
 
 
         {/* ⚡ LAZY: CORPORATE MARQUEE */}
