@@ -89,7 +89,7 @@ export default function CompanyPage() {
     <div className="min-h-screen bg-white font-paragraph text-primary selection:bg-accent selection:text-white">
       <main>
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-[#00153D] pt-36 sm:pt-44 md:pt-52 pb-36">
+        <section className="relative overflow-hidden bg-primary pt-36 sm:pt-44 md:pt-52 pb-36">
           {/* Background layers */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_60%,rgba(196,18,48,0.12),transparent_50%)]" />
@@ -103,21 +103,6 @@ export default function CompanyPage() {
             />
           </div>
 
-          {/* Background Video */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <video 
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
-              preload="auto"
-              className="w-full h-full object-cover opacity-30"
-              poster="/hero-fallback.jpg"
-            >
-              <source src="/video/SERGIOSENIOR.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#00153D] via-transparent to-[#00153D]/80" />
-          </div>
 
           <div className="relative z-10 container mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -183,7 +168,7 @@ export default function CompanyPage() {
                     {t('companyPage.legacyEyebrow')}
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-5xl font-heading font-black text-[#00153D] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
+                <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
                   {t('companyPage.legacyTitle')}
                 </h2>
                 <div className="w-20 h-1.5 bg-accent mb-8" />
@@ -233,7 +218,7 @@ export default function CompanyPage() {
                 <span className="text-[11px] font-black uppercase tracking-[0.3em] text-accent">{t('companyPage.journeyEyebrow')}</span>
                 <div className="w-10 h-px bg-accent" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-heading font-black text-[#00153D] tracking-tighter uppercase mb-6">
+              <h2 className="text-4xl md:text-6xl font-heading font-black text-[#001F5F] tracking-tighter uppercase mb-6">
                 {t('companyPage.journeyTitle')} <span className="text-accent">{t('companyPage.journeyTitleHighlight')}</span>
               </h2>
               <p className="text-slate-500 text-lg max-w-2xl font-paragraph font-light">
@@ -259,7 +244,7 @@ export default function CompanyPage() {
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
                   <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
                     <FadeUp delay={100}>
-                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#00153D] mb-2 md:mb-4">1984</h3>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1984</h3>
                       <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline1984Title')}</h4>
                       <p 
                         className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
@@ -295,7 +280,7 @@ export default function CompanyPage() {
                   </div>
                   <div className="flex-1 md:pl-20 order-2 md:order-3">
                     <FadeUp delay={100}>
-                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#00153D] mb-2 md:mb-4">1989</h3>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">1989</h3>
                       <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline1989Title')}</h4>
                       <p 
                         className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
@@ -309,7 +294,7 @@ export default function CompanyPage() {
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
                   <div className="flex-1 md:text-right md:pr-20 order-2 md:order-1">
                     <FadeUp delay={100}>
-                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#00153D] mb-2 md:mb-4">2026</h3>
+                      <h3 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-2 md:mb-4">2026</h3>
                       <h4 className="text-xs md:text-sm font-black uppercase tracking-widest text-accent mb-4">{t('companyPage.timeline2026Title')}</h4>
                       <p 
                         className="text-slate-600 leading-relaxed font-paragraph font-medium text-sm md:text-base"
@@ -345,22 +330,11 @@ export default function CompanyPage() {
                 </span>
                 <div className="w-8 h-px bg-accent" />
               </div>
-              <h2 className="text-3xl md:text-5xl font-heading font-black text-[#00153D] tracking-tight leading-tight">
+              <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] tracking-tight leading-tight">
                 {t('companyPage.infraTitleMain')}
               </h2>
             </div>
 
-            <div className="relative mb-24 md:mb-32">
-              <div className="aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl relative group">
-                <Image src="https://static.wixstatic.com/media/9bbed2_29774577884742f689f41065796a6042~mv2.jpg?originWidth=3000&originHeight=2000" alt="Production Facility" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00153D]/60 via-transparent to-transparent" />
-                
-                {/* Floating detail photo */}
-                <div className="absolute top-[10%] -left-4 w-1/2 md:w-3/4 aspect-video shadow-2xl z-20 border-4 md:border-8 border-white overflow-hidden">
-                  <Image src="https://static.wixstatic.com/media/9bbed2_fe43fe59bc1d4d7ca944f544cd2c69bd~mv2.png?originWidth=896&originHeight=640" alt="Detail" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
 
             {/* — Block 2: Global + Infrastructure — */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-slate-100">
@@ -369,7 +343,7 @@ export default function CompanyPage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-5">
                   {t('companyPage.globalOpsTitle')}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-heading font-black text-[#00153D] tracking-tight leading-tight mb-6">
+                <h3 className="text-2xl md:text-3xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-6">
                   {t('companyPage.aboutGlobalTitle')}
                 </h3>
                 <p className="text-slate-800 text-base leading-relaxed font-paragraph font-medium">
@@ -390,7 +364,7 @@ export default function CompanyPage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-accent mb-5">
                   {t('companyPage.infraTitle')}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-heading font-black text-[#00153D] tracking-tight leading-tight mb-8">
+                <h3 className="text-2xl md:text-3xl font-heading font-black text-[#001F5F] tracking-tight leading-tight mb-8">
                   {t('companyPage.aboutInfraTitle')}
                 </h3>
                 <div className="space-y-6">
@@ -400,11 +374,11 @@ export default function CompanyPage() {
                     { titleKey: 'companyPage.aboutInfra3T', descKey: 'companyPage.aboutInfra3D', icon: Award },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4 items-start">
-                      <div className="flex-shrink-0 w-8 h-8 bg-[#00153D] flex items-center justify-center mt-0.5">
+                      <div className="flex-shrink-0 w-8 h-8 bg-[#001F5F] flex items-center justify-center mt-0.5">
                         <item.icon size={14} className="text-white" />
                       </div>
                       <div>
-                        <p className="font-heading font-black text-[#00153D] text-sm mb-1">{t(item.titleKey)}</p>
+                        <p className="font-heading font-black text-[#001F5F] text-sm mb-1">{t(item.titleKey)}</p>
                         <p className="text-slate-700 text-sm leading-relaxed font-paragraph">{t(item.descKey)}</p>
                       </div>
                     </div>
@@ -414,7 +388,7 @@ export default function CompanyPage() {
             </div>
 
             {/* — Block 3: Commitment — */}
-            <FadeUp className="mt-px bg-[#00153D] p-10 md:p-16" delay={50}>
+            <FadeUp className="mt-px bg-[#001F5F] p-10 md:p-16" delay={50}>
               <div className="max-w-3xl mx-auto text-center">
                 <div className="flex items-center justify-center gap-3 mb-6">
                   <div className="w-8 h-px bg-accent" />
@@ -432,7 +406,7 @@ export default function CompanyPage() {
         </section>
 
         {/* ── VALUES / COMMITMENTS ─────────────────────────────────────────── */}
-        <section className="relative bg-[#00153D] py-16 md:py-32 overflow-hidden">
+        <section className="relative bg-primary py-16 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(196,18,48,0.08),transparent_60%)]" />
           <div className="relative z-10 container mx-auto px-4 md:px-8">
             {/* Heading */}
@@ -464,20 +438,20 @@ export default function CompanyPage() {
                   <div className="w-8 h-px bg-accent" />
                   <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">{t('companyPage.ctaEyebrow')}</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#00153D] tracking-tight leading-tight max-w-md">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-primary tracking-tight leading-tight max-w-md">
                   {t('servicesPage.ctaTitle')}
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-[#00153D] text-white font-bold uppercase tracking-widest text-sm hover:bg-accent transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
+                  className="px-8 py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-accent transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
                 >
                   {t('servicesPage.btnContact')}
                 </Link>
                 <Link
                   to="/request-quotation"
-                  className="px-8 py-4 border border-[#00153D] text-[#00153D] font-bold uppercase tracking-widest text-sm hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
+                  className="px-8 py-4 border border-primary text-primary font-bold uppercase tracking-widest text-sm hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
                 >
                   {t('servicesPage.btnQuote')}
                 </Link>

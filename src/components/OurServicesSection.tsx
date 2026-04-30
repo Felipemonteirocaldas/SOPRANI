@@ -33,7 +33,7 @@ function ServiceCard({
       `}
       style={{
         background: hovered
-          ? 'linear-gradient(135deg, #001F5F 0%, #011244 60%, #0A1A3A 100%)'
+          ? 'linear-gradient(135deg, #001F5F 0%, #011244 100%)'
           : 'linear-gradient(135deg, #ffffff 0%, #F8FAFC 60%, #F1F5F9 100%)',
         transition: 'background 0.5s ease',
       }}
@@ -139,12 +139,7 @@ export default function OurServicesSection() {
   ];
 
   return (
-    <section
-      className="py-12 md:py-16 relative"
-      style={{
-        background: 'linear-gradient(180deg, #F8F9FA 0%, #EEF2F7 100%)',
-      }}
-    >
+    <section className="relative py-24 md:py-32 bg-gradient-dark overflow-hidden">
       {/* Subtle grid texture */}
       <div className="absolute inset-0 grid-pattern-light opacity-40 pointer-events-none" />
 
@@ -158,10 +153,10 @@ export default function OurServicesSection() {
                 {t('servicesSection.whatWeDo')}
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-primary">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white">
               {t('servicesSection.ourServices')}
             </h2>
-            <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium text-slate-500 mt-2">
+            <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium text-white/70 mt-2">
               {t('servicesSection.sixAreas')}
             </p>
           </div>

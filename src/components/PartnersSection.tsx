@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Award, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface Partner {
   id: string;
@@ -55,11 +55,11 @@ export default function PartnersSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative bg-[#00153D] py-20 md:py-32 overflow-hidden">
+    <section className="relative bg-primary py-20 md:py-32 overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_10%,rgba(0,59,143,0.15)_0%,transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_90%_90%,rgba(196,18,48,0.05)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(196,18,48,0.12),transparent_50%)]" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_90%_90%,rgba(255,255,255,0.03),transparent_50%)]" />
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', size: '40px 40px' }} />
       </div>

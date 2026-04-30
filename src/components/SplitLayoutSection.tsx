@@ -27,10 +27,7 @@ export default function SplitLayoutSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[600px]">
         {/* ✦ Left Side — Dynamic Steel Gradient */}
         <div
-          className="relative overflow-hidden flex items-center justify-center p-8 lg:p-0"
-          style={{
-            background: 'linear-gradient(135deg, #001F5F 0%, #011244 55%, #020D30 100%)',
-          }}
+          className="relative overflow-hidden flex items-center justify-center p-8 lg:p-0 bg-gradient-dark"
         >
           {/* Blueprint overlay image */}
           <div className="absolute inset-0 opacity-15">
