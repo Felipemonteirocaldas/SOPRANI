@@ -183,7 +183,7 @@ export default function CompanyPage() {
                 <div className="relative flex items-center justify-center">
                   {/* Senior Sergio - Legacy (Main focus) */}
                   <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-50 focus-within:z-50 transition-all duration-500 group">
-                    <Image
+                    <img
                       src="/images/sergio-soprani-senior.png"
                       alt="Sergio Soprani - Founder"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -196,7 +196,7 @@ export default function CompanyPage() {
 
                   {/* Young Sergio - Foundation (Legacy look) */}
                   <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-50 active:z-50 focus:z-50 transition-all duration-500 group cursor-pointer" tabIndex={0}>
-                    <Image
+                    <img
                       src="/images/sergio-soprani-young.png"
                       alt="Sergio Soprani - The Early Years"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"

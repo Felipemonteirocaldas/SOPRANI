@@ -54,7 +54,7 @@ export default function SopraniLegacyHero() {
       {/* 
         Video Background Overlay 
       */}
-      <div className={`absolute inset-0 z-0 transition-opacity duration-1500 ${isVideoLoaded ? 'opacity-70' : 'opacity-0'}`}>
+      <div className={`absolute inset-0 z-0 transition-opacity duration-700 ${isVideoLoaded ? 'opacity-70' : 'opacity-0'}`}>
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -74,7 +74,7 @@ export default function SopraniLegacyHero() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isVideoLoaded ? "visible" : "hidden"}
           className="w-full"
         >
           <h1 className="text-[2.2rem] xs:text-[2.8rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem] xl:text-[9.5rem] font-heading font-black text-white leading-[1.1] sm:leading-[0.95] tracking-tighter mb-8 sm:mb-10 drop-shadow-2xl uppercase flex flex-wrap justify-center gap-x-[0.25em] gap-y-0 px-2 break-words">
