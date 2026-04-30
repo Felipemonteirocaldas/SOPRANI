@@ -309,13 +309,28 @@
                 "journeyTitleHighlight": "Soprani",
                 "journeyDesc": "Trazando más de cuatro décadas de precisión en ingeniería y transformación industrial.",
                 "timeline1984Title": "La Fundación",
-                "timeline1984Desc": "Sergio Soprani establece la empresa, enfocándose inicialmente en la ingeniería especializada para el <span class=\"text-[#001F5F] font-bold\">sector automotriz</span> en Milán, Italia.",
+                "timeline1984Desc": "Sergio Soprani establece la empresa, enfocándose inicialmente en la ingeniería especializada para el <span class=\"text-[#00153D] font-bold\">sector automotriz</span> en Milán, Italia.",
                 "timeline1989Title": "Giro Industrial",
-                "timeline1989Desc": "Matteo Soprani se une a la visión, liderando el cambio estratégico hacia la <span class=\"text-[#001F5F] font-bold\">industria del embalaje metálico</span>, preparando el escenario para el liderazgo global.",
+                "timeline1989Desc": "Matteo Soprani se une a la visión, liderando el cambio estratégico hacia la <span class=\"text-[#00153D] font-bold\">industria del embalaje metálico</span>, preparando el escenario para el liderazgo global.",
                 "timeline2026Title": "Excelencia Global",
-                "timeline2026Desc": "Bajo el liderazgo de Matteo Soprani, la empresa continúa brindando soporte técnico de clase mundial y maquinaria de alta gama en <span class=\"text-[#001F5F] font-bold\">cinco continentes</span>.",
+                "timeline2026Desc": "Bajo el liderazgo de Matteo Soprani, la empresa continúa brindando soporte técnico de clase mundial y maquinaria de alta gama en <span class=\"text-[#00153D] font-bold\">cinco continentes</span>.",
                 "infraEyebrow": "Excelencia Operativa",
-                "infraTitleMain": "Red Global e Infraestructura de Alta Gama"
+                "infraTitleMain": "Red Global e Infraestructura de Alta Gama",
+                "globalOpsTitle": "Operaciones Globales",
+                "aboutGlobalTitle": "Presencia integral em hubs industriales estratégicos.",
+                "aboutGlobalP": "Con una red de técnicos especializados y logística estratégica, garantizamos que la precisión de Soprani Engineering esté disponible dondequiera que su producción lo exija. Desde el envío rápido de repuestos hasta auditorías técnicas in situ, nuestra presencia cubre las zonas industriales más exigentes.",
+                "infraTitle": "Nuestra Infraestructura",
+                "aboutInfraTitle": "Instalaciones escalables diseñadas para la precisión y la respuesta rápida.",
+                "aboutInfra1T": "Logística Centralizada",
+                "aboutInfra2T": "Centro de Servicios",
+                "aboutInfra3T": "Red de Socios"
+        },
+        "regions": {
+                "europe": "Europa",
+                "middleeast": "Medio Oriente",
+                "northafrica": "Norte de África",
+                "asia": "Asia",
+                "americas": "Américas"
         },
         "contactPage": {
                 "heroTitle": "Conectividad Global",

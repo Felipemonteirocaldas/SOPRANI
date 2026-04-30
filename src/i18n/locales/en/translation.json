@@ -305,13 +305,28 @@
                 "journeyTitleHighlight": "Evolution",
                 "journeyDesc": "Tracing over four decades of engineering precision and industrial transformation.",
                 "timeline1984Title": "The Foundation",
-                "timeline1984Desc": "Sergio Soprani establishes the company, initially focusing on specialized engineering for the <span class=\"text-[#001F5F] font-bold\">automotive sector</span> in Milan, Italy.",
+                "timeline1984Desc": "Sergio Soprani establishes the company, initially focusing on specialized engineering for the <span class=\"text-[#00153D] font-bold\">automotive sector</span> in Milan, Italy.",
                 "timeline1989Title": "Industrial Pivot",
-                "timeline1989Desc": "Matteo Soprani joins the vision, leading the strategic shift towards the <span class=\"text-[#001F5F] font-bold\">metallic packaging industry</span>, setting the stage for global leadership.",
+                "timeline1989Desc": "Matteo Soprani joins the vision, leading the strategic shift towards the <span class=\"text-[#00153D] font-bold\">metallic packaging industry</span>, setting the stage for global leadership.",
                 "timeline2026Title": "Global Excellence",
-                "timeline2026Desc": "Under the leadership of Matteo Soprani, the company continues to provide world-class technical support and high-end machinery across <span class=\"text-[#001F5F] font-bold\">five continents</span>.",
+                "timeline2026Desc": "Under the leadership of Matteo Soprani, the company continues to provide world-class technical support and high-end machinery across <span class=\"text-[#00153D] font-bold\">five continents</span>.",
                 "infraEyebrow": "Operational Excellence",
-                "infraTitleMain": "Global Network & High-End Infrastructure"
+                "infraTitleMain": "Global Network & High-End Infrastructure",
+                "globalOpsTitle": "Global Operations",
+                "aboutGlobalTitle": "Widespread presence across strategic industrial hubs.",
+                "aboutGlobalP": "With a network of specialized technicians and strategic logistics, we ensure that Soprani Engineering precision is available wherever your production demands it. From rapid parts deployment to on-site technical audits, our footprint covers the most demanding industrial zones.",
+                "infraTitle": "Our Infrastructure",
+                "aboutInfraTitle": "Scalable facilities designed for precision and rapid response.",
+                "aboutInfra1T": "Centralized Logistics",
+                "aboutInfra2T": "Service Center",
+                "aboutInfra3T": "Partner Network"
+        },
+        "regions": {
+                "europe": "Europe",
+                "middleeast": "Middle East",
+                "northafrica": "North Africa",
+                "asia": "Asia",
+                "americas": "Americas"
         },
         "contactPage": {
                 "heroTitle": "Global Connectivity",
