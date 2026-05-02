@@ -49,7 +49,7 @@ export default function SopraniLegacyHero() {
 
   return (
     <section
-      className="relative w-full h-[100svh] bg-[#001F5F] overflow-hidden flex items-center justify-center z-10"
+      className="relative w-full min-h-[110svh] lg:min-h-[105vh] bg-[#001F5F] overflow-hidden flex items-center justify-center z-10"
     >
       {/* 
         Video Background Overlay 
@@ -69,7 +69,7 @@ export default function SopraniLegacyHero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-[90rem] mx-auto pt-16">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-[90rem] mx-auto pt-40 sm:pt-56 pb-32">
         {/* Advanced Text Entrance */}
         <motion.div
           variants={containerVariants}
@@ -77,7 +77,7 @@ export default function SopraniLegacyHero() {
           animate={isVideoLoaded ? "visible" : "hidden"}
           className="w-full"
         >
-          <h1 className="text-[2.2rem] xs:text-[2.8rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem] xl:text-[9.5rem] font-heading font-black text-white leading-[1.1] sm:leading-[0.95] tracking-tighter mb-8 sm:mb-10 drop-shadow-2xl uppercase flex flex-wrap justify-center gap-x-[0.25em] gap-y-0 px-2 break-words">
+          <h1 className="text-[1.8rem] xs:text-[2.4rem] sm:text-[3.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] font-heading font-black text-white leading-[1.1] sm:leading-[0.95] tracking-tighter mb-8 sm:mb-10 drop-shadow-2xl uppercase flex flex-wrap justify-center gap-x-[0.25em] gap-y-0 px-2 break-words">
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden pt-[0.2em] pb-[0.2em] px-[0.1em] -mt-[0.2em] -mb-[0.2em] -mx-[0.1em]">
                 <motion.span
@@ -98,7 +98,7 @@ export default function SopraniLegacyHero() {
           transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
           className="max-w-4xl mx-auto px-4"
         >
-          <p className="text-sm sm:text-xl md:text-2xl font-light text-white/80 leading-relaxed tracking-tight drop-shadow-md mb-10 text-balance">
+          <p className="text-sm sm:text-lg md:text-xl font-light text-white/80 leading-relaxed tracking-tight drop-shadow-md mb-10 text-balance">
             {t('heroLegacy.subheadline')}
           </p>
 
