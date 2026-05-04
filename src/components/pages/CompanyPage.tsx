@@ -119,12 +119,12 @@ export default function CompanyPage() {
                   </span>
                 </div>
                 <FadeUp delay={600}>
-                  <h1 className="text-4xl md:text-7xl lg:text-8xl font-heading font-black text-white mb-8 tracking-tight leading-[1.1]">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-heading font-black text-white mb-8 tracking-tight leading-[1.1]">
                     {t('companyPage.heroTitle')}
                   </h1>
                 </FadeUp>
                 <FadeUp delay={800}>
-                  <p className="text-base md:text-xl text-white/80 max-w-2xl font-paragraph font-light leading-relaxed mb-12">
+                  <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-2xl font-paragraph font-light leading-relaxed mb-12">
                     {t('companyPage.p1')}
                   </p>
                 </FadeUp>
@@ -208,61 +208,7 @@ export default function CompanyPage() {
             </div>
           </div>
         </section>
-        
-        {/* ── LEADERSHIP & MANAGEMENT ────────────────────────────────────── */}
-        <section className="bg-white py-24 md:py-32">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              <div className="flex-1 text-left">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-px bg-accent" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.28em] text-accent">
-                    {t('companyPage.leadershipEyebrow')}
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-5xl font-heading font-black text-[#001F5F] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
-                  {t('companyPage.leadershipTitle')}
-                </h2>
-                <p className="text-slate-600 text-base md:text-lg leading-relaxed font-paragraph font-medium mb-8">
-                  {t('companyPage.leadershipDesc')}
-                </p>
-                <div className="flex flex-col gap-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-none bg-slate-50 flex items-center justify-center border border-slate-100">
-                      <Users2 size={20} className="text-[#001F5F]" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-black text-[#001F5F] uppercase tracking-widest">Matteo Soprani</p>
-                      <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">{t('companyPage.managementTitle')}</p>
-                    </div>
-                  </div>
-                  
-                  <a
-                    href="https://www.linkedin.com/in/matteo-soprani-a4809769/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-slate-500 hover:text-blue-600 transition-all duration-300 group"
-                    aria-label="LinkedIn de Matteo Soprani"
-                  >
-                    <div className="w-10 h-10 rounded-none bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:bg-blue-50 group-hover:border-blue-200 transition-all">
-                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                      </svg>
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">{t('companyPage.viewLinkedin')}</span>
-                  </a>
-                </div>
-              </div>
-              <div className="flex-1 relative w-full aspect-video md:aspect-square bg-slate-100 rounded-none overflow-hidden group">
-                <Image
-                  src="https://static.wixstatic.com/media/9bbed2_c4568600f722420f9260655cc9252c7c~mv2.jpg/v1/crop/x_0,y_41,w_1000,h_1333/fill/w_318,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/SOPRANI_SERGIO_MILANO_edited_edited.jpg"
-                  alt="Management"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* ── INTERACTIVE TIMELINE ────────────────────────────────────────── */}
         <section className="bg-white py-24 md:py-40 relative overflow-hidden">

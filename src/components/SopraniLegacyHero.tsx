@@ -98,7 +98,7 @@ export default function SopraniLegacyHero() {
           transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
           className="max-w-4xl mx-auto px-4"
         >
-          <p className="text-sm sm:text-lg md:text-xl font-light text-white/80 leading-relaxed tracking-tight drop-shadow-md mb-10 text-balance">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/80 leading-relaxed tracking-tight drop-shadow-md mb-10 text-balance">
             {t('heroLegacy.subheadline')}
           </p>
 

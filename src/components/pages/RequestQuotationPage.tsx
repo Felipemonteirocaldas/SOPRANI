@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import { AlertCircle, ArrowRight, Building2, Globe, Hash, Layers, Mail, MessageSquare, Paperclip, Phone, ShieldCheck, X, Zap } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { AlertCircle, Building2, Globe, Hash, Layers, Mail, MessageSquare, Phone, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import i18n from '@/i18n/config';
+
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
 
 const FeatureItem = ({ icon: Icon, title, desc }: { icon: any, title: string, desc: string }) => (
   <div className="flex gap-4 p-4 rounded-none bg-white/5 border border-white/10 backdrop-blur-sm">
@@ -22,7 +30,6 @@ export default function RequestQuotationPage() {
     companyName: '',
     contactPerson: '',
     email: '',
-    phone: '',
     country: '',
     productOrService: '',
     machineType: '',
@@ -32,10 +39,11 @@ export default function RequestQuotationPage() {
     message: '',
     privacyAccepted: false
   });
+  const [phone, setPhone] = useState<string>('');
 
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -62,27 +70,43 @@ export default function RequestQuotationPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      setSelectedFiles(prev => [...prev, ...filesArray]);
     }
   };
 
-  const removeFile = (index: number) => {
-    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
-  };
+  const removeFile = (index: number) => {};
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const templateParams = {
+      company_name:      formData.companyName,
+      contact_person:    formData.contactPerson,
+      from_email:        formData.email,
+      phone:             phone || '—',
+      country:           formData.country,
+      product_or_service: formData.productOrService,
+      machine_type:      formData.machineType || '—',
+      spare_part_ref:    formData.sparePartReference || '—',
+      quantity:          formData.quantity || '—',
+      urgency:           formData.urgency,
+      message:           formData.message || '—',
+      language:          (i18n.language || 'en').toUpperCase(),
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       setSubmitted(true);
-      setIsLoading(false);
       setFormData({
         companyName: '',
         contactPerson: '',
         email: '',
-        phone: '',
         country: '',
         productOrService: '',
         machineType: '',
@@ -92,8 +116,14 @@ export default function RequestQuotationPage() {
         message: '',
         privacyAccepted: false
       });
+      setPhone('');
       setSelectedFiles([]);
-    }, 1500);
+    } catch (err: any) {
+      const detail = err?.text || err?.message || '';
+      setError(detail || 'Failed to send your request. Please try again or contact us at info@sopraniengineering.com');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -210,11 +240,14 @@ export default function RequestQuotationPage() {
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">
                             <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.coPhone')}</label>
-                            <div className="relative">
-                              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
-                              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required
-                                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium" />
-                            </div>
+                            <PhoneInput
+                              international
+                              defaultCountry="IT"
+                              value={phone}
+                              onChange={(val) => setPhone(val ?? '')}
+                              className="phone-input-soprani"
+                              placeholder="+39 02 1234567"
+                            />
                           </div>
                         </div>
 
@@ -315,27 +348,6 @@ export default function RequestQuotationPage() {
                             placeholder={t('reqPage.msgPlace')} />
                         </div>
 
-                        {/* Row 7: File Attachments */}
-                        <div className="space-y-2 pt-3 sm:pt-4 border-t border-gray-100">
-                          <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">{t('reqPage.fileAttach')}</label>
-                          <p className="text-[9px] text-gray-400 italic mb-2">{t('reqPage.fileInfo')}</p>
-                          <div className="flex flex-wrap gap-2">
-                            {selectedFiles.map((file, idx) => (
-                              <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 text-[10px] font-medium text-gray-600">
-                                <Paperclip className="w-3 h-3 text-accent" />
-                                <span className="max-w-[100px] truncate">{file.name}</span>
-                                <button type="button" onClick={() => removeFile(idx)} className="p-0.5 hover:bg-gray-200 transition-colors">
-                                  <X className="w-3 h-3 text-blue-300" />
-                                </button>
-                              </div>
-                            ))}
-                            <label className="flex items-center gap-2 px-4 py-1.5 bg-white border border-dashed border-gray-300 hover:border-accent hover:text-accent cursor-pointer transition-all text-[10px] font-bold uppercase tracking-wider text-gray-500">
-                              <Paperclip className="w-3 h-3" />
-                              {t('reqPage.selectFile')}
-                              <input type="file" multiple onChange={handleFileChange} className="hidden" />
-                            </label>
-                          </div>
-                        </div>
 
                         {/* Privacy Consent Checkbox */}
                         <div className="flex items-start gap-3 py-2">
@@ -359,6 +371,14 @@ export default function RequestQuotationPage() {
                             </label>
                           </div>
                         </div>
+
+                        {/* Error message */}
+                        {error && (
+                          <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 text-red-700 text-xs">
+                            <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                            <span>{error}</span>
+                          </div>
+                        )}
 
                         {/* Submit Row */}
                         <div className="flex flex-col sm:flex-row gap-3 pt-2">

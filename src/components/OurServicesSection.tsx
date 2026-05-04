@@ -1,6 +1,6 @@
-import { Briefcase, Wrench, Clipboard, RotateCw, ShoppingCart, Hammer, type LucideIcon } from 'lucide-react';
+import { Briefcase, Wrench, Clipboard, RotateCw, Hammer, type LucideIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ConversionButton from '@/components/ui/ConversionButton';
 
@@ -9,11 +9,19 @@ import ConversionButton from '@/components/ui/ConversionButton';
 // ─────────────────────────────────────────────
 function ServiceCard({
   service,
-  isLastColumn,
+  isLastColumnLg,
+  isLastColumnSm,
+  isLastRowLg,
+  isLastRowSm,
+  isLastRowMobile,
   isLastCard,
 }: {
   service: { number: string; title: string; description: string; icon: LucideIcon };
-  isLastColumn: boolean;
+  isLastColumnLg: boolean;
+  isLastColumnSm: boolean;
+  isLastRowLg: boolean;
+  isLastRowSm: boolean;
+  isLastRowMobile: boolean;
   isLastCard: boolean;
 }) {
   const IconComponent = service.icon;
@@ -26,10 +34,15 @@ function ServiceCard({
       onMouseLeave={() => setHovered(false)}
       className={`
         relative p-6 sm:p-8 lg:p-14
-        border-b border-slate-100/60
+        block w-full h-full
+        border-slate-100/60
         group overflow-hidden
         transition-all duration-500
-        ${!isLastColumn && !isLastCard ? 'lg:border-r lg:border-r-slate-100/60' : ''}
+        ${!isLastRowMobile ? 'border-b' : 'border-b-0'}
+        ${!isLastRowSm ? 'sm:border-b' : 'sm:border-b-0'}
+        ${!isLastRowLg ? 'lg:border-b' : 'lg:border-b-0'}
+        ${!isLastColumnLg && !isLastCard ? 'lg:border-r lg:border-r-slate-100/60' : ''}
+        ${!isLastColumnSm && !isLastCard ? 'sm:border-r sm:border-r-slate-100/60' : ''}
       `}
       style={{
         background: hovered
@@ -46,7 +59,6 @@ function ServiceCard({
             'linear-gradient(115deg, transparent 30%, rgba(148,163,184,0.06) 50%, transparent 70%)',
         }}
       />
-
 
       {/* ✦ Icon Box — with Industrial Glow */}
       <div
@@ -151,7 +163,7 @@ export default function OurServicesSection() {
               {t('servicesSection.ourServices')}
             </h2>
             <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium text-white/70 mt-2">
-              {t('servicesSection.sixAreas')}
+              {t('servicesSection.fiveAreas')}
             </p>
           </div>
 
@@ -169,7 +181,7 @@ export default function OurServicesSection() {
           </ConversionButton>
         </div>
 
-        {/* ✦ Services Grid — Dynamic Gradient Cards */}
+        {/* ✦ Services Grid — Optimized 3+2 Layout for 5 items */}
         <div
           className="shadow-2xl shadow-slate-300/40 overflow-hidden"
           style={{
@@ -177,17 +189,38 @@ export default function OurServicesSection() {
             border: '1px solid rgba(226,232,240,0.8)',
           }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-0">
             {services.map((service, index) => {
-              const isLastColumn = (index + 1) % 3 === 0;
-              const isLastCard = index === services.length - 1;
+              // Layout: Row 1 (3 items), Row 2 (2 items)
+              const isRow1 = index < 3;
+              const colSpanClass = isRow1 ? 'lg:col-span-2' : 'lg:col-span-3';
+              
+              // sm: Row 1 (2), Row 2 (2), Row 3 (1)
+              const smColSpanClass = index === 4 ? 'sm:col-span-2' : 'sm:col-span-1';
+
+              // Borders:
+              // LG: 0,1,3 have right border.
+              const isLastColumnLg = index === 2 || index === 4;
+              // SM: 0, 2 have right border.
+              const isLastColumnSm = index === 1 || index === 3 || index === 4;
+              
+              // Last rows:
+              const isLastRowLg = index >= 3;
+              const isLastRowSm = index === 4;
+              const isLastRowMobile = index === 4;
+
               return (
-                <ServiceCard
-                  key={service.number}
-                  service={service}
-                  isLastColumn={isLastColumn}
-                  isLastCard={isLastCard}
-                />
+                <div key={service.number} className={`${colSpanClass} ${smColSpanClass} col-span-1`}>
+                  <ServiceCard
+                    service={service}
+                    isLastColumnLg={isLastColumnLg}
+                    isLastColumnSm={isLastColumnSm}
+                    isLastRowLg={isLastRowLg}
+                    isLastRowSm={isLastRowSm}
+                    isLastRowMobile={isLastRowMobile}
+                    isLastCard={index === services.length - 1}
+                  />
+                </div>
               );
             })}
           </div>

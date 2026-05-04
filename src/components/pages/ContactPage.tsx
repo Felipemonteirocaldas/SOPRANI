@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Globe, ShieldCheck, ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import i18n from '@/i18n/config';
+
+const EMAILJS_SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const EMAILJS_TEMPLATE_ID  = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT_ID as string;
+const EMAILJS_PUBLIC_KEY   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 const HubCard = ({ region, locations, delay }: { region: string, locations: string, delay: number }) => (
   <motion.div
@@ -36,6 +42,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [italyTime, setItalyTime] = useState('');
 
   useEffect(() => {
@@ -57,12 +64,30 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setFormData({
-      name: '', company: '', country: '', email: '', phone: '', subject: '', message: '', privacyAccepted: false
-    });
-    setIsSubmitting(false);
+    setError(null);
+
+    const templateParams = {
+      name:       formData.name,
+      company:    formData.company || '—',
+      from_email: formData.email,
+      email:      formData.email,
+      phone:      formData.phone || '—',
+      country:    formData.country || '—',
+      subject:    formData.subject,
+      message:    formData.message,
+      language:   (i18n.language || 'en').toUpperCase(),
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+      setSubmitted(true);
+      setFormData({ name: '', company: '', country: '', email: '', phone: '', subject: '', message: '', privacyAccepted: false });
+    } catch (err: any) {
+      const detail = err?.text || err?.message || '';
+      setError(detail || 'Failed to send your message. Please contact us at info@sopraniengineering.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -369,6 +394,13 @@ export default function ContactPage() {
                             </label>
                           </div>
                         </div>
+
+                        {/* Error alert */}
+                        {error && (
+                          <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 text-red-700 text-xs">
+                            <span>⚠ {error}</span>
+                          </div>
+                        )}
 
                         {/* Botão de envio */}
                         <button

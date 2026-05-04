@@ -284,7 +284,7 @@ export default function ProductsPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
 
             {/* Desktop Brand Pills */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
               {([
                 { id: 'all', label: t('productsPage.allBrands') },
                 { id: 'koenig-bauer', label: 'Koenig Bauer Metalprint' },
@@ -338,13 +338,13 @@ export default function ProductsPage() {
 
           {/* Row 2: Category Filters */}
           {categoriesForBrand.length > 1 && (
-            <div className="flex flex-col md:flex-row md:items-center gap-2 overflow-x-auto no-scrollbar pt-1 md:pt-0 md:pb-1">
+            <div className="flex flex-col md:flex-row md:items-center gap-2 overflow-x-auto no-scrollbar pt-1 md:pt-0 md:pb-1 -mx-4 px-4 md:mx-0 md:px-0">
               <span className="text-[10px] hidden md:inline-block font-black uppercase tracking-[0.3em] text-slate-400 shrink-0 mr-1">
                 {t('productsPage.category') || 'Category:'}
               </span>
 
               {/* Desktop Category Chips */}
-              <div className="hidden md:flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2 pr-12">
                 {categoriesForBrand.map(cat => (
                   <button
                     key={cat}

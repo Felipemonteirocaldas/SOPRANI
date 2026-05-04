@@ -63,7 +63,7 @@ export default function SellAssetCTA() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="lg:col-span-7"
+            className="lg:col-span-8"
           >
             <div className="mb-10">
               <span className="tag-shimmer inline-block px-3 py-1.5 bg-white/10 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.4em]">
@@ -71,7 +71,7 @@ export default function SellAssetCTA() {
               </span>
             </div>
 
-            <h2 className="text-5xl lg:text-7xl font-heading font-bold text-white mb-8 leading-[1.05] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-8 leading-[1.05] tracking-tight">
               {t('premiumCta.industrialLiquidityTitle')}
             </h2>
 
@@ -105,7 +105,7 @@ export default function SellAssetCTA() {
           </motion.div>
 
           {/* 3D Production Line Area */}
-          <div className="lg:col-span-5 w-full h-[400px] lg:h-[600px]">
+          <div className="lg:col-span-4 w-full h-[350px] lg:h-[550px]">
             <ThreeProductionLine />
           </div>
 
