@@ -382,16 +382,16 @@ export default function HomePage() {
                           </div>
                         )}
                       </div>
-                      <div className="p-8 md:p-10">
+                      <div className="p-6 md:p-8">
                         <div className="flex items-center gap-3 mb-4">
                           <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                             {formatDate(news[0].publishedAt)}
                           </span>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors duration-300">
+                        <h3 className="text-xl md:text-2xl font-heading font-black text-primary mb-3 leading-tight group-hover:text-accent transition-colors duration-300">
                           {news[0].title}
                         </h3>
-                        <p className="text-slate-600 mb-8 line-clamp-3 text-base md:text-lg leading-relaxed font-normal">
+                        <p className="text-slate-600 mb-6 line-clamp-2 text-sm md:text-base leading-relaxed font-normal">
                           {news[0].excerpt}
                         </p>
 
@@ -409,7 +409,7 @@ export default function HomePage() {
                     <StaggerItem key={item._id} className="h-full">
                       <Link
                         to="/news"
-                        className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full min-h-[140px] border-l-4 border-l-accent border-y border-r border-border-light"
+                        className="group flex bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full min-h-[120px] border-l-4 border-l-accent border-y border-r border-border-light"
                       >
                         <div className="w-1/3 relative overflow-hidden bg-gray-200 flex-shrink-0">
                           {item.mainImage ? (
@@ -424,7 +424,7 @@ export default function HomePage() {
                             </div>
                           )}
                         </div>
-                        <div className="w-2/3 p-5 flex flex-col">
+                        <div className="w-2/3 p-4 flex flex-col">
                           <div className="flex justify-between items-start mb-2">
                             <span className="text-[9px] font-black text-accent uppercase tracking-widest">
                               {item.category || 'NEWS'}
@@ -433,7 +433,7 @@ export default function HomePage() {
                               {formatDate(item.publishedAt)}
                             </span>
                           </div>
-                          <h4 className="text-base font-bold text-primary mb-2 line-clamp-2 leading-tight group-hover:text-accent transition-colors">
+                          <h4 className="text-sm font-bold text-primary mb-1 line-clamp-2 leading-tight group-hover:text-accent transition-colors">
                             {item.title}
                           </h4>
                           <div className="mt-auto flex justify-end">

@@ -103,7 +103,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-10 h-px bg-accent" />
                   <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
-                    Global Interaction Hub
+                    {t('contactPage.heroEyebrow')}
                   </span>
                 </div>
 
@@ -130,14 +130,14 @@ export default function ContactPage() {
                   {/* HQ Status + Clock */}
                   <div className="mb-6 sm:mb-8">
                     <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-4">
-                      Soprani HQ Status
+                      {t('contactPage.hqStatus')}
                     </h2>
 
                     {/* Relógio — menor no mobile */}
                     <div className="flex flex-col mb-5 sm:mb-7">
                       <div className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2 leading-none">
                         {italyTime}
-                        <span className="text-[9px] uppercase text-blue-300 pb-1">CET (Italy)</span>
+                        <span className="text-[9px] uppercase text-blue-300 pb-1">{t('contactPage.cetItaly')}</span>
                       </div>
                       <div className="flex items-center gap-2 mt-3">
                         <span className="relative flex h-2 w-2">
@@ -145,7 +145,7 @@ export default function ContactPage() {
                           <span className="relative inline-flex rounded-none h-2 w-2 bg-green-500"></span>
                         </span>
                         <span className="text-[10px] font-bold uppercase tracking-widest text-green-500">
-                          Technical Desk: Online &amp; Active
+                          {t('contactPage.techDeskStatus')}
                         </span>
                       </div>
                     </div>
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       <ContactMethod
                         icon={MapPin}
                         label={t('contactPage.presence')}
-                        value="Europe · Asia · Americas · MENA"
+                        value={t('contactPage.globalPresenceList')}
                       />
                     </div>
                   </div>
@@ -236,7 +236,7 @@ export default function ContactPage() {
                         onClick={() => setSubmitted(false)}
                         className="px-8 sm:px-10 py-4 bg-[#001F5F] text-white text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all"
                       >
-                        New Message
+                        {t('contactPage.newMessage')}
                       </button>
                     </motion.div>
                   ) : (
@@ -288,7 +288,7 @@ export default function ContactPage() {
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            placeholder="Select your country"
+                            placeholder={t('contactPage.formPlaceCountry')}
                             icon={Globe}
                           />
                         </div>
@@ -301,7 +301,7 @@ export default function ContactPage() {
                             type="tel"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="+00 000 000"
+                            placeholder={t('contactPage.placeholderPhone')}
                             icon={Phone}
                           />
                           <div className="space-y-1.5 flex flex-col">
@@ -397,22 +397,22 @@ export default function ContactPage() {
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 mb-10 md:mb-20">
               <div className="max-w-xl text-left">
-                <span className="text-xs font-bold text-accent uppercase tracking-[0.3em] block mb-4">Network Connectivity</span>
+                <span className="text-xs font-bold text-accent uppercase tracking-[0.3em] block mb-4">{t('contactPage.networkEyebrow')}</span>
                 <h2 className="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tighter leading-none mb-6">
-                  SOPRANI Global Service Hubs
+                  {t('contactPage.networkTitle')}
                 </h2>
                 <div className="h-1 w-24 bg-accent" />
               </div>
               <p className="text-blue-200 text-sm font-medium leading-relaxed max-w-sm md:text-right text-left">
-                Our specialized decentralized support ensures that machinery and materials are handled with local expertise across major industrial regions.
+                {t('contactPage.networkDesc')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <HubCard region="Europe" locations="Italy · Germany · Poland · UK" delay={0.1} />
-              <HubCard region="Americas" locations="USA · Brazil · Mexico · Canada" delay={0.2} />
-              <HubCard region="MENA" locations="UAE · Saudi Arabia · Egypt · Turkey" delay={0.3} />
-              <HubCard region="Asia Pacific" locations="China · India · Vietnam · Australia" delay={0.4} />
+              <HubCard region={t('contactPage.regionEurope')} locations={t('contactPage.locEurope')} delay={0.1} />
+              <HubCard region={t('contactPage.regionAmericas')} locations={t('contactPage.locAmericas')} delay={0.2} />
+              <HubCard region={t('contactPage.regionMENA')} locations={t('contactPage.locMENA')} delay={0.3} />
+              <HubCard region={t('contactPage.regionAsia')} locations={t('contactPage.locAsia')} delay={0.4} />
             </div>
           </div>
         </section>
@@ -421,7 +421,7 @@ export default function ContactPage() {
         <section className="py-16 sm:py-24 bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 md:px-8 text-center">
             <h2 className="text-2xl font-heading font-black text-primary mb-10 sm:mb-16 uppercase tracking-widest tracking-tighter">
-              Priority Channels
+              {t('contactPage.priorityChannels')}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
               <RapidLink

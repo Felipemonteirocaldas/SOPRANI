@@ -38,7 +38,7 @@ export default function AboutPage() {
                   {t('aboutPage.intExcP3')}
                 </p>
               </div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative aspect-[4/3] rounded-none overflow-hidden shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/9bbed2_fe43fe59bc1d4d7ca944f544cd2c69bd~mv2.png?originWidth=896&originHeight=640"
                   alt="Metal packaging machinery"
@@ -80,7 +80,7 @@ export default function AboutPage() {
               ].map((value, idx) => {
                 const Icon = value.icon;
                 return (
-                  <div key={idx} className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                  <div key={idx} className="bg-white p-6 md:p-8 rounded-none shadow-sm hover:shadow-lg transition-shadow">
                     <Icon className="w-10 md:w-12 h-10 md:h-12 text-accent mb-3 md:mb-4" />
                     <h3 className="text-lg md:text-xl font-heading font-bold mb-2 md:mb-3">{value.title}</h3>
                     <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{value.description}</p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 text-center">
               {['Europe', 'Middle East', 'North Africa', 'Asia', 'Americas'].map((region, idx) => (
-                <div key={idx} className="bg-white/10 p-6 md:p-8 rounded-lg backdrop-blur-sm">
+                <div key={idx} className="bg-white/10 p-6 md:p-8 rounded-none backdrop-blur-sm">
                   <p className="text-base md:text-xl font-heading font-bold">{region}</p>
                 </div>
               ))}

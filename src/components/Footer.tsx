@@ -22,11 +22,11 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-sm xs:text-base text-slate-100 leading-relaxed font-normal">
-              40+ years of engineering excellence for the global metal packaging industry.
+              {t('footer.shortDesc')}
             </p>
             <div className="mt-10">
               <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/50 block mb-4">
-                Follow us
+                {t('footer.followUs')}
               </span>
               <div className="flex gap-4">
                 <a
@@ -132,7 +132,7 @@ export default function Footer() {
                   shimmer={true}
                   magnetic={true}
                   id="footer-cta-request-quotation"
-                  aria-label="Request a Technical Quotation"
+                  aria-label={t('footer.ariaQuote')}
                   className="text-[10px] sm:text-[11px] px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap"
                 >
                   {t('header.requestQuotation')}
@@ -163,6 +163,9 @@ export default function Footer() {
                 </Link>
                 <Link to="/terms" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
                   {t('footer.termsOfService')}
+                </Link>
+                <Link to="/cookie-policy" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-accent transition-colors duration-300">
+                  {t('footer.cookies')}
                 </Link>
               </div>
             </div>

@@ -36,6 +36,7 @@ interface Industry {
 // 🃏 INDUSTRY CARD
 // ─────────────────────────────────────────────
 const IndustryCard = ({ industry, index }: { industry: Industry; index: number }) => {
+  const { t } = useTranslation();
   const IconComponent = industry.icon;
 
   return (
@@ -44,14 +45,14 @@ const IndustryCard = ({ industry, index }: { industry: Industry; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative p-10 bg-white rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,31,95,0.1)] hover:-translate-y-2 flex flex-col h-full overflow-hidden"
+      className="group relative p-10 bg-white rounded-none border border-slate-100 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,31,95,0.1)] hover:-translate-y-2 flex flex-col h-full overflow-hidden"
     >
       {/* Decorative Background Icon */}
       <IconComponent className="absolute -right-10 -bottom-10 w-48 h-48 text-slate-50 group-hover:text-slate-100 transition-colors duration-500 rotate-12" />
 
       <div className="relative z-10 flex-grow">
         {/* Icon */}
-        <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#001F5F] mb-8 group-hover:scale-110 group-hover:bg-accent transition-all duration-500 shadow-lg shadow-[#001F5F]/20 group-hover:shadow-accent/30">
+        <div className="w-16 h-16 rounded-none flex items-center justify-center bg-[#001F5F] mb-8 group-hover:scale-110 group-hover:bg-accent transition-all duration-500 shadow-lg shadow-[#001F5F]/20 group-hover:shadow-accent/30">
           <IconComponent
             className="w-8 h-8 text-white transition-transform duration-500 group-hover:rotate-12"
             strokeWidth={1.5}
@@ -250,7 +251,7 @@ export default function IndustriesPage() {
                 className="w-full lg:w-1/2 relative group"
               >
                 <div className="absolute -inset-4 bg-accent/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                <div className="relative rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,31,95,0.15)]">
+                <div className="relative rounded-none overflow-hidden shadow-[0_50px_100px_rgba(0,31,95,0.15)]">
                   <Image
                     src="https://static.wixstatic.com/media/9bbed2_f08f2dc238c742ea8773ab0f4e5fd930~mv2.png"
                     alt="Industrial Excellence"
@@ -259,7 +260,7 @@ export default function IndustriesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#001F5F]/60 via-transparent to-transparent opacity-60" />
 
                   {/* Floating Stat */}
-                  <div className="absolute bottom-10 left-10 p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
+                  <div className="absolute bottom-10 left-10 p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-none">
                     <div className="text-white text-3xl font-black font-heading mb-1">40+</div>
                     <div className="text-white/70 text-[10px] font-black uppercase tracking-widest leading-none">{t('stats.sublabel2')}</div>
                   </div>
@@ -290,7 +291,7 @@ export default function IndustriesPage() {
                       const Icon = feat.icon;
                       return (
                         <div key={i} className="flex gap-5 group/feat">
-                          <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center flex-shrink-0 group-hover/feat:bg-accent group-hover/feat:border-accent transition-all duration-500">
+                          <div className="w-12 h-12 rounded-none bg-white border border-slate-100 flex items-center justify-center flex-shrink-0 group-hover/feat:bg-accent group-hover/feat:border-accent transition-all duration-500">
                             <Icon className="w-5 h-5 text-accent group-hover/feat:text-white transition-colors" />
                           </div>
                           <div>

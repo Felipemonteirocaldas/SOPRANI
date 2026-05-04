@@ -27,6 +27,7 @@ const EventsPage = lazy(() => import('@/components/pages/EventsPage'));
 const NewsPage = lazy(() => import('@/components/pages/NewsPage'));
 const PrivacyPage = lazy(() => import('@/components/pages/PrivacyPage'));
 const TermsPage = lazy(() => import('@/components/pages/TermsPage'));
+const CookiePolicyPage = lazy(() => import('@/components/pages/CookiePolicyPage'));
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-background text-primary">
@@ -96,6 +97,7 @@ const router = createBrowserRouter([
       { path: "news", element: <Suspense fallback={<LoadingFallback />}><NewsPage /></Suspense> },
       { path: "privacy", element: <Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense> },
       { path: "terms", element: <Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense> },
+      { path: "cookie-policy", element: <Suspense fallback={<LoadingFallback />}><CookiePolicyPage /></Suspense> },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Image } from '@/components/ui/image';
 import { Calendar, User, MapPin, ExternalLink, Newspaper, CalendarDays, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -153,12 +154,11 @@ export default function NewsPage() {
             </div>
           ) : activeTab === 'news' ? (
             news.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-6 auto-rows-[300px] md:auto-rows-[350px]">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[250px] md:auto-rows-[300px]">
                 {news.map((item, index) => {
                   // Bento Grid Logic
                   const isLarge = index === 0;
                   const isWide = index === 3;
-                  const isTall = index === 1;
                   
                   return (
                     <AnimatedElement 
@@ -166,17 +166,16 @@ export default function NewsPage() {
                       delay={index * 50}
                       className={cn(
                         "h-full",
-                        isLarge ? "md:col-span-2 md:row-span-2" : 
+                        isLarge ? "md:col-span-2 md:row-span-1" : 
                         isWide ? "md:col-span-2 md:row-span-1" : 
-                        isTall ? "md:col-span-1 md:row-span-2" : 
                         "md:col-span-1 md:row-span-1"
                       )}
                     >
-                      <article className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full border border-gray-100">
+                      <article className="group relative bg-white rounded-none overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full border border-gray-100">
                         {item.mainImage && (
                           <div className={cn(
                             "relative overflow-hidden",
-                            isLarge || isTall ? "h-full" : "h-48"
+                            isLarge ? "h-full" : "h-32 md:h-40"
                           )}>
                             <Image
                               src={urlFor(item.mainImage).url()}
@@ -185,19 +184,19 @@ export default function NewsPage() {
                               width={isLarge ? 1200 : 600}
                             />
                             {/* Gradient Overlay for integrated text */}
-                            {(isLarge || isTall) && (
+                            {isLarge && (
                               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
                             )}
                           </div>
                         )}
 
                         <div className={cn(
-                          "flex flex-col p-6 md:p-8",
-                          (isLarge || isTall) ? "absolute bottom-0 left-0 right-0" : "flex-grow"
+                          "flex flex-col p-4 md:p-6",
+                          isLarge ? "absolute bottom-0 left-0 right-0" : "flex-grow"
                         )}>
                           <div className={cn(
-                            "flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] mb-3",
-                            (isLarge || isTall) ? "text-accent/90" : "text-gray-400"
+                            "flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] mb-2",
+                            isLarge ? "text-accent/90" : "text-gray-400"
                           )}>
                             {item.publishedAt && (
                               <div className="flex items-center gap-1.5">
@@ -215,9 +214,8 @@ export default function NewsPage() {
 
                           <h3 className={cn(
                             "font-heading font-black leading-tight transition-colors mb-3",
-                            isLarge ? "text-2xl md:text-3xl lg:text-4xl text-white" : 
-                            isTall ? "text-xl text-white" : 
-                            "text-lg text-primary group-hover:text-accent"
+                            isLarge ? "text-xl md:text-2xl text-white" : 
+                            "text-sm md:text-base text-primary group-hover:text-accent"
                           )}>
                             {item.title}
                           </h3>
@@ -233,10 +231,10 @@ export default function NewsPage() {
 
                           <button className={cn(
                             "inline-flex items-center text-[10px] font-black uppercase tracking-widest transition-all duration-300 group/btn mt-auto",
-                            (isLarge || isTall) ? "text-accent hover:text-white" : "text-accent hover:text-primary"
+                            isLarge ? "text-accent hover:text-white" : "text-accent hover:text-primary"
                           )}>
                             {t('newsPage.readMore')}
-                            <ArrowRight size={12} className="ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                            <ArrowRight size={10} className="ml-1.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                           </button>
                         </div>
                       </article>
@@ -276,7 +274,7 @@ export default function NewsPage() {
                       )}
 
                       {/* Content Section */}
-                      <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
+                      <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
                         <div className="flex flex-wrap items-center gap-4 mb-6">
                           {event.date && (
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-white text-[10px] font-black uppercase tracking-widest">
@@ -298,7 +296,7 @@ export default function NewsPage() {
                           )}
                         </div>
 
-                        <h3 className="text-2xl md:text-3xl font-heading font-black text-primary mb-4 leading-tight group-hover:text-accent transition-colors">
+                        <h3 className="text-xl md:text-2xl font-heading font-black text-primary mb-3 leading-tight group-hover:text-accent transition-colors">
                           {event.title}
                         </h3>
 

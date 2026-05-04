@@ -77,7 +77,7 @@ const IndustrialPart = () => {
 
 export default function ThreeDViewer() {
   return (
-    <div className="w-full h-[400px] md:h-[500px] bg-gradient-to-b from-gray-50 to-gray-100 rounded-xl overflow-hidden shadow-inner relative border border-gray-200">
+    <div className="w-full h-[400px] md:h-[500px] bg-gradient-to-b from-gray-50 to-gray-100 rounded-none overflow-hidden shadow-inner relative border border-gray-200">
       <ThreeErrorCatcher>
         <div className="absolute top-4 left-4 z-10 pointer-events-none">
           <span className="bg-white/90 backdrop-blur-sm text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full text-gray-700 shadow-sm border border-gray-200/50">

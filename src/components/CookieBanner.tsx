@@ -50,8 +50,8 @@ export const CookieBanner = () => {
               
               <p className="text-sm text-slate-300 mb-6 leading-relaxed font-paragraph">
                 {t('privacyPage.cookieNotice')}{' '}
-                <Link to="/privacy" className="text-white font-bold underline decoration-[#C41230] underline-offset-4 hover:text-[#C41230] transition-colors">
-                  {t('termsPage.privacyPolicy')}
+                <Link to="/cookie-policy" className="text-white font-bold underline decoration-[#C41230] underline-offset-4 hover:text-[#C41230] transition-colors">
+                  {t('footer.cookies')}
                 </Link>
               </p>
               
@@ -63,7 +63,7 @@ export const CookieBanner = () => {
                   Accept & Close
                 </button>
                 <Link 
-                  to="/privacy"
+                  to="/cookie-policy"
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors"
                 >
                   Learn More

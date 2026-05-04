@@ -107,14 +107,14 @@ export default function PartnersSection() {
                 href={partner.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col h-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-white/20 hover:-translate-y-2 shadow-2xl"
+                className="group relative flex flex-col h-full bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-none overflow-hidden transition-all duration-500 hover:bg-white/[0.06] hover:border-white/20 hover:-translate-y-2 shadow-2xl"
               >
                 {/* Visual Accent */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Logo Showcase */}
                 <div className="relative p-10 flex items-center justify-center bg-gradient-to-b from-white/[0.02] to-transparent">
-                  <div className="relative z-10 w-full aspect-[3/1] bg-white rounded-2xl p-6 flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative z-10 w-full aspect-[3/1] bg-white rounded-none p-6 flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-500">
                     <img
                       src={partner.logo}
                       alt={`${partner.name} logo`}
@@ -128,7 +128,7 @@ export default function PartnersSection() {
                 {/* Card Body */}
                   <div className="px-6 md:px-8 pb-8 md:pb-10 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-6">
-                    <div className="p-1.5 rounded-md bg-accent/10 border border-accent/20">
+                    <div className="p-1.5 rounded-none bg-accent/10 border border-accent/20">
                       <ShieldCheck className="w-3 h-3 text-accent" />
                     </div>
                     <span className="text-[10px] font-heading font-bold text-accent/80 uppercase tracking-[0.2em]">
@@ -180,7 +180,7 @@ export default function PartnersSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-20 py-8 px-10 rounded-3xl bg-white/[0.02] border border-white/5 text-center max-w-4xl mx-auto"
+          className="mt-20 py-8 px-10 rounded-none bg-white/[0.02] border border-white/5 text-center max-w-4xl mx-auto"
         >
           <p className="text-slate-400 text-sm md:text-base font-paragraph font-light italic">
             "{t('partners.cta')}"

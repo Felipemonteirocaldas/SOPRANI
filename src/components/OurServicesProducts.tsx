@@ -53,7 +53,7 @@ const AnimatedProductCard: React.FC<{ product: Product; delay: number }> = ({ pr
     >
       <Link
         to="/products"
-        className="bg-white rounded-2xl overflow-hidden h-full flex flex-col hover:shadow-2xl border border-primary/5 transition-all duration-300 cursor-pointer"
+        className="bg-white rounded-none overflow-hidden h-full flex flex-col hover:shadow-2xl border border-primary/5 transition-all duration-300 cursor-pointer"
       >
         <div className="relative w-full h-64 bg-primary/5 overflow-hidden">
           <Image

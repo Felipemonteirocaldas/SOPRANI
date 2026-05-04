@@ -116,7 +116,7 @@ export default function RequestQuotationPage() {
                   transition={{ duration: 0.6 }}
                 >
                   <span className="inline-block border-l-2 border-accent pl-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-6">
-                    B2B Technical Solutions
+                    {t('reqPage.heroEyebrow')}
                   </span>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">
                     {t('reqPage.heroTitle')}
@@ -187,7 +187,7 @@ export default function RequestQuotationPage() {
                               <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="Your company name" />
+                                placeholder={t('reqPage.formPlaceCo')} />
                             </div>
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">
@@ -205,7 +205,7 @@ export default function RequestQuotationPage() {
                               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <input type="email" name="email" value={formData.email} onChange={handleChange} required
                                 className="w-full pl-10 pr-4 py-2.5 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-sm font-medium"
-                                placeholder="your@email.com" />
+                                placeholder={t('newsPage.placeholderEmail')} />
                             </div>
                           </div>
                           <div className="space-y-1 sm:space-y-1.5">
@@ -226,24 +226,24 @@ export default function RequestQuotationPage() {
                               <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-300" />
                               <select name="country" value={formData.country} onChange={handleChange} required
                                 className="w-full h-[41px] pl-10 pr-4 border border-gray-200 focus:ring-1 focus:ring-accent focus:border-accent outline-none transition-all text-xs font-medium bg-white appearance-none">
-                                <option value="">Select your country</option>
-                                <optgroup label="Main Countries">
-                                  <option value="Italy">Italy</option>
-                                  <option value="Germany">Germany</option>
-                                  <option value="United States">United States</option>
-                                  <option value="Brazil">Brazil</option>
-                                  <option value="Spain">Spain</option>
-                                  <option value="Mexico">Mexico</option>
-                                  <option value="China">China</option>
-                                  <option value="India">India</option>
+                                <option value="">{t('reqPage.formPlaceCountry')}</option>
+                                <optgroup label={t('reqPage.optMainCountries')}>
+                                  <option value="Italy">{t('reqPage.locItaly')}</option>
+                                  <option value="Germany">{t('reqPage.locGermany')}</option>
+                                  <option value="United States">{t('reqPage.locUSA')}</option>
+                                  <option value="Brazil">{t('reqPage.locBrazil')}</option>
+                                  <option value="Spain">{t('reqPage.locSpain')}</option>
+                                  <option value="Mexico">{t('reqPage.locMexico')}</option>
+                                  <option value="China">{t('reqPage.locChina')}</option>
+                                  <option value="India">{t('reqPage.locIndia')}</option>
                                 </optgroup>
-                                <optgroup label="All Regions">
-                                  <option value="Europe">Europe</option>
-                                  <option value="North America">North America</option>
-                                  <option value="South America">South America</option>
-                                  <option value="Asia">Asia</option>
-                                  <option value="Africa">Africa</option>
-                                  <option value="Oceania">Oceania</option>
+                                <optgroup label={t('reqPage.optAllRegions')}>
+                                  <option value="Europe">{t('reqPage.locEurope')}</option>
+                                  <option value="North America">{t('reqPage.locNorthAmerica')}</option>
+                                  <option value="South America">{t('reqPage.locSouthAmerica')}</option>
+                                  <option value="Asia">{t('reqPage.locAsia')}</option>
+                                  <option value="Africa">{t('reqPage.locAfrica')}</option>
+                                  <option value="Oceania">{t('reqPage.locOceania')}</option>
                                 </optgroup>
                               </select>
                             </div>

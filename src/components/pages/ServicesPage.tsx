@@ -6,17 +6,17 @@ import { motion, useInView, AnimatePresence, useScroll, PanInfo } from 'framer-m
 import ConversionButton from '@/components/ui/ConversionButton';
 
 const SERVICES = (t: (k: string) => string) => [
-  { number: '01', icon: Wrench, titleKey: 'servicesPage.usedMachT', descKey: 'servicesPage.usedMachD', bullets: ['servicesPage.usedP1', 'servicesPage.usedP2', 'servicesPage.usedP3', 'servicesPage.usedP4'], tag: 'Machinery' },
-  { number: '02', icon: Package, titleKey: 'servicesPage.sparePartsT', descKey: 'servicesPage.sparePartsD', bullets: ['servicesPage.spP1', 'servicesPage.spP2', 'servicesPage.spP3', 'servicesPage.spP4'], tag: 'Parts' },
-  { number: '03', icon: Zap, titleKey: 'servicesPage.techAssistanceT', descKey: 'servicesPage.techAssistanceD', bullets: ['servicesPage.ta1', 'servicesPage.ta2', 'servicesPage.ta3', 'servicesPage.ta4'], tag: 'Support' },
-  { number: '04', icon: RefreshCw, titleKey: 'servicesPage.revampingT', descKey: 'servicesPage.revampingD', bullets: ['servicesPage.rv1', 'servicesPage.rv2', 'servicesPage.rv3', 'servicesPage.rv4'], tag: 'Upgrade' },
-  { number: '05', icon: TrendingUp, titleKey: 'servicesPage.tradingT', descKey: 'servicesPage.tradingD', bullets: ['servicesPage.tr1', 'servicesPage.tr2', 'servicesPage.tr3', 'servicesPage.tr4'], tag: 'Trading' },
-  { number: '06', icon: Hammer, titleKey: 'servicesPage.assetMarketT', descKey: 'servicesPage.assetMarketD', bullets: ['servicesPage.am1', 'servicesPage.am2', 'servicesPage.am3', 'servicesPage.am4'], tag: 'Asset Market' },
+  { number: '01', icon: Wrench, titleKey: 'servicesPage.usedMachT', descKey: 'servicesPage.usedMachD', bullets: ['servicesPage.usedP1', 'servicesPage.usedP2', 'servicesPage.usedP3', 'servicesPage.usedP4'], tagKey: 'servicesPage.tag1' },
+  { number: '02', icon: Package, titleKey: 'servicesPage.sparePartsT', descKey: 'servicesPage.sparePartsD', bullets: ['servicesPage.spP1', 'servicesPage.spP2', 'servicesPage.spP3', 'servicesPage.spP4'], tagKey: 'servicesPage.tag2' },
+  { number: '03', icon: Zap, titleKey: 'servicesPage.techAssistanceT', descKey: 'servicesPage.techAssistanceD', bullets: ['servicesPage.ta1', 'servicesPage.ta2', 'servicesPage.ta3', 'servicesPage.ta4'], tagKey: 'servicesPage.tag3' },
+  { number: '04', icon: RefreshCw, titleKey: 'servicesPage.revampingT', descKey: 'servicesPage.revampingD', bullets: ['servicesPage.rv1', 'servicesPage.rv2', 'servicesPage.rv3', 'servicesPage.rv4'], tagKey: 'servicesPage.tag4' },
+  { number: '05', icon: TrendingUp, titleKey: 'servicesPage.tradingT', descKey: 'servicesPage.tradingD', bullets: ['servicesPage.tr1', 'servicesPage.tr2', 'servicesPage.tr3', 'servicesPage.tr4'], tagKey: 'servicesPage.tag5' },
+  { number: '06', icon: Hammer, titleKey: 'servicesPage.assetMarketT', descKey: 'servicesPage.assetMarketD', bullets: ['servicesPage.am1', 'servicesPage.am2', 'servicesPage.am3', 'servicesPage.am4'], tagKey: 'servicesPage.tag6' },
 ];
 
 interface Service {
   number: string; icon: React.ElementType; titleKey: string;
-  descKey: string; bullets: string[]; tag: string;
+  descKey: string; bullets: string[]; tagKey: string;
 }
 
 
@@ -40,7 +40,7 @@ const ServiceTabletCard = ({ service, t }: { service: Service; t: (k: string) =>
         </div>
         <span className="text-4xl font-heading font-black opacity-[0.05]" style={{ color: '#001F5F' }}>{service.number}</span>
       </div>
-      <span className="text-[9px] font-black uppercase tracking-[0.25em] text-accent mb-2">{service.tag}</span>
+      <span className="text-[9px] font-black uppercase tracking-[0.25em] text-accent mb-2">{t(service.tagKey)}</span>
       <h3 className="text-xl font-heading font-black text-[#001F5F] mb-4 leading-tight">{t(service.titleKey)}</h3>
       <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1">{t(service.descKey)}</p>
       <ul className="space-y-3 mb-8">
@@ -52,7 +52,7 @@ const ServiceTabletCard = ({ service, t }: { service: Service; t: (k: string) =>
         ))}
       </ul>
       <Link to="/request-quotation" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-accent group">
-        Details <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+        {t('servicesPage.details')} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
       </Link>
     </motion.div>
   );
@@ -78,7 +78,7 @@ const ServiceDesktopRow = ({ service, t }: { service: Service; t: (k: string) =>
           {service.number}
         </span>
         <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-accent">
-          <span className="w-3 h-px bg-accent inline-block" />{service.tag}
+          <span className="w-3 h-px bg-accent inline-block" />{t(service.tagKey)}
         </span>
         <div className="w-10 h-10 flex items-center justify-center" style={{ background: '#001F5F' }}>
           <Icon size={18} className="text-white" />
@@ -92,11 +92,11 @@ const ServiceDesktopRow = ({ service, t }: { service: Service; t: (k: string) =>
           {t(service.descKey)}
         </p>
         <Link to="/request-quotation" className="inline-flex items-center gap-2 mt-8 text-[11px] font-black uppercase tracking-[0.2em] text-accent group/btn hover:gap-3 transition-all duration-300">
-          Request Quote <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+          {t('servicesPage.btnQuote')} <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
         </Link>
       </div>
       <div className="pl-14">
-        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 mb-5">Key Capabilities</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 mb-5">{t('servicesPage.capabilities')}</p>
         <ul className="space-y-3.5">
           {service.bullets.map((bKey, i) => (
             <li key={i} className="flex items-start gap-3">
@@ -132,7 +132,7 @@ export default function ServicesPage() {
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-px bg-accent" />
-                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">Industrial Services</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">{t('servicesPage.heroEyebrow')}</span>
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.0] tracking-tight mb-8">
                 {t('servicesSection.ourServices')}
@@ -181,7 +181,7 @@ export default function ServicesPage() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="w-8 h-px bg-accent" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">Work With Us</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">{t('servicesPage.ctaEyebrow')}</span>
                 <div className="w-8 h-px bg-accent" />
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-tight tracking-tight max-w-2xl mx-auto">

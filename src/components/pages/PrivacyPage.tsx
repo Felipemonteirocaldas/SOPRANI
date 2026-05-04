@@ -160,6 +160,9 @@ export default function PrivacyPage() {
                   <a href="/terms" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
                     Terms of Service <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>
+                  <a href="/cookie-policy" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
+                    Cookie Policy <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
                   <a href="/contact" className="text-sm font-bold text-[#001F5F] hover:text-[#C41230] transition-colors flex items-center justify-between group">
                     Contact Engineering <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </a>

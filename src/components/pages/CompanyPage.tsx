@@ -183,7 +183,7 @@ export default function CompanyPage() {
 
                 <div className="relative flex items-center justify-center">
                   {/* Senior Sergio - Legacy (Main focus) */}
-                  <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-50 focus-within:z-50 transition-all duration-500 group">
+                  <div className="relative z-20 w-[75%] md:w-[70%] aspect-[4/5] rounded-none overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 hover:z-50 focus-within:z-50 transition-all duration-500 group">
                     <img
                       src="/images/sergio-soprani-senior.png"
                       alt="Sergio Soprani - Founder"
@@ -196,7 +196,7 @@ export default function CompanyPage() {
                   </div>
 
                   {/* Young Sergio - Foundation (Legacy look) */}
-                  <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-50 active:z-50 focus:z-50 transition-all duration-500 group cursor-pointer" tabIndex={0}>
+                  <div className="absolute -bottom-6 -left-4 md:-bottom-12 md:-left-12 z-10 w-[55%] md:w-[50%] aspect-[4/5] rounded-none overflow-hidden shadow-2xl border-4 border-white transform lg:rotate-6 hover:rotate-0 hover:z-50 active:z-50 focus:z-50 transition-all duration-500 group cursor-pointer" tabIndex={0}>
                     <img
                       src="/images/sergio-soprani-young.png"
                       alt="Sergio Soprani - The Early Years"
@@ -257,7 +257,7 @@ export default function CompanyPage() {
                   </div>
                   <div className="flex-1 md:pl-20 order-3">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                      <div className="aspect-video rounded-none overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
                         <TimelineVideo src="/video/MILAO.mp4" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>
@@ -269,7 +269,7 @@ export default function CompanyPage() {
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 relative pl-16 md:pl-0">
                   <div className="flex-1 md:pr-20 order-3 md:order-1">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                      <div className="aspect-video rounded-none overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
                         <TimelineVideo src="/video/EVOLUCAO.mp4" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>
@@ -307,7 +307,7 @@ export default function CompanyPage() {
                   </div>
                   <div className="flex-1 md:pl-20 order-3">
                     <FadeUp delay={300}>
-                      <div className="aspect-video rounded-3xl overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
+                      <div className="aspect-video rounded-none overflow-hidden bg-slate-900 shadow-xl border border-slate-100 group relative">
                         <TimelineVideo src="/video/ExpansionMap.mp4" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                       </div>

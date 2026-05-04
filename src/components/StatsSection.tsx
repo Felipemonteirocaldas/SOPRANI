@@ -237,7 +237,7 @@ const StatsSection = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-primary-light/50 hover:bg-primary-light/80 transition-colors duration-300"
+              className="flex flex-col items-center text-center p-6 rounded-none bg-primary-light/50 hover:bg-primary-light/80 transition-colors duration-300"
             >
               {/* Ícone */}
               <div className="mb-4 text-accent">{service.icon}</div>

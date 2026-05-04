@@ -178,7 +178,7 @@ function MovingCans() {
 
 export default function ThreeProductionLine() {
   return (
-    <div className="w-full h-full bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden shadow-2xl relative cursor-grab active:cursor-grabbing">
+    <div className="w-full h-full bg-slate-100 rounded-none border border-slate-200 overflow-hidden shadow-2xl relative cursor-grab active:cursor-grabbing">
       {/* dpr={[1, 2]} ensures great performance on mobile displays while staying sharp */}
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 4, 12]} fov={35} />

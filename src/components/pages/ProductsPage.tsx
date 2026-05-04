@@ -262,7 +262,7 @@ export default function ProductsPage() {
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-px bg-accent" />
               <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/70">
-                PRECISION INDUSTRIAL ENGINEERING
+                {t('productsPage.heroEyebrow')}
               </span>
             </div>
 
@@ -286,7 +286,7 @@ export default function ProductsPage() {
             {/* Desktop Brand Pills */}
             <div className="hidden md:flex items-center gap-1">
               {([
-                { id: 'all', label: 'All Brands' },
+                { id: 'all', label: t('productsPage.allBrands') },
                 { id: 'koenig-bauer', label: 'Koenig Bauer Metalprint' },
                 { id: 'soudronic', label: 'Soudronic' },
               ] as const).map(tab => (
@@ -393,16 +393,16 @@ export default function ProductsPage() {
               <div className="p-4 rounded-full bg-red-50 text-accent">
                 <X className="w-10 h-10" />
               </div>
-              <h2 className="text-xl font-bold text-primary">Failed to load products</h2>
+              <h2 className="text-xl font-bold text-primary">{t('productsPage.errorTitle')}</h2>
               <p className="text-slate-500 max-w-md mx-auto">
-                There was an error connecting to our product database. Please try again later.
+                {t('productsPage.errorDesc')}
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => window.location.reload()}
                 className="mt-4"
               >
-                Retry Connection
+                {t('productsPage.retry')}
               </Button>
             </div>
           ) : (
@@ -445,7 +445,7 @@ export default function ProductsPage() {
                           className="group"
                         >
                           <Card
-                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl cursor-pointer"
+                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-none cursor-pointer"
                             onClick={() => setSelectedProduct(product)}
                           >
                             <div className="relative h-64 overflow-hidden bg-slate-100">
@@ -464,7 +464,7 @@ export default function ProductsPage() {
                               <div className="absolute inset-0 transition-opacity opacity-0 bg-gradient-to-t from-[#001F5F]/80 via-transparent group-hover:opacity-100" />
                               <div className="absolute top-4 left-4">
                                 <Badge className="px-3 py-1 font-bold tracking-wider text-white border-none bg-[#001F5F] shadow-lg shadow-[#001F5F]/20">
-                                  System
+                                  {t('productsPage.systemBadge')}
                                 </Badge>
                               </div>
                               <button
@@ -497,7 +497,7 @@ export default function ProductsPage() {
                                 ))}
                               </div>
                               <div
-                                className="w-full mt-8 font-bold border rounded-xl hover:bg-[#001F5F] hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
+                                className="w-full mt-8 font-bold border rounded-none hover:bg-[#001F5F] hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
                               >
                                 {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
                               </div>
@@ -549,7 +549,7 @@ export default function ProductsPage() {
                           className="group"
                         >
                           <Card
-                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-2xl cursor-pointer"
+                            className="h-full overflow-hidden transition-all duration-500 bg-white border-0 shadow-sm hover:shadow-2xl rounded-none cursor-pointer"
                             onClick={() => setSelectedProduct(product)}
                           >
                             <div className="relative h-64 overflow-hidden bg-slate-100">
@@ -568,7 +568,7 @@ export default function ProductsPage() {
                               <div className="absolute inset-0 transition-opacity opacity-0 bg-gradient-to-t from-accent/80 via-transparent group-hover:opacity-100" />
                               <div className="absolute top-4 left-4">
                                 <Badge className="px-3 py-1 font-bold tracking-wider text-white border-none bg-accent shadow-lg shadow-accent/20">
-                                  System
+                                  {t('productsPage.systemBadge')}
                                 </Badge>
                               </div>
                               <button
@@ -579,15 +579,15 @@ export default function ProductsPage() {
                             </div>
                             <CardContent className="p-8">
                               <div className="flex items-center gap-2 mb-4">
-                                <span className="text-xs font-bold tracking-widest uppercase text-accent">{product.category}</span>
+                                <span className="text-xs font-bold tracking-widest uppercase text-accent">{getLocalizedValue(product.category)}</span>
                                 <div className="w-1 h-1 rounded-full bg-slate-300" />
-                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Industrial Packaging</span>
+                                <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedValue('Industrial Packaging')}</span>
                               </div>
                               <h3 className="mb-4 text-2xl font-bold text-primary group-hover:text-accent transition-colors font-heading leading-tight">
-                                {product.title}
+                                {getLocalizedTitle(product)}
                               </h3>
                               <p className="mb-8 text-sm leading-relaxed text-slate-700 line-clamp-3 font-paragraph font-medium">
-                                {product.description}
+                                {getLocalizedDescription(product)}
                               </p>
                               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                                 {product.specs?.slice(0, 2).map((spec, sIdx) => (
@@ -595,13 +595,13 @@ export default function ProductsPage() {
                                     {sIdx === 0 ? <Zap size={16} className="mt-1 text-accent shrink-0" /> : <Cpu size={16} className="mt-1 text-accent shrink-0" />}
                                     <div>
                                       <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">{getLocalizedSpecKey(spec.key)}</p>
-                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{spec.value}</p>
+                                      <p className="text-xs font-semibold text-primary truncate max-w-[100px]">{getLocalizedValue(spec.value)}</p>
                                     </div>
                                   </div>
                                 ))}
                               </div>
                               <div
-                                className="w-full mt-8 font-bold border rounded-xl hover:bg-accent hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
+                                className="w-full mt-8 font-bold border rounded-none hover:bg-accent hover:text-white border-slate-100 group/btn flex items-center justify-center py-2 transition-colors duration-300"
                               >
                                 {t('productsPage.viewDetails')} <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
                               </div>
@@ -665,14 +665,14 @@ export default function ProductsPage() {
                         className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'photo' ? 'text-white border-accent' : 'text-white/40 border-transparent'
                           }`}
                       >
-                        📷 Photo
+                        📷 {t('productsPage.photo')}
                       </button>
                       <button
                         onClick={() => setActiveTab('video')}
                         className={`text-[10px] font-heading font-bold uppercase tracking-[0.2em] transition-all pb-1 border-b-2 ${activeTab === 'video' ? 'text-white border-accent' : 'text-white/40 border-transparent'
                           }`}
                       >
-                        ▶ Video
+                        ▶ {t('productsPage.video')}
                       </button>
                     </div>
                   )}
@@ -716,7 +716,7 @@ export default function ProductsPage() {
 
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none" />
                   <div className="absolute bottom-6 left-8 right-8 pointer-events-none">
-                    <Badge className="mb-4 bg-accent">System</Badge>
+                    <Badge className="mb-4 bg-accent">{t('productsPage.systemBadge')}</Badge>
                     <h2 className="text-3xl font-bold text-white font-heading leading-tight">{getLocalizedTitle(selectedProduct)}</h2>
                   </div>
                 </div>
@@ -732,7 +732,7 @@ export default function ProductsPage() {
                       <p className="text-sm leading-relaxed text-slate-600 font-paragraph">{getLocalizedDescription(selectedProduct)}</p>
                     </div>
 
-                    <div className="flex flex-col gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div className="flex flex-col gap-5 p-6 rounded-none bg-slate-50 border border-slate-100">
                       {selectedProduct.specs?.map((spec, idx) => (
                         <div key={idx} className="flex items-center gap-4 border-b border-slate-200/60 pb-5 last:border-0 last:pb-0">
                           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm shrink-0">
@@ -758,7 +758,7 @@ export default function ProductsPage() {
                   </div>
 
                   <a href={`/request-quotation?product=${encodeURIComponent(selectedProduct.title)}`} className="w-full block mt-10">
-                    <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-xl text-white shrink-0">
+                    <Button className="w-full h-14 text-sm font-bold tracking-widest uppercase transition-all shadow-xl bg-accent hover:bg-accent-dark shadow-accent/20 rounded-none text-white shrink-0">
                       {t('productArsenal.requestInfo') || 'Request Information'}
                     </Button>
                   </a>
