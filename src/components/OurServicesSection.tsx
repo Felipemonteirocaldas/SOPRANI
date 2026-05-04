@@ -126,12 +126,6 @@ export default function OurServicesSection() {
     },
     {
       number: '05',
-      title: t('servicesSection.tradingTitle'),
-      description: t('servicesSection.tradingDesc'),
-      icon: ShoppingCart,
-    },
-    {
-      number: '06',
       title: t('servicesSection.assetMarketTitle'),
       description: t('servicesSection.assetMarketDesc'),
       icon: Hammer,

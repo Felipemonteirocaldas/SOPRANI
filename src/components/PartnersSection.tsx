@@ -81,9 +81,9 @@ export default function PartnersSection() {
               <div className="w-10 h-[1px] bg-accent/50" />
             </div>
 
-            <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-8 leading-[1.2] tracking-tight">
               {t('partners.title')}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent to-red-400">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent to-red-400 py-2 -my-2">
                 {t('partners.titleHighlight')}
               </span>
             </h2>

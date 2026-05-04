@@ -10,8 +10,7 @@ const SERVICES = (t: (k: string) => string) => [
   { number: '02', icon: Package, titleKey: 'servicesPage.sparePartsT', descKey: 'servicesPage.sparePartsD', bullets: ['servicesPage.spP1', 'servicesPage.spP2', 'servicesPage.spP3', 'servicesPage.spP4'], tagKey: 'servicesPage.tag2' },
   { number: '03', icon: Zap, titleKey: 'servicesPage.techAssistanceT', descKey: 'servicesPage.techAssistanceD', bullets: ['servicesPage.ta1', 'servicesPage.ta2', 'servicesPage.ta3', 'servicesPage.ta4'], tagKey: 'servicesPage.tag3' },
   { number: '04', icon: RefreshCw, titleKey: 'servicesPage.revampingT', descKey: 'servicesPage.revampingD', bullets: ['servicesPage.rv1', 'servicesPage.rv2', 'servicesPage.rv3', 'servicesPage.rv4'], tagKey: 'servicesPage.tag4' },
-  { number: '05', icon: TrendingUp, titleKey: 'servicesPage.tradingT', descKey: 'servicesPage.tradingD', bullets: ['servicesPage.tr1', 'servicesPage.tr2', 'servicesPage.tr3', 'servicesPage.tr4'], tagKey: 'servicesPage.tag5' },
-  { number: '06', icon: Hammer, titleKey: 'servicesPage.assetMarketT', descKey: 'servicesPage.assetMarketD', bullets: ['servicesPage.am1', 'servicesPage.am2', 'servicesPage.am3', 'servicesPage.am4'], tagKey: 'servicesPage.tag6' },
+  { number: '05', icon: Hammer, titleKey: 'servicesPage.assetMarketT', descKey: 'servicesPage.assetMarketD', bullets: ['servicesPage.am1', 'servicesPage.am2', 'servicesPage.am3', 'servicesPage.am4'], tagKey: 'servicesPage.tag6' },
 ];
 
 interface Service {
@@ -71,7 +70,7 @@ const ServiceDesktopRow = ({ service, t }: { service: Service; t: (k: string) =>
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="group grid grid-cols-[160px_1fr_1fr] border-b border-slate-200 last:border-b-0 py-16 scroll-mt-24"
+      className="group grid grid-cols-[220px_1fr_1fr] border-b border-slate-200 last:border-b-0 py-16 scroll-mt-24"
     >
       <div className="flex flex-col items-start gap-3 pr-8">
         <span className="text-8xl font-heading font-black leading-none select-none" style={{ color: '#001F5F', opacity: 0.13 }}>

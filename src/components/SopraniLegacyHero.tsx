@@ -106,7 +106,7 @@ export default function SopraniLegacyHero() {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 1.5, delay: 1.8, ease: "circOut" }}
-            className="flex h-[4px] w-48 mx-auto rounded-full overflow-hidden shadow-[0_0_20px_rgba(196,18,48,0.3)]"
+            className="flex h-[3px] w-32 mx-auto rounded-full overflow-hidden shadow-[0_0_15px_rgba(196,18,48,0.2)]"
           >
             <div className="flex-1 bg-[#008C45]" />
             <div className="flex-1 bg-white" />

@@ -40,11 +40,11 @@ export default function Footer() {
                   <Youtube size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/matteo-soprani-a4809769/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 group"
-                  aria-label={t('footer.linkedin')}
+                  aria-label="LinkedIn de Matteo Soprani"
                   id="footer-social-linkedin"
                 >
                   <Linkedin size={18} className="text-white group-hover:scale-110 transition-transform duration-300" />
