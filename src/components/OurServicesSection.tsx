@@ -159,7 +159,7 @@ export default function OurServicesSection() {
                 {t('servicesSection.whatWeDo')}
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white">
+            <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white">
               {t('servicesSection.ourServices')}
             </h2>
             <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium text-white/70 mt-2">

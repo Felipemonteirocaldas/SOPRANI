@@ -72,11 +72,6 @@ export default function Footer() {
                   {t('header.technicalAssistance')}
                 </Link>
               </li>
-              <li>
-                <Link to="/trading-materials" className="text-sm xs:text-base text-slate-200 hover:text-accent font-medium transition-colors duration-200">
-                  {t('header.tradingMaterials')}
-                </Link>
-              </li>
             </ul>
           </div>
 

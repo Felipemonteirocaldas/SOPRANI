@@ -148,7 +148,7 @@ export default function RequestQuotationPage() {
                   <span className="inline-block border-l-2 border-accent pl-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 mb-6">
                     {t('reqPage.heroEyebrow')}
                   </span>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">
+                  <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 leading-[1.1] tracking-tight text-left">
                     {t('reqPage.heroTitle')}
                   </h1>
                   <p className="text-base md:text-lg text-blue-100 max-w-xl leading-relaxed mb-10 text-left">

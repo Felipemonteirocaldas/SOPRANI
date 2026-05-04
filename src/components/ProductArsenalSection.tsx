@@ -444,7 +444,7 @@ export default function ProductArsenalSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary mb-8 tracking-tighter"
+            className="text-3xl xs:text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary mb-8 tracking-tighter"
           >
             {t('productArsenal.title')}
           </motion.h2>

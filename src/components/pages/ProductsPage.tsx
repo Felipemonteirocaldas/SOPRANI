@@ -266,7 +266,7 @@ export default function ProductsPage() {
               </span>
             </div>
 
-            <h1 className="mb-8 text-5xl font-black tracking-tight text-white md:text-7xl font-heading leading-[1.0]">
+            <h1 className="mb-8 text-3xl xs:text-4xl font-black tracking-tight text-white md:text-7xl font-heading leading-[1.0]">
               {t('productsPage.heroTitle')}
             </h1>
             <p className="text-lg leading-relaxed md:text-xl text-slate-200 font-bold max-w-xl">
@@ -423,7 +423,7 @@ export default function ProductsPage() {
                         <div className="w-1 h-10 bg-[#001F5F] rounded-full shrink-0" />
                         <div>
                           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-0.5">{t('productArsenal.authorizedPartner') || 'Authorized Partner'}</p>
-                          <h2 className="text-xl md:text-2xl font-heading font-black text-primary tracking-tight">
+                          <h2 className="text-lg md:text-2xl font-heading font-black text-primary tracking-tight">
                             Koenig Bauer Metalprint
                           </h2>
                         </div>

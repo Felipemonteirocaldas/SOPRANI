@@ -161,7 +161,7 @@ const StatsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
             {t('stats.title')}
           </h2>
           <p className="font-paragraph text-lg text-slate-100 max-w-2xl mx-auto">

@@ -125,28 +125,6 @@ const SEO_MAP: SEOMap = {
         'Asistencia técnica especializada para líneas de producción de envases metálicos. Auditorías, mantenimiento correctivo, revamping y optimización de rendimiento.',
     },
   },
-  '/trading-materials': {
-    en: {
-      title: 'Metal Trading | Tinplate & Aluminum for Packaging Industry – Soprani',
-      description:
-        'Strategic supply of tinplate and industrial aluminum for metal packaging manufacturers. Flexible volumes, certified quality and direct access to global producers.',
-    },
-    pt: {
-      title: 'Trading de Metais | Folha Flandres e Alumínio para Embalagem – Soprani',
-      description:
-        'Fornecimento estratégico de folha flandres e alumínio industrial para fabricantes de embalagem metálica. Volumes flexíveis, qualidade certificada.',
-    },
-    it: {
-      title: 'Trading Metalli | Banda Stagnata e Alluminio per Imballaggi – Soprani',
-      description:
-        'Fornitura strategica di banda stagnata e alluminio industriale per produttori di imballaggi metallici. Volumi flessibili, qualità certificata.',
-    },
-    es: {
-      title: 'Trading de Metales | Hojalata y Aluminio para Envases – Soprani',
-      description:
-        'Suministro estratégico de hojalata y aluminio industrial para fabricantes de envases metálicos. Volúmenes flexibles, calidad certificada.',
-    },
-  },
   '/industries': {
     en: {
       title: 'Metal Packaging Industries | Food, Beverage & Industrial Cans – Soprani',

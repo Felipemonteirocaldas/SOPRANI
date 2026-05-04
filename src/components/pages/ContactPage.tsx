@@ -132,7 +132,7 @@ export default function ContactPage() {
                   </span>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 tracking-tighter leading-[0.95]">
+                <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 tracking-tighter leading-[0.95]">
                   {t('contactPage.heroTitle')}
                 </h1>
                 <p className="text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed font-bold">
@@ -160,7 +160,7 @@ export default function ContactPage() {
 
                     {/* Relógio — menor no mobile */}
                     <div className="flex flex-col mb-5 sm:mb-7">
-                      <div className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2 leading-none">
+                      <div className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-widest tabular-nums flex flex-wrap items-end gap-2 leading-none">
                         {italyTime}
                         <span className="text-[9px] uppercase text-blue-300 pb-1">{t('contactPage.cetItaly')}</span>
                       </div>

@@ -80,7 +80,7 @@ export default function NewsPage() {
         />
         <div className="relative container mx-auto px-4 text-center">
           <AnimatedElement>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 uppercase tracking-tight">
+            <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-heading font-black text-white mb-6 uppercase tracking-tight">
               {activeTab === 'news' ? t('newsPage.heroTitle') : t('eventsPage.heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-light">

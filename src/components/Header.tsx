@@ -12,7 +12,6 @@ const getServicesLinks = (t: any) => [
   { label: t('header.machinery'), href: '/machinery', icon: Wrench },
   { label: t('header.spareParts'), href: '/spare-parts', icon: Package },
   { label: t('header.technicalAssistance'), href: '/technical-assistance', icon: Headphones },
-  { label: t('header.tradingMaterials'), href: '/trading-materials', icon: Truck },
 ];
 
 const getProductsLinks = (t: any) => [
